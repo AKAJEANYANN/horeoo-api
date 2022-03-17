@@ -1,0 +1,31 @@
+{
+  "name": "customer",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "customerUsername": {
+      "type": "string"
+    },
+    "customerCreateTime": {
+      "type": "date"
+    },
+    "customerRectoCni": {
+      "type": "string"
+    },
+    "customerVersoCni": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

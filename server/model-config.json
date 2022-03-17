@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "provider": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "equipement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "typeHebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "hebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "equipementAsHebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "imageHebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "hebergementAsUser": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "offreHebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "customer": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "reservation": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "parametre": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  }
+}

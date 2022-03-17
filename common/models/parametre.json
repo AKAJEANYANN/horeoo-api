@@ -1,0 +1,28 @@
+{
+  "name": "parametre",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "parametreCode": {
+      "type": "string"
+    },
+    "parametreValeur": {
+      "type": "string"
+    },
+    "parametreDesignation": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
