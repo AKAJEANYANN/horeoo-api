@@ -45,6 +45,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "reservation": {
+      "type": "belongsTo",
+      "model": "reservation",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

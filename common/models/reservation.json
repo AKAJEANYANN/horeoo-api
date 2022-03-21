@@ -19,7 +19,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "customers": {
+      "type": "hasMany",
+      "model": "customer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "offreHebergements": {
+      "type": "hasMany",
+      "model": "offreHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }
