@@ -20,12 +20,6 @@
     "hebergementContactTwo": {
       "type": "number"
     },
-    "hebergementLatitude": {
-      "type": "string"
-    },
-    "hebergementLongitude": {
-      "type": "string"
-    },
     "hebergementUrlInfoAudio": {
       "type": "string"
     },
@@ -43,10 +37,15 @@
     },
     "hebergementNomGerant": {
       "type": "string"
+    },
+    "hebergementLocation": {
+      "type": "geopoint"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+ 
+  },
   "acls": [],
   "methods": {}
 }
