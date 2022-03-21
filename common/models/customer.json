@@ -25,7 +25,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "hebergementAsUser": {
+      "type": "belongsTo",
+      "model": "hebergementAsUser",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

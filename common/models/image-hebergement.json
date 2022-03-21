@@ -16,7 +16,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "hebergements": {
+      "type": "hasMany",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

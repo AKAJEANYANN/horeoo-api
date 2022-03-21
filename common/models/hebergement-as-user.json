@@ -7,7 +7,26 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "hebergements": {
+      "type": "hasMany",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "hebergementAsUser"
+    },
+    "customers": {
+      "type": "hasMany",
+      "model": "customer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "hebergementAsUser"
+    }
+  },
   "acls": [],
   "methods": {}
 }

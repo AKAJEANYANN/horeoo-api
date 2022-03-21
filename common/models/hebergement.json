@@ -44,7 +44,46 @@
   },
   "validations": [],
   "relations": {
- 
+    "typeHebergements": {
+      "type": "hasMany",
+      "model": "typeHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "equipementAsHebergement": {
+      "type": "belongsTo",
+      "model": "equipementAsHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "imageHebergement": {
+      "type": "belongsTo",
+      "model": "imageHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "offreHebergement": {
+      "type": "belongsTo",
+      "model": "offreHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "hebergementAsUser": {
+      "type": "belongsTo",
+      "model": "hebergementAsUser",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
   },
   "acls": [],
   "methods": {}
