@@ -8,23 +8,21 @@
   "properties": {},
   "validations": [],
   "relations": {
-    "hebergements": {
-      "type": "hasMany",
-      "model": "hebergement",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      },
-      "through": "equipementAsHebergement"
-    },
-    "equipements": {
-      "type": "hasMany",
+    "equipement": {
+      "type": "belongsTo",
       "model": "equipement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
-      },
-      "through": "equipementAsHebergement"
+      }
+    },
+    "hebergement": {
+      "type": "belongsTo",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

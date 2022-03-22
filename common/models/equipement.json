@@ -20,13 +20,14 @@
   },
   "validations": [],
   "relations": {
-    "equipementAsHebergement": {
-      "type": "belongsTo",
+    "equipementAsHebergements": {
+      "type": "hasMany",
       "model": "equipementAsHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
-      }
+      },
+      "through": "equipementAsHebergement"
     }
   },
   "acls": [],

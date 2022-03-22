@@ -17,8 +17,8 @@
   },
   "validations": [],
   "relations": {
-    "hebergements": {
-      "type": "hasMany",
+    "hebergement": {
+      "type": "belongsTo",
       "model": "hebergement",
       "foreignKey": "",
       "options": {

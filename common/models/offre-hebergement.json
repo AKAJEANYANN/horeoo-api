@@ -38,16 +38,16 @@
   },
   "validations": [],
   "relations": {
-    "hebergements": {
-      "type": "hasMany",
+    "hebergement": {
+      "type": "belongsTo",
       "model": "hebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "reservation": {
-      "type": "belongsTo",
+    "reservations": {
+      "type": "hasMany",
       "model": "reservation",
       "foreignKey": "",
       "options": {

@@ -44,45 +44,47 @@
   },
   "validations": [],
   "relations": {
-    "typeHebergements": {
-      "type": "hasMany",
+    "typeHebergement": {
+      "type": "belongsTo",
       "model": "typeHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "equipementAsHebergement": {
-      "type": "belongsTo",
+    "equipementAsHebergements": {
+      "type": "hasMany",
       "model": "equipementAsHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
-      }
+      },
+      "through": "equipementAsHebergement"
     },
-    "imageHebergement": {
-      "type": "belongsTo",
+    "imageHebergements": {
+      "type": "hasMany",
       "model": "imageHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "offreHebergement": {
-      "type": "belongsTo",
+    "offreHebergements": {
+      "type": "hasMany",
       "model": "offreHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "hebergementAsUser": {
-      "type": "belongsTo",
+    "hebergementAsUsers": {
+      "type": "hasMany",
       "model": "hebergementAsUser",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
-      }
+      },
+      "through": "hebergementAsUser"
     }
   },
   "acls": [],

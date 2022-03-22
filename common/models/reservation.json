@@ -20,17 +20,25 @@
   },
   "validations": [],
   "relations": {
-    "customers": {
-      "type": "hasMany",
+    "offreHebergement": {
+      "type": "belongsTo",
+      "model": "offreHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "customer": {
+      "type": "belongsTo",
       "model": "customer",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "offreHebergements": {
-      "type": "hasMany",
-      "model": "offreHebergement",
+    "bot": {
+      "type": "belongsTo",
+      "model": "bot",
       "foreignKey": "",
       "options": {
         "nestRemoting": true

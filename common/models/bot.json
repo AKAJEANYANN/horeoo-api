@@ -1,6 +1,6 @@
 {
-  "name": "customer",
-  "base": "User",
+  "name": "bot",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -11,30 +11,15 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "customerUsername": {
+    "botIsUser": {
       "type": "string"
     },
-    "customerCreateTime": {
-      "type": "date"
-    },
-    "customerRectoCni": {
-      "type": "string"
-    },
-    "customerVersoCni": {
+    "botMessage": {
       "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "hebergementAsUsers": {
-      "type": "hasMany",
-      "model": "hebergementAsUser",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      },
-      "through": "hebergementAsUser"
-    },
     "reservations": {
       "type": "hasMany",
       "model": "reservation",
