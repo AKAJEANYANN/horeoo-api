@@ -11,23 +11,25 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "equipementNom": {
-      "type": "string"
+    "nomEquipement": {
+      "type": "string",
+      "default": ""
     },
-    "equipementActif": {
-      "type": "boolean"
+    "actifEquipement": {
+      "type": "boolean",
+      "default": "true"
     }
   },
   "validations": [],
   "relations": {
-    "equipementAsHebergements": {
+    "equipementHasHebergements": {
       "type": "hasMany",
-      "model": "equipementAsHebergement",
+      "model": "equipementHasHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       },
-      "through": "equipementAsHebergement"
+      "through": "equipementHasHebergement"
     }
   },
   "acls": [],

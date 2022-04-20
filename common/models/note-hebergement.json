@@ -1,24 +1,31 @@
 {
-  "name": "equipementAsHebergement",
+  "name": "noteHebergement",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "note": {
+      "type": "string"
+    },
+    "commentaire": {
+      "type": "string"
+    }
+  },
   "validations": [],
   "relations": {
-    "equipement": {
+    "hebergement": {
       "type": "belongsTo",
-      "model": "equipement",
+      "model": "hebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "hebergement": {
-      "type": "belongsTo",
-      "model": "hebergement",
+    "reservations": {
+      "type": "hasOne",
+      "model": "reservation",
       "foreignKey": "",
       "options": {
         "nestRemoting": true

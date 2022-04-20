@@ -1,5 +1,5 @@
 {
-  "name": "provider",
+  "name": "commercial",
   "base": "User",
   "idInjection": true,
   "options": {
@@ -11,35 +11,15 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "nomCompletProvider": {
+    "nomCompletCom": {
       "type": "string",
       "default": ""
     },
-    "CreatedDateProvider": {
-      "type": "date",
-      "default": "now"
-    },
-    "approuveProvider": {
-      "type": "boolean",
-      "default": "true"
-    },
-    "rectoCniProvider": {
+    "codeCom": {
       "type": "string",
       "default": ""
     },
-    "versoCniProvider": {
-      "type": "string",
-      "default": ""
-    },
-    "isProprio": {
-      "type": "boolean",
-      "default": "true"
-    },
-    "nomGerant": {
-      "type": "string",
-      "default": ""
-    },
-    "contactGerant": {
+    "phoneCom": {
       "type": "string",
       "default": ""
     }
@@ -47,7 +27,7 @@
   "validations": [],
   "relations": {
     "hebergements": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "hebergement",
       "foreignKey": "",
       "options": {

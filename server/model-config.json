@@ -29,7 +29,7 @@
     "dataSource": "horeooAppDb",
     "public": true
   },
-  "equipementAsHebergement": {
+  "equipementHasHebergement": {
     "dataSource": "horeooAppDb",
     "public": true
   },
@@ -37,11 +37,11 @@
     "dataSource": "horeooAppDb",
     "public": true
   },
-  "hebergementAsUser": {
+  "hebergementHasCustomer": {
     "dataSource": "horeooAppDb",
     "public": true
   },
-  "offreHebergement": {
+  "offre": {
     "dataSource": "horeooAppDb",
     "public": true
   },
@@ -60,5 +60,29 @@
   "bot": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "commercial": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "noteHebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "appAccessToken": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "horeooAppDb",
+    "public": false
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "offreHebergement",
+  "name": "offre",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,29 +11,37 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "offreHebergementNom": {
-      "type": "string"
+    "nomOffre": {
+      "type": "string",
+      "default": ""
     },
-    "offreHebergementTrancheMinim": {
-      "type": "number"
+    "trancheMinimOffre": {
+      "type": "number",
+      "default": ""
     },
-    "OffreHebergementActive": {
-      "type": "boolean"
+    "activeOffre": {
+      "type": "boolean",
+      "default": "true"
     },
-    "offreHebergementDuree": {
-      "type": "string"
+    "dureeOffre": {
+      "type": "string",
+      "default": ""
     },
-    "offreHebergementPrix": {
-      "type": "number"
+    "prixOffre": {
+      "type": "number",
+      "default": ""
     },
-    "offreHebergementDetails": {
-      "type": "string"
+    "detailsOffre": {
+      "type": "string",
+      "default": ""
     },
-    "offreHebergementLimitPerson": {
-      "type": "number"
+    "limitPersonOffre": {
+      "type": "number",
+      "default": ""
     },
-    "offreHebergementVisible": {
-      "type": "boolean"
+    "visibleOffre": {
+      "type": "boolean",
+      "default": "true"
     }
   },
   "validations": [],

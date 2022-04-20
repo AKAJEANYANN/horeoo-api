@@ -11,35 +11,40 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "hebergementDenomination": {
-      "type": "string"
+    "denominationHebergement": {
+      "type": "string",
+      "default": ""
     },
-    "hebergementContactOne": {
+    "createdDateHebergement": {
+      "type": "date",
+      "default": "now"
+    },
+    "contactOneHebergement": {
+      "type": "number",
+      "default": ""
+    },
+    "contactTwoHebergement": {
       "type": "number"
     },
-    "hebergementContactTwo": {
-      "type": "number"
+    "urlInfoAudioHebergement": {
+      "type": "string",
+      "default": ""
     },
-    "hebergementUrlInfoAudio": {
-      "type": "string"
+    "presentationHebergement": {
+      "type": "string",
+      "default": ""
     },
-    "hebergementPresentation": {
-      "type": "string"
+    "locationHebergement": {
+      "type": "geopoint",
+      "default": ""
     },
-    "hebergementIsProprio": {
-      "type": "boolean"
+    "nomProprio": {
+      "type": "string",
+      "default": ""
     },
-    "hebergementNomProprio": {
-      "type": "string"
-    },
-    "hebergementContactProprio": {
-      "type": "number"
-    },
-    "hebergementNomGerant": {
-      "type": "string"
-    },
-    "hebergementLocation": {
-      "type": "geopoint"
+    "contactProprio": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
@@ -52,14 +57,14 @@
         "nestRemoting": true
       }
     },
-    "equipementAsHebergements": {
+    "equipementHasHebergements": {
       "type": "hasMany",
-      "model": "equipementAsHebergement",
+      "model": "equipementHasHebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       },
-      "through": "equipementAsHebergement"
+      "through": "equipementHasHebergement"
     },
     "imageHebergements": {
       "type": "hasMany",
@@ -69,22 +74,38 @@
         "nestRemoting": true
       }
     },
-    "offreHebergements": {
+    "offre": {
       "type": "hasMany",
-      "model": "offreHebergement",
+      "model": "offre",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       }
     },
-    "hebergementAsUsers": {
+    "hebergementHasCustomers": {
       "type": "hasMany",
-      "model": "hebergementAsUser",
+      "model": "hebergementHasCustomer",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       },
-      "through": "hebergementAsUser"
+      "through": "hebergementHasCustomer"
+    },
+    "commercial": {
+      "type": "belongsTo",
+      "model": "commercial",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "noteHebergements": {
+      "type": "hasMany",
+      "model": "noteHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

@@ -11,29 +11,33 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "customerUsername": {
-      "type": "string"
+    "nomCompletCustomer": {
+      "type": "string",
+      "default": ""
     },
-    "customerCreateTime": {
-      "type": "date"
+    "createdDateCustomer": {
+      "type": "date",
+      "default": "now"
     },
-    "customerRectoCni": {
-      "type": "string"
+    "rectoCniCustomer": {
+      "type": "string",
+      "default": ""
     },
-    "customerVersoCni": {
-      "type": "string"
+    "versoCniCustomer": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
   "relations": {
-    "hebergementAsUsers": {
+    "hebergementHasCustomers": {
       "type": "hasMany",
-      "model": "hebergementAsUser",
+      "model": "hebergementHasCustomer",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
       },
-      "through": "hebergementAsUser"
+      "through": "hebergementHasCustomer"
     },
     "reservations": {
       "type": "hasMany",
@@ -41,6 +45,17 @@
       "foreignKey": "",
       "options": {
         "nestRemoting": true
+      }
+    },
+    "appAccessTokens": {
+      "type": "hasMany",
+      "model": "appAccessToken",
+      "polymorphic": {
+        "foreignKey": "userId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
       }
     }
   },

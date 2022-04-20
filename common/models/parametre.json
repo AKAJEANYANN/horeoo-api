@@ -11,14 +11,17 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "parametreCode": {
-      "type": "string"
+    "codeParametre": {
+      "type": "string",
+      "default": ""
     },
-    "parametreValeur": {
-      "type": "string"
+    "valeurParametre": {
+      "type": "string",
+      "default": ""
     },
-    "parametreDesignation": {
-      "type": "string"
+    "designationParametre": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

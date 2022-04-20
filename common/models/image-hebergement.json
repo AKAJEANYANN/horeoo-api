@@ -11,8 +11,9 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "imageHebergementUrl": {
-      "type": "string"
+    "imageUrlHebergement": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

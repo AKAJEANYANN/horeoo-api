@@ -1,5 +1,5 @@
 {
-  "name": "typeHebergement",
+  "name": "hebergementHasCustomer",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,20 +10,20 @@
       "type": "string",
       "id": true,
       "defaultFn": "uuidv4"
-    },
-    "nomTypeHebergement": {
-      "type": "string",
-      "defaultFn": ""
-    },
-    "actifTypeHebergement": {
-      "type": "boolean",
-      "defaultFn": "true"
     }
   },
   "validations": [],
   "relations": {
-    "hebergements": {
-      "type": "hasMany",
+    "customer": {
+      "type": "belongsTo",
+      "model": "customer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "hebergement": {
+      "type": "belongsTo",
       "model": "hebergement",
       "foreignKey": "",
       "options": {

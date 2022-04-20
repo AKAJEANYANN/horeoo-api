@@ -20,9 +20,9 @@
   },
   "validations": [],
   "relations": {
-    "offreHebergement": {
+    "offre": {
       "type": "belongsTo",
-      "model": "offreHebergement",
+      "model": "offre",
       "foreignKey": "",
       "options": {
         "nestRemoting": true

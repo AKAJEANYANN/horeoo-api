@@ -1,16 +1,22 @@
 {
-  "name": "hebergementAsUser",
+  "name": "equipementHasHebergement",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
   "validations": [],
   "relations": {
-    "customer": {
+    "equipement": {
       "type": "belongsTo",
-      "model": "customer",
+      "model": "equipement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
