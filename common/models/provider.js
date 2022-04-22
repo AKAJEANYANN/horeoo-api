@@ -14,14 +14,14 @@ module.exports = function(Provider) {
             where: {
                 phoneProvider: phoneProvider,
             }
-        }, (err, Provider) => {
+        }, (err, provider) => {
     
-            console.log(Provider);
+            console.log(provider);
     
             // cas 1 l'utilisateur existe: 
-            if(Provider){
+            if(provider){
                     // 2 mettre a jour le MDP avec le code de 5 chiffre
-                    Provider.updateAttributes({
+                    provider.updateAttributes({
                         email : phoneProvider + '@horeoo.ci',
                         password : `${code}`
                     },(err, provider) => {
@@ -42,8 +42,8 @@ module.exports = function(Provider) {
     
                 Provider.create(
                     {
-                        phoneProvider: phoneCustomer,
-                        email : phoneCustomer + '@moya.ci',
+                        phoneProvider: phoneProvider,
+                        email : phoneProvider + '@horeoo.ci',
                         password : `${code}`,
                     },
                     (err, Provider) => {
