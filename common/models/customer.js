@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function(Customer) {
+    
+    // creation de compte
     Customer.phonenumber = function (req ,cb) {
 
         var phoneCustomer = req.body.phoneCustomer;
@@ -46,6 +48,7 @@ module.exports = function(Customer) {
                     },
                     (err, Customer) => {
                         console.log(Customer)
+                        
                         // Retourner une reponse
                         if(err) cb(err, null);
                         else cb(null, Customer);
@@ -60,9 +63,10 @@ module.exports = function(Customer) {
         cb("Veuillez entrer le numéro de téléphone", null)
     } 
     
-    
-        };
+    };
 
+    
+    
     Customer.remoteMethod('phonenumber',
     {
         accepts: [
