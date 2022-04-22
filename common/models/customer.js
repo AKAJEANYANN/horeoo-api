@@ -2,7 +2,7 @@
 
 module.exports = function(Customer) {
     
-    // creation de compte
+    // creation du compte client
     Customer.phonenumber = function (req ,cb) {
 
         var phoneCustomer = req.body.phoneCustomer;

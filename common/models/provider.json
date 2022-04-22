@@ -17,7 +17,7 @@
     },
     "CreatedDateProvider": {
       "type": "date",
-      "default": "now"
+      "defaultFn": "now"
     },
     "approuveProvider": {
       "type": "boolean",
@@ -31,15 +31,7 @@
       "type": "string",
       "default": ""
     },
-    "isProprio": {
-      "type": "boolean",
-      "default": "true"
-    },
-    "nomGerant": {
-      "type": "string",
-      "default": ""
-    },
-    "contactGerant": {
+    "phoneProvider": {
       "type": "string",
       "default": ""
     }
