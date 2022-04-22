@@ -84,5 +84,9 @@
   "ACL": {
     "dataSource": "horeooAppDb",
     "public": false
+  },
+  "payement": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

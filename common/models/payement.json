@@ -1,0 +1,64 @@
+{
+  "name": "payement",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "paymentCreatedDate": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "paymentPhonePrefix": {
+      "type": "string"
+    },
+    "paymentPhoneNumber": {
+      "type": "string"
+    },
+    "paymentAmount": {
+      "type": "string"
+    },
+    "paymentAmountCurrency": {
+      "type": "string"
+    },
+    "paymentStatus": {
+      "type": "string"
+    },
+    "paymentProvider": {
+      "type": "string"
+    },
+    "paymentProviderMethod": {
+      "type": "string"
+    },
+    "paymentProviderStatus": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "hebergement": {
+      "type": "belongsTo",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "offre": {
+      "type": "belongsTo",
+      "model": "offre",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

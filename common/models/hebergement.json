@@ -106,6 +106,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "payements": {
+      "type": "hasMany",
+      "model": "payement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
