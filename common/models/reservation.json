@@ -43,6 +43,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "modePaiment": {
+      "type": "belongsTo",
+      "model": "modePaiment",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
