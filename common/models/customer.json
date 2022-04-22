@@ -17,13 +17,17 @@
     },
     "createdDateCustomer": {
       "type": "date",
-      "default": "now"
+      "defaultFn": "now"
     },
     "rectoCniCustomer": {
       "type": "string",
       "default": ""
     },
     "versoCniCustomer": {
+      "type": "string",
+      "default": ""
+    },
+    "phoneCustomer": {
       "type": "string",
       "default": ""
     }
