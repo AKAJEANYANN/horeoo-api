@@ -21,6 +21,7 @@ module.exports = function(Provider) {
             // cas 1 l'utilisateur existe: 
             if(provider){
                     // 2 mettre a jour le MDP avec le code de 5 chiffre
+                    
                     provider.updateAttributes({
                         email : phoneProvider + '@horeoo.ci',
                         password : `${code}`
@@ -33,7 +34,6 @@ module.exports = function(Provider) {
                     cb(null, provider);
     
                 })
-                // })
                 
             }
             // cas 2 l'utilsiateur n'existe pas
