@@ -55,7 +55,7 @@
   },
   "parametre": {
     "dataSource": "horeooAppDb",
-    "public": true
+    "public": false
   },
   "bot": {
     "dataSource": "horeooAppDb",

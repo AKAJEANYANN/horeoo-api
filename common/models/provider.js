@@ -4,7 +4,7 @@ module.exports = function(Provider) {
 
     // creation du compte client
     Provider.phonenumber = function (req ,cb) {
-
+        
         var phoneProvider = req.body.phoneProvider;
         var code =  req.body.code;
     
