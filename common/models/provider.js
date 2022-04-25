@@ -42,6 +42,7 @@ module.exports = function(Provider) {
     
                 Provider.create(
                     {
+                        username: phoneProvider,
                         phoneProvider: phoneProvider,
                         email : phoneProvider + '@horeoo.ci',
                         password : `${code}`,

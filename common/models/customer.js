@@ -42,6 +42,7 @@ module.exports = function(Customer) {
     
                 Customer.create(
                     {
+                        username: phoneCustomer,
                         phoneCustomer: phoneCustomer,
                         email : phoneCustomer + '@horeoo.ci',
                         password : `${code}`,
