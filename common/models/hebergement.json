@@ -17,14 +17,15 @@
     },
     "createdDateHebergement": {
       "type": "date",
-      "default": "now"
+      "defaultFn": "now"
     },
     "contactOneHebergement": {
-      "type": "number",
+      "type": "string",
       "default": ""
     },
     "contactTwoHebergement": {
-      "type": "number"
+      "type": "string",
+      "default": ""
     },
     "urlInfoAudioHebergement": {
       "type": "string",

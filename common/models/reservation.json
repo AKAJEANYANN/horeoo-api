@@ -12,10 +12,12 @@
       "defaultFn": "uuidv4"
     },
     "reservationEtat": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "reservationDate": {
-      "type": "date"
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],

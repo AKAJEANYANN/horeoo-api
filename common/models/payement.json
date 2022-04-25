@@ -16,28 +16,36 @@
       "defaultFn": "now"
     },
     "paymentPhonePrefix": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentPhoneNumber": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentAmount": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentAmountCurrency": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentStatus": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentProvider": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentProviderMethod": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "paymentProviderStatus": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

@@ -6,11 +6,18 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "note": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "commentaire": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
