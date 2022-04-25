@@ -65,7 +65,6 @@ module.exports = function(Customer) {
     } 
     
     };
-
     
     
     Customer.remoteMethod('phonenumber',
