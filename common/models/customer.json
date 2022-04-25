@@ -51,7 +51,7 @@
         "nestRemoting": true
       }
     },
-    "appAccessTokens": {
+    "accessTokens": {
       "type": "hasMany",
       "model": "appAccessToken",
       "polymorphic": {
