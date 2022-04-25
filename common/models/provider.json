@@ -21,7 +21,7 @@
     },
     "approuveProvider": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "rectoCniProvider": {
       "type": "string",
