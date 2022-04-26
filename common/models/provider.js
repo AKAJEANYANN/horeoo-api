@@ -5,6 +5,7 @@ module.exports = function(Provider) {
     // creation du compte client
     Provider.phonenumber = function (req ,cb) {
         
+        const Hebergement = Provider.app.models.hebergement;
         var phoneProvider = req.body.phoneProvider;
         var code =  req.body.code;
     
@@ -21,17 +22,17 @@ module.exports = function(Provider) {
             // cas 1 l'utilisateur existe: 
             if(provider){
                     // 2 mettre a jour le MDP avec le code de 5 chiffre
-                    
+
                     provider.updateAttributes({
                         email : phoneProvider + '@horeoo.ci',
                         password : `${code}`
                     },(err, provider) => {
                         console.log(provider);
-    
-                    // Retourner une reponse
-                    if(err) cb(err, null)
-                    else 
-                    cb(null, provider);
+                        
+                        // Retourner une reponse
+                        if(err) cb(err, null)
+                        else 
+                        cb(null, provider);
     
                 })
                 
