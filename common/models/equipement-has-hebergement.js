@@ -4,25 +4,30 @@ const equipement = require("./equipement");
 
 module.exports = function(Equipementhashebergement) {
 
-    Equipementhashebergement.createequipment = function (req, id, cb) {
-        
-        const Equipement = Equipementhashebergement.app.models.equipement;
-        const Hebergement =Equipementhashebergement.app.models.hebergement;
+    Equipementhashebergement.createequipment = function (req, idhebergement, cb) {
 
-        var infoequip = req.body.infoequip;
+        const idArrayEquipement = req.body.idArrayEquipement.split(";");
+        console.log(idArrayEquipement);
 
-        Equipement.findOne({
+        function mycreation(params) {
+            Equipementhashebergement.create({
+                equipementId: params,
+                hebergementId: idhebergement,
+            });
+        }
+
+        Equipementhashebergement.destroyAll({
             where:{
-                id: id
+                hebergementId: idhebergement
             }
-        },(err, equipement) =>{
-            console.log(equipement);
+        },(err, Equipementhashebergement) =>{
+         
+            idArrayEquipement.forEach(idItem => {
+                mycreation(idItem);
 
-            // Equipement.destroyAll();
-            // console.log(Equipement);
-
-            // Equipement.create(infoequip)
-            // console.log(Equipement);
+            },(err, arrayEquipement) =>{
+                console.log(arrayEquipement);
+            });
 
         })
 
@@ -34,9 +39,9 @@ module.exports = function(Equipementhashebergement) {
     {
         accepts: [
             { arg: 'req', type: 'object', 'http': {source: 'req'}},
-            { arg: 'id', type:'string', required: true}
+            { arg: 'idhebergement', type:'string', required: true}
         ],
-        http: { path: '/:id/createequipment', verb: 'post'},
+        http: { path: '/:idhebergement/createequipment', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
 };
