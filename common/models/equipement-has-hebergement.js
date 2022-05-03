@@ -30,7 +30,7 @@ module.exports = function(Equipementhashebergement) {
     
     
     
-    Provider.remoteMethod('createequipment',
+    Equipementhashebergement.remoteMethod('createequipment',
     {
         accepts: [
             { arg: 'req', type: 'object', 'http': {source: 'req'}},
