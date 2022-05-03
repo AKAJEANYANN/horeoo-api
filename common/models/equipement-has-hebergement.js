@@ -27,6 +27,8 @@ module.exports = function(Equipementhashebergement) {
 
             },(err, arrayEquipement) =>{
                 console.log(arrayEquipement);
+                if(err) cb (err, null)
+                else cb(null, arrayEquipement)
             });
 
         })
