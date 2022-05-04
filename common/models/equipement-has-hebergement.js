@@ -21,15 +21,16 @@ module.exports = function(Equipementhashebergement) {
             where:{
                 hebergementId: idhebergement
             }
-        },(err, Equipementhashebergement) =>{
-         
+        },(err, equip) =>{
+            if(err) cb (err, null)
+            else cb(null, equip);
             idArrayEquipement.forEach(idItem => {
                 mycreation(idItem);
 
             },(err, arrayEquipement) =>{
                 console.log(arrayEquipement);
                 if(err) cb (err, null)
-                else cb(null, arrayEquipement)
+                else cb(null, arrayEquipement);
             });
 
         })
