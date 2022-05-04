@@ -4,6 +4,7 @@ const equipement = require("./equipement");
 
 module.exports = function(Equipementhashebergement) {
 
+    // creation d'equipement pour un hebergement
     Equipementhashebergement.createequipment = function (req, idhebergement, cb) {
 
         const idArrayEquipement = req.body.idArrayEquipement.split(";");
