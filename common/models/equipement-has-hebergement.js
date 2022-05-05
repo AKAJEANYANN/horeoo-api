@@ -8,7 +8,7 @@ module.exports = function(Equipementhashebergement) {
     Equipementhashebergement.createequipment = function (req, idhebergement, cb) {
 
         const idArrayEquipement = req.body.idArrayEquipement.split(",");
-        console.log(idArrayEquipement);
+        // console.log(idArrayEquipement);
 
         function mycreation(params) {
             Equipementhashebergement.create({

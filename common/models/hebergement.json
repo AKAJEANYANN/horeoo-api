@@ -31,6 +31,10 @@
       "type": "string",
       "default": ""
     },
+    "carrousselHebergement": {
+      "type": "string",
+      "default": ""
+    },
     "urlInfoAudioHebergement": {
       "type": "string",
       "default": ""
