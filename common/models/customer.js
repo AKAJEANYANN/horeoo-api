@@ -75,4 +75,7 @@ module.exports = function(Customer) {
         http: { path: '/phonenumber', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
 };
