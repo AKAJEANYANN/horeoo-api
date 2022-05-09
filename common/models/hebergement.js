@@ -32,7 +32,9 @@ module.exports = function(Hebergement) {
   });
 
 
+  
 //   test test
+
 //     Hebergement.testrandom = function (limit, idTypeHebergement, cb) {
 //         var ds = Hebergement.dataSource;
 //         var sql = `SELECT * FROM hebergement ORDER BY RAND() LIMIT ${limit} WHERE typeHebergementId ${idTypeHebergement}`;
