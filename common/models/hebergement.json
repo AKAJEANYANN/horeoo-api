@@ -58,6 +58,10 @@
     "contactProprio": {
       "type": "string",
       "default": ""
+    },
+    "videoHebergement": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
