@@ -15,6 +15,18 @@
       "type": "string",
       "default": ""
     },
+    "reservationNumber": {
+      "type": "string",
+      "default": ""
+    },
+    "reservationQuantite": {
+      "type": "number",
+      "default": "0"
+    },
+    "reservationCreatedDate": {
+      "type": "date",
+      "defaultFn": "now"
+    },
     "reservationDate": {
       "type": "date",
       "defaultFn": "now"

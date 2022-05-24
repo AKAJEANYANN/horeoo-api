@@ -21,7 +21,7 @@
     },
     "activeOffre": {
       "type": "boolean",
-      "default": "true"
+      "default": true
     },
     "dureeOffre": {
       "type": "string",
@@ -41,7 +41,7 @@
     },
     "visibleOffre": {
       "type": "boolean",
-      "default": "true"
+      "default": true
     }
   },
   "validations": [],

@@ -61,7 +61,7 @@ module.exports = function(Customer) {
         })
     }
     else{
-        cb("Veuillez entrer le numéro de téléphone", null)
+        cb(null, "Veuillez entrer le numéro de téléphone")
     } 
     
     };
