@@ -14,6 +14,7 @@ module.exports = function(Hebergement) {
         // });
         Hebergement.find({
             limit: limit,
+            include:"offre",
             where:{
                 typeHebergementId: idTypeHebergement
             }
