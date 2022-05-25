@@ -82,88 +82,77 @@ module.exports = function(Provider) {
 
 
 
-     //create user with verification number 2
-     Provider.writenumberconnect = function (req ,cb) {
+     // creation de compte par sms
+    Provider.number = function (req ,cb) {
 
         const message = "Votre code de connexion est : " ;
-        const Hebergement = Provider.app.models.hebergement;
-        var phoneProvider = req.body.phoneProvider;
-        var code =  req.body.code;
-        var userCodeCommercial = req.body.codeCommercial;
-        var code =  Math.floor(Math.random() * 9000) + 1000;
-    
-        if(phoneProvider != null && phoneProvider != undefined && phoneProvider != ""){
-    
-        Provider.findOne({
-            where: {
-                phoneProvider: phoneProvider
-            }
-        }, (err, user) => {
-    
-            console.log([user, code]);
-    
-            // cas 1 l'utilisateur existe: 
-            if(user){
-                // reset sur le mdp
-                // user.resetPassword({
-                //     email : user.email
-                // }, (err, usereset) =>{
-                //     console.log(usereset);
-                         // 2 mettre a jour le MDP avec le code de 5 chiffre
+        var msisdn = req.body.msisdn;
+
+        var code = Math.floor(Math.random() * 9000) + 1000;
+
+        if(msisdn != null && msisdn != undefined && msisdn != ""){
+
+            Customer.findOne({
+                where: {
+                    phoneProvider: msisdn,
+                }
+            }, (err, user) => {
+
+                // cas 1 l'utilisateur existe: 
+                if(user){
+                    
+                    // mettre a jour le MDP avec le code de 5 chiffre
                     user.updateAttributes({
-                        email : phoneProvider + '@horeoo.ci',
+                        email : msisdn + '@horeoo.ci',
                         password : `${code}`
-                },(err, use) => {
-                    console.log(use);
-                    // TODO : Envoyer SMS
-                    notify.sendSMS(phoneProvider, message + code);
-    
-                    // Retourner une reponse
-                    if(err) cb(err, null)
-                    else 
-                    cb(null, message + code);
-    
-                })
-                // })
-                
-            }
-            // cas 2 l'utilsiateur n'existe pas
-            else {
-                // 2 creer l'utilisateur avec son numero de tel 
-    
-                Provider.create(
-                    {
-                        username : phoneProvider,
-                        email : phoneProvider + '@moya.ci',
-                        password : `${code}`,
-                    },
-                    (err, user) => {
-                        // TODO : Envoyer SMS
-                        notify.sendSMS(phoneProvider, message + code);
-                        
-                        // Retourner une reponse
-                        if(err) cb(err, null);
-                        else cb(null, message + code);
-                                           
-                    }
-                )
-               
-            }
-        })
-    }
-    else{
-        cb({status: 401, message: "Veuillez entrer le numéro de téléphone"}, null)
-    } 
-    
-    
-        };
-    
-        Provider.remoteMethod('writenumberconnect',
-        {
-            accepts: [
-                { arg: 'req', type: 'object', 'http': {source: 'req'}},
-            ],
-            http: { path: '/writenumberconnect', verb: 'post'},
-            returns : { type: 'object', root: true } 
-        });
+                    },(err, use) => {
+                        console.log(use);
+                        if(err) cb(err, null)
+                        else {
+                            // TODO : Envoyer SMS
+                            notify.sendSMS(msisdn, message + code);
+                            
+                            // Retourner une reponse
+                            cb(null, [message + code, use]);
+                        } 
+                    })            
+                }
+                // cas 2 l'utilsiateur n'existe pas
+                else {
+
+                    // creer l'utilisateur avec son numero de tel 
+                    Provider.create(
+                        {
+                            phoneProvider: msisdn,
+                            email : msisdn + '@horeoo.ci',
+                            password : `${code}`,
+                        },
+                        (err, user) => {
+                            if(err) cb(err, null);
+                            else{ 
+                                // Retourner une reponse
+                                cb(null, [message + code, user]);
+                                // TODO : Envoyer SMS
+                                 notify.sendSMS(msisdn, message + code);   
+                                }
+                            
+                                            
+                        }
+                    ) 
+                }
+            })
+        }
+        else{
+            cb({status: 401, message: "Veuillez entrer le numéro de téléphone"}, null)
+        } 
+    };
+
+    Provider.remoteMethod('number',
+    {
+        accepts: [
+            { arg: 'req', type: 'object', 'http': {source: 'req'}},
+        ],
+        http: { path: '/number', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
 };

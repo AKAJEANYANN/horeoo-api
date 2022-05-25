@@ -81,15 +81,15 @@ module.exports = function(Customer) {
     Customer.number = function (req ,cb) {
 
         const message = "Votre code de connexion est : " ;
-        var phoneCustomer = req.body.phoneCustomer;
+        var msisdn = req.body.msisdn;
 
         var code = Math.floor(Math.random() * 9000) + 1000;
 
-        if(phoneCustomer != null && phoneCustomer != undefined && phoneCustomer != ""){
+        if(msisdn != null && msisdn != undefined && msisdn != ""){
 
             Customer.findOne({
                 where: {
-                    phoneCustomer: phoneCustomer,
+                    phoneCustomer: msisdn,
                 }
             }, (err, user) => {
 
@@ -98,14 +98,14 @@ module.exports = function(Customer) {
                     
                     // mettre a jour le MDP avec le code de 5 chiffre
                     user.updateAttributes({
-                        email : phoneCustomer + '@horeoo.ci',
+                        email : msisdn + '@horeoo.ci',
                         password : `${code}`
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
                         else {
                             // TODO : Envoyer SMS
-                            notify.sendSMS(phoneCustomer, message + code);
+                            notify.sendSMS(msisdn, message + code);
                             
                             // Retourner une reponse
                             cb(null, [message + code, use]);
@@ -118,8 +118,8 @@ module.exports = function(Customer) {
                     // creer l'utilisateur avec son numero de tel 
                     Customer.create(
                         {
-                            phoneCustomer: phoneCustomer,
-                            email : phoneCustomer + '@horeoo.ci',
+                            phoneCustomer: msisdn,
+                            email : msisdn + '@horeoo.ci',
                             password : `${code}`,
                         },
                         (err, user) => {
@@ -128,7 +128,7 @@ module.exports = function(Customer) {
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
                                 // TODO : Envoyer SMS
-                                 notify.sendSMS(phoneCustomer, message + code);   
+                                 notify.sendSMS(msisdn, message + code);   
                                 }
                             
                                             
