@@ -82,6 +82,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "phonenumber"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "number"
     }
   ],
   "methods": {}

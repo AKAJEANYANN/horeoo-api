@@ -4,7 +4,7 @@ var path = require('path');
 
 
 // Sending SMS function
-const sendSMS = (msisdn, message) => {
+const sendSMS = (phoneCustomer, message) => {
 
     const options = {
         method: 'POST',
@@ -14,7 +14,7 @@ const sendSMS = (msisdn, message) => {
           password: 'hdLgeNHoBA92',
           msg: message,
           sender: "INFO",
-          msisdn: msisdn,
+          msisdn: phoneCustomer,
           allowunicode: 'true'
         }
       };
