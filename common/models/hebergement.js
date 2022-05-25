@@ -32,26 +32,27 @@ module.exports = function(Hebergement) {
   });
 
 
+
+  Hebergement.affiche = function (cb) {
+      
+    Hebergement.find(
+        {
+            include:"offre"
+        },
+        (err, hebergement) =>{
+            console.log(hebergement)
+            if(err) cb(err, null)
+            else cb(null, hebergement)
+        }
+    )
+  }
+
+  Hebergement.remoteMethod('affiche', {
+    http:{ path: '/affiche',verb:'get'},
+    returns: {type: 'object', root: true}
+});
+
+
   
-//   test test
 
-//     Hebergement.testrandom = function (limit, idTypeHebergement, cb) {
-//         var ds = Hebergement.dataSource;
-//         var sql = `SELECT * FROM hebergement ORDER BY RAND() LIMIT ${limit} WHERE typeHebergementId ${idTypeHebergement}`;
-
-//         ds.connector.query(sql, function (err, hebergement){
-//             console.log(hebergement)
-//             if(err) cb(err, null)
-//             else
-//             cb(null, hebergement);
-//         });
-//     }
-
-
-//     Hebergement.remoteMethod('testrandom', {
-//         accepts: [{arg: 'limit', type: 'string'},
-//         {arg: 'idTypeHebergement', type: 'string'}],
-//         http:{ path: '/testrandom',verb:'get'},
-//         returns: {type: 'object', root: true}
-//   });
 };
