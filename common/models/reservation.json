@@ -19,9 +19,13 @@
       "type": "string",
       "default": ""
     },
+    "reservationNbrePerson": {
+      "type": "number",
+      "default": 0
+    },
     "reservationQuantite": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "reservationCreatedDate": {
       "type": "date",
