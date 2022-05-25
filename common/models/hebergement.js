@@ -33,24 +33,27 @@ module.exports = function(Hebergement) {
 
 
 
-  Hebergement.affiche = function (cb) {
-      
-    Hebergement.find(
-        {
-            include:"offre"
-        },
-        (err, hebergement) =>{
-            console.log(hebergement)
+    Hebergement.randomtwo = function (limit, idTypeHebergement, cb) {
+        
+        Hebergement.find({
+            limit: limit,
+            include:"offre",
+            where:{
+                typeHebergementId: idTypeHebergement
+            }
+        },(err, hebergement) =>{
             if(err) cb(err, null)
             else cb(null, hebergement)
-        }
-    )
-  }
+        })
+    }
 
-  Hebergement.remoteMethod('affiche', {
-    http:{ path: '/affiche',verb:'get'},
-    returns: {type: 'object', root: true}
-});
+
+    Hebergement.remoteMethod('randomtwo', {
+        accepts: [{arg: 'limit', type: 'string'},
+        {arg: 'idTypeHebergement', type: 'string'}],
+        http:{ path: '/randomtwo',verb:'get'},
+        returns: {type: 'object', root: true}
+  });
 
 
   
