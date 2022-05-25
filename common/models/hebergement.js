@@ -14,7 +14,12 @@ module.exports = function(Hebergement) {
         // });
         Hebergement.find({
             limit: limit,
-            include:"offre",
+            include:{
+                relation: "offre",
+                scope:{
+                    limit:1
+                }
+            },
             where:{
                 typeHebergementId: idTypeHebergement
             }
@@ -32,29 +37,6 @@ module.exports = function(Hebergement) {
         returns: {type: 'object', root: true}
   });
 
-
-
-    Hebergement.randomtwo = function (limit, idTypeHebergement, cb) {
-        
-        Hebergement.find({
-            limit: limit,
-            include:"offre",
-            where:{
-                typeHebergementId: idTypeHebergement
-            }
-        },(err, hebergement) =>{
-            if(err) cb(err, null)
-            else cb(null, hebergement)
-        })
-    }
-
-
-    Hebergement.remoteMethod('randomtwo', {
-        accepts: [{arg: 'limit', type: 'string'},
-        {arg: 'idTypeHebergement', type: 'string'}],
-        http:{ path: '/randomtwo',verb:'get'},
-        returns: {type: 'object', root: true}
-  });
 
 
   
