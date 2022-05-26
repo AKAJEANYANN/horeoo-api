@@ -14,10 +14,6 @@
     "imageUrlHebergement": {
       "type": "string",
       "default": ""
-    },
-    "imageCustomer": {
-      "type": "string",
-      "default": ""
     }
   },
   "validations": [],
