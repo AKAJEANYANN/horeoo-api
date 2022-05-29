@@ -17,6 +17,7 @@ module.exports = function(Hebergementhascustomer) {
             console.log(heberhascustom);
             if(err) cb(err, null)
             else{
+                if(heberhascustom){
                 Offre.find({
                     where:{
                         hebergementId: heberhascustom.hebergementId
@@ -28,6 +29,7 @@ module.exports = function(Hebergementhascustomer) {
                     else cb(null, [heberhascustom, offre])
                 })
             }
+        }
         })
     }
 
