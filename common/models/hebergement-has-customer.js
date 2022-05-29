@@ -26,7 +26,10 @@ module.exports = function(Hebergementhascustomer) {
                 },(err, offre) =>{
                     console.log([heberhascustom, offre]);
                     if(err) cb(err, null)
-                    else cb(null, [heberhascustom, offre])
+                    else if(Offre.hebergementId === heberhascustom.customerId) 
+                    {
+                        cb(null, [heberhascustom, offre])
+                    }
                 })
             }
         }
