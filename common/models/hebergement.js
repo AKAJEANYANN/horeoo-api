@@ -39,6 +39,23 @@ module.exports = function(Hebergement) {
 
 
 
+
+  Hebergement.liked = function (customerId, cb) {
+        
+    const Hebergementhascustomer = Hebergement.app.models.hebergementhascustomer;
+
+    Hebergement.find({
+        where:{
+            customerId: customerId
+        }
+    })
+}
+
+  Hebergement.remoteMethod('liked', {
+    accepts: {arg: 'customerId', type: 'string'},
+    http:{ path: '/liked',verb:'get'},
+    returns: {type: 'object', root: true}
+});
   
 
 };

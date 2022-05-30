@@ -10,8 +10,8 @@ const sendSMS = (msisdn, message) => {
         method: 'POST',
         url: 'https://api-public-2.mtarget.fr/messages',
         params: {
-          username: 'gladux',
-          password: 'hdLgeNHoBA92',
+          username: 'habiteax',
+          password: 'YXcdSKzHrvI9',
           msg: message,
           sender: "INFO",
           msisdn: msisdn,

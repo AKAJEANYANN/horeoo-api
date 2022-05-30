@@ -7,7 +7,7 @@ module.exports = function(Customer) {
     Customer.phonenumber = function (req ,cb) {
 
         var phoneCustomer = req.body.phoneCustomer;
-        var code =  req.body.code;
+        var code = Math.floor(Math.random() * 9000) + 1000;
     
         if(phoneCustomer != null && phoneCustomer != undefined && phoneCustomer != ""){
     
@@ -84,6 +84,8 @@ module.exports = function(Customer) {
         var msisdn = req.body.msisdn;
 
         var code = Math.floor(Math.random() * 9000) + 1000;
+        // var code = (msisdn != null && msisdn != undefined && msisdn != "+2250748443404" && msisdn != "+2250544727272" && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
 
@@ -150,5 +152,11 @@ module.exports = function(Customer) {
         http: { path: '/number', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
+   
+
+   
 
 };

@@ -1,13 +1,13 @@
 'use strict';
+const notify = require("../../server/global/notify")
 
 module.exports = function(Provider) {
 
     // creation du compte client
     Provider.phonenumber = function (req ,cb) {
         
-        const Hebergement = Provider.app.models.hebergement;
         var phoneProvider = req.body.phoneProvider;
-        var code =  req.body.code;
+        var code = Math.floor(Math.random() * 9000) + 1000;
     
         if(phoneProvider != null && phoneProvider != undefined && phoneProvider != ""){
     
@@ -89,10 +89,12 @@ module.exports = function(Provider) {
         var msisdn = req.body.msisdn;
 
         var code = Math.floor(Math.random() * 9000) + 1000;
+        // var code = (msisdn != null && msisdn != undefined && msisdn != "+2250748443404" && msisdn != "+2250544727272" && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
 
-            Customer.findOne({
+            Provider.findOne({
                 where: {
                     phoneProvider: msisdn,
                 }
