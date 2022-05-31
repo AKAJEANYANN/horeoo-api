@@ -17,9 +17,9 @@ module.exports = function(Hebergementhascustomer) {
             console.log(heberhascustom);
             if(err) cb(err, null)
             else{
-               if (heberhascustom ==[] ) {
-                   cb(heberhascustom)
-               }else {
+            //    if (heberhascustom ==[] ) {
+            //        cb(heberhascustom)
+            //    }else {
                    var listHebe = [];
                    heberhascustom.forEach(element => {
                     if(element.hebergementId ==customerId)
@@ -43,8 +43,10 @@ module.exports = function(Hebergementhascustomer) {
 
                    });
                    
+
             }
-        }
+            // }
+
         })
     }
 
