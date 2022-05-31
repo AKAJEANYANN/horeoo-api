@@ -36,10 +36,8 @@ module.exports = function(Hebergementhascustomer) {
                         else
                         cb(null, listHebe)
                        })
-                    }
-                    else{
-                        cb(null,"Utilisatuer n'est pas dans la base de donnée")
-                    }
+                    }  
+                        
 
                    });
                    
