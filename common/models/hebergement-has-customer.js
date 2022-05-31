@@ -14,16 +14,13 @@ module.exports = function(Hebergementhascustomer) {
             }
             
         },(err, heberhascustom) =>{
-            console.log(heberhascustom);
             if(err) cb(err, null)
-            else{
-            //    if (heberhascustom ==[] ) {
-            //        cb(heberhascustom)
-            //    }else {
+            else if(heberhascustom ==[]){
+                cb(null, heberhascustom)
+                }
+                else{
                    var listHebe = [];
                    heberhascustom.forEach(element => {
-                    if(element.hebergementId ==customerId)
-                    {
                        Hebergement.findById(element.hebergementId ,{
                            include:{
                                relation: 'offre',
@@ -35,15 +32,10 @@ module.exports = function(Hebergementhascustomer) {
                         if(err) cb(err, null)
                         else
                         cb(null, listHebe)
-                       })
-                    }  
-                        
+                       })      
+                   })                   
 
-                   });
-                   
-
-            }
-            // }
+                }
 
         })
     }
