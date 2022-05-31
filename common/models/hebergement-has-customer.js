@@ -6,10 +6,11 @@ module.exports = function(Hebergementhascustomer) {
     Hebergementhascustomer.liked = function (customerId, cb) {
 
         const Hebergement = Hebergementhascustomer.app.models.hebergement;
-       
+       var tb = heberhascustom;
        
         // if(Hebergementhascustomer.customerId == customerId){
-
+        if(tb == [])
+        {
         Hebergementhascustomer.find({
             where:{
                 customerId: customerId
@@ -38,10 +39,10 @@ module.exports = function(Hebergementhascustomer) {
                 }
 
         })
-    // }
-    // else{
-    //     cb(null, "L'utilisateur n'a pas liké un hebergement")
-    // } 
+    }
+    else{
+        cb(null, "L'utilisateur n'a pas liké un hebergement")
+    } 
 
     }
 
