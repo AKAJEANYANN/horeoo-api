@@ -23,11 +23,12 @@ module.exports = function(Hebergementhascustomer) {
                            scope:{limit: 1}
                        }
                        } , (err, heber) =>{
-                        listHebe.push(heber)
-                        console.log(heber)
+                        console.log(heber);
                         if(err) cb(err, null)
-                        else
-                        cb(null, listHebe)
+                        else{
+                            listHebe.push(heber)
+                            cb(null, listHebe)
+                        }
                        })      
                    })                   
 
