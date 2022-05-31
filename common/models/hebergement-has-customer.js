@@ -22,6 +22,8 @@ module.exports = function(Hebergementhascustomer) {
                }else {
                    var listHebe = [];
                    heberhascustom.forEach(element => {
+                    if(element.hebergementId ==customerId)
+                    {
                        Hebergement.findById(element.hebergementId ,{
                            include:{
                                relation: 'offre',
@@ -34,6 +36,11 @@ module.exports = function(Hebergementhascustomer) {
                         else
                         cb(null, listHebe)
                        })
+                    }
+                    else{
+                        cb("Utilisatuer n'est pas dans la base de donnée")
+                    }
+
                    });
                    
             }
