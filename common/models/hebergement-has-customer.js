@@ -5,9 +5,10 @@ const hebergement = require("./hebergement");
 module.exports = function(Hebergementhascustomer) {
     Hebergementhascustomer.liked = function (customerId, cb) {
 
-
-        if(customerId == Hebergementhascustomer.customerId){
         const Hebergement = Hebergementhascustomer.app.models.hebergement;
+       
+       
+        if(Hebergementhascustomer.customerId == customerId){
 
         Hebergementhascustomer.find({
             where:{
@@ -39,7 +40,7 @@ module.exports = function(Hebergementhascustomer) {
         })
     }
     else{
-        cb({status: 401, message: "L'utilisateur n'a pas like un hebergement"}, null)
+        cb(null, "L'utilisateur n'a pas liké un hebergement")
     } 
 
     }
