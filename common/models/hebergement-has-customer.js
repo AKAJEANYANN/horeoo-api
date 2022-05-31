@@ -28,9 +28,10 @@ module.exports = function(Hebergementhascustomer) {
                            scope:{limit: 1}
                        }
                        } , (err, heber) =>{
+                        listHebe.push(heber)
                         console.log(heber)
                         if(err) cb(err, null)
-                        listHebe.push(heber)
+                        else
                         cb(null, listHebe)
                        })
                    });
