@@ -7,7 +7,7 @@ module.exports = function(Provider) {
     Provider.phonenumber = function (req ,cb) {
         
         var phoneProvider = req.body.phoneProvider;
-        var code = Math.floor(Math.random() * 9000) + 1000;
+        var code = req.body.code;
     
         if(phoneProvider != null && phoneProvider != undefined && phoneProvider != ""){
     
