@@ -9,8 +9,7 @@ module.exports = function(Hebergementhascustomer) {
        var tb = heberhascustom;
        
         // if(Hebergementhascustomer.customerId == customerId){
-        if(tb == [])
-        {
+        
         Hebergementhascustomer.find({
             where:{
                 customerId: customerId
@@ -39,10 +38,10 @@ module.exports = function(Hebergementhascustomer) {
                 }
 
         })
-    }
-    else{
-        cb(null, "L'utilisateur n'a pas liké un hebergement")
-    } 
+    // }
+    // // else{
+    // //     cb(null, "L'utilisateur n'a pas liké un hebergement")
+    // // } 
 
     }
 
