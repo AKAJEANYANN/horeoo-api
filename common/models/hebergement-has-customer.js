@@ -6,8 +6,7 @@ module.exports = function(Hebergementhascustomer) {
     Hebergementhascustomer.liked = function (customerId, cb) {
 
         const Hebergement = Hebergementhascustomer.app.models.hebergement;
-       var tb = heberhascustom;
-       
+              
         // if(Hebergementhascustomer.customerId == customerId){
         
         Hebergementhascustomer.find({
