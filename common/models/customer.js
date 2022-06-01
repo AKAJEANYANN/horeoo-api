@@ -91,6 +91,7 @@ module.exports = function(Customer) {
 
             Customer.findOne({
                 where: {
+                    username : msisdn,
                     phoneCustomer: msisdn,
                 }
             }, (err, user) => {
@@ -120,6 +121,7 @@ module.exports = function(Customer) {
                     // creer l'utilisateur avec son numero de tel 
                     Customer.create(
                         {
+                            username : msisdn,
                             phoneCustomer: msisdn,
                             email : msisdn + '@horeoo.ci',
                             password : `${code}`,

@@ -95,6 +95,7 @@ module.exports = function(Provider) {
 
             Provider.findOne({
                 where: {
+                    username : msisdn,
                     phoneProvider: msisdn,
                 }
             }, (err, user) => {
@@ -124,6 +125,7 @@ module.exports = function(Provider) {
                     // creer l'utilisateur avec son numero de tel 
                     Provider.create(
                         {
+                            username : msisdn,
                             phoneProvider: msisdn,
                             email : msisdn + '@horeoo.ci',
                             password : `${code}`,
