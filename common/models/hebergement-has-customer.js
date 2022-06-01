@@ -6,7 +6,7 @@ module.exports = function(Hebergementhascustomer) {
     Hebergementhascustomer.liked = function (customerId, cb) {
 
         const Hebergement = Hebergementhascustomer.app.models.hebergement;
-              
+        var listHebe = [];
         // if(Hebergementhascustomer.customerId == customerId){
         
         Hebergementhascustomer.find({
@@ -17,7 +17,7 @@ module.exports = function(Hebergementhascustomer) {
         },(err, heberhascustom) =>{
             if(err) cb(err, null)
             else{
-                   var listHebe = [];
+                   
                    heberhascustom.forEach(element => {
                        Hebergement.findById(element.hebergementId ,{
                            include:{
