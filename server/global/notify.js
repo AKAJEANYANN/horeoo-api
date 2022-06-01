@@ -13,7 +13,7 @@ const sendSMS = (msisdn, message) => {
           username: 'habiteax',
           password: 'YXcdSKzHrvI9',
           msg: message,
-          sender: "INFO",
+          sender: "HOREOO",
           msisdn: msisdn,
           allowunicode: 'true'
         }
