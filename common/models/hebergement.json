@@ -27,6 +27,14 @@
       "type": "boolean",
       "default": true
     },
+    "approuveHebergement": {
+      "type": "boolean",
+      "default": false
+    },
+    "approval_datetime": {
+      "type": "date",
+      "defaultFn": "now"
+    },
     "contactTwoHebergement": {
       "type": "string",
       "default": ""
