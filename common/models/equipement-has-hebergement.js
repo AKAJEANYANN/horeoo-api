@@ -23,7 +23,8 @@ module.exports = function(Equipementhashebergement) {
             }
         },(err, equip) =>{
             if(err) cb (err, null)
-            else cb(null, equip);
+            else {
+            // cb(null, equip);
             idArrayEquipement.forEach(idItem => {
                 mycreation(idItem);
 
@@ -32,6 +33,7 @@ module.exports = function(Equipementhashebergement) {
                 if(err) cb (err, null)
                 else cb(null, arrayEquipement);
             });
+        }
 
         })
 
