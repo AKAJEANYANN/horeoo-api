@@ -17,7 +17,10 @@ module.exports = function(Hebergement) {
             include:{
                 relation: "offre",
                 scope:{
-                    limit:1
+                    limit:1,
+                    where:{
+                        activeOffre: true
+                    }
                 }
             },
             where:{
