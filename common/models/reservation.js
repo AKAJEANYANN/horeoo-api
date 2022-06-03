@@ -36,5 +36,33 @@ module.exports = function(Reservation) {
         });
 
 
+
+        Reservation.affiche = function (cb) {
+            Reservation.find({
+                include:[
+                    {
+                        relation:'customer'
+                    },
+                    {
+                        relation:'offre',
+                        scope:{
+                            include:'hebergement'
+                        }
+                    }
+                ]
+            }, (err, reservation) =>{
+                console.log(reservation)
+                if(err) cb(err, null)
+                else
+                    cb(null, reservation)
+            })
+        }
+
+
+    Reservation.remoteMethod('affiche',
+    {
+        http: { path: '/affiche', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
   
 };
