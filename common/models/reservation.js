@@ -37,8 +37,11 @@ module.exports = function(Reservation) {
 
 
 
-        Reservation.affiche = function (cb) {
+        Reservation.affiche = function (customerId, cb) {
             Reservation.find({
+                where:{
+                    customerId: customerId
+                },
                 include:[
                     {
                         relation:'customer'
@@ -61,6 +64,8 @@ module.exports = function(Reservation) {
 
     Reservation.remoteMethod('affiche',
     {
+        accepts: {arg: 'customerId', type: 'string'}
+        ,
         http: { path: '/affiche', verb: 'get'},
         returns : { type: 'object', root: true } 
     });
