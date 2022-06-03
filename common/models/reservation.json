@@ -19,6 +19,10 @@
       "type": "string",
       "default": ""
     },
+    "hebergementId": {
+      "type": "string",
+      "default": ""
+    },
     "reservationNbrePerson": {
       "type": "number",
       "default": 0
