@@ -61,4 +61,32 @@ module.exports = function(Hebergement) {
 });
   
 
+
+
+Hebergement.approve = function (id, cb) {
+    Hebergement.findById(
+        id,
+        (err, hebergement) =>{
+            console.log(hebergement)
+            hebergement.updateAttributes({
+                approuveHebergement: true,
+                approval_datetime: Date.now()
+            },(err, heberge) =>{
+                if(err) cb(err, null)
+                else
+                cb(null, heberge)
+            })
+        })
+}
+
+
+Hebergement.remoteMethod('approve',
+{
+    accepts: [
+        { arg: 'req', type: 'object', 'http': {source: 'req'}}
+    ],
+    http: { path: '/approve', verb: 'post'},
+    returns : { type: 'object', root: true } 
+});
+
 };
