@@ -5,6 +5,9 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "order": "reservationDernierModif DESC"
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -32,6 +35,10 @@
       "default": 0
     },
     "reservationCreatedDate": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "reservationDernierModif": {
       "type": "date",
       "defaultFn": "now"
     },
