@@ -82,10 +82,8 @@ Hebergement.approve = function (id, cb) {
 
 Hebergement.remoteMethod('approve',
 {
-    accepts: [
-        { arg: 'req', type: 'object', 'http': {source: 'req'}}
-    ],
-    http: { path: '/approve', verb: 'post'},
+    accepts: { arg: 'id', type: 'string' },
+    http: { path: '/:id/approve', verb: 'post'},
     returns : { type: 'object', root: true } 
 });
 

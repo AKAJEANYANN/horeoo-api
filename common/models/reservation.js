@@ -26,7 +26,7 @@ module.exports = function(Reservation) {
 
 
     
-  Reservation.remoteMethod('creation',
+    Reservation.remoteMethod('creation',
         {
             accepts: 
                 { arg: 'req', type: 'object', 'http': {source: 'req'}},
@@ -37,31 +37,33 @@ module.exports = function(Reservation) {
 
 
 
-        Reservation.affiche = function (customerId, hebergementId, reservationEtat, cb) {
-            Reservation.find({
-                where:{
-                    customerId: customerId,
-                    hebergementId: hebergementId,
-                    reservationEtat: reservationEtat
+
+        
+    Reservation.affiche = function (customerId, hebergementId, reservationEtat, cb) {
+        Reservation.find({
+            where:{
+                customerId: customerId,
+                hebergementId: hebergementId,
+                reservationEtat: reservationEtat
+            },
+            include:[
+                {
+                    relation:'customer'
                 },
-                include:[
-                    {
-                        relation:'customer'
-                    },
-                    {
-                        relation:'offre',
-                        scope:{
-                            include:'hebergement'
-                        }
+                {
+                    relation:'offre',
+                    scope:{
+                        include:'hebergement'
                     }
-                ]
-            }, (err, reservation) =>{
-                console.log(reservation)
-                if(err) cb(err, null)
-                else
-                    cb(null, reservation)
-            })
-        }
+                }
+            ]
+        }, (err, reservation) =>{
+            console.log(reservation)
+            if(err) cb(err, null)
+            else
+                cb(null, reservation)
+        })
+    }
 
 
     Reservation.remoteMethod('affiche',
@@ -73,4 +75,37 @@ module.exports = function(Reservation) {
         returns : { type: 'object', root: true } 
     });
   
+
+
+
+    Reservation.modifReser = function (req, idreservation, cb) {
+        
+        var reservationEtat = req.body.reservationEtat;
+
+        Reservation.findById(
+            idreservation,
+            (err, reservation) =>{
+                reservation.updateAttributes({
+                    reservationEtat: reservationEtat,
+                    reservationDernierModif: Date.now()
+                }, (err, reservation) =>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, reservation)
+                })
+            })
+
+    }
+
+
+    Reservation.remoteMethod('modifReser',
+        {
+            accepts: 
+                [{ arg: 'req', type: 'object', 'http': {source: 'req'}},
+                { arg: 'idreservation', type: 'string' }],
+           
+            http: { path: '/:idreservation/modifReser', verb: 'post'},
+            returns : { type: 'object', root: true } 
+        });
+
 };
