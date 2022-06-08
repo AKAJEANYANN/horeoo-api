@@ -5,6 +5,9 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "order": "locationHebergement ASC"
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -29,7 +32,7 @@
     },
     "onlineHebergement": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "approuveHebergement": {
       "type": "boolean",
@@ -62,6 +65,10 @@
     "locationHebergement": {
       "type": "geopoint",
       "default": "0.1"
+    },
+    "districtHebergement": {
+      "type": "string",
+      "default": ""
     },
     "nomProprio": {
       "type": "string",

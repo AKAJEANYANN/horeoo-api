@@ -87,4 +87,40 @@ Hebergement.remoteMethod('approve',
     returns : { type: 'object', root: true } 
 });
 
+
+
+
+Hebergement.search = function (limit, skip, typeHebergementId, locationHebergement, cb) {
+    
+    Hebergement.find({
+        limit: limit,
+        skip: skip,
+        where:{
+            typeHebergementId: typeHebergementId,
+            locationHebergement: locationHebergement
+        },
+        include:{
+            relation:'offre',
+            scope:{limit:1}
+        }
+
+    },(err, hebergement) =>{
+        if(err) cb(err, null)
+        else
+            cb(null, hebergement)
+    })
+}
+
+Hebergement.remoteMethod('search', {
+    accepts: [
+            {arg: 'limit', type: 'string'},
+            {arg: 'skip', type: 'string'},
+            {arg: 'typeHebergementId', type: 'string'},
+            {arg: 'locationHebergement', type: 'string'}
+        ],
+    http:{ path: '/search',verb:'get'},
+    returns: {type: 'object', root: true}
+});
+
+
 };
