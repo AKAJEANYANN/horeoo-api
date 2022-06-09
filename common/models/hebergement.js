@@ -90,14 +90,25 @@ Hebergement.remoteMethod('approve',
 
 
 
-Hebergement.search = function (limit, skip, typeHebergementId, locationHebergement, cb) {
+Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
     
+    var loopback = require('loopback');
+    var userLocation = new loopback.GeoPoint({
+        lat: lat,
+        lng: lng
+      });
+
+
     Hebergement.find({
         limit: limit,
         skip: skip,
         where:{
-            typeHebergementId: typeHebergementId,
-            locationHebergement: locationHebergement
+            locationHebergement: {
+                near: userLocation,
+                maxDistance: km,
+                unit: 'kilometers'
+              },
+            typeHebergementId: typeHebergementId
         },
         include:{
             relation:'offre',
@@ -111,14 +122,16 @@ Hebergement.search = function (limit, skip, typeHebergementId, locationHebergeme
     })
 }
 
-Hebergement.remoteMethod('search', {
+Hebergement.remoteMethod('map', {
     accepts: [
+            {arg: 'lat', type: 'string'},
+            {arg: 'lng', type: 'string'},
             {arg: 'limit', type: 'string'},
             {arg: 'skip', type: 'string'},
-            {arg: 'typeHebergementId', type: 'string'},
-            {arg: 'locationHebergement', type: 'geopoint'}
+            {arg: 'km', type: 'string'},
+            {arg: 'typeHebergementId', type: 'string'}
         ],
-    http:{ path: '/search',verb:'get'},
+    http:{ path: '/map',verb:'get'},
     returns: {type: 'object', root: true}
 });
 
