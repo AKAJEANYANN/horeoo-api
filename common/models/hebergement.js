@@ -116,7 +116,7 @@ Hebergement.remoteMethod('search', {
             {arg: 'limit', type: 'string'},
             {arg: 'skip', type: 'string'},
             {arg: 'typeHebergementId', type: 'string'},
-            {arg: 'locationHebergement', type: 'string'}
+            {arg: 'locationHebergement', type: 'geopoint'}
         ],
     http:{ path: '/search',verb:'get'},
     returns: {type: 'object', root: true}
