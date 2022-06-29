@@ -18,6 +18,10 @@
     "actifTypeHebergement": {
       "type": "boolean",
       "default": true
+    },
+    "imageTypeHebergement": {
+      "type": "string",
+      "defaultFn": ""
     }
   },
   "validations": [],
