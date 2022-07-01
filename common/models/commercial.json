@@ -19,6 +19,14 @@
       "type": "string",
       "default": ""
     },
+    "approuveCommercial": {
+      "type": "boolean",
+      "default": false
+    },
+    "approval_datetime": {
+      "type": "string",
+      "defaultFn": "date"
+    },
     "phoneCom": {
       "type": "string",
       "default": ""
@@ -52,6 +60,12 @@
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
       "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
     },
     {
       "accessType": "*",

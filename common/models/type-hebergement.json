@@ -17,7 +17,7 @@
     },
     "actifTypeHebergement": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "imageTypeHebergement": {
       "type": "string",
@@ -35,6 +35,14 @@
       }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "actif"
+    }
+  ],
   "methods": {}
 }

@@ -5,7 +5,7 @@ const hebergement = require("./hebergement");
 module.exports = function(Hebergementhascustomer) {
 
 
-  Hebergementhascustomer.liked = function (customerId, cb) {
+  Hebergementhascustomer.liked = function (customerId, typeHebergementId,  cb) {
 
     
     Hebergementhascustomer.find({
@@ -15,6 +15,9 @@ module.exports = function(Hebergementhascustomer) {
         include:{
             relation: 'hebergement',
             scope:{
+                where:{
+                    typeHebergementId:typeHebergementId
+                },
                 include:{ 
                     relation: 'offre',
                     scope:{
@@ -37,7 +40,8 @@ module.exports = function(Hebergementhascustomer) {
 
 
 Hebergementhascustomer.remoteMethod('liked', {
-    accepts: {arg: 'customerId', type: 'string'},
+    accepts: [{arg: 'customerId', type: 'string'},
+            {arg: 'typeHebergementId', type: 'string'}],
     http:{ path: '/liked',verb:'get'},
     returns: {type: 'object', root: true}
 });
