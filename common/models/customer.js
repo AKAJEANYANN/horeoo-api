@@ -155,10 +155,29 @@ module.exports = function(Customer) {
         returns : { type: 'object', root: true } 
     });
 
-
-
    
 
-   
+    Customer.active = function (id, cb) {
+        Customer.findById(
+            id,
+            (err, customer) =>{
+                customer.updateAttributes({
+                    activeCustomer: true,
+                    active_datetime: Date.now()
+                },(err, customer) =>{
+                    if(err) cb(err, null)
+                    else
+                    cb(null, customer)
+                })
+            })
+    }
+    
+    
+    Customer.remoteMethod('active',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/active', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
 
 };
