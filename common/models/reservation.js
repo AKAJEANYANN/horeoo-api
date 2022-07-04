@@ -108,4 +108,39 @@ module.exports = function(Reservation) {
             returns : { type: 'object', root: true } 
         });
 
+
+
+
+    // Reservation.affichage = function (customerId, cb) {
+        
+    //     Reservation.find({
+    //         where:{
+    //             customerId: customerId
+    //         },
+    //         include:[
+    //             {
+    //                 relation:'customer'
+    //             },
+    //             {
+    //                 relation:'offre',
+    //                 scope:{
+    //                     include:'hebergement'
+    //                 }
+    //             }
+    //         ]
+    //     }, (err, reservation) =>{
+    //         console.log(reservation)
+    //         if(err) cb(err, null)
+    //         else
+    //             cb(null, reservation);
+    //     })
+    // }
+
+
+    // Reservation.remoteMethod('affichage',
+    // {
+    //     accepts: {arg: 'customerId', type: 'string'},
+    //     http: { path: '/:customerId/affichage', verb: 'post'},
+    //     returns : { type: 'object', root: true } 
+    // });
 };

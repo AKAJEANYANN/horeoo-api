@@ -26,4 +26,6 @@ module.exports = function(Typehebergement) {
         returns : { type: 'object', root: true } 
     });
 
+
+
 };

@@ -11,10 +11,13 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "botIsUser": {
-      "type": "string"
+    "botForUser": {
+      "type": "boolean"
     },
     "botMessage": {
+      "type": "string"
+    },
+    "etatReservation": {
       "type": "string"
     }
   },
