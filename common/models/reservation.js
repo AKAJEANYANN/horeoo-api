@@ -81,12 +81,14 @@ module.exports = function(Reservation) {
     Reservation.modifReser = function (req, idreservation, cb) {
         
         var reservationEtat = req.body.reservationEtat;
+        var idbot = req.body.idbot;
 
         Reservation.findById(
             idreservation,
             (err, reservation) =>{
                 reservation.updateAttributes({
                     reservationEtat: reservationEtat,
+                    botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
                     if(err) cb(err, null)
