@@ -42,14 +42,6 @@
   },
   "validations": [],
   "relations": {
-    "hebergements": {
-      "type": "hasOne",
-      "model": "hebergement",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    },
     "accessTokens": {
       "type": "hasMany",
       "model": "appAccessToken",
@@ -59,6 +51,14 @@
       },
       "options": {
         "disableInclude": true
+      }
+    },
+    "hebergements": {
+      "type": "hasMany",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
       }
     }
   },

@@ -138,26 +138,6 @@ Hebergement.remoteMethod('map', {
 
 
 
-        Hebergement.deletetypeheber = function (typeHebergementId, cb) {
 
-            Hebergement.count({
-                where:{
-                    typeHebergementId: typeHebergementId
-                }
-            },(err, hebergement)=>{
-                console.log(hebergement);
-                if(err) cb(err, null)
-                else
-                cb(null, hebergement)
-            })
-        }
-
-
-        Hebergement.remoteMethod('deletetypeheber',
-        {
-            accepts: { arg: 'typeHebergementId', type: 'string' },
-            http: { path: '/deletetypeheber', verb: 'post'},
-            returns : { type: 'object', root: true } 
-        });
 
 };

@@ -27,4 +27,43 @@ module.exports = function(Typehebergement) {
     });
 
 
+
+
+    Typehebergement.deletetypheber = function (id, cb) {
+
+        const Hebergement = Typehebergement.app.models.hebergement;
+
+        Typehebergement.findById(
+            id,
+           (err, typeheber)=>{
+            console.log(typeheber);
+            Hebergement.find({
+                where:{
+                    typeHebergementId: typeheber.id
+                }
+            },(err, heberge)=>{
+                console.log(heberge);
+                if(heberge.length !=0){
+                    typeheber.updateAttributes({
+                        actifTypeHebergement: false
+                    },(err, heb)=>{
+                        cb(null, heb)
+                    })
+                }else{
+                    typeheber.delete((err, he)=>{
+                        cb(null, 'type hebergement supprimé')
+                    })
+                }
+            })
+            
+            })
+    }
+    
+    
+    Typehebergement.remoteMethod('deletetypheber',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/deletetypheber', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
 };
