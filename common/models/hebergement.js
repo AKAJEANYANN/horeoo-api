@@ -138,6 +138,26 @@ Hebergement.remoteMethod('map', {
 
 
 
+    Hebergement.affiche = function (cb) {
+
+        Hebergement.find({
+
+            include:'provider'
+
+        }, (err, hebergement) =>{
+            console.log(hebergement)
+            if(err) cb(err, null)
+            else
+                cb(null, hebergement)
+        })
+    }
+
+
+    Hebergement.remoteMethod('affiche',
+    {
+        http: { path: '/affiche', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
 
 
 };

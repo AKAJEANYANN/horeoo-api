@@ -33,7 +33,7 @@
     },
     "activeCustomer": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "active_datetime": {
       "type": "string",

@@ -18,6 +18,10 @@
     "actifEquipement": {
       "type": "boolean",
       "default": "true"
+    },
+    "dateActifEquipement": {
+      "type": "string",
+      "defaultFn": "date"
     }
   },
   "validations": [],
