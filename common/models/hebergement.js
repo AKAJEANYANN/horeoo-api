@@ -114,9 +114,9 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
         include:{
             relation:'offre',
             scope:{
-                limit:1,
                 activeOffre: true,
-                visibleOffre: true
+                visibleOffre: true,
+                limit:1,
             }
         }
 
