@@ -167,4 +167,62 @@ Hebergement.remoteMethod('map', {
     });
 
 
+
+
+
+    Hebergement.mapfilter = function (lat, lng, limit, skip, km,  typeHebergementId, prixMinimOffre, prixMaximOffre, cb) {
+    
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+          });
+    
+    
+        Hebergement.find({
+            limit: limit,
+            skip: skip,
+            where:{
+                onlineHebergement: onlineHebergement,
+                approuveHebergement: true,
+                locationHebergement: {
+                    near: userLocation,
+                    maxDistance: km,
+                    unit: 'kilometers'
+                  },
+                typeHebergementId: typeHebergementId
+            },
+            include:{
+                relation:'offre',
+                scope:{
+                   where:{
+                    prixMinimOffre: prixMinimOffre,
+                    prixMaximOffre: prixMaximOffre,
+                    activeOffre: true,
+                    visibleOffre: true,
+                   }
+                }
+            }
+    
+        },(err, hebergement) =>{
+            if(err) cb(err, null)
+            else
+                cb(null, hebergement)
+        })
+    }
+    
+    Hebergement.remoteMethod('mapfilter', {
+        accepts: [
+                {arg: 'lat', type: 'string'},
+                {arg: 'lng', type: 'string'},
+                {arg: 'limit', type: 'string'},
+                {arg: 'skip', type: 'string'},
+                {arg: 'km', type: 'string'},
+                {arg: 'typeHebergementId', type: 'string'},
+                {arg: 'prixMinimOffre', type: 'string'},
+                {arg: 'prixMaximOffre', type: 'string'}
+            ],
+        http:{ path: '/mapfilter',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
 };
