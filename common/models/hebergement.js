@@ -103,6 +103,7 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
         limit: limit,
         skip: skip,
         where:{
+            approuveHebergement: true,
             locationHebergement: {
                 near: userLocation,
                 maxDistance: km,
@@ -112,7 +113,10 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
         },
         include:{
             relation:'offre',
-            scope:{limit:1}
+            scope:{
+                limit:1,
+                activeOffre: true
+            }
         }
 
     },(err, hebergement) =>{
