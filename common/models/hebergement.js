@@ -115,7 +115,8 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
             relation:'offre',
             scope:{
                 limit:1,
-                activeOffre: true
+                activeOffre: true,
+                visibleOffre: true
             }
         }
 
