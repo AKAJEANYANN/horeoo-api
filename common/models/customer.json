@@ -36,8 +36,8 @@
       "default": true
     },
     "active_datetime": {
-      "type": "string",
-      "defaultFn": "date"
+      "type": "date",
+      "defaultFn": "now"
     },
     "imageCustomer": {
       "type": "string",

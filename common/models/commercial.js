@@ -23,4 +23,22 @@ module.exports = function(Commercial) {
         http: { path: '/:id/approve', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
+    Commercial.affichecom = function (cb) {
+
+        Commercial.find({
+            include: 'hebergements'
+            },(err, commercial) =>{
+                if(err) cb(err, null)
+                else cb(null, commercial)
+        })
+    
+    }
+    
+    Commercial.remoteMethod('affichecom', {
+        http:{ path: '/affichecom',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
 };
