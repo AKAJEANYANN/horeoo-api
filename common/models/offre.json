@@ -33,7 +33,6 @@
     "prixOffre": {
       "type": "number",
       "default": ""
-    }
     },
     "detailsOffre": {
       "type": "string",
