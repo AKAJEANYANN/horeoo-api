@@ -46,4 +46,38 @@ Hebergementhascustomer.remoteMethod('liked', {
     returns: {type: 'object', root: true}
 });
 
+
+
+
+
+  Hebergementhascustomer.getClientReservation = function (cb) {
+
+    
+    Hebergementhascustomer.find({
+       
+        include:[{
+            relation: 'customer',
+            relation: 'hebergement',
+            scope:{
+                include:{ 
+                    relation: 'offre'
+                }
+            }
+        }]
+        
+    },(err, heberhascustom) =>{
+      console.log(heberhascustom)
+      if(err) cb(err, null)
+      else cb(null, heberhascustom)
+    }) 
+
+}
+
+
+Hebergementhascustomer.remoteMethod('getClientReservation', {
+    
+    http:{ path: '/getClientReservation',verb:'get'},
+    returns: {type: 'object', root: true}
+});
+
 };

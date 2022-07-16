@@ -33,14 +33,7 @@
     "prixOffre": {
       "type": "number",
       "default": ""
-    },
-    "prixMinimOffre": {
-      "type": "number",
-      "default": ""
-    },
-    "prixMaximOffre": {
-      "type": "number",
-      "default": ""
+    }
     },
     "detailsOffre": {
       "type": "string",

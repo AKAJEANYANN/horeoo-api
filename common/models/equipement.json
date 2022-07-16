@@ -17,11 +17,11 @@
     },
     "actifEquipement": {
       "type": "boolean",
-      "default": "true"
+      "default": true
     },
     "dateActifEquipement": {
-      "type": "string",
-      "defaultFn": "date"
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],

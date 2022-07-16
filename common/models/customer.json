@@ -108,6 +108,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "active"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getClientReserv"
     }
   ],
   "methods": {}

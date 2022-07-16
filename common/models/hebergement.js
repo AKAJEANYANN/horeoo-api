@@ -118,7 +118,7 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
                 activeOffre: true,
                 visibleOffre: true,
                },
-                limit:1,
+                limit:1
             }
         }
 
@@ -196,11 +196,11 @@ Hebergement.remoteMethod('map', {
                 relation:'offre',
                 scope:{
                    where:{
-                    prixMinimOffre: prixMinimOffre,
-                    prixMaximOffre: prixMaximOffre,
+                    prixOffre: {between: [prixMinimOffre,prixMaximOffre]},
                     activeOffre: true,
                     visibleOffre: true,
-                   }
+                   },
+                   limit:1
                 }
             }
     

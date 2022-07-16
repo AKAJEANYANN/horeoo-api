@@ -158,4 +158,59 @@ module.exports = function(Provider) {
         http: { path: '/number', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
+
+    Provider.affiche = function (cb) {
+        
+        Provider.find({
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('affiche',
+    {
+        http:{ path: '/affiche',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    Provider.approve = function (id, cb) {
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                console.log(provider)
+                provider.updateAttributes({
+                    approuveProvider: true,
+                    approval_datetime: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else
+                    cb(null, provider)
+                })
+            })
+    }
+    
+    
+    Provider.remoteMethod('approve',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/approve', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
 };
