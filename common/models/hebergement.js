@@ -205,8 +205,8 @@ Hebergement.remoteMethod('map', {
             }
     
         },(err, hebergement) =>{
-            if(err) cb(err, null)
-            else if(heberge.offre.length !=0){
+            if(err) {cb(err, null)}
+            else if(hebergement.offre !=0){
 
                 cb(null, hebergement)
             }
