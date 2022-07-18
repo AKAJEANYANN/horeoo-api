@@ -5,6 +5,9 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "order": "nomTypeHebergement ASC"
+  },
   "properties": {
     "id": {
       "type": "string",
