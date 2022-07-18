@@ -90,7 +90,7 @@ Hebergement.remoteMethod('approve',
 
 
 
-Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, providerId, cb) {
+Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
     
     var loopback = require('loopback');
     var userLocation = new loopback.GeoPoint({
@@ -103,6 +103,7 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, provi
         limit: limit,
         skip: skip,
         where:{
+            providerId: providerId,
             approuveHebergement: true,
             locationHebergement: {
                 near: userLocation,
@@ -112,14 +113,6 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, provi
             typeHebergementId: typeHebergementId
         },
         include:[
-            {
-                relation:'provider',
-                scope:{
-                    where:{
-                        providerId: providerId
-                    }
-                }
-            },
             {
                 relation:'offre',
                 scope:{
@@ -145,9 +138,9 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, provi
                     {arg: 'lng', type: 'string'},
                     {arg: 'limit', type: 'string'},
                     {arg: 'skip', type: 'string'},
+                    {arg: 'providerId', type: 'string'},
                     {arg: 'km', type: 'string'},
-                    {arg: 'typeHebergementId', type: 'string'},
-                    {arg: 'providerId', type: 'string'}
+                    {arg: 'typeHebergementId', type: 'string'}
                 ],
             http:{ path: '/map',verb:'get'},
             returns: {type: 'object', root: true}
