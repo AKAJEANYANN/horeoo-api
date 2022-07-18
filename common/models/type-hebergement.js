@@ -75,10 +75,14 @@ module.exports = function(Typehebergement) {
 
 
         Typehebergement.find({
+            where:{
+                actifTypeHebergement: true
+            },
             include:{
                 relation:'hebergements',
                 scope:{
-                    where:{providerId: providerId},
+                    where:{providerId: providerId,
+                    },
                     include:{
                         relation: 'offre',
                         scope:{limit: 1}
