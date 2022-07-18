@@ -71,7 +71,7 @@ module.exports = function(Typehebergement) {
 
 
 
-    Typehebergement.withprovider = function (providerId, cb) {
+    Typehebergement.byProvider = function (providerId, cb) {
 
 
         Typehebergement.find({
@@ -101,10 +101,10 @@ module.exports = function(Typehebergement) {
     }
     
     
-    Typehebergement.remoteMethod('withprovider',
+    Typehebergement.remoteMethod('byProvider',
     {
         accepts: { arg: 'providerId', type: 'string' },
-        http: { path: '/withprovider', verb: 'get'},
+        http: { path: '/byProvider', verb: 'get'},
         returns : { type: 'object', root: true } 
     });
 
