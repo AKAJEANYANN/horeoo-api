@@ -66,4 +66,45 @@ module.exports = function(Typehebergement) {
         http: { path: '/deletetypheber', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
+
+
+    Typehebergement.withprovider = function (providerId, cb) {
+
+
+        Typehebergement.find({
+            include:{
+                relation:'hebergements',
+                scope:{
+                    where:{providerId: providerId},
+                    include:{
+                        relation: 'offre',
+                        scope:{limit: 1}
+                    }
+                }
+            }
+        }
+            ,
+           (err, heberprovider)=>{
+            console.log(heberprovider);
+            if(err) cb(err, null)
+            else
+                cb(null, heberprovider)
+           
+            })
+    }
+    
+    
+    Typehebergement.remoteMethod('withprovider',
+    {
+        accepts: { arg: 'providerId', type: 'string' },
+        http: { path: '/withprovider', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
 };

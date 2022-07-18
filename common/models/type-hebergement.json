@@ -42,6 +42,20 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "actif"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "deletetypheber"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "withprovider"
     }
   ],
   "methods": {}

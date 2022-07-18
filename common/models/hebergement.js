@@ -90,7 +90,7 @@ Hebergement.remoteMethod('approve',
 
 
 
-Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
+Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, providerId, cb) {
     
     var loopback = require('loopback');
     var userLocation = new loopback.GeoPoint({
@@ -111,36 +111,47 @@ Hebergement.map = function (lat, lng, limit, skip, km,  typeHebergementId, cb) {
               },
             typeHebergementId: typeHebergementId
         },
-        include:{
-            relation:'offre',
-            scope:{
-               where:{
-                activeOffre: true,
-                visibleOffre: true,
-               },
-                limit:1
+        include:[
+            {
+                relation:'provider',
+                scope:{
+                    where:{
+                        providerId: providerId
+                    }
+                }
+            },
+            {
+                relation:'offre',
+                scope:{
+                where:{
+                    activeOffre: true,
+                    visibleOffre: true,
+                },
+                    limit:1
+                }
             }
+            ]
+
+            },(err, hebergement) =>{
+                if(err) cb(err, null)
+                else
+                    cb(null, hebergement)
+            })
         }
 
-    },(err, hebergement) =>{
-        if(err) cb(err, null)
-        else
-            cb(null, hebergement)
-    })
-}
-
-Hebergement.remoteMethod('map', {
-    accepts: [
-            {arg: 'lat', type: 'string'},
-            {arg: 'lng', type: 'string'},
-            {arg: 'limit', type: 'string'},
-            {arg: 'skip', type: 'string'},
-            {arg: 'km', type: 'string'},
-            {arg: 'typeHebergementId', type: 'string'}
-        ],
-    http:{ path: '/map',verb:'get'},
-    returns: {type: 'object', root: true}
-});
+        Hebergement.remoteMethod('map', {
+            accepts: [
+                    {arg: 'lat', type: 'string'},
+                    {arg: 'lng', type: 'string'},
+                    {arg: 'limit', type: 'string'},
+                    {arg: 'skip', type: 'string'},
+                    {arg: 'km', type: 'string'},
+                    {arg: 'typeHebergementId', type: 'string'},
+                    {arg: 'providerId', type: 'string'}
+                ],
+            http:{ path: '/map',verb:'get'},
+            returns: {type: 'object', root: true}
+        });
 
 
 
@@ -149,7 +160,7 @@ Hebergement.remoteMethod('map', {
 
         Hebergement.find({
 
-            include:'provider'
+            include:['provider','typeHebergement','commercial']
 
         }, (err, hebergement) =>{
             console.log(hebergement)
@@ -205,12 +216,10 @@ Hebergement.remoteMethod('map', {
             }
     
         },(err, hebergement) =>{
-            if(err) {cb(err, null)}
-            else if(hebergement.offre !=0){
-
+            if (err) cb(err, null)
+            else
                 cb(null, hebergement)
-            }
-        })
+            })
     }
     
     Hebergement.remoteMethod('mapfilter', {
