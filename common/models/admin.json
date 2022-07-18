@@ -16,10 +16,6 @@
     },
     "phone": {
       "type": "number"
-    },
-    "superAdmin": {
-      "type": "boolean",
-      "default": false
     }
   },
   "validations": [],
