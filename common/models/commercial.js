@@ -41,4 +41,7 @@ module.exports = function(Commercial) {
         http:{ path: '/affichecom',verb:'get'},
         returns: {type: 'object', root: true}
     });
+
+
+    
 };

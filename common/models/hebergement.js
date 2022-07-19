@@ -230,4 +230,8 @@ Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergem
         http:{ path: '/mapfilter',verb:'get'},
         returns: {type: 'object', root: true}
     });
+
+
+
+
 };
