@@ -183,7 +183,6 @@ module.exports = function(Customer) {
 
 
 
-
     Customer.getClientReserv = function (cb) {
         
         Customer.find({
@@ -214,7 +213,6 @@ module.exports = function(Customer) {
         http:{ path: '/getClientReserv',verb:'get'},
         returns : { type: 'object', root: true } 
     });
-
 
 
 
