@@ -90,47 +90,105 @@ Hebergement.remoteMethod('approve',
 
 
 
-Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
+    Hebergement.mapProvider = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
     
-    var loopback = require('loopback');
-    var userLocation = new loopback.GeoPoint({
-        lat: lat,
-        lng: lng
-      });
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+        });
 
 
-    Hebergement.find({
-        limit: limit,
-        skip: skip,
-        where:{
-            providerId: providerId,
-            approuveHebergement: true,
-            locationHebergement: {
-                near: userLocation,
-                maxDistance: km,
-                unit: 'kilometers'
-              },
-            typeHebergementId: typeHebergementId
-        },
-        include:[
-            {
-                relation:'offre',
-                scope:{
-                where:{
-                    activeOffre: true,
-                    visibleOffre: true,
+        Hebergement.find({
+            limit: limit,
+            skip: skip,
+            where:{
+                providerId: providerId,
+                locationHebergement: {
+                    near: userLocation,
+                    maxDistance: km,
+                    unit: 'kilometers'
                 },
-                    limit:1
+                typeHebergementId: typeHebergementId
+            },
+            include:[
+                {
+                    relation:'offre',
+                    scope:{
+                    where:{
+                        activeOffre: true,
+                        visibleOffre: true,
+                    },
+                        limit:1
+                    }
                 }
-            }
-            ]
+                ]
 
-            },(err, hebergement) =>{
-                if(err) cb(err, null)
-                else
-                    cb(null, hebergement)
-            })
-        }
+                },(err, hebergement) =>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, hebergement)
+                })
+            }
+
+    Hebergement.remoteMethod('mapProvider', {
+        accepts: [
+                {arg: 'lat', type: 'string'},
+                {arg: 'lng', type: 'string'},
+                {arg: 'limit', type: 'string'},
+                {arg: 'skip', type: 'string'},
+                {arg: 'providerId', type: 'string'},
+                {arg: 'km', type: 'string'},
+                {arg: 'typeHebergementId', type: 'string'}
+            ],
+        http:{ path: '/mapProvider',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+    Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
+    
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+        });
+
+
+        Hebergement.find({
+            limit: limit,
+            skip: skip,
+            where:{
+                providerId: providerId,
+                approuveHebergement: true,
+                locationHebergement: {
+                    near: userLocation,
+                    maxDistance: km,
+                    unit: 'kilometers'
+                },
+                typeHebergementId: typeHebergementId
+            },
+            include:[
+                {
+                    relation:'offre',
+                    scope:{
+                    where:{
+                        activeOffre: true,
+                        visibleOffre: true,
+                    },
+                        limit:1
+                    }
+                }
+                ]
+
+                },(err, hebergement) =>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, hebergement)
+                })
+            }
 
         Hebergement.remoteMethod('map', {
             accepts: [
