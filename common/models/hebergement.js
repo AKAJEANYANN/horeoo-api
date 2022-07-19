@@ -147,7 +147,7 @@ Hebergement.remoteMethod('approve',
 
 
 
-
+    //api pour afficher la map
     Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
     
         var loopback = require('loopback');
