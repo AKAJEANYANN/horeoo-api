@@ -104,6 +104,7 @@ Hebergement.remoteMethod('approve',
             skip: skip,
             where:{
                 providerId: providerId,
+                activeHebergement: true,
                 locationHebergement: {
                     near: userLocation,
                     maxDistance: km,
@@ -162,6 +163,7 @@ Hebergement.remoteMethod('approve',
             skip: skip,
             where:{
                 providerId: providerId,
+                activeHebergement: true,
                 approuveHebergement: true,
                 locationHebergement: {
                     near: userLocation,
@@ -210,6 +212,10 @@ Hebergement.remoteMethod('approve',
     Hebergement.affiche = function (cb) {
 
         Hebergement.find({
+            where:{
+                activeHebergement: true,
+                approuveHebergement: true,
+            },
 
             include:['provider','typeHebergement','commercial']
 
