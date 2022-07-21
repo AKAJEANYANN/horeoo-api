@@ -82,6 +82,7 @@ module.exports = function(Typehebergement) {
                 relation:'hebergements',
                 scope:{
                     where:{providerId: providerId,
+                    activeHebergement: true
                     },
                     include:{
                         relation: 'offre',
