@@ -149,7 +149,7 @@ module.exports = function(Reservation) {
 
 
 
-        Reservation.countReservation = function (req, cb) {
+        Reservation.countReservation = function (providerId, etat, cb) {
 
             var providerId = req.body.providerId;
             var etat = req.body.etat;
@@ -157,7 +157,7 @@ module.exports = function(Reservation) {
             var sql;
             const Hebergement = Reservation.app.models.hebergement;
             var ds = Hebergement.dataSource;
-
+            
             if (providerId != "" && etat != "") {
                 sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND reservation.reservationEtat = '${etat}' `;
             }
@@ -175,8 +175,9 @@ module.exports = function(Reservation) {
 
     Reservation.remoteMethod('countReservation',
         {
-            accepts:
-                { arg: 'req', type: 'object', 'http': {source: 'req'}},
+            accepts:[ { arg: 'providerId', type: 'string', required: true },
+                { arg: 'etat', type: 'string' }
+         ],
             http: { path: '/countReservation', verb: 'get'},
             returns : { type: 'object', root: true } 
         });
