@@ -86,6 +86,7 @@ module.exports = function(Typehebergement) {
                     },
                     include:{
                         relation: 'offre',
+
                         scope:{limit: 1}
                     }
                 }
@@ -108,6 +109,8 @@ module.exports = function(Typehebergement) {
         http: { path: '/byProvider', verb: 'get'},
         returns : { type: 'object', root: true } 
     });
+
+
 
 
 

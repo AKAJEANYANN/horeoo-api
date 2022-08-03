@@ -151,6 +151,8 @@ Hebergement.remoteMethod('approve',
     //api pour afficher la map
     Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
     
+        const Offre = Hebergement.app.models.hebergement;
+
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
             lat: lat,
@@ -187,8 +189,10 @@ Hebergement.remoteMethod('approve',
 
                 },(err, hebergement) =>{
                     if(err) cb(err, null)
-                    else
-                        cb(null, hebergement)
+                    else if(hebergement.id === Offre.hebergementId){
+                         cb(null, hebergement)
+                    }
+
                 })
             }
 
@@ -297,5 +301,117 @@ Hebergement.remoteMethod('approve',
 
 
 
+
+
+    Hebergement.countTypeHeber = function (typeHebergementId, cb) {
+
+            var countTypeHeber = 0;
+
+        Hebergement.find({
+           
+            where:{
+                typeHebergementId: typeHebergementId
+                  
+            }
+        }
+            ,
+           (err, heber)=>{
+
+            console.log(heber);
+            if(heber){
+                countTypeHeber = heber.length;
+                cb(null, countTypeHeber)
+            }
+            // if(err) cb(err, null)
+            // else
+            //     cb(null, heber)
+           
+            })
+    }
+    
+    
+    Hebergement.remoteMethod('countTypeHeber',
+    {
+        accepts: { arg: 'typeHebergementId', type: 'string' },
+        http: { path: '/countTypeHeber', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    Hebergement.countReserv = function (providerId, reservationEtat, cb) {
+
+        var countReserv = 0;
+
+    Hebergement.find({
+       
+        where:{
+            providerId: providerId
+                
+        },
+        include:{
+            relation: 'reservations',
+            scope:{
+                where:{
+                    reservationEtat: reservationEtat
+                }
+            }
+        }
+    }
+        ,
+       (err, heberge)=>{
+
+        console.log(heberge);
+            if(heberge.reservations){
+                countReserv = heberge.length;
+                cb(null, countReserv)
+            }
+       
+        })
+}
+
+
+    Hebergement.remoteMethod('countReserv',
+        {
+            accepts: [{ arg: 'providerId', type: 'string' },
+             { arg: 'reservationEtat', type: 'string' }],
+            http: { path: '/countReserv', verb: 'get'},
+            returns : { type: 'object', root: true } 
+        });
+
+
+
+
+        
+    Hebergement.countReservation = function (providerId, etat, cb) {
+
+        var sql;
+
+        var ds = Hebergement.dataSource;
+        if (providerId != "" && etat != "") {
+            sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND reservation.reservationEtat = '${etat}'`;
+        }
+        else {
+            sql = `SELECT COUNT(*) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND reservation.reservationEtat = '${etat}'`;
+        }
+        
+        ds.connector.query(sql, function (err, data){
+            if(err) throw err
+            
+            cb(null, data);
+        });
+}
+
+
+    Hebergement.remoteMethod('countReservation',
+        {
+            accepts:[ { arg: 'providerId', type: 'string' },
+                { arg: 'etat', type: 'string' }
+         ],
+            http: { path: '/countReservation', verb: 'get'},
+            returns : { type: 'object', root: true } 
+        });
 
 };

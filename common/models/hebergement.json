@@ -158,6 +158,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "reservations": {
+      "type": "hasMany",
+      "model": "reservation",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
@@ -188,6 +196,27 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "map"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "countTypeHeber"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "countReserv"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "countReservation"
     }
   ],
   "methods": {}
