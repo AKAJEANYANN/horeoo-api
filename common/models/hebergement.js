@@ -216,10 +216,10 @@ Hebergement.remoteMethod('approve',
     Hebergement.affiche = function (cb) {
 
         Hebergement.find({
-            where:{
-                activeHebergement: true,
-                approuveHebergement: true,
-            },
+            // where:{
+            //     activeHebergement: true,
+            //     approuveHebergement: true,
+            // },
 
             include:['provider','typeHebergement','commercial']
 
