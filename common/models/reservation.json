@@ -123,6 +123,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "modifReser"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "countReservation"
     }
   ],
   "methods": {}

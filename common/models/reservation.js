@@ -149,21 +149,25 @@ module.exports = function(Reservation) {
 
 
 
-        Reservation.countReservation = function (providerId, etat, cb) {
+        Reservation.countReservation = function (req, cb) {
+
+            var providerId = req.body.providerId;
+            var etat = req.body.etat;
 
             var sql;
             const Hebergement = Reservation.app.models.hebergement;
             var ds = Hebergement.dataSource;
+
             if (providerId != "" && etat != "") {
-                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND reservation.reservationEtat = '${etat}'`;
+                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND reservation.reservationEtat = '${etat}' `;
             }
-            else {
-                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}'`;
+            else{
+                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' `;
             }
             
             ds.connector.query(sql, function (err, data){
                 if(err) throw err
-                
+                console.log(data);
                 cb(null, data);
             });
     }
@@ -171,9 +175,8 @@ module.exports = function(Reservation) {
 
     Reservation.remoteMethod('countReservation',
         {
-            accepts:[ { arg: 'providerId', type: 'string', required: true },
-                { arg: 'etat', type: 'string' }
-         ],
+            accepts:
+                { arg: 'req', type: 'object', 'http': {source: 'req'}},
             http: { path: '/countReservation', verb: 'get'},
             returns : { type: 'object', root: true } 
         });

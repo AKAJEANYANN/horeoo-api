@@ -210,13 +210,6 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "countReserv"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "countReservation"
     }
   ],
   "methods": {}
