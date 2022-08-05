@@ -5,6 +5,7 @@
   "options": {
     "validateUpsert": true
   },
+  
   "properties": {
     "id": {
       "type": "string",
