@@ -29,14 +29,17 @@ module.exports = function(Equipement) {
         Equipement.findById(
             id,
             (err, equipement) =>{
+
                 console.log(equipement)
-                equipement.updateAttributes({
-                    actifEquipement: true,
-                },(err, equipement) =>{
-                    if(err) cb(err, null)
-                    else
-                    cb(null, equipement)
-                })
+                if (equipement) {
+                    equipement.updateAttributes({
+                        actifEquipement: true,
+                    },(err, equipement) =>{
+                        
+                        cb(null, equipement)
+                    })
+                }
+                
             })
     }
     
