@@ -80,8 +80,6 @@ module.exports = function(Provider) {
 
 
 
-
-
      // creation de compte par sms
     Provider.number = function (req ,cb) {
 
