@@ -82,7 +82,7 @@ module.exports = function(Customer) {
 
         const message = "Votre code de connexion est : " ;
         var msisdn = req.body.msisdn;
-        var numdemo = "+2250141812443";
+        var numdemo = "+2250011223344";
         // var code = Math.floor(Math.random() * 9000) + 1000;
         var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
@@ -138,8 +138,7 @@ module.exports = function(Customer) {
                                 }
                                 else {// Retourner une reponse
                                     cb(null, [message + code, user]);}
-                            
-                                            
+                                               
                         }
                     ) 
                 }
