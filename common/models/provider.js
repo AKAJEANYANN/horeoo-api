@@ -88,8 +88,8 @@ module.exports = function(Provider) {
         const message = "Votre code de connexion est : " ;
         var msisdn = req.body.msisdn;
 
-        var code = Math.floor(Math.random() * 9000) + 1000;
-        // var code = (msisdn != null && msisdn != undefined && msisdn != "+2250748443404" && msisdn != "+2250544727272" && msisdn != "+2250709128585" && msisdn != "+2250707334770") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        // var code = Math.floor(Math.random() * 9000) + 1000;
+        var code = (msisdn != null && msisdn != undefined && msisdn != "+2250000858585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
 
