@@ -82,9 +82,9 @@ module.exports = function(Customer) {
 
         const message = "Votre code de connexion est : " ;
         var msisdn = req.body.msisdn;
-
+        var numdemo = "+2250141812443";
         // var code = Math.floor(Math.random() * 9000) + 1000;
-        var code = (msisdn != null && msisdn != undefined && msisdn != "+2250000858585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
@@ -106,13 +106,15 @@ module.exports = function(Customer) {
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else {
+                        else if(msisdn !=numdemo) {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             
                             // Retourner une reponse
                             cb(null, [message + code, use]);
-                        } 
+                        }
+                        else {// Retourner une reponse
+                            cb(null, [message + code, use]);}
                     })            
                 }
                 // cas 2 l'utilsiateur n'existe pas
@@ -128,12 +130,14 @@ module.exports = function(Customer) {
                         },
                         (err, user) => {
                             if(err) cb(err, null);
-                            else{ 
+                            else if(msisdn !=numdemo) { 
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
                                 // TODO : Envoyer SMS
                                  notify.sendSMS(msisdn, message + code);   
                                 }
+                                else {// Retourner une reponse
+                                    cb(null, [message + code, user]);}
                             
                                             
                         }
