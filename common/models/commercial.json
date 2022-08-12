@@ -24,7 +24,7 @@
       "default": false
     },
     "approval_datetime": {
-      "type": "string",
+      "type": "date",
       "defaultFn": "date"
     },
     "phoneCom": {
