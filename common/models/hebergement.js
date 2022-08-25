@@ -151,8 +151,7 @@ Hebergement.remoteMethod('approve',
     //api pour afficher la map
     Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
     
-        const Offre = Hebergement.app.models.hebergement;
-        var arrayHebergement ;
+        
 
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
@@ -189,20 +188,10 @@ Hebergement.remoteMethod('approve',
                 ]
 
                 },(err, hebergement) =>{
-                    if(err) cb(err, null)
+                    console.log(hebergement);
+                    if(err)cb(err, null)
                     else
-                    // console.log(hebergement);
-                    // arrayHebergement= hebergement;
-                    // hebergement.forEach(element => {
-                    //     console.log(element.offre);
-                    //     if(element.offre !=[]){
-                    //         arrayHebergement =arrayHebergement+ element;
-                    //     }
-                         
-
-                    // });
-                    cb(null, hebergement);
-                          
+                        cb(null, hebergement) 
 
                 })
             }
@@ -224,6 +213,7 @@ Hebergement.remoteMethod('approve',
 
 
 
+        
     Hebergement.affiche = function (cb) {
 
         Hebergement.find({

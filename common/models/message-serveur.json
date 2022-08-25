@@ -1,0 +1,39 @@
+{
+  "name": "messageServeur",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "message": {
+      "type": "string",
+      "default": ""
+    },
+    "dateMessage": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "objetMessage": {
+      "type": "string",
+      "default": ""
+    },
+    "idFournisseur": {
+      "type": "string",
+      "default": ""
+    },
+    "idUtilisateur": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

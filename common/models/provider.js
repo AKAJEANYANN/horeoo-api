@@ -215,4 +215,31 @@ module.exports = function(Provider) {
         returns : { type: 'object', root: true } 
     });
 
+
+
+
+    Provider.approuve = function (id, cb) {
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                console.log(provider)
+                provider.updateAttributes({
+                    etatProvider: 3,
+                    approval_datetime: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else
+                    cb(null, provider)
+                })
+            })
+    }
+    
+    
+    Provider.remoteMethod('approuve',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/approuve', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
 };

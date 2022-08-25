@@ -12,16 +12,19 @@
       "defaultFn": "uuidv4"
     },
     "botForUser": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "activeBot": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "botMessage": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "etatReservation": {
-      "type": "string"
+      "type": "number"
     }
   },
   "validations": [],
