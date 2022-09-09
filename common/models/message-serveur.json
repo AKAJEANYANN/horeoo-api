@@ -26,14 +26,6 @@
     "vueMessage": {
       "type": "boolean",
       "default": false
-    },
-    "idFournisseur": {
-      "type": "string",
-      "default": ""
-    },
-    "idUtilisateur": {
-      "type": "string",
-      "default": ""
     }
   },
   "validations": [],
