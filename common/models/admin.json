@@ -30,6 +30,30 @@
       "options": {
         "disableInclude": true
       }
+    },
+    "restaurants": {
+      "type": "hasMany",
+      "model": "restaurant",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "evenements": {
+      "type": "hasMany",
+      "model": "evenement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "historiques": {
+      "type": "hasMany",
+      "model": "historique",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [

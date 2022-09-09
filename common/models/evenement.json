@@ -1,5 +1,5 @@
 {
-  "name": "messageServeur",
+  "name": "evenement",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,36 +11,48 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "message": {
+    "titre": {
       "type": "string",
       "default": ""
     },
-    "dateMessage": {
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "nom_proprio": {
+      "type": "string",
+      "default": ""
+    },
+    "contact_proprio": {
+      "type": "string",
+      "default": ""
+    },
+    "date_evenement": {
       "type": "date",
       "defaultFn": "now"
     },
-    "objetMessage": {
+    "date_creation": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "contact": {
       "type": "string",
       "default": ""
     },
-    "vueMessage": {
-      "type": "boolean",
-      "default": false
-    },
-    "idFournisseur": {
+    "couverture": {
       "type": "string",
       "default": ""
     },
-    "idUtilisateur": {
+    "prix": {
       "type": "string",
       "default": ""
     }
   },
   "validations": [],
   "relations": {
-    "commercial": {
+    "admin": {
       "type": "belongsTo",
-      "model": "commercial",
+      "model": "admin",
       "foreignKey": "",
       "options": {
         "nestRemoting": true

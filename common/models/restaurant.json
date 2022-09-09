@@ -1,0 +1,80 @@
+{
+  "name": "restaurant",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "nom": {
+      "type": "string",
+      "default": ""
+    },
+    "nom_proprio": {
+      "type": "string",
+      "default": ""
+    },
+    "contact_proprio": {
+      "type": "string",
+      "default": ""
+    },
+    "couverture": {
+      "type": "string",
+      "default": ""
+    },
+    "carroussel": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "date_creation": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "menu": {
+      "type": "string",
+      "default": ""
+    },
+    "numeros": {
+      "type": "string",
+      "default": ""
+    },
+    "localisation": {
+      "type": "geopoint",
+      "default": "0.1"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "commercial": {
+      "type": "belongsTo",
+      "model": "commercial",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "admin": {
+      "type": "belongsTo",
+      "model": "admin",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

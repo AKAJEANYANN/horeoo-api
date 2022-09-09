@@ -167,6 +167,9 @@ module.exports = function(Provider) {
     Provider.affiche = function (cb) {
         
         Provider.find({
+            where:{
+                etatProvider: 1
+            },
             include:[
                 {
                     relation:'hebergements'
@@ -185,6 +188,99 @@ module.exports = function(Provider) {
     Provider.remoteMethod('affiche',
     {
         http:{ path: '/affiche',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+    
+    Provider.afficheDemandeApprouve = function (cb) {
+        
+        Provider.find({
+            where:{
+                // etatProvider: 2,
+                approuveProvider: false
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('afficheDemandeApprouve',
+    {
+        http:{ path: '/afficheDemandeApprouve',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    Provider.afficheApprouve = function (cb) {
+        
+        Provider.find({
+            where:{
+                // etatProvider: 3,
+                approuveProvider: true
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('afficheApprouve',
+    {
+        http:{ path: '/afficheApprouve',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    Provider.afficheDesapprouve = function (cb) {
+        
+        Provider.find({
+            where:{
+                // etatProvider: 4,
+                approuveProvider: false
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('afficheDesapprouve',
+    {
+        http:{ path: '/afficheDesapprouve',verb:'get'},
         returns : { type: 'object', root: true } 
     });
 

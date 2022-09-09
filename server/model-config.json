@@ -55,7 +55,7 @@
   },
   "parametre": {
     "dataSource": "horeooAppDb",
-    "public": false
+    "public": true
   },
   "bot": {
     "dataSource": "horeooAppDb",
@@ -98,6 +98,18 @@
     "public": true
   },
   "messageServeur": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "restaurant": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "evenement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "historique": {
     "dataSource": "horeooAppDb",
     "public": true
   }

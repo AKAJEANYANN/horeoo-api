@@ -52,6 +52,22 @@
       "options": {
         "disableInclude": true
       }
+    },
+    "restaurants": {
+      "type": "hasMany",
+      "model": "restaurant",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "messageServeurs": {
+      "type": "hasMany",
+      "model": "messageServeur",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
