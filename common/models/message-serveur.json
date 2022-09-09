@@ -45,6 +45,22 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "customer": {
+      "type": "belongsTo",
+      "model": "customer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "provider": {
+      "type": "belongsTo",
+      "model": "provider",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

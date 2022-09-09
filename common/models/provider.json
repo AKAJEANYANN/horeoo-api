@@ -68,6 +68,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "messageServeurs": {
+      "type": "hasMany",
+      "model": "messageServeur",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
