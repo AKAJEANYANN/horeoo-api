@@ -178,10 +178,11 @@ Hebergement.remoteMethod('approve',
                 {
                     relation:'offre',
                     scope:{
-                    where:{
-                        activeOffre: true,
-                        visibleOffre: true,
-                    },
+                        where:{
+                            offre:{neq:[]},
+                            activeOffre: true,
+                            visibleOffre: true,
+                        },
                         limit:1
                     }
                 }
