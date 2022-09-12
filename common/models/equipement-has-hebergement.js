@@ -17,15 +17,20 @@ module.exports = function(Equipementhashebergement) {
             });
         }
 
-        Equipementhashebergement.deleteById({
-            where:{
-                hebergementId: idhebergement
+        var filter = {
+            where: {
+                hebergementId:idhebergement
             }
-        },(err, equip) =>{
+         };
+
+        Equipementhashebergement.destroyAll(
+            filter.where,
+            (err, equip) =>{
             console.log(equip)
             if(err) cb (err, null)
             else {
-                idArrayEquipement.forEach(idItem => {
+            // cb(null, equip);
+            idArrayEquipement.forEach(idItem => {
                 mycreation(idItem);
 
             },(err, arrayEquipement) =>{
