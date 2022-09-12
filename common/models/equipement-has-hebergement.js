@@ -36,9 +36,17 @@ module.exports = function(Equipementhashebergement) {
             },(err, arrayEquipement) =>{
                 console.log(arrayEquipement);
                 if(err) cb (err, null)
-                else 
-                    cb(null, arrayEquipement);
+                // else 
+                    // cb(null, arrayEquipement);
+                    
             });
+
+            Equipementhashebergement.find((err,equipement)=>{
+                if(err)cb(err, null)
+                else
+                    cb(null, equipement)
+            })
+            
         }
 
         })
