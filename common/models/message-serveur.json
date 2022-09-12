@@ -13,7 +13,10 @@
     },
     "message": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "dateMessage": {
       "type": "date",
