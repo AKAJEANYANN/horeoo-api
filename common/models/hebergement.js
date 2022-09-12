@@ -179,20 +179,20 @@ Hebergement.remoteMethod('approve',
                     relation:'offre',
                     scope:{
                         where:{
-                            offre:{neq:[]},
                             activeOffre: true,
                             visibleOffre: true,
                         },
                         limit:1
                     }
                 }
-                ]
+                ],
 
                 },(err, hebergement) =>{
                     console.log(hebergement);
                     if(err)cb(err, null)
-                    else
+                    else if(hebergement.offre.validatesInclusionOf('visibleOffre', {in: ['true', 'false']})){
                         cb(null, hebergement) 
+                    }
 
                 })
             }
