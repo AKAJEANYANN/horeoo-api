@@ -17,16 +17,13 @@ module.exports = function(Equipementhashebergement) {
             });
         }
 
-        Equipementhashebergement.destroy({
+        Equipementhashebergement.destroyAll({
             where:{
                 hebergementId: idhebergement
             }
         },(err, equip) =>{
-            console.log(equip);
-            if(err) cb (err, null)
-            else {
-            // cb(null, equip);
-            idArrayEquipement.forEach(idItem => {
+           
+                idArrayEquipement.forEach(idItem => {
                 mycreation(idItem);
 
             },(err, arrayEquipement) =>{
@@ -35,7 +32,6 @@ module.exports = function(Equipementhashebergement) {
                 else 
                     cb(null, arrayEquipement);
             });
-        }
 
         })
 
