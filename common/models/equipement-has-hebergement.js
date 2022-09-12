@@ -26,7 +26,7 @@ module.exports = function(Equipementhashebergement) {
         Equipementhashebergement.destroyAll(
             filter.where,
             (err, equip) =>{
-            console.log(equip)
+            // console.log(equip)
             if(err) cb (err, null)
             else {
             // cb(null, equip);
