@@ -190,9 +190,9 @@ Hebergement.remoteMethod('approve',
                 },(err, hebergement) =>{
                     console.log(hebergement);
                     if(err)cb(err, null)
-                    else if(hebergement.offre.validatesPresenceOf('nomOffre')){
+                    // else if(hebergement.offre.validatesPresenceOf('nomOffre')){
                         cb(null, hebergement) 
-                    }
+                    // }
 
                 })
             }
