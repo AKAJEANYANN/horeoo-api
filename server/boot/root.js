@@ -6,19 +6,19 @@
 'use strict';
 
 module.exports = function(server) {
-  // server.dataSources.horeooAppDb.autoupdate();
+  server.dataSources.horeooAppDb.autoupdate();
 
-  var ds = server.dataSources.horeooAppDb;
-  if(ds.connected) {
-    ds.autoupdate();
-  } else {
-    ds.once('connected', function() {
-      ds.autoupdate();
-    });
-  }
+  // var ds = server.dataSources.horeooAppDb;
+  // if(ds.connected) {
+  //   ds.autoupdate();
+  // } else {
+  //   ds.once('connected', function() {
+  //     ds.autoupdate();
+  //   });
+  // }
   
   // Install a `/` route that returns server status
-  const router = server.loopback.Router();
+  var router = server.loopback.Router();
   router.get('/', server.loopback.status());
   server.use(router);
 };
