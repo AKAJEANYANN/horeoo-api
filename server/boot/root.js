@@ -9,10 +9,10 @@ module.exports = function(server) {
   server.dataSources.horeooAppDb.autoupdate();
 
   var ds = server.dataSources.horeooAppDb;
-  if(ds.connected) {
+  if(ds.autoupdate) {
     ds.autoupdate();
   } else {
-    ds.once('connected', function() {
+    ds.once('autoupdate', function() {
       ds.autoupdate();
     });
   }
