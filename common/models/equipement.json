@@ -13,7 +13,10 @@
     },
     "nomEquipement": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "actifEquipement": {
       "type": "boolean",
