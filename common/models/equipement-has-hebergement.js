@@ -41,7 +41,12 @@ module.exports = function(Equipementhashebergement) {
                     
             });
 
-            Equipementhashebergement.find((err,equipement)=>{
+            Equipementhashebergement.find(
+                {
+                    where: {
+                        hebergementId:idhebergement
+                    }
+                 },(err,equipement)=>{
                 if(err)cb(err, null)
                 else
                     cb(null, equipement)
