@@ -33,7 +33,10 @@
     },
     "description": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "date_creation": {
       "type": "date",
