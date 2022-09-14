@@ -178,7 +178,6 @@ Hebergement.remoteMethod('approve',
                     relation:'offre',
                     scope:{
                         where:{
-                            id: { neq: "" },
                             activeOffre: true,
                             visibleOffre: true,
                         },
