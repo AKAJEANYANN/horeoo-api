@@ -46,10 +46,6 @@
     "imageProvider": {
       "type": "string",
       "default": ""
-    },
-    "codeCom": {
-      "type": "string",
-      "default": ""
     }
   },
   "validations": [],
@@ -76,6 +72,14 @@
     "messageServeurs": {
       "type": "hasMany",
       "model": "messageServeur",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "commercial": {
+      "type": "belongsTo",
+      "model": "commercial",
       "foreignKey": "",
       "options": {
         "nestRemoting": true

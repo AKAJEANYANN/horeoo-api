@@ -86,7 +86,7 @@ module.exports = function(Provider) {
         const message = "Votre code de connexion est : " ;
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
-        var codCom = req.body.codCom;
+        var commercialId = req.body.commercialId;
 
         // var code = Math.floor(Math.random() * 9000) + 1000;
         var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
@@ -130,7 +130,7 @@ module.exports = function(Provider) {
                         {
                             username : msisdn,
                             phoneProvider: msisdn,
-                            codCom: codCom,
+                            commercialId: commercialId,
                             email : msisdn + '@horeoo.com',
                             password : `${code}`,
                         },

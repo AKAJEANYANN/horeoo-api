@@ -68,6 +68,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "providers": {
+      "type": "hasMany",
+      "model": "provider",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
