@@ -43,5 +43,36 @@ module.exports = function(Commercial) {
     });
 
 
+
+
+    Commercial.affichecomid = function (codeCommercial, cb) {
+
+        // var codeCommercial = req.body.codeCommercial;
+        console.log(codeCommercial);
+        var filter = {
+            where:{
+                codeCom: codeCommercial
+            }};
+        Commercial.find(
+            filter
+            ,(err, commercial) =>{
+                console.log(commercial);
+                if(err) cb(err, null)
+                else if(commercial.length > 0)
+                    cb(null, commercial[0].id)
+                else
+                    cb(null, "")
+        })
+    
+    }
+    
+    Commercial.remoteMethod('affichecomid', {
+        accepts: 
+            { arg: 'codeCommercial', type: 'string'},
+        http:{ path: '/affichecomid',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
     
 };

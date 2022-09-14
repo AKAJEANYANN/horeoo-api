@@ -13,7 +13,7 @@ module.exports = function(Customer) {
     
         Customer.findOne({
             where: {
-                phoneCustomer: phoneCustomer,
+                phoneCustomer: phoneCustomer
             }
         }, (err, customer) => {
     
