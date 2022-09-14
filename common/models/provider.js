@@ -87,7 +87,21 @@ module.exports = function(Provider) {
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
         var commercialId = req.body.commercialId;
+        const messageServeur = Provider.app.models.messageServeur;
+        
+        function sendMessageServeur(msg ="Félicitation nouveau fournisseur ajouté !" , obj ="Ajout fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                commercialId: commercialId,
+              }
+            ,(err, mess)=>{
+    
+            }) 
+        }
 
+        
         // var code = Math.floor(Math.random() * 9000) + 1000;
         var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
@@ -113,7 +127,9 @@ module.exports = function(Provider) {
                         else if (msisdn != numdemo) {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
-                            
+                            if(commercialId !=""){
+                                sendMessageServeur("Le compte fournisseur existe déjà !")
+                           }
                             // Retourner une reponse
                             cb(null, [message + code, use]);
                         } 
@@ -140,7 +156,10 @@ module.exports = function(Provider) {
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
                                 // TODO : Envoyer SMS
-                                 notify.sendSMS(msisdn, message + code);   
+                                 notify.sendSMS(msisdn, message + code); 
+                                    if(commercialId !=""){
+                                        sendMessageServeur()
+                                   }
                                 } 
                                 else{
                                     cb(null, [message + code, user]);
