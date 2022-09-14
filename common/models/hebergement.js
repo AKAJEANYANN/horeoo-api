@@ -178,6 +178,7 @@ Hebergement.remoteMethod('approve',
                     relation:'offre',
                     scope:{
                         where:{
+                            id: { neq: "" },
                             activeOffre: true,
                             visibleOffre: true,
                         },
@@ -211,66 +212,44 @@ Hebergement.remoteMethod('approve',
 
 
 
-    Hebergement.maptest = function (
-        // lat, lng, limit, skip, providerId, km,  typeHebergementId, 
-        cb) {
+    // Hebergement.maptest = function (
+    //     // lat, lng, limit, skip, providerId, km,  typeHebergementId, 
+    //     cb) {
     
-        const Offre = Hebergement.app.models.offre;
+    //     const Offre = Hebergement.app.models.offre;
 
-        // var loopback = require('loopback');
-        // var userLocation = new loopback.GeoPoint({
-        //     lat: lat,
-        //     lng: lng
-        // });
+    //     // var loopback = require('loopback');
+    //     // var userLocation = new loopback.GeoPoint({
+    //     //     lat: lat,
+    //     //     lng: lng
+    //     // });
 
+    //         Hebergement.find({
+    //             where:{
+    //                 activeHebergement: true
+    //             }
+    //         }, (err, hebergement)=>{
+    //             console.log(hebergement);
+    //             if(err)cb(err, null)
+    //         })
 
-            Offre.find({
-                where:{
-                    activeOffre: true,
-                    visibleOffre: true,
-                },
-                limit:1,
-                include:[
-                    {
-                        relation:'hebergement',
-                        // scope:{
-                        //     limit: limit,
-                        //     skip: skip,
-                        //     where:{
-                        //         providerId: providerId,
-                        //         activeHebergement: true,
-                        //         approuveHebergement: true,
-                        //         locationHebergement: {
-                        //             near: userLocation,
-                        //             maxDistance: km,
-                        //             unit: 'kilometers'
-                        //         },
-                        //         typeHebergementId: typeHebergementId
-                        //     },
-                        // }
-                    }
-                ]
-            }, (err, hebergement)=>{
-                console.log(hebergement);
-                if(err)cb(err, null)
-                else
-                    cb(null, hebergement);
-            })
-        }
+    //                 // cb(null, hebergement);
+           
+    //     }
 
-        Hebergement.remoteMethod('maptest', {
-            // accepts: [
-            //         {arg: 'lat', type: 'string'},
-            //         {arg: 'lng', type: 'string'},
-            //         {arg: 'limit', type: 'string'},
-            //         {arg: 'skip', type: 'string'},
-            //         {arg: 'providerId', type: 'string'},
-            //         {arg: 'km', type: 'string'},
-            //         {arg: 'typeHebergementId', type: 'string'}
-            //     ],
-            http:{ path: '/maptest',verb:'get'},
-            returns: {type: 'object', root: true}
-        });
+    //     Hebergement.remoteMethod('maptest', {
+    //         // accepts: [
+    //         //         {arg: 'lat', type: 'string'},
+    //         //         {arg: 'lng', type: 'string'},
+    //         //         {arg: 'limit', type: 'string'},
+    //         //         {arg: 'skip', type: 'string'},
+    //         //         {arg: 'providerId', type: 'string'},
+    //         //         {arg: 'km', type: 'string'},
+    //         //         {arg: 'typeHebergementId', type: 'string'}
+    //         //     ],
+    //         http:{ path: '/maptest',verb:'get'},
+    //         returns: {type: 'object', root: true}
+    //     });
 
 
 
