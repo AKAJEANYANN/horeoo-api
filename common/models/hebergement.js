@@ -230,7 +230,7 @@ Hebergement.remoteMethod('approve',
                 limit:1,
                 include:[
                     {
-                        relation:'hebergement',
+                        relation:'hebergements',
                         scope:{
                             limit: limit,
                             skip: skip,
