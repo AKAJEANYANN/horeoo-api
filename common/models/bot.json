@@ -24,7 +24,7 @@
       "default": ""
     },
     "etatReservation": {
-      "type": "number",
+      "type": "string",
       "default": ""
     }
   },
