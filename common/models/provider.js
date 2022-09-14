@@ -86,6 +86,8 @@ module.exports = function(Provider) {
         const message = "Votre code de connexion est : " ;
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
+        var codCom = req.body.codCom;
+
         // var code = Math.floor(Math.random() * 9000) + 1000;
         var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
@@ -103,7 +105,7 @@ module.exports = function(Provider) {
                     
                     // mettre a jour le MDP avec le code de 5 chiffre
                     user.updateAttributes({
-                        email : msisdn + '@horeoo.ci',
+                        email : msisdn + '@horeoo.com',
                         password : `${code}`
                     },(err, use) => {
                         console.log(use);
@@ -128,7 +130,8 @@ module.exports = function(Provider) {
                         {
                             username : msisdn,
                             phoneProvider: msisdn,
-                            email : msisdn + '@horeoo.ci',
+                            codCom: codCom,
+                            email : msisdn + '@horeoo.com',
                             password : `${code}`,
                         },
                         (err, user) => {

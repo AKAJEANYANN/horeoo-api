@@ -81,10 +81,6 @@
     "videoHebergement": {
       "type": "string",
       "default": ""
-    },
-    "codeCom": {
-      "type": "string",
-      "default": ""
     }
   },
   "validations": [],
