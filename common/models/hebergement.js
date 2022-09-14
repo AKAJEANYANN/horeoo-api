@@ -192,7 +192,7 @@ Hebergement.remoteMethod('approve',
                 },(err, hebergement) =>{
                     console.log(hebergement);
                     if(err)cb(err, null)
-                    else if(hebergement.id == Offre.hebergementId){
+                    else if(hebergement.id === Offre.hebergementId){
                         cb(null, hebergement) 
                     }
                         
