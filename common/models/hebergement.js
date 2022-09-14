@@ -252,7 +252,7 @@ Hebergement.remoteMethod('approve',
                 console.log(hebergement);
                 if(err)cb(err, null)
                 else
-                    cb(hebergement);
+                    cb(null, hebergement);
             })
         }
 
