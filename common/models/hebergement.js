@@ -152,6 +152,7 @@ Hebergement.remoteMethod('approve',
     Hebergement.map = function (lat, lng, limit, skip, providerId, km,  typeHebergementId, cb) {
     
         
+        const Offre = Hebergement.app.models.offre;
 
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
@@ -173,7 +174,8 @@ Hebergement.remoteMethod('approve',
                     unit: 'kilometers'
                 },
                 typeHebergementId: typeHebergementId
-            },
+            }
+            ,
             include:[
                 {
                     relation:'offre',
@@ -190,9 +192,10 @@ Hebergement.remoteMethod('approve',
                 },(err, hebergement) =>{
                     console.log(hebergement);
                     if(err)cb(err, null)
-                    // else if(hebergement.offre.validatesPresenceOf('nomOffre')){
+                    else if(hebergement.id == Offre.hebergementId){
                         cb(null, hebergement) 
-                    // }
+                    }
+                        
 
                 })
             }
