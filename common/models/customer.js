@@ -81,11 +81,13 @@ module.exports = function(Customer) {
     Customer.number = function (req ,cb) {
 
         const message = "Votre code de connexion est : " ;
+
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
         // var code = Math.floor(Math.random() * 9000) + 1000;
         var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
+        
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
 

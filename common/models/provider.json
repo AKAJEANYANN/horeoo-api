@@ -46,6 +46,10 @@
     "imageProvider": {
       "type": "string",
       "default": ""
+    },
+    "activeProvider": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],
