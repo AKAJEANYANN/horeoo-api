@@ -317,7 +317,7 @@ Hebergement.remoteMethod('approve',
                 }
                 },
                 {
-                    relation:'provider',
+                    relation:'providers',
                     scope:{
                         where:{
                         activeProvider: true,

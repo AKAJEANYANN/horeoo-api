@@ -112,9 +112,5 @@
   "historique": {
     "dataSource": "horeooAppDb",
     "public": true
-  },
-  "aloco": {
-    "dataSource": "horeooAppDb",
-    "public": true
   }
 }
