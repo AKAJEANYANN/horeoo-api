@@ -396,7 +396,13 @@ module.exports = function(Provider) {
                 }
                 },
                 {
-                    relation:'provider'
+                    relation:'provider',
+                    scope:{
+                        where:{
+                        activeProvider: true,
+                        approuveProvider: true,
+                        },
+                     }
                 }
             ]
     
