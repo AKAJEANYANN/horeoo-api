@@ -305,7 +305,7 @@ Hebergement.remoteMethod('approve',
                   },
                 typeHebergementId: typeHebergementId
             },
-            include:[{
+            include:{
                 relation:'offre',
                 scope:{
                    where:{
@@ -315,17 +315,7 @@ Hebergement.remoteMethod('approve',
                    },
                    limit:1
                 }
-                },
-                {
-                    relation:'providers',
-                    scope:{
-                        where:{
-                        activeProvider: true,
-                        approuveProvider: true,
-                        }
-                    }  
                 }
-        ]
     
         },(err, hebergement) =>{
             if (err) cb(err, null)
