@@ -323,7 +323,9 @@ Hebergement.remoteMethod('approve',
 
             Provider.find({
                 where:{
-                    id: hebergement.providerId
+                    id: hebergement.providerId,
+                    activeProvider: true,
+                    approuveProvider: true,
                 }
             },(err, prov)=>{
                 if (prov) 
