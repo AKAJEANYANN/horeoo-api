@@ -145,7 +145,6 @@ module.exports = function(Provider) {
                     Provider.create(
                         {
                             username : msisdn,
-                            etatProvider: 1,
                             phoneProvider: msisdn,
                             commercialId: commercialId,
                             email : msisdn + '@horeoo.com',
@@ -190,14 +189,10 @@ module.exports = function(Provider) {
     Provider.affiche = function (cb) {
         
         Provider.find({
-            where:{
-                etatProvider: 1
-            },
-            include:[
+            include:
                 {
                     relation:'hebergements'
                 }
-            ]
             
         }, (err, provider) =>{
             console.log(provider)
@@ -221,7 +216,6 @@ module.exports = function(Provider) {
         
         Provider.find({
             where:{
-                // etatProvider: 2,
                 approuveProvider: false,
                 rectoCniProvider: {neq:""},
                 versoCniProvider: {neq:""}
@@ -254,7 +248,6 @@ module.exports = function(Provider) {
         
         Provider.find({
             where:{
-                // etatProvider: 3,
                 approuveProvider: true,
                 activeProvider: true
             },
@@ -286,7 +279,6 @@ module.exports = function(Provider) {
         
         Provider.find({
             where:{
-                // etatProvider: 4,
                 approuveProvider: true,
                 activeProvider: false
             },
@@ -356,7 +348,6 @@ module.exports = function(Provider) {
             (err, provider) =>{
                 console.log(provider)
                 provider.updateAttributes({
-                    etatProvider: 3,
                     approval_datetime: Date.now()
                 },(err, provider) =>{
                     if(err) cb(err, null)

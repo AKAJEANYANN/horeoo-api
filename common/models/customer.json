@@ -42,6 +42,10 @@
     "imageCustomer": {
       "type": "string",
       "default": ""
+    },
+    "device_fcm_token": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

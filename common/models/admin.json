@@ -16,6 +16,9 @@
     },
     "phone": {
       "type": "number"
+    },
+    "device_fcm_token": {
+      "type": "string"
     }
   },
   "validations": [],

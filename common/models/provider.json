@@ -19,10 +19,6 @@
       "type": "date",
       "defaultFn": "now"
     },
-    "etatProvider": {
-      "type": "string",
-      "default": ""
-    },
     "approuveProvider": {
       "type": "boolean",
       "default": false
@@ -60,7 +56,8 @@
       "defaultFn": "now"
     },
     "device_fcm_token": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
