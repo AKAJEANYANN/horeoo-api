@@ -329,7 +329,7 @@ Hebergement.remoteMethod('approve',
                 }
             },(err, prov)=>{
                 // if (prov.id !="") 
-                cb(null, prov.id)  
+                cb(null, prov)  
             })
             
             })
