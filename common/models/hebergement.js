@@ -284,7 +284,9 @@ Hebergement.remoteMethod('approve',
 
 
     Hebergement.mapfilter = function (lat, lng, limit, skip, onlineHebergement, km,  typeHebergementId, prixMinimOffre, prixMaximOffre, cb) {
-    
+        
+        const Provider = Hebergement.app.models.hebergement;
+
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
             lat: lat,
@@ -318,8 +320,15 @@ Hebergement.remoteMethod('approve',
                 }
     
         },(err, hebergement) =>{
-            if (err) cb(err, null)
-            else
+
+            Provider.find({
+                where:{
+                    id: hebergement.providerId
+                }
+            },(err, prov)=>{
+                
+            })
+            if (prov) 
                 cb(null, hebergement)
             })
     }
