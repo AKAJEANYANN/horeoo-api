@@ -326,10 +326,10 @@ Hebergement.remoteMethod('approve',
                     id: hebergement.providerId
                 }
             },(err, prov)=>{
-                
+                if (prov) 
+                cb(null, hebergement)  
             })
-            if (prov) 
-                cb(null, hebergement)
+            
             })
     }
     
