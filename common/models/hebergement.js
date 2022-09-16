@@ -328,7 +328,7 @@ Hebergement.remoteMethod('approve',
                     approuveProvider: true,
                 }
             },(err, prov)=>{
-                if (prov !=[""]) 
+                if (prov.id !="") 
                 cb(null, hebergement)  
             })
             
