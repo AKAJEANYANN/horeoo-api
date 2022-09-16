@@ -145,6 +145,7 @@ module.exports = function(Provider) {
                     Provider.create(
                         {
                             username : msisdn,
+                            etatProvider: 1,
                             phoneProvider: msisdn,
                             commercialId: commercialId,
                             email : msisdn + '@horeoo.com',
@@ -221,7 +222,9 @@ module.exports = function(Provider) {
         Provider.find({
             where:{
                 // etatProvider: 2,
-                approuveProvider: false
+                approuveProvider: false,
+                rectoCniProvider: {neq:""},
+                versoCniProvider: {neq:""}
             },
             include:[
                 {
@@ -247,12 +250,13 @@ module.exports = function(Provider) {
 
 
 
-    Provider.afficheApprouve = function (cb) {
+    Provider.afficheActiver = function (cb) {
         
         Provider.find({
             where:{
                 // etatProvider: 3,
-                approuveProvider: true
+                approuveProvider: true,
+                activeProvider: true
             },
             include:[
                 {
@@ -269,21 +273,22 @@ module.exports = function(Provider) {
     }
 
 
-    Provider.remoteMethod('afficheApprouve',
+    Provider.remoteMethod('afficheActiver',
     {
-        http:{ path: '/afficheApprouve',verb:'get'},
+        http:{ path: '/afficheActiver',verb:'get'},
         returns : { type: 'object', root: true } 
     });
 
 
 
 
-    Provider.afficheDesapprouve = function (cb) {
+    Provider.afficheDesactiver = function (cb) {
         
         Provider.find({
             where:{
                 // etatProvider: 4,
-                approuveProvider: false
+                approuveProvider: true,
+                activeProvider: false
             },
             include:[
                 {
@@ -300,9 +305,9 @@ module.exports = function(Provider) {
     }
 
 
-    Provider.remoteMethod('afficheDesapprouve',
+    Provider.remoteMethod('afficheDesactiver',
     {
-        http:{ path: '/afficheDesapprouve',verb:'get'},
+        http:{ path: '/afficheDesactiver',verb:'get'},
         returns : { type: 'object', root: true } 
     });
 
@@ -314,15 +319,24 @@ module.exports = function(Provider) {
             id,
             (err, provider) =>{
                 console.log(provider)
+                
                 provider.updateAttributes({
                     approuveProvider: true,
+                    activeProvider: true,
                     approval_datetime: Date.now()
                 },(err, provider) =>{
                     if(err) cb(err, null)
                     else
                     cb(null, provider)
-                })
-            })
+                });
+
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Provider approuvé",
+                    "Le provider à été approuvé",
+                    "PRO"
+                    );
+            });
     }
     
     
@@ -361,72 +375,28 @@ module.exports = function(Provider) {
     });
 
 
-    Provider.mapfilter = function (lat, lng, limit, skip, onlineHebergement, km,  typeHebergementId, prixMinimOffre, prixMaximOffre, cb) {
-    
-        const Hebergement = Provider.app.models.hebergement;
-        var loopback = require('loopback');
-        var userLocation = new loopback.GeoPoint({
-            lat: lat,
-            lng: lng
-          });
-    
-    
-        Hebergement.find({
-            limit: limit,
-            skip: skip,
-            where:{
-                onlineHebergement: onlineHebergement,
-                approuveHebergement: true,
-                locationHebergement: {
-                    near: userLocation,
-                    maxDistance: km,
-                    unit: 'kilometers'
-                  },
-                typeHebergementId: typeHebergementId
-            },
-            include:[{
-                relation:'offre',
-                scope:{
-                   where:{
-                    prixOffre: {between: [prixMinimOffre,prixMaximOffre]},
-                    activeOffre: true,
-                    visibleOffre: true,
-                   },
-                   limit:1
-                }
-                },
-                {
-                    relation:'provider',
-                    scope:{
-                        where:{
-                        activeProvider: true,
-                        approuveProvider: true,
-                        },
-                     }
-                }
-            ]
-    
-        },(err, hebergement) =>{
-            if (err) cb(err, null)
-            else
-                cb(null, hebergement)
+
+    Provider.active = function (id, cb) {
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                provider.updateAttributes({
+                    activeProvider: true,
+                    active_datetime: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else
+                    cb(null, provider)
+                })
             })
     }
     
-    Provider.remoteMethod('mapfilter', {
-        accepts: [
-                {arg: 'lat', type: 'string'},
-                {arg: 'lng', type: 'string'},
-                {arg: 'limit', type: 'string'},
-                {arg: 'skip', type: 'string'},
-                {arg: 'onlineHebergement', type: 'string'},
-                {arg: 'km', type: 'string'},
-                {arg: 'typeHebergementId', type: 'string'},
-                {arg: 'prixMinimOffre', type: 'string'},
-                {arg: 'prixMaximOffre', type: 'string'}
-            ],
-        http:{ path: '/mapfilter',verb:'get'},
-        returns: {type: 'object', root: true}
+    
+    Provider.remoteMethod('active',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/active', verb: 'post'},
+        returns : { type: 'object', root: true } 
     });
 
 };

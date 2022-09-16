@@ -284,9 +284,7 @@ Hebergement.remoteMethod('approve',
 
 
     Hebergement.mapfilter = function (lat, lng, limit, skip, onlineHebergement, km,  typeHebergementId, prixMinimOffre, prixMaximOffre, cb) {
-        
-        const Provider = Hebergement.app.models.hebergement;
-
+    
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
             lat: lat,
@@ -305,9 +303,19 @@ Hebergement.remoteMethod('approve',
                     maxDistance: km,
                     unit: 'kilometers'
                   },
-                typeHebergementId: typeHebergementId
+                typeHebergementId: typeHebergementId,
             },
-            include:{
+            include:[
+                {
+                relation:'provider',
+                scope:{
+                   where:{
+                    activeProvider: true,
+                    approuveProvider: true,
+                   }
+                }
+            },
+                {
                 relation:'offre',
                 scope:{
                    where:{
@@ -317,22 +325,18 @@ Hebergement.remoteMethod('approve',
                    },
                    limit:1
                 }
-                }
+            }
+        ]
     
         },(err, hebergement) =>{
+            if (err) cb(err, null)
+            else{
+                const hebergements = hebergement.filter(e => e.offre.length > 0);
+                cb(null, hebergements);
 
-            Provider.find({
-                where:{
-                    id: hebergement.providerId,
-                    activeProvider: true,
-                    approuveProvider: true,
-                }
-            },(err, prov)=>{
-                if (prov.id !="") 
-                cb(null, hebergement)  
-            })
-            
-            })
+             }
+            },
+        )
     }
     
     Hebergement.remoteMethod('mapfilter', {

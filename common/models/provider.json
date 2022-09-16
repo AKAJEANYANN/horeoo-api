@@ -50,6 +50,17 @@
     "activeProvider": {
       "type": "boolean",
       "default": false
+    },
+    "activeDateProvider": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "desactiveDateProvider": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "device_fcm_token": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -144,6 +155,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "afficheDesapprouve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "mapfilter"
     }
   ],
   "methods": {}

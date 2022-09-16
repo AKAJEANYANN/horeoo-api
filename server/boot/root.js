@@ -6,7 +6,7 @@
 'use strict';
 
 module.exports = function(server) {
-  server.dataSources.horeooAppDb.autoupdate();
+  // server.dataSources.horeooAppDb.autoupdate();
 
   var ds = server.dataSources.horeooAppDb;
   if(ds.connected) {
