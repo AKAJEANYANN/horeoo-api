@@ -163,7 +163,14 @@ module.exports = function(Provider) {
                                 } 
                                 else{
                                     cb(null, [message + code, user]);
-                                }         
+                                };
+                                
+                                notify.sendPushNotification(
+                                    user.device_fcm_token,
+                                    "Provider créer",
+                                    "Votre compte à été crée",
+                                    "PRO"
+                                    );
                         }
                     ) 
                 }
@@ -325,7 +332,7 @@ module.exports = function(Provider) {
                 notify.sendPushNotification(
                     provider.device_fcm_token,
                     "Provider approuvé",
-                    "Le provider à été approuvé",
+                    "Votre compte à été approuvé",
                     "PRO"
                     );
             });

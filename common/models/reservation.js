@@ -1,10 +1,13 @@
 'use strict';
-
+const notify = require("../../server/global/notify")
 
 module.exports = function(Reservation) {
     
     Reservation.creation = function (req, cb){
         
+        const Provider = Reservation.app.models.provider;
+        const Hebergement = Reservation.app.models.hebergement;
+
          var infoReservation = req.body.infoReservation;
          var codeReservation =  Math.floor(Math.random() * 900000) + 100000;
         
@@ -18,6 +21,25 @@ module.exports = function(Reservation) {
                 reservationNumber: codeReservation
             }, (err, reservation) =>{
                 console.log(reservation);
+                
+
+                Hebergement.find({
+                    where:{
+                        id: reservation.hebergementId
+                    },
+                    include:{relation:'provider'}
+                },(err, reservprod)=>{
+                    if(reservprod.provider.device_fcm_token !=""){
+                        notify.sendPushNotification(
+                            reservprod.provider.device_fcm_token,
+                            "Réservation créer",
+                            "Vous avez une réservation en attente",
+                            "PRO"
+                            );
+                    }
+
+                });
+
                 if(err) cb(err, null)
                 else cb (null, reservation)
             })
