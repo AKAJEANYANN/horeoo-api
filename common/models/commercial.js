@@ -48,7 +48,7 @@ module.exports = function(Commercial) {
 
     Commercial.affichecomid = function (codeCommercial, cb) {
 
-        // var codeCommercial = req.body.codeCommercial;
+        var codeCommercial = req.body.codeCommercial;
         console.log(codeCommercial);
         var filter = {
             where:{

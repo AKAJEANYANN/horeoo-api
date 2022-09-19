@@ -1,4 +1,5 @@
 'use strict';
+const e = require("cors");
 const notify = require("../../server/global/notify")
 
 module.exports = function(Reservation) {
@@ -10,7 +11,7 @@ module.exports = function(Reservation) {
 
          var infoReservation = req.body.infoReservation;
          var codeReservation =  Math.floor(Math.random() * 900000) + 100000;
-        
+
         //  creation de reservation
         Reservation.create(infoReservation, (err, reservation) =>{
             console.log(reservation);
@@ -23,20 +24,29 @@ module.exports = function(Reservation) {
                 console.log(reservation);
                 
 
-                Hebergement.find({
+                Hebergement.findOne({
                     where:{
                         id: reservation.hebergementId
-                    },
-                    include:{relation:'provider'}
-                },(err, reservprod)=>{
-                    if(reservprod.provider.device_fcm_token !=""){
+                    }
+                },(err, heberge)=>{
+                    
+                    console.log(heberge.providerId);
+
+                    Provider.findOne({
+                        where:{
+                            id: heberge.providerId
+                        }
+                    },(err, prod)=>{
+                        console.log(prod.device_fcm_token);
+                        
                         notify.sendPushNotification(
-                            reservprod.provider.device_fcm_token,
+                            prod.device_fcm_token,
                             "Réservation créer",
                             "Vous avez une réservation en attente",
                             "PRO"
                             );
-                    }
+                    })
+
 
                 });
 
