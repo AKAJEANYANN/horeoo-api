@@ -142,7 +142,10 @@ module.exports = function(Reservation) {
                     botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
-                    console.log(reservation);
+                    var bonjour = reservation.toJSON();
+                    console.log(bonjour["customer"]["device_fcm_token"]);
+                    // console.log(bonjour.customer.device_fcm_token);
+
                     if(err) cb(err, null)
                     else
 
@@ -164,7 +167,7 @@ module.exports = function(Reservation) {
                             if(reservation.reservationEtat === 2){
 
                                 notify.sendPushNotification(
-                                    reservation.device_fcm_token,
+                                    bonjour["customer"]["device_fcm_token"],
                                     "Réservation créer",
                                     "Vous avez une réservation en attente",
                                     "PRO"
