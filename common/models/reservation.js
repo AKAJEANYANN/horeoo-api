@@ -172,7 +172,7 @@ module.exports = function(Reservation) {
                                     "Réservation validée",
                                     "Votre réservation a été validée !",
                                     "CUS"
-                                    )
+                                    );
                             }
                             else if(reservation.reservationEtat === "5"){
 
