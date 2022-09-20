@@ -149,7 +149,7 @@ module.exports = function(Reservation) {
                     // if(reservation.reservationEtat == "2"){
 
                     //     notify.sendPushNotification(
-                    //         bonjour["customer"]["device_fcm_token"],
+                    //         reservations["customer"]["device_fcm_token"],
                     //         "Réservation créer",
                     //         "Vous avez une réservation en attente",
                     //         "PRO"
@@ -177,7 +177,7 @@ module.exports = function(Reservation) {
                             if(reservation.reservationEtat == "2"){
 
                                 notify.sendPushNotification(
-                                    bonjour["customer"]["device_fcm_token"],
+                                    reservations["customer"]["device_fcm_token"],
                                     "Réservation créer",
                                     "Vous avez une réservation en attente",
                                     "PRO"
