@@ -165,16 +165,16 @@ module.exports = function(Reservation) {
                         },(err, prod)=>{
                             console.log(prod.device_fcm_token);
                             
-                            if(reservation.reservationEtat == "2"){
+                            if(reservation.reservationEtat === "2"){
 
                                 notify.sendPushNotification(
                                     reservations["customer"]["device_fcm_token"],
                                     "Réservation créer",
                                     "Vous avez une réservation en attente",
                                     "CUS"
-                                    );
+                                    )
                             }
-                            else if(reservation.reservationEtat == "6"){
+                            else if(reservation.reservationEtat === "6"){
 
                                 notify.sendPushNotification(
                                     prod.device_fcm_token,
