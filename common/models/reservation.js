@@ -183,7 +183,16 @@ module.exports = function(Reservation) {
                                     "PRO"
                                     );
                             }
-                            // else if()
+                            else if(reservation.reservationEtat == "6"){
+
+                                notify.sendPushNotification(
+                                    prod.device_fcm_token,
+                                    // reservations["customer"]["device_fcm_token"],
+                                    "Réservation créer",
+                                    "Vous avez une réservation en attente",
+                                    "PRO"
+                                    );
+                            }
                             
                         })
     
