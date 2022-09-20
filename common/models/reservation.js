@@ -169,8 +169,8 @@ module.exports = function(Reservation) {
 
                                 notify.sendPushNotification(
                                     reservations["customer"]["device_fcm_token"],
-                                    "Réservation créer",
-                                    "Vous avez une réservation en attente",
+                                    "Réservation validée",
+                                    "Votre réservation a été validée !",
                                     "CUS"
                                     )
                             }
@@ -180,7 +180,7 @@ module.exports = function(Reservation) {
                                     prod.device_fcm_token,
                                     reservations["customer"]["device_fcm_token"],
                                     "Réservation terminée",
-                                    "Vous avez une réservation terminée",
+                                    "Vous avez une réservation terminée !",
                                     "PRO"
                                     );
                             }
