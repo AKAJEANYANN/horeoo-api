@@ -187,10 +187,9 @@ module.exports = function(Reservation) {
                             
                         })
     
-    
                     });
 
-                        cb(null, reservation)
+                    cb(null, reservation)
                 })
             })
 
