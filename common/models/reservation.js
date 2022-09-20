@@ -180,7 +180,7 @@ module.exports = function(Reservation) {
                                     reservations["customer"]["device_fcm_token"],
                                     "Réservation créer",
                                     "Vous avez une réservation en attente",
-                                    "PRO"
+                                    "CUS"
                                     );
                             }
                             else if(reservation.reservationEtat == "6"){
@@ -188,8 +188,8 @@ module.exports = function(Reservation) {
                                 notify.sendPushNotification(
                                     prod.device_fcm_token,
                                     // reservations["customer"]["device_fcm_token"],
-                                    "Réservation créer",
-                                    "Vous avez une réservation en attente",
+                                    "Réservation terminée",
+                                    "Vous avez une réservation terminée",
                                     "PRO"
                                     );
                             }
