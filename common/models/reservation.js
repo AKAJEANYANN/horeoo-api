@@ -132,19 +132,7 @@ module.exports = function(Reservation) {
         Reservation.findById(
             idreservation,
             {
-                include:[
-                    {
-                    relation:'customer'
-                },
-                    {
-                    relation:'hebergement',
-                    scope:{
-                        include:'provider',
-                        fields:["device_fcm_token"]
-                    }
-                }
-
-                ] 
+                include: 'customer'
             },
             (err, reservation) =>{
                 
@@ -154,33 +142,55 @@ module.exports = function(Reservation) {
                     botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
+                    
                     var reservations = reservation.toJSON();
                     console.log(reservations["customer"]["device_fcm_token"]);
+                 
 
                     if(err) cb(err, null)
                     else
 
-                    if(reservation.reservationEtat == "2"){
+                    Hebergement.findOne({
+                        where:{
+                            id: reservation.hebergementId
+                        }
+                    },(err, heberge)=>{
+                        
+                        console.log(heberge.providerId);
+    
+                        Provider.findOne({
+                            where:{
+                                id: heberge.providerId
+                            }
+                        },(err, prod)=>{
+                            console.log(prod.device_fcm_token);
+                            
+                            if(reservation.reservationEtat == "2"){
 
-                        notify.sendPushNotification(
-                            reservations["customer"]["device_fcm_token"],
-                            "Réservation créer",
-                            "Vous avez une réservation en attente",
-                            "CUS"
-                            );
-                    }
-                    else if(reservation.reservationEtat == "6"){
+                                notify.sendPushNotification(
+                                    reservations["customer"]["device_fcm_token"],
+                                    "Réservation créer",
+                                    "Vous avez une réservation en attente",
+                                    "CUS"
+                                    );
+                            }
+                            else if(reservation.reservationEtat == "6"){
 
-                        notify.sendPushNotification(
-                            reservations["hebergement"]["provider"]["device_fcm_token"],
-                            reservations["customer"]["device_fcm_token"],
-                            "Réservation terminée",
-                            "Vous avez une réservation terminée",
-                            "PRO"
-                            );
-                    }
+                                notify.sendPushNotification(
+                                    prod.device_fcm_token,
+                                    reservations["customer"]["device_fcm_token"],
+                                    "Réservation terminée",
+                                    "Vous avez une réservation terminée",
+                                    "PRO"
+                                    );
+                            }
+                            
+                        })
+    
+    
+                    });
 
-                    cb(null, reservation)
+                        cb(null, reservation)
                 })
             })
 
