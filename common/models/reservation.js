@@ -187,7 +187,7 @@ module.exports = function(Reservation) {
 
                                 notify.sendPushNotification(
                                     prod.device_fcm_token,
-                                    // reservations["customer"]["device_fcm_token"],
+                                    reservations["customer"]["device_fcm_token"],
                                     "Réservation terminée",
                                     "Vous avez une réservation terminée",
                                     "PRO"
