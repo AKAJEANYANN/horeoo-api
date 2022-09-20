@@ -195,7 +195,7 @@ module.exports = function(Reservation) {
                             
                         })
     
-                    });
+                    })
 
                     cb(null, reservation)
                 })
