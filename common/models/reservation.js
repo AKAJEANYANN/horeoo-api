@@ -1,5 +1,4 @@
 'use strict';
-const e = require("cors");
 const notify = require("../../server/global/notify")
 
 module.exports = function(Reservation) {
@@ -38,7 +37,7 @@ module.exports = function(Reservation) {
                         }
                     },(err, prod)=>{
                         console.log(prod.device_fcm_token);
-                        
+
                         notify.sendPushNotification(
                             prod.device_fcm_token,
                             "Réservation créer",
@@ -56,8 +55,7 @@ module.exports = function(Reservation) {
         })
     }
 
-
-    
+  
     Reservation.remoteMethod('creation',
         {
             accepts: 
@@ -112,19 +110,73 @@ module.exports = function(Reservation) {
 
     Reservation.modifReser = function (req, idreservation, cb) {
         
+        const Hebergement = Reservation.app.models.hebergement;
+        const Provider = Reservation.app.models.provider;
+        const messageServeur = Reservation.app.models.messageServeur;
+
+        // function sendMessageServeur(msg ="Félicitation nouveau fournisseur ajouté !" , obj ="Ajout fournisseur") {
+        //     messageServeur.create( {
+        //         message: msg,
+        //         objetMessage: obj,
+        //         vueMessage: false,
+        //         commercialId: commercialId,
+        //       }
+        //     ,(err, mess)=>{
+    
+        //     });
+        // }
+
         var reservationEtat = req.body.reservationEtat;
         var idbot = req.body.idbot;
 
         Reservation.findById(
             idreservation,
+            {
+                include: 'customer'
+            },
             (err, reservation) =>{
+                
+
                 reservation.updateAttributes({
                     reservationEtat: reservationEtat,
                     botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
+                    console.log(reservation);
                     if(err) cb(err, null)
                     else
+
+                    Hebergement.findOne({
+                        where:{
+                            id: reservation.hebergementId
+                        }
+                    },(err, heberge)=>{
+                        
+                        console.log(heberge.providerId);
+    
+                        Provider.findOne({
+                            where:{
+                                id: heberge.providerId
+                            }
+                        },(err, prod)=>{
+                            console.log(prod.device_fcm_token);
+                            
+                            if(reservation.reservationEtat === 2){
+
+                                notify.sendPushNotification(
+                                    reservation.device_fcm_token,
+                                    "Réservation créer",
+                                    "Vous avez une réservation en attente",
+                                    "PRO"
+                                    );
+                            }
+                            // else if()
+                            
+                        })
+    
+    
+                    });
+
                         cb(null, reservation)
                 })
             })
@@ -211,5 +263,5 @@ module.exports = function(Reservation) {
         });
 
 
-    
+      
 };

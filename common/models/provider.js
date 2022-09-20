@@ -314,6 +314,21 @@ module.exports = function(Provider) {
 
 
     Provider.approve = function (id, cb) {
+
+        const messageServeur = Reservation.app.models.messageServeur;
+
+        function sendMessageServeur(msg ="Félicitation votre compte fournisseur a été approuvé !" , obj ="Ajout fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                providerId: id,
+              }
+            ,(err, mess)=>{
+    
+            });
+        }
+
         Provider.findById(
             id,
             (err, provider) =>{
@@ -325,14 +340,18 @@ module.exports = function(Provider) {
                     approval_datetime: Date.now()
                 },(err, provider) =>{
                     if(err) cb(err, null)
-                    else
-                    cb(null, provider)
+                    else{
+                        sendMessageServeur("Félicitation votre compte fournisseur a été approuvé !")
+
+                        cb(null, provider)
+                    }
+                    
                 });
 
                 notify.sendPushNotification(
                     provider.device_fcm_token,
-                    "Provider approuvé",
-                    "Votre compte à été approuvé",
+                    "Fournisseur approuvé",
+                    "Votre compte fournisseur à été approuvé",
                     "PRO"
                     );
             });
