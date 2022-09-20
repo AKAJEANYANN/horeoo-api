@@ -315,7 +315,7 @@ module.exports = function(Provider) {
 
     Provider.approve = function (id, cb) {
 
-        const messageServeur = Reservation.app.models.messageServeur;
+        const messageServeur = Provider.app.models.messageServeur;
 
         function sendMessageServeur(msg ="Félicitation votre compte fournisseur a été approuvé !" , obj ="Ajout fournisseur") {
             messageServeur.create( {
