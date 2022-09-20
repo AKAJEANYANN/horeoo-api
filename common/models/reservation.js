@@ -174,6 +174,15 @@ module.exports = function(Reservation) {
                                     "CUS"
                                     )
                             }
+                            else if(reservation.reservationEtat === "5"){
+
+                                notify.sendPushNotification(
+                                    reservations["customer"]["device_fcm_token"],
+                                    "Réservation debutée",
+                                    "Votre réservation a debutée !",
+                                    "CUS"
+                                    );
+                            }
                             else if(reservation.reservationEtat === "6"){
 
                                 notify.sendPushNotification(
