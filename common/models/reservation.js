@@ -142,9 +142,19 @@ module.exports = function(Reservation) {
                     botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
-                    var bonjour = reservation.toJSON();
-                    console.log(bonjour["customer"]["device_fcm_token"]);
-                    // console.log(bonjour.customer.device_fcm_token);
+                    var reservations = reservation.toJSON();
+                    console.log(reservations["customer"]["device_fcm_token"]);
+                    // console.log(reservations.customer.device_fcm_token);
+
+                    // if(reservation.reservationEtat == "2"){
+
+                    //     notify.sendPushNotification(
+                    //         bonjour["customer"]["device_fcm_token"],
+                    //         "Réservation créer",
+                    //         "Vous avez une réservation en attente",
+                    //         "PRO"
+                    //         );
+                    // }
 
                     if(err) cb(err, null)
                     else
@@ -164,7 +174,7 @@ module.exports = function(Reservation) {
                         },(err, prod)=>{
                             console.log(prod.device_fcm_token);
                             
-                            if(reservation.reservationEtat === 2){
+                            if(reservation.reservationEtat == "2"){
 
                                 notify.sendPushNotification(
                                     bonjour["customer"]["device_fcm_token"],
