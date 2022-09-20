@@ -134,8 +134,7 @@ module.exports = function(Reservation) {
             {
                 include: 'customer'
             },
-            (err, reservation) =>{
-                
+            (err, reservation) =>{ 
 
                 reservation.updateAttributes({
                     reservationEtat: reservationEtat,
