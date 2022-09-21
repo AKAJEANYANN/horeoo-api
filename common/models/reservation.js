@@ -132,7 +132,17 @@ module.exports = function(Reservation) {
         Reservation.findById(
             idreservation,
             {
-                include: 'customer'
+                include:[
+                    {
+                        relation: 'customer'
+                    },
+                    {
+                        relation: 'hebergement',
+                        scope:{
+                            include:'provider'
+                        }
+                    }
+                ] 
             },
             (err, reservation) =>{ 
 
@@ -148,63 +158,43 @@ module.exports = function(Reservation) {
 
                     if(err) cb(err, null)
                     else
+                            
+                        if(reservation.reservationEtat === "2"){
 
-                    Hebergement.findOne({
-                        where:{
-                            id: reservation.hebergementId
+                            notify.sendPushNotification(
+                                reservations["customer"]["device_fcm_token"],
+                                "Réservation validée",
+                                "Votre réservation a été validée !",
+                                "CUS"
+                                );
                         }
-                    },(err, heberge)=>{
-                        
-                        console.log(heberge.providerId);
-    
-                        Provider.findOne({
-                            where:{
-                                id: heberge.providerId
-                            }
-                        },(err, prod)=>{
-                            console.log(prod.device_fcm_token);
-                            
-                            if(reservation.reservationEtat === "2"){
+                        else if(reservation.reservationEtat === "5" && reservations["customer"]["device_fcm_token"] != ""){
 
-                                notify.sendPushNotification(
-                                    reservations["customer"]["device_fcm_token"],
-                                    "Réservation validée",
-                                    "Votre réservation a été validée !",
-                                    "CUS"
-                                    );
-                            }
-                            else if(reservation.reservationEtat === "5" && reservations["customer"]["device_fcm_token"] != ""){
+                            notify.sendPushNotification(
+                                reservations["customer"]["device_fcm_token"],
+                                "Réservation debutée",
+                                "Votre réservation a debutée !",
+                                "CUS"
+                                );
+                        }
+                        else if(reservation.reservationEtat === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] && reservations["customer"]["device_fcm_token"] != ""){
 
-                                notify.sendPushNotification(
-                                    reservations["customer"]["device_fcm_token"],
-                                    "Réservation debutée",
-                                    "Votre réservation a debutée !",
-                                    "CUS"
-                                    );
-                            }
-                            else if(reservation.reservationEtat === "6" && prod.device_fcm_token != "" && reservations["customer"]["device_fcm_token"] != ""){
-
-                                notify.sendPushNotification(
-                                    reservations["customer"]["device_fcm_token"],
-                                    "Réservation terminée",
-                                    "Vous avez une réservation terminée !",
-                                    "CUS"
-                                    );
+                            notify.sendPushNotification(
+                                reservations["customer"]["device_fcm_token"],
+                                "Réservation terminée",
+                                "Vous avez une réservation terminée !",
+                                "CUS"
+                                );
 
 
-                                notify.sendPushNotification(
-                                    prod.device_fcm_token,
-                                    "Réservation terminée",
-                                    "Vous avez une réservation terminée !",
-                                    "PRO"
-                                    );
-                            }
+                            notify.sendPushNotification(
+                                reservations["hebergement"]["provider"]["device_fcm_token"],
+                                "Réservation terminée",
+                                "Vous avez une réservation terminée !",
+                                "PRO"
+                                );
+                        }
 
-
-                            
-                        })
-    
-                    })
 
                     cb(null, reservation)
                 })
