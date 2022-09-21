@@ -182,7 +182,7 @@ module.exports = function(Reservation) {
                                     "CUS"
                                     );
                             }
-                            else if(reservation.reservationEtat === "6" && prod.device_fcm_token != "" && reservations["customer"]["device_fcm_token"] != ""){
+                            else if(reservation.reservationEtat === "6" ){
 
                                 notify.sendPushNotification(
                                     prod.device_fcm_token,
