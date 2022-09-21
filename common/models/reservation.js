@@ -185,18 +185,18 @@ module.exports = function(Reservation) {
                             else if(reservation.reservationEtat === "6" && prod.device_fcm_token != "" && reservations["customer"]["device_fcm_token"] != ""){
 
                                 notify.sendPushNotification(
-                                    prod.device_fcm_token,
-                                    "Réservation terminée",
-                                    "Vous avez une réservation terminée !",
-                                    "PRO"
-                                    );
-
-
-                                notify.sendPushNotification(
                                     reservations["customer"]["device_fcm_token"],
                                     "Réservation terminée",
                                     "Vous avez une réservation terminée !",
                                     "CUS"
+                                    );
+
+
+                                notify.sendPushNotification(
+                                    prod.device_fcm_token,
+                                    "Réservation terminée",
+                                    "Vous avez une réservation terminée !",
+                                    "PRO"
                                     );
                             }
 
