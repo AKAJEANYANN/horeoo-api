@@ -186,6 +186,13 @@ module.exports = function(Reservation) {
                                 "CUS"
                                 );
 
+                            notify.sendPushNotification(
+                                reservations["hebergement"]["provider"]["device_fcm_token"],
+                                "Réservation terminée",
+                                "Vous avez une réservation terminée !",
+                                "PRO"
+                                );
+
                         }
 
 
