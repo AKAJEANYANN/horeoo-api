@@ -132,7 +132,7 @@ module.exports = function(Customer) {
                         },
                         (err, user) => {
                             if(err) cb(err, null);
-                            
+
                             else if(msisdn !=numdemo) { 
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
@@ -150,6 +150,7 @@ module.exports = function(Customer) {
         else{
             cb({status: 401, message: "Veuillez entrer le numéro de téléphone"}, null)
         } 
+        
     };
 
     Customer.remoteMethod('number',
