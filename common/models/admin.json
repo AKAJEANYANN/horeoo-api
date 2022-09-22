@@ -12,13 +12,16 @@
       "defaultFn": "uuidv4"
     },
     "nomComplet": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "phone": {
-      "type": "number"
+      "type": "string",
+      "default": ""
     },
     "device_fcm_token": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
