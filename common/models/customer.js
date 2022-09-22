@@ -132,6 +132,7 @@ module.exports = function(Customer) {
                         },
                         (err, user) => {
                             if(err) cb(err, null);
+                            
                             else if(msisdn !=numdemo) { 
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
