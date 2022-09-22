@@ -48,7 +48,10 @@
     },
     "carrousselHebergement": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "urlInfoAudioHebergement": {
       "type": "string",
