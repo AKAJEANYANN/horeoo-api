@@ -37,7 +37,10 @@
     },
     "carroussel": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "description": {
       "type": "string",
@@ -52,7 +55,10 @@
     },
     "menu": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "phone1": {
       "type": "string",
