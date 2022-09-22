@@ -54,7 +54,11 @@
       "type": "string",
       "default": ""
     },
-    "numeros": {
+    "phone1": {
+      "type": "string",
+      "default": ""
+    },
+    "phone2": {
       "type": "string",
       "default": ""
     },
