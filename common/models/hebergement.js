@@ -64,6 +64,7 @@ module.exports = function(Hebergement) {
 
 
 Hebergement.approve = function (id, cb) {
+
     Hebergement.findById(
         id,
         (err, hebergement) =>{
@@ -84,6 +85,34 @@ Hebergement.remoteMethod('approve',
 {
     accepts: { arg: 'id', type: 'string' },
     http: { path: '/:id/approve', verb: 'post'},
+    returns : { type: 'object', root: true } 
+});
+
+
+
+
+Hebergement.actif = function (id, cb) {
+
+    Hebergement.findById(
+        id,
+        (err, hebergement) =>{
+            console.log(hebergement)
+                hebergement.updateAttributes({
+                    activeHebergement: true,
+                },(err, heberge) =>{
+                    if(err) cb(err, null)
+                    else
+                    cb(null, heberge)
+                })
+            
+        })
+}
+
+
+Hebergement.remoteMethod('actif',
+{
+    accepts: { arg: 'id', type: 'string' },
+    http: { path: '/:id/actif', verb: 'post'},
     returns : { type: 'object', root: true } 
 });
 
@@ -211,44 +240,24 @@ Hebergement.remoteMethod('approve',
 
 
 
-    // Hebergement.maptest = function (
-    //     // lat, lng, limit, skip, providerId, km,  typeHebergementId, 
-    //     cb) {
+    Hebergement.nonlier = function (cb) {
     
-    //     const Offre = Hebergement.app.models.offre;
-
-    //     // var loopback = require('loopback');
-    //     // var userLocation = new loopback.GeoPoint({
-    //     //     lat: lat,
-    //     //     lng: lng
-    //     // });
-
-    //         Hebergement.find({
-    //             where:{
-    //                 activeHebergement: true
-    //             }
-    //         }, (err, hebergement)=>{
-    //             console.log(hebergement);
-    //             if(err)cb(err, null)
-    //         })
-
-    //                 // cb(null, hebergement);
+        Hebergement.find({
+            where:{
+                providerId: "string"
+            }
+            }, (err, hebergement)=>{
+                if(err) cb(err, null)
+                    else
+                        cb(null, hebergement);
+            })
            
-    //     }
+        }
 
-    //     Hebergement.remoteMethod('maptest', {
-    //         // accepts: [
-    //         //         {arg: 'lat', type: 'string'},
-    //         //         {arg: 'lng', type: 'string'},
-    //         //         {arg: 'limit', type: 'string'},
-    //         //         {arg: 'skip', type: 'string'},
-    //         //         {arg: 'providerId', type: 'string'},
-    //         //         {arg: 'km', type: 'string'},
-    //         //         {arg: 'typeHebergementId', type: 'string'}
-    //         //     ],
-    //         http:{ path: '/maptest',verb:'get'},
-    //         returns: {type: 'object', root: true}
-    //     });
+    Hebergement.remoteMethod('nonlier', {
+        http:{ path: '/nonlier',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
 
 
 
@@ -257,11 +266,13 @@ Hebergement.remoteMethod('approve',
     Hebergement.affiche = function (cb) {
 
         Hebergement.find({
-            // where:{
-            //     activeHebergement: true,
-            //     approuveHebergement: true,
-            // },
-
+            where:{
+                approuveHebergement: false,
+                couvertureHebergement: {neq:""},
+                nomProprio: {neq:""},
+                contactProprio: {neq:""},
+                
+            },
             include:['provider','typeHebergement','commercial']
 
         }, (err, hebergement) =>{
@@ -276,6 +287,88 @@ Hebergement.remoteMethod('approve',
     Hebergement.remoteMethod('affiche',
     {
         http: { path: '/affiche', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+    Hebergement.afficheattente = function (cb) {
+
+        Hebergement.find({
+            where:{
+                couvertureHebergement: {neq:""},
+                nomProprio: {neq:""},
+                contactProprio: {neq:""},
+                approuveHebergement: false
+            },
+            include:['provider','typeHebergement','commercial']
+
+        }, (err, hebergement) =>{
+            console.log(hebergement)
+            if(err) cb(err, null)
+            else
+                cb(null, hebergement)
+        })
+    }
+
+
+    Hebergement.remoteMethod('afficheattente',
+    {
+        http: { path: '/afficheattente', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    Hebergement.afficheactif = function (cb) {
+
+        Hebergement.find({
+            where:{
+                approuveHebergement: true,
+                activeHebergement: true
+            },
+            include:['provider','typeHebergement','commercial']
+
+        }, (err, hebergement) =>{
+            console.log(hebergement)
+            if(err) cb(err, null)
+            else
+                cb(null, hebergement)
+        })
+    }
+
+
+    Hebergement.remoteMethod('afficheactif',
+    {
+        http: { path: '/afficheactif', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    Hebergement.affichedesactif = function (cb) {
+
+        Hebergement.find({
+            where:{
+                approuveHebergement: true,
+                activeHebergement: false
+            },
+            include:['provider','typeHebergement','commercial']
+
+        }, (err, hebergement) =>{
+            console.log(hebergement)
+            if(err) cb(err, null)
+            else
+                cb(null, hebergement)
+        })
+    }
+
+
+    Hebergement.remoteMethod('affichedesactif',
+    {
+        http: { path: '/affichedesactif', verb: 'get'},
         returns : { type: 'object', root: true } 
     });
 

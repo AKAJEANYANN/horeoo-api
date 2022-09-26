@@ -27,11 +27,10 @@ module.exports = function(Commercial) {
 
     
 
-    Commercial.affichecom = function (req, cb) {
-        var approuveCommercial = req.body.approuveCommercial;
+    Commercial.affichecomapprouve = function (cb) {
         Commercial.find({
             where:{
-                approuveCommercial: approuveCommercial
+                approuveCommercial: true
             },
             include: 'hebergements'
             },(err, commercial) =>{
@@ -41,11 +40,29 @@ module.exports = function(Commercial) {
     
     }
     
-    Commercial.remoteMethod('affichecom', {
-        accepts: [
-            { arg: 'req', type: 'object', 'http': {source: 'req'}},
-        ],
-        http:{ path: '/affichecom',verb:'post'},
+    Commercial.remoteMethod('affichecomapprouve', {
+        http:{ path: '/affichecomapprouve',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+    Commercial.affichecomdesapprouve = function (cb) {
+        Commercial.find({
+            where:{
+                approuveCommercial: false
+            },
+            include: 'hebergements'
+            },(err, commercial) =>{
+                if(err) cb(err, null)
+                else cb(null, commercial)
+        })
+    
+    }
+    
+    Commercial.remoteMethod('affichecomdesapprouve', {
+        http:{ path: '/affichecomdesapprouve',verb:'get'},
         returns: {type: 'object', root: true}
     });
 
