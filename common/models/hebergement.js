@@ -240,6 +240,8 @@ Hebergement.remoteMethod('actif',
 
 
 
+        //affichage des hebergement non liés
+
     Hebergement.nonlier = function (cb) {
     
 
