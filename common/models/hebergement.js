@@ -245,7 +245,7 @@ Hebergement.remoteMethod('actif',
 
         Hebergement.find({
             where:{
-                providerId:"string"
+                providerId:""
             }
         }, (err, hebergement)=>{
             if (err) cb(err, null)
