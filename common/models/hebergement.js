@@ -242,14 +242,17 @@ Hebergement.remoteMethod('actif',
 
     Hebergement.nonlier = function (cb) {
     
+
         Hebergement.find({
             where:{
-                providerId: "string"
+                providerId:"string"
             }
-            }, (err, hebergement)=>{
-                if(err) cb(err, null)
-                    else
-                        cb(null, hebergement);
+        }, (err, hebergement)=>{
+            if (err) cb(err, null)
+            else{
+                cb(null, hebergement);
+
+             }
             })
            
         }
