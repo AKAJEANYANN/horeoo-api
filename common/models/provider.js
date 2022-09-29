@@ -421,7 +421,7 @@ module.exports = function(Provider) {
 
 
 
-    Provider.hebergereserve = function (idProvider, etatReservation,
+    Provider.etatReservationHebergement = function (idProvider, etatReservation,
           cb) {
         
         Provider.find(
@@ -459,13 +459,13 @@ module.exports = function(Provider) {
     }
     
     
-    Provider.remoteMethod('hebergereserve',
+    Provider.remoteMethod('etatReservationHebergement',
     {
         accepts: [
                 { arg: 'idProvider', type: 'string' },
                 { arg: 'etatReservation', type: 'string' }
             ],
-        http: { path: '/hebergereserve', verb: 'get'},
+        http: { path: '/etatReservationHebergement', verb: 'get'},
         returns : { type: 'object', root: true } 
     });
 
