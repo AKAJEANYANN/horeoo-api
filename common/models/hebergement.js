@@ -381,7 +381,7 @@ Hebergement.remoteMethod('actif',
 
 
 
-    Hebergement.mapfilter = function (lat, lng, limit, skip, onlineHebergement, km,  typeHebergementId, prixMinimOffre, prixMaximOffre, cb) {
+    Hebergement.mapfilter = function (lat, lng, limit, skip, onlineHebergement, nombrePiece, km,  typeHebergementId, prixMinimOffre, prixMaximOffre, cb) {
     
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
@@ -395,6 +395,7 @@ Hebergement.remoteMethod('actif',
             skip: skip,
             where:{
                 onlineHebergement: onlineHebergement,
+                nombrePiece: nombrePiece,
                 approuveHebergement: true,
                 locationHebergement: {
                     near: userLocation,
@@ -444,6 +445,7 @@ Hebergement.remoteMethod('actif',
                 {arg: 'limit', type: 'string'},
                 {arg: 'skip', type: 'string'},
                 {arg: 'onlineHebergement', type: 'string'},
+                {arg: 'nombrePiece', type: 'string'},
                 {arg: 'km', type: 'string'},
                 {arg: 'typeHebergementId', type: 'string'},
                 {arg: 'prixMinimOffre', type: 'string'},
