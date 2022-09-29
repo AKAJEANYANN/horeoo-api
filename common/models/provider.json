@@ -158,6 +158,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "mapfilter"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "hebergereserve"
     }
   ],
   "methods": {}

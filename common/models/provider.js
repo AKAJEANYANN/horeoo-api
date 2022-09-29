@@ -416,4 +416,60 @@ module.exports = function(Provider) {
         returns : { type: 'object', root: true } 
     });
 
+
+
+
+
+
+    Provider.hebergereserve = function (idProvider, etatReservation,
+          cb) {
+        
+        Provider.find(
+            {
+            where:{
+                id: idProvider
+                },
+                include:{
+                    relation:'hebergements',
+                    scope:{
+                        include:{
+                            relation:'reservations',  
+                                scope:{
+                                where:{
+                                    // id: {neq:""},
+                                    reservationEtat: etatReservation
+                                }
+                            }
+                        }
+                    }
+                }
+
+            },
+            (err, provider) =>{
+                console.log(provider);
+                if(err) cb(err, null)
+                else{
+                    // const providers = provider.filter(e =>e.hebergements.reservations.id != "");
+                         
+                    cb(null, provider);
+
+                }
+              
+            })
+    }
+    
+    
+    Provider.remoteMethod('hebergereserve',
+    {
+        accepts: [
+                { arg: 'idProvider', type: 'string' },
+                { arg: 'etatReservation', type: 'string' }
+            ],
+        http: { path: '/hebergereserve', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
 };
