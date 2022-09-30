@@ -459,14 +459,14 @@ Hebergement.remoteMethod('actif',
 
 
 
-    Hebergement.rechercheParNom = function (denominationHebergement, cb) {
+    Hebergement.rechercheParNom = function (denominationHebergement,typeHebergementId, cb) {
         
     
         Hebergement.find({
             where:{
                 approuveHebergement: true,
-
-                denominationHebergement: {like: `%${denominationHebergement}%`}
+                denominationHebergement: {like: `%${denominationHebergement}%`},     
+                typeHebergementId: typeHebergementId
             },
             include:[
                 {
@@ -493,7 +493,10 @@ Hebergement.remoteMethod('actif',
     }
     
     Hebergement.remoteMethod('rechercheParNom', {
-        accepts: {arg: 'denominationHebergement', type: 'string'},
+        accepts: [
+                {arg: 'denominationHebergement', type: 'string'},
+                {arg: 'typeHebergementId', type: 'string'}
+            ],
         http:{ path: '/rechercheParNom',verb:'get'},
         returns: {type: 'object', root: true}
     });
