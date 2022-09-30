@@ -433,7 +433,8 @@ module.exports = function(Provider) {
                 include:{
                     relation:'hebergements',
                     scope:{
-                        include:{
+                        include:[
+                        {
                             relation:'reservations',  
                                 scope:{
                                 where:{
@@ -441,7 +442,21 @@ module.exports = function(Provider) {
                                     reservationEtat: etatReservation
                                 }
                             }
+                        },
+                        {
+                            relation:'offre',
+                            scope:{
+                               where:{
+                                // prixOffre: {between: [prixMinimOffre,prixMaximOffre]},
+                                activeOffre: true,
+                                visibleOffre: true,
+                               },
+                               limit:1
+                            }
                         }
+                    ]
+
+
                     }
                 }
 
@@ -450,9 +465,9 @@ module.exports = function(Provider) {
                 console.log(provider);
                 if(err) cb(err, null)
                 else{
-                    const providers = provider.filter(e =>e.hebergements.reservations.length > 0);
+                    // const providers = provider.filter(e =>e.hebergements.reservations.length > 0);
                     //const hebergements = hebergement.filter(e => e.offre.length > 0); 
-                    cb(null, providers);
+                    cb(null, provider);
 
                 }
               
