@@ -297,6 +297,8 @@ Hebergement.remoteMethod('actif',
 
 
 
+
+
     Hebergement.afficheattente = function (cb) {
 
         Hebergement.find({

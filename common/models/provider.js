@@ -103,7 +103,7 @@ module.exports = function(Provider) {
 
         
         // var code = Math.floor(Math.random() * 9000) + 1000;
-        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
 
@@ -124,7 +124,8 @@ module.exports = function(Provider) {
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else if (msisdn != numdemo) {
+
+                        else if (msisdn != numdemo && msisdn !="+2250709128585") {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             if(commercialId !=""){

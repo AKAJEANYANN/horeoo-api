@@ -85,7 +85,7 @@ module.exports = function(Customer) {
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
         // var code = Math.floor(Math.random() * 9000) + 1000;
-        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo) ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
         
 
@@ -133,7 +133,7 @@ module.exports = function(Customer) {
                         (err, user) => {
                             if(err) cb(err, null);
 
-                            else if(msisdn !=numdemo) { 
+                            else if(msisdn !=numdemo && msisdn !="+2250709128585") { 
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
                                 // TODO : Envoyer SMS
