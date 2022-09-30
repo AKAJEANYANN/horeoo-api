@@ -84,23 +84,23 @@ module.exports = function(Customer) {
 
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
-        const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"];
-        var result = false;
-        result = verifynum();
+        // const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"];
+        // var result = false;
+        // result = verifynum();
         // var code = Math.floor(Math.random() * 9000) + 1000;
-        // var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
-        var code = result?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        // var code = result?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
         
-        function verifynum() {
+        // function verifynum() {
             
-            for (let index = 0; index < arrayNum.length; index++) {
-                if(msisdn == array[index]){
-                    return false
-                }
-            }
-            return true
-        };
+        //     for (let index = 0; index < arrayNum.length; index++) {
+        //         if(msisdn == array[index]){
+        //             return false
+        //         }
+        //     }
+        //     return true
+        // };
 
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
@@ -122,7 +122,7 @@ module.exports = function(Customer) {
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else if(!result) {
+                        else if(msisdn != "+2250709128585") {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             
