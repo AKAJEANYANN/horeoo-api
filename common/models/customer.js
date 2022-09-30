@@ -84,7 +84,7 @@ module.exports = function(Customer) {
 
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
-        const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"]
+        const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"];
         var result = false;
         result = verifynum();
         // var code = Math.floor(Math.random() * 9000) + 1000;
