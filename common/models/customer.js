@@ -85,9 +85,11 @@ module.exports = function(Customer) {
         var msisdn = req.body.msisdn;
         var numdemo = "+2250011223344";
         const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"]
+        var result = false;
+        result = verifynum();
         // var code = Math.floor(Math.random() * 9000) + 1000;
         // var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
-        var code = verifynum()?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        var code = result?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
         
         function verifynum() {
@@ -120,7 +122,7 @@ module.exports = function(Customer) {
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else if(!verifynum()) {
+                        else if(!result) {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             
