@@ -450,9 +450,9 @@ module.exports = function(Provider) {
                 console.log(provider);
                 if(err) cb(err, null)
                 else{
-                    // const providers = provider.filter(e =>e.hebergements.reservations.id != "");
-                         
-                    cb(null, provider);
+                    const providers = provider.filter(e =>e.hebergements.reservations.length > 0);
+                    //const hebergements = hebergement.filter(e => e.offre.length > 0); 
+                    cb(null, providers);
 
                 }
               
