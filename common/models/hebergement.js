@@ -459,6 +459,49 @@ Hebergement.remoteMethod('actif',
 
 
 
+    Hebergement.rechercheParNom = function (denominationHebergement, cb) {
+        
+    
+        Hebergement.find({
+            where:{
+                approuveHebergement: true,
+
+                denominationHebergement: {like: `%${denominationHebergement}%`}
+            },
+            include:[
+                {
+                relation:'offre',
+                scope:{
+                   where:{
+                    activeOffre: true,
+                    visibleOffre: true,
+                   },
+                   limit:1
+                }
+            }
+        ]
+    
+        },(err, hebergement) =>{
+            if (err) cb(err, null)
+            else{
+                const hebergements = hebergement.filter(e => e.offre.length > 0);
+                cb(null, hebergements);
+
+             }
+            },
+        )
+    }
+    
+    Hebergement.remoteMethod('rechercheParNom', {
+        accepts: {arg: 'denominationHebergement', type: 'string'},
+        http:{ path: '/rechercheParNom',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+
     Hebergement.countTypeHeber = function (typeHebergementId, cb) {
 
             var countTypeHeber = 0;

@@ -258,6 +258,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "nonlier"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "recherche"
     }
   ],
   "methods": {}
