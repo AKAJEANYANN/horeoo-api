@@ -165,6 +165,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "hebergereserve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "etatReservationHebergement"
     }
   ],
   "methods": {}

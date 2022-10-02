@@ -422,74 +422,7 @@ module.exports = function(Provider) {
 
 
 
-    // Provider.etatReservationHebergement = function (idProvider, etatReservation, cb) {
-
-    //     const Hebergement = Provider.app.models.hebergement;
-        
-    //     Provider.find(
-    //         {
-    //         where:{
-    //             id: idProvider
-    //             }
-
-    //         },
-    //         (err, provider) =>{
-    //             console.log(provider);
-    //             if(err) cb(err, null)
-    //             else if(provider.id != ""){
-
-    //                 Hebergement.find({
-    //                     where:{
-    //                         id: provider.hebergementId
-    //                     },
-    //                     include:[
-    //                     {
-    //                         relation:'reservations',  
-    //                             scope:{
-    //                             where:{
-    //                                 // id: {neq:""},
-    //                                 reservationEtat: etatReservation
-    //                             }
-    //                         }
-    //                     },
-    //                     {
-    //                         relation:'offre',
-    //                         scope:{
-    //                             where:{
-    //                             // prixOffre: {between: [prixMinimOffre,prixMaximOffre]},
-    //                             activeOffre: true,
-    //                             visibleOffre: true,
-    //                             },
-    //                             limit:1
-    //                         }
-    //                     }
-    //                 ]
-        
-        
-    //                 },(err, heber)=>{
-    //                     if(err) cb(err, null)
-    //                     else
-    //                         cb(null, heber)
-    //                 })
-    //                 // const providers = provider.filter(e =>e.hebergements.reservations.length > 0);
-    //                 //const hebergements = hebergement.filter(e => e.offre.length > 0); 
-    //                 // cb(null, provider);
-
-    //             }
-              
-    //         })
-    // }
     
-    
-    // Provider.remoteMethod('etatReservationHebergement',
-    // {
-    //     accepts: [
-    //             { arg: 'idProvider', type: 'string' },
-    //             { arg: 'etatReservation', type: 'string' }
-    //         ],
-    //     http: { path: '/etatReservationHebergement', verb: 'get'},
-    //     returns : { type: 'object', root: true } 
-    // });
 
 
 
