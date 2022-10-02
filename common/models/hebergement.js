@@ -623,7 +623,6 @@ Hebergement.remoteMethod('actif',
 
 
         Hebergement.etatReservationHebergement = function (idProvider, etatReservation, cb) {
-
             
             Hebergement.find(
                 {
