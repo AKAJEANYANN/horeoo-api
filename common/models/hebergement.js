@@ -618,4 +618,65 @@ Hebergement.remoteMethod('actif',
             returns : { type: 'object', root: true } 
         });
 
+
+
+
+
+        Hebergement.etatReservationHebergement = function (idProvider, etatReservation, cb) {
+
+            
+            Hebergement.find(
+                {
+                where:{
+                    providerId: idProvider
+                    },
+                    include:[
+                    {
+                        relation:'reservations',  
+                            scope:{
+                            where:{
+                                // id: {neq:""},
+                                reservationEtat: etatReservation
+                            }
+                        }
+                    },
+                    {
+                        relation:'offre',
+                        scope:{
+                            where:{
+                            // prixOffre: {between: [prixMinimOffre,prixMaximOffre]},
+                            activeOffre: true,
+                            visibleOffre: true,
+                            },
+                            limit:1
+                        }
+                    }
+                ]
+    
+                },
+                (err, hebergement) =>{
+                    console.log(hebergement);
+                    if(err) cb(err, null)
+                    else{
+                        const hebergements = hebergement.filter(e => e.reservations.length > 0 );
+
+                        cb(null, hebergements);
+                    }
+                  
+                })
+        }
+        
+        
+        Hebergement.remoteMethod('etatReservationHebergement',
+        {
+            accepts: [
+                    { arg: 'idProvider', type: 'string' },
+                    { arg: 'etatReservation', type: 'string' }
+                ],
+            http: { path: '/etatReservationHebergement', verb: 'get'},
+            returns : { type: 'object', root: true } 
+        });
+
+
+
 };
