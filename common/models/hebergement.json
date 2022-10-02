@@ -265,6 +265,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "recherche"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "etatReservationHebergement"
     }
   ],
   "methods": {}
