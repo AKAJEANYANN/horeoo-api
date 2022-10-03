@@ -40,7 +40,7 @@ module.exports = function(Reservation) {
 
                         notify.sendPushNotification(
                             prod.device_fcm_token,
-                            "Réservation créer",
+                            "Nouvelle réservation",
                             "Vous avez une réservation en attente",
                             "PRO"
                             );
@@ -252,7 +252,7 @@ module.exports = function(Reservation) {
 
 
 
-        Reservation.countReservation = function (providerId, etat, cb) {
+    Reservation.countReservation = function (providerId, etat, cb) {
 
             var sql;
             const Hebergement = Reservation.app.models.hebergement;
@@ -283,4 +283,7 @@ module.exports = function(Reservation) {
 
 
       
+
+
+       
 };
