@@ -18,8 +18,8 @@ module.exports = function(Restaurant) {
                 localisation: {
                     near: userLocation
                   },
-                category: category
-
+                category: category,
+                active: true
             }
     
         },(err, recherche) =>{
