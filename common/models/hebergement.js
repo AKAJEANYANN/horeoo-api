@@ -338,7 +338,7 @@ Hebergement.remoteMethod('actif',
 
 
 
-
+    //affichage des hebergements desactivés
     Hebergement.affichedesactif = function (cb) {
 
         Hebergement.find({
