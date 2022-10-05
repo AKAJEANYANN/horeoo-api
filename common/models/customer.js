@@ -202,8 +202,7 @@ module.exports = function(Customer) {
     });
 
 
-
-
+    //affichage des reservation des client
     Customer.getClientReserv = function (cb) {
         
         Customer.find({
