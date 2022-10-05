@@ -5,7 +5,7 @@
   "options": {
     "validateUpsert": true,
     "mysql": {
-      "table": "typeHebergement"
+      "table": "typehebergement"
     }
   },
   "scope": {

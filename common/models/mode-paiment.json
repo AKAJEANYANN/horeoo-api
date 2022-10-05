@@ -5,7 +5,7 @@
   "options": {
     "validateUpsert": true,
     "mysql": {
-      "table": "modePaiment"
+      "table": "modepaiment"
     }
   },
   "properties": {

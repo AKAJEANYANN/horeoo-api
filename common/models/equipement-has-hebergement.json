@@ -5,7 +5,7 @@
   "options": {
     "validateUpsert": true,
     "mysql": {
-      "table": "equipementHasHebergement"
+      "table": "equipementhashebergement"
     }
   },
   "properties": {

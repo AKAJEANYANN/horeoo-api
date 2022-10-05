@@ -5,7 +5,7 @@
   "options": {
     "validateUpsert": true,
     "mysql": {
-      "table": "appAccessToken"
+      "table": "appaccesstoken"
     }
   },
   "properties": {},
