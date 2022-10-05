@@ -1,12 +1,12 @@
 {
   "horeooAppDb": {
-    "host": "eu-cdbr-west-02.cleardb.net",
-    "port": 3306,
+    "host": "mysql-90272-0.cloudclusters.net",
+    "port": 18235,
     "url": "",
-    "database": "heroku_c2b135289dde9c3",
-    "password": "363e176d",
+    "database": "horeoo_app_db",
+    "password": "HVxra2Xh",
     "name": "horeooAppDb",
-    "user": "bf0b916cd8ce10",
+    "user": "admin",
     "connector": "mysql"
   }
 }
