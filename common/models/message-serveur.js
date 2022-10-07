@@ -4,14 +4,15 @@ const notify = require("../../server/global/notify")
 module.exports = function(Messageserveur) {
 
     //messge de refus d'un provider
-    Messageserveur.refusProvider = function (objetMessage,message, idProvider, cb) {
+    Messageserveur.refusProvider = function (req, idProvider, cb) {
         
+        var messageServeurBody = req.body.messageServeurBody; 
 
         const Provider = Messageserveur.app.models.provider;
 
         Messageserveur.create({
-            objetMessage: objetMessage,
-            message: message,
+            objetMessage: messageServeurBody.objetMessage,
+            message: messageServeurBody.message,
             providerId: idProvider
         },
             (err, mess) =>{
@@ -38,8 +39,7 @@ module.exports = function(Messageserveur) {
     Messageserveur.remoteMethod('refusProvider',
         {
         accepts: [
-            { arg: 'objetMessage', type: 'string'},
-            { arg: 'message', type: 'string',},
+            { arg: 'req', type: 'object', 'http': {source: 'req'}},
             { arg: 'idProvider', type: 'string' }],
         http: { path: '/:idProvider/refusProvider', verb: 'post'},
         returns : { type: 'object', root: true } 
