@@ -1,5 +1,5 @@
 {
-  "name": "payement",
+  "name": "paiement",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,39 +11,51 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "paymentCreatedDate": {
+    "dateCreationPaiement": {
       "type": "date",
       "defaultFn": "now"
     },
-    "paymentPhonePrefix": {
+    "phonePrefixPaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentPhoneNumber": {
+    "PhoneNumeroPaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentAmount": {
+    "montantPaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentAmountCurrency": {
+    "deviseMontantPaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentStatus": {
+    "statusPaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentProvider": {
+    "referencePaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentProviderMethod": {
+    "detailPaiement": {
       "type": "string",
       "default": ""
     },
-    "paymentProviderStatus": {
+    "modifPaiement": {
+      "type": "string",
+      "default": ""
+    },
+    "hebergementPaiement": {
+      "type": "string",
+      "default": ""
+    },
+    "hebergementMethodPaiement": {
+      "type": "string",
+      "default": ""
+    },
+    "hebergementStatusPaiement": {
       "type": "string",
       "default": ""
     }

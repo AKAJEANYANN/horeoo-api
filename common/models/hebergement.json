@@ -150,9 +150,9 @@
         "nestRemoting": true
       }
     },
-    "payements": {
+    "paiements": {
       "type": "hasMany",
-      "model": "payement",
+      "model": "paiement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
