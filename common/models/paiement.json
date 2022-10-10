@@ -63,7 +63,7 @@
       "type": "string",
       "default": ""
     },
-    "transacIdPayment": {
+    "transacIdPaiement": {
       "type": "string",
       "default": ""
     }
