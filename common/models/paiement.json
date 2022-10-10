@@ -62,6 +62,10 @@
     "hebergementStatusPaiement": {
       "type": "string",
       "default": ""
+    },
+    "transacIdPayment": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
