@@ -92,6 +92,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "noteHebergements": {
+      "type": "hasMany",
+      "model": "noteHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [

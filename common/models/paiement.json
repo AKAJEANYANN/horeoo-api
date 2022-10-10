@@ -19,7 +19,7 @@
       "type": "string",
       "default": ""
     },
-    "PhoneNumeroPaiement": {
+    "phoneNumeroPaiement": {
       "type": "string",
       "default": ""
     },

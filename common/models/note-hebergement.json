@@ -18,7 +18,15 @@
       "type": "string",
       "default": ""
     },
+    "date": {
+      "type": "date",
+      "defaultFn": "now"
+    },
     "commentaire": {
+      "type": "string",
+      "default": ""
+    },
+    "image": {
       "type": "string",
       "default": ""
     }
@@ -36,6 +44,14 @@
     "reservations": {
       "type": "hasOne",
       "model": "reservation",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "customer": {
+      "type": "belongsTo",
+      "model": "customer",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
