@@ -6,11 +6,18 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "montantFacturation": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "dateFacturation": {
-      "type": "date"
+      "type": "date",
+      "defaultFn":"now"
     }
   },
   "validations": [],
