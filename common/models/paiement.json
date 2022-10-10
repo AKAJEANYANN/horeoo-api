@@ -47,6 +47,10 @@
       "type": "string",
       "default": ""
     },
+    "datemodifPaiement": {
+      "type": "date",
+      "defaultFn": "now"
+    },
     "hebergementPaiement": {
       "type": "string",
       "default": ""

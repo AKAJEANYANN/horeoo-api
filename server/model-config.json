@@ -112,5 +112,9 @@
   "historique": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "facturation": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

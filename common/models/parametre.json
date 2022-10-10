@@ -22,6 +22,10 @@
     "designationParametre": {
       "type": "string",
       "default": ""
+    },
+    "dateModifParametre": {
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],

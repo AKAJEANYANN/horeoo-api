@@ -64,6 +64,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "facturations": {
+      "type": "hasMany",
+      "model": "facturation",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
