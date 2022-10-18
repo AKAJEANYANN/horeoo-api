@@ -1,7 +1,6 @@
 'use strict';
 const AppConfig = require( '../../server/global/app_config');
 const axios = require('axios');
-const moment = require('moment');
 const CINETPAY_API = AppConfig.CINETPAY_API;
 const CINETPAY_HOREOO_SITEID = AppConfig.CINETPAY_HOREOO_SITEID;
 const CINETPAY_HOREOO_APIKEY = AppConfig.CINETPAY_HOREOO_APIKEY;
