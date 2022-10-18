@@ -47,23 +47,31 @@
       "type": "string",
       "default": ""
     },
-    "datemodifPaiement": {
+    "dateModifPaiement": {
       "type": "date",
       "defaultFn": "now"
     },
-    "hebergementPaiement": {
+    "paiementProviderMethod": {
       "type": "string",
       "default": ""
     },
-    "hebergementMethodPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "hebergementStatusPaiement": {
+    "paiementProviderStatus": {
       "type": "string",
       "default": ""
     },
     "transacIdPaiement": {
+      "type": "string",
+      "default": ""
+    },
+    "paiementProvider": {
+      "type": "string",
+      "default": ""
+    },
+    "customerId": {
+      "type": "string",
+      "default": ""
+    },
+    "evenementId": {
       "type": "string",
       "default": ""
     }

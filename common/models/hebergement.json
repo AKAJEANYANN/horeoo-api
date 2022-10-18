@@ -30,6 +30,10 @@
       "type": "boolean",
       "default": true
     },
+    "soldable": {
+      "type": "boolean",
+      "default": false
+    },
     "onlineHebergement": {
       "type": "boolean",
       "default": true
