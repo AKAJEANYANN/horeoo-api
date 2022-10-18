@@ -43,11 +43,11 @@
       "type": "string",
       "default": ""
     },
-    "modifPaiement": {
+    "motifPaiement": {
       "type": "string",
       "default": ""
     },
-    "dateModifPaiement": {
+    "dateMotifPaiement": {
       "type": "date",
       "defaultFn": "now"
     },
