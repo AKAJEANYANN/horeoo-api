@@ -1,5 +1,4 @@
 'use strict';
-
 const AppConfig = require( '../../server/global/app_config');
 const axios = require('axios');
 const moment = require('moment');
