@@ -258,10 +258,10 @@ module.exports = function(Reservation) {
             const Hebergement = Reservation.app.models.hebergement;
             var ds = Hebergement.dataSource;
             if (providerId != "" && etat != "") {
-                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND reservation.reservationEtat = '${etat}' `;
+                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND hebergement.activeHebergement = '1' AND reservation.reservationEtat = '${etat}' `;
             }
             else{
-                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' `;
+                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND hebergement.activeHebergement = '1' `;
             }
             
             ds.connector.query(sql, function (err, data){

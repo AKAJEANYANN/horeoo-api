@@ -612,6 +612,7 @@ Hebergement.remoteMethod('actif',
             Hebergement.find(
                 {
                 where:{
+                    activeHebergement: true,
                     providerId: idProvider
                     },
                     include:[
