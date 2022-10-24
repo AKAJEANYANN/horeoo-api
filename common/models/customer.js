@@ -237,4 +237,83 @@ module.exports = function(Customer) {
 
 
 
+
+
+    //affichage des reservation des client actif
+    Customer.getClientActifReserv = function (cb) {
+        
+        Customer.find({
+            where:{
+                activeCustomer: true
+            },
+            include:[
+                {
+                    relation: 'reservations',
+                    scope: {
+                        include:{
+                            relation: 'offre',
+                            scope: {
+                                include: 'hebergement'
+                            }
+                        }
+                    }
+                }
+            ]
+        }, (err, reservation) =>{
+            console.log(reservation)
+            if(err) cb(err, null)
+            else
+                cb(null, reservation);
+        })
+    }
+
+
+    Customer.remoteMethod('getClientActifReserv',
+    {
+        http:{ path: '/getClientActifReserv',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    //affichage des reservation des client desactif
+    Customer.getClientDesactifReserv = function (cb) {
+        
+        Customer.find({
+            where:{
+                activeCustomer: false
+            },
+            include:[
+                {
+                    relation: 'reservations',
+                    scope: {
+                        include:{
+                            relation: 'offre',
+                            scope: {
+                                include: 'hebergement'
+                            }
+                        }
+                    }
+                }
+            ]
+        }, (err, reservation) =>{
+            console.log(reservation)
+            if(err) cb(err, null)
+            else
+                cb(null, reservation);
+        })
+    }
+
+
+    Customer.remoteMethod('getClientDesactifReserv',
+    {
+        http:{ path: '/getClientDesactifReserv',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
 };

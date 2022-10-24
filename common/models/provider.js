@@ -395,6 +395,21 @@ module.exports = function(Provider) {
 
 
     Provider.active = function (id, cb) {
+
+        const messageServeur = Provider.app.models.messageServeur;
+
+        function sendMessageServeur(msg ="Votre compte fournisseur a été activé !" , obj ="Activation fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                providerId: id,
+              }
+            ,(err, mess)=>{
+    
+            });
+        }
+
         Provider.findById(
             id,
             (err, provider) =>{
@@ -403,9 +418,18 @@ module.exports = function(Provider) {
                     active_datetime: Date.now()
                 },(err, provider) =>{
                     if(err) cb(err, null)
-                    else
-                    cb(null, provider)
-                })
+                    else{
+                        sendMessageServeur("Votre compte fournisseur a été activé !")
+
+                        cb(null, provider)
+                    }
+                });
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Fournisseur activé",
+                    "Votre compte fournisseur à été activé",
+                    "PRO"
+                    );
             })
     }
     
@@ -414,6 +438,57 @@ module.exports = function(Provider) {
     {
         accepts: { arg: 'id', type: 'string' },
         http: { path: '/:id/active', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    Provider.desactive = function (id, cb) {
+
+        const messageServeur = Provider.app.models.messageServeur;
+
+        function sendMessageServeur(msg ="Votre compte fournisseur a été désactivé pour non respect de nos règlements !" , obj ="Désactivation fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                providerId: id,
+              }
+            ,(err, mess)=>{
+    
+            });
+        }
+
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                provider.updateAttributes({
+                    activeProvider: false,
+                    active_datetime: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else{
+                        sendMessageServeur("Votre compte fournisseur a été désactivé pour non respect de nos règle !")
+
+                        cb(null, provider)
+                    }
+                });
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Fournisseur désactivé",
+                    "Votre compte fournisseur à été désactivé",
+                    "PRO"
+                    );
+            })
+    }
+    
+    
+    Provider.remoteMethod('desactive',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/desactive', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
 
