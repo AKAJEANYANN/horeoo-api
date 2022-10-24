@@ -355,7 +355,7 @@ module.exports = function(Provider) {
                     "Votre compte fournisseur à été approuvé",
                     "PRO"
                     );
-            });
+            })
     }
     
     
@@ -484,7 +484,7 @@ module.exports = function(Provider) {
             })
     }
 
-    
+
     
     
     Provider.remoteMethod('desactive',
