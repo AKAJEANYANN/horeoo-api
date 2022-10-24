@@ -120,6 +120,20 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "affichecomdesapprouve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "approuve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "desapprouve"
     }
   ],
   "methods": {}
