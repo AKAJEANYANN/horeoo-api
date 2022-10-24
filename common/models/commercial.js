@@ -44,7 +44,7 @@ module.exports = function(Commercial) {
         Commercial.findById(
             id,
             (err, commercial) =>{
-                
+
                 commercial.updateAttributes({
                     approuveCommercial: false,
                     approval_datetime: Date.now()
@@ -58,7 +58,7 @@ module.exports = function(Commercial) {
                 notify.sendPushNotification(
                     commercial.device_fcm_token,
                     "Commercial désapprouvé",
-                    "Votre compte commercial à été désapprouvé",
+                    "Votre compte commercial a été désapprouvé",
                     "COM"
                     );
             })

@@ -177,7 +177,7 @@ module.exports = function(Customer) {
     });
 
    
-
+// activation des customer
     Customer.active = function (id, cb) {
         Customer.findById(
             id,
@@ -189,7 +189,14 @@ module.exports = function(Customer) {
                     if(err) cb(err, null)
                     else
                     cb(null, customer)
-                })
+                });
+
+                notify.sendPushNotification(
+                    customer.device_fcm_token,
+                    "Compte activé",
+                    "Votre compte client a été activé",
+                    "CUS"
+                    );
             })
     }
     
@@ -198,6 +205,39 @@ module.exports = function(Customer) {
     {
         accepts: { arg: 'id', type: 'string' },
         http: { path: '/:id/active', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+    // desactivation des customers
+    Customer.desactive = function (id, cb) {
+        Customer.findById(
+            id,
+            (err, customer) =>{
+                customer.updateAttributes({
+                    activeCustomer: false,
+                    active_datetime: Date.now()
+                },(err, customer) =>{
+                    if(err) cb(err, null)
+                    else
+                    cb(null, customer)
+                });
+
+                notify.sendPushNotification(
+                    customer.device_fcm_token,
+                    "Compte désactivé",
+                    "Votre compte client a été désactivé",
+                    "CUS"
+                    );
+            })
+    }
+    
+    
+    Customer.remoteMethod('desactive',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/desactive', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
 
