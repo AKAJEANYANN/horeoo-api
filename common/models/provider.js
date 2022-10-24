@@ -485,6 +485,7 @@ module.exports = function(Provider) {
     }
     
     
+    
     Provider.remoteMethod('desactive',
     {
         accepts: { arg: 'id', type: 'string' },
