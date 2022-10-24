@@ -154,14 +154,6 @@
         "nestRemoting": true
       }
     },
-    "paiements": {
-      "type": "hasMany",
-      "model": "paiement",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    },
     "provider": {
       "type": "belongsTo",
       "model": "provider",

@@ -71,22 +71,13 @@
       "type": "string",
       "default": ""
     },
-    "evenementId": {
+    "clientId": {
       "type": "string",
       "default": ""
     }
   },
   "validations": [],
-  "relations": {
-    "hebergement": {
-      "type": "belongsTo",
-      "model": "hebergement",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    }
-  },
+  "relations": {},
   "acls": [
     {
       "accessType": "*",
