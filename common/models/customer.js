@@ -227,7 +227,7 @@ module.exports = function(Customer) {
                 notify.sendPushNotification(
                     customer.device_fcm_token,
                     "Compte désactivé",
-                    "Votre compte client a été désactivé pour mechanceté d'écouteur",
+                    "Votre compte client a été désactivé pour non respect de nos règlement.",
                     "CUS"
                     );
             })

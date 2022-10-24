@@ -478,7 +478,7 @@ module.exports = function(Provider) {
                 notify.sendPushNotification(
                     provider.device_fcm_token,
                     "Fournisseur désactivé",
-                    "Votre compte fournisseur à été désactivé",
+                    "Votre compte fournisseur à été désactivé pour méchanceté d'ecouteur Iphone",
                     "PRO"
                     );
             })
