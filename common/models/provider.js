@@ -368,7 +368,6 @@ module.exports = function(Provider) {
 
 
 
-    
 
     Provider.approuve = function (id, cb) {
         Provider.findById(
