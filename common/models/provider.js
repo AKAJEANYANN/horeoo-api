@@ -499,9 +499,4 @@ module.exports = function(Provider) {
 
 
 
-    
-
-
-
-
 };

@@ -150,6 +150,20 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
+      "property": "afficheActiver"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "afficheDesactiver"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
       "property": "afficheDesapprouve"
     },
     {
@@ -178,7 +192,28 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
+      "property": "active"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
       "property": "desactive"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "approve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "approuve"
     }
   ],
   "methods": {}
