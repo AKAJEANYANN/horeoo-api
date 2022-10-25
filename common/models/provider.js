@@ -473,16 +473,14 @@ module.exports = function(Provider) {
                         sendMessageServeur("Votre compte fournisseur a été désactivé pour non respect de nos règlement !")
 
                         cb(null, provider)
-                    };
-                
-                    notify.sendPushNotification(
-                        provider.device_fcm_token,
-                        "Fournisseur désactivé",
-                        "Votre compte fournisseur a été désactivé pour non respect de nos règlement !",
-                        "PRO"
-                        );
+                    }
                 });
-                
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Fournisseur désactivé",
+                    "Votre compte fournisseur a été désactivé pour mechanceté d'ecouteur iphone !",
+                    "PRO"
+                    );
             })
     }
 
