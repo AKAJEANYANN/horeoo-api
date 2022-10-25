@@ -1,4 +1,6 @@
 'use strict';
+const notify = require("../../server/global/notify")
+
 
 module.exports = function(Hebergement) {
 
@@ -41,26 +43,47 @@ module.exports = function(Hebergement) {
   });
 
 
-
-
   
 
 
 
 Hebergement.approve = function (id, cb) {
 
+    const Provider = Hebergement.app.models.hebergement;
+
     Hebergement.findById(
         id,
         (err, hebergement) =>{
             console.log(hebergement)
+            
             hebergement.updateAttributes({
                 approuveHebergement: true,
                 approval_datetime: Date.now()
-            },(err, heberge) =>{
+            },(err, hebergement) =>{
+
+                Provider.find({
+                    where:{
+                        id: hebergement.providerId
+                        }
+                    },(err, prod)=>{
+                        if(err)cb(err, null)
+                        else{
+                            notify.sendPushNotification(
+                                prod.device_fcm_token,
+                                "Hébergement approuvé",
+                                "Votre hébergement a été approuvé",
+                                "PRO"
+                                );
+                        }
+
+                    }
+                );
+
                 if(err) cb(err, null)
                 else
-                cb(null, heberge)
-            })
+                    cb(null, hebergement)
+            });
+
         })
 }
 
