@@ -470,7 +470,7 @@ module.exports = function(Provider) {
                 },(err, provider) =>{
                     if(err) cb(err, null)
                     else{
-                        sendMessageServeur("Votre compte fournisseur a été désactivé pour non respect de nos règlement !")
+                        sendMessageServeur("Votre compte fournisseur à été désactivé pour méchanceté d'ecouteur Iphone")
 
                         cb(null, provider)
                     }
@@ -493,7 +493,6 @@ module.exports = function(Provider) {
         http: { path: '/:id/desactive', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
-
 
 
 
