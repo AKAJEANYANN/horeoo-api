@@ -8,17 +8,17 @@ const notify = require('../../server/global/notify');
 // const post = require('./post');
 
 
-module.exports = function(Paiement) {
+module.exports = function(Payment) {
 
-    var sendPaymentReceiptSms = function (paiement, motif){
-        const msisdn = paiement.phonePrefixPaiement + paiement.phoneNumeroPaiement;
-        const message = 'Cher client, votre paiement de ' + paiement.montantPaiement +' FCFA a été éffectué avec succès. '+ motif ;
+    var sendPaymentReceiptSms = function (payment, motif){
+        const msisdn = payment.phonePrefixPayment + payment.phoneNumeroPayment;
+        const message = 'Cher client, votre paiement de ' + payment.montantPayment +' FCFA a été éffectué avec succès. '+ motif ;
         console.log('sendPaymentReceiptSms send');
         notify.sendSMS(msisdn, message);
     }
 
 
-    Paiement.cinetpayCheckPayment = function (cpm_trans_id, cb) {
+    Payment.cinetpayCheckPayment = function (cpm_trans_id, cb) {
 
         var result = {
             success : false
@@ -65,7 +65,7 @@ module.exports = function(Paiement) {
 
     }
 
-    Paiement.remoteMethod('cinetpayCheckPayment', {
+    Payment.remoteMethod('cinetpayCheckPayment', {
           accepts:[
               { arg: 'cpm_trans_id', type: 'string' },
           ],
@@ -75,7 +75,7 @@ module.exports = function(Paiement) {
     );
 
 
-    Paiement.cinetpayNotifyPayment = function (cpm_trans_id, cb) {
+    Payment.cinetpayNotifyPayment = function (cpm_trans_id, cb) {
 
         //const Subscription = Payment.app.models.subscription;
         //const Offer = Payment.app.models.offer;
@@ -120,20 +120,20 @@ module.exports = function(Paiement) {
             // }
             
 
-            Paiement.findOrCreate(
+            Payment.findOrCreate(
                 {
-                    dateCreationPaiement : response.data.transaction.created_at,
-                    phonePrefixPaiement : response.data.transaction.cpm_phone_prefixe,
-                    phoneNumeroPaiement : response.data.transaction.cel_phone_num,
-                    montantPaiement : response.data.transaction.cpm_amount,
-                    deviseMontantPaiement : response.data.transaction.cpm_currency,
-                    statusPaiement : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
-                    paiementProvider: 'CINETPAY',
-                    paiementProviderMethod : response.data.transaction.payment_method,
-                    paiementProviderStatus: response.data.transaction.cpm_trans_status,
-                    paiementType: paiement_type,
-                    referencePaiement: paiement_reference,
-                    transacIdPaiement: transactionId,
+                    dateCreationPayment : response.data.transaction.created_at,
+                    phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
+                    phoneNumeroPayment : response.data.transaction.cel_phone_num,
+                    montantPayment : response.data.transaction.cpm_amount,
+                    deviseMontantPayment : response.data.transaction.cpm_currency,
+                    statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
+                    paymentProvider: 'CINETPAY',
+                    paymentProviderMethod : response.data.transaction.payment_method,
+                    paymentProviderStatus: response.data.transaction.cpm_trans_status,
+                    paymentType: paiement_type,
+                    referencePayment: paiement_reference,
+                    transacIdPayment: transactionId,
                     offerId: offerId,
                     clientId: clientId,
                     customerId: customerId,
@@ -146,7 +146,6 @@ module.exports = function(Paiement) {
                             sendPaymentReceiptSms(payment,"Votre hébergement a été mise à jour.");
                         }
                         else if(paiement_type.toLowerCase() == "evenement"){
-                            activateWorker(offerId, customerId); 
                             sendPaymentReceiptSms(payment,"Votre événement a été activé.");
                         }
                         result.success = true;
@@ -161,7 +160,7 @@ module.exports = function(Paiement) {
         });
     }
 
-    Paiement.remoteMethod('cinetpayNotifyPayment', {
+    Payment.remoteMethod('cinetpayNotifyPayment', {
           accepts:[
               { arg: 'cpm_trans_id', type: 'string' },
           ],

@@ -85,7 +85,7 @@
     "dataSource": "horeooAppDb",
     "public": false
   },
-  "paiement": {
+  "payment": {
     "dataSource": "horeooAppDb",
     "public": true
   },

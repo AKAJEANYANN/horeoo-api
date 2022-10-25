@@ -1,5 +1,5 @@
 {
-  "name": "paiement",
+  "name": "payment",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,59 +11,59 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "dateCreationPaiement": {
+    "dateCreationPayment": {
       "type": "date",
       "defaultFn": "now"
     },
-    "phonePrefixPaiement": {
+    "phonePrefixPayment": {
       "type": "string",
       "default": ""
     },
-    "phoneNumeroPaiement": {
+    "phoneNumeroPayment": {
       "type": "string",
       "default": ""
     },
-    "montantPaiement": {
+    "montantPayment": {
       "type": "string",
       "default": ""
     },
-    "deviseMontantPaiement": {
+    "deviseMontantPayment": {
       "type": "string",
       "default": ""
     },
-    "statusPaiement": {
+    "statusPayment": {
       "type": "string",
       "default": ""
     },
-    "referencePaiement": {
+    "referencePayment": {
       "type": "string",
       "default": ""
     },
-    "detailPaiement": {
+    "detailPayment": {
       "type": "string",
       "default": ""
     },
-    "motifPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "dateMotifPaiement": {
+    "dateMotifPayment": {
       "type": "date",
       "defaultFn": "now"
     },
-    "paiementProviderMethod": {
+    "paymentProviderMethod": {
       "type": "string",
       "default": ""
     },
-    "paiementProviderStatus": {
+    "paymentProviderStatus": {
       "type": "string",
       "default": ""
     },
-    "transacIdPaiement": {
+    "paymentType": {
       "type": "string",
       "default": ""
     },
-    "paiementProvider": {
+    "transacIdPayment": {
+      "type": "string",
+      "default": ""
+    },
+    "paymentProvider": {
       "type": "string",
       "default": ""
     },
