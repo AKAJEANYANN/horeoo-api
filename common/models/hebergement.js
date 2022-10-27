@@ -66,15 +66,13 @@ Hebergement.approve = function (id, cb) {
                         id: hebergement.providerId
                         }
                     },(err, prod)=>{
-                        if(err)cb(err, null)
-                        else{
-                            notify.sendPushNotification(
-                                prod.device_fcm_token,
-                                "Hébergement approuvé",
-                                "Votre hébergement a été approuvé",
-                                "PRO"
-                                );
-                        }
+
+                    notify.sendPushNotification(
+                            prod.device_fcm_token,
+                            "Hébergement approuvé",
+                            "Votre hébergement a été approuvé",
+                            "PRO"
+                            );
 
                     }
                 );

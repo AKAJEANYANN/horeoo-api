@@ -11,25 +11,33 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "codeParametre": {
+    "codeParam": {
       "type": "string",
       "default": ""
     },
-    "valeurParametre": {
+    "valeurParam": {
       "type": "string",
       "default": ""
     },
-    "designationParametre": {
+    "designationParam": {
       "type": "string",
       "default": ""
     },
-    "dateModifParametre": {
+    "dateModifParam": {
       "type": "date",
       "defaultFn": "now"
     }
   },
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "facturation"
+    }
+  ],
   "methods": {}
 }
