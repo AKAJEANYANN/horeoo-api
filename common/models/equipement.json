@@ -1,0 +1,26 @@
+{
+  "name": "equipement",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nomEquipement": {
+      "type": "string"
+    },
+    "imageEquipement": {
+      "type": "string"
+    },
+    "actifEquipement": {
+      "type": "boolean"
+    },
+    "typeEquipement": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

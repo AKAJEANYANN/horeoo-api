@@ -1,0 +1,50 @@
+{
+  "name": "customer",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nom": {
+      "type": "string"
+    },
+    "prenom": {
+      "type": "string"
+    },
+    "creationDate": {
+      "type": "date"
+    },
+    "approuve": {
+      "type": "boolean"
+    },
+    "approuveDate": {
+      "type": "date"
+    },
+    "cniRecto": {
+      "type": "string"
+    },
+    "cniVerso": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "string"
+    },
+    "profil": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "actif": {
+      "type": "boolean"
+    },
+    "desactifDate": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

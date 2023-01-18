@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "customer": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "provider": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "parametre": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "hebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "equipement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "offre": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "reservation": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "paiement": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "appAccessToken": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "horeooAppDb",
+    "public": false
+  }
+}

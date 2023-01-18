@@ -1,0 +1,41 @@
+{
+  "name": "reservation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "arriveeDate": {
+      "type": "date"
+    },
+    "reservationDate": {
+      "type": "date"
+    },
+    "dateDepart": {
+      "type": "date"
+    },
+    "nombreAdulte": {
+      "type": "string"
+    },
+    "nombreChambre": {
+      "type": "string"
+    },
+    "nombreEnfant": {
+      "type": "string"
+    },
+    "montant": {
+      "type": "string"
+    },
+    "nombreHeure": {
+      "type": "string"
+    },
+    "etatReservation": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

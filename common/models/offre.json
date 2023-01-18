@@ -1,0 +1,47 @@
+{
+  "name": "offre",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nomOffre": {
+      "type": "string"
+    },
+    "carrouselOffre": {
+      "type": "string"
+    },
+    "prixUnitaireOffre": {
+      "type": "string"
+    },
+    "prixHoraireOffre": {
+      "type": "string"
+    },
+    "equipement": {
+      "type": "string"
+    },
+    "actifOffre": {
+      "type": "boolean"
+    },
+    "plage1": {
+      "type": "string"
+    },
+    "plage2": {
+      "type": "string"
+    },
+    "plage3": {
+      "type": "string"
+    },
+    "plage4": {
+      "type": "string"
+    },
+    "halfeDay": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

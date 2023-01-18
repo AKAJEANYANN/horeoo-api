@@ -1,0 +1,23 @@
+{
+  "name": "parametre",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "valeur": {
+      "type": "string"
+    },
+    "designation": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

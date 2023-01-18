@@ -1,0 +1,12 @@
+{
+  "horeooAppDb": {
+    "host": "eu-cdbr-west-02.cleardb.net",
+    "port": 3306,
+    "url": "",
+    "database": "heroku_c2b135289dde9c3",
+    "password": "363e176d",
+    "name": "horeooAppDb",
+    "user": "bf0b916cd8ce10",
+    "connector": "mysql"
+  }
+}

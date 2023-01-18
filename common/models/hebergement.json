@@ -1,0 +1,35 @@
+{
+  "name": "hebergement",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nomHebergement": {
+      "type": "string"
+    },
+    "typeHebergement": {
+      "type": "string"
+    },
+    "couvertureHebergement": {
+      "type": "string"
+    },
+    "carrouselHebergement": {
+      "type": "string"
+    },
+    "descriptionHebergement": {
+      "type": "string"
+    },
+    "geoPointHebergement": {
+      "type": "geopoint"
+    },
+    "actifHebergement": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

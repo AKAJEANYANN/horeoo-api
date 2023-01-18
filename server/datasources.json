@@ -1,0 +1,12 @@
+{
+  "horeooAppDb": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "",
+    "database": "dbHoreoo",
+    "password": "",
+    "name": "horeooAppDb",
+    "user": "root",
+    "connector": "mysql"
+  }
+}
