@@ -6,17 +6,26 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "nomEquipement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "imageEquipement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "actifEquipement": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "typeEquipement": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],

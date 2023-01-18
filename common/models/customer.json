@@ -6,41 +6,58 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "nom": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "prenom": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
-    "creationDate": {
-      "type": "date"
+    "dateCreation": {
+      "type": "date",
+      "defaultFn": "now"
     },
     "approuve": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
-    "approuveDate": {
-      "type": "date"
+    "dateApprouve": {
+      "type": "date",
+      "default": ""
     },
     "cniRecto": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "cniVerso": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "numero": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "profil": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "code": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "actif": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "desactifDate": {
-      "type": "date"
+      "type": "date",
+      "default": ""
     }
   },
   "validations": [],

@@ -6,32 +6,46 @@
     "validateUpsert": true
   },
   "properties": {
-    "arriveeDate": {
-      "type": "date"
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
     },
-    "reservationDate": {
-      "type": "date"
+    "dateArrivee": {
+      "type": "date",
+      "default": ""
+    },
+    "dateReservation": {
+      "type": "date",
+      "defaultFn": "now"
     },
     "dateDepart": {
-      "type": "date"
+      "type": "date",
+      "default": ""
     },
     "nombreAdulte": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "nombreChambre": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "nombreEnfant": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "montant": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "nombreHeure": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "etatReservation": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

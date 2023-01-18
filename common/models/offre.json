@@ -6,38 +6,57 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "nomOffre": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "carrouselOffre": {
-      "type": "string"
+      "type": "string",
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "prixUnitaireOffre": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "prixHoraireOffre": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "equipement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "actifOffre": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "plage1": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "plage2": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "plage3": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "plage4": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "halfeDay": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

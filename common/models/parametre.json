@@ -6,14 +6,22 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "code": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "valeur": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "designation": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

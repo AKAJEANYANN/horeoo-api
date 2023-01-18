@@ -5,27 +5,45 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "order": "geoPointHebergement ASC"
+  },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
     "nomHebergement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "typeHebergement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "couvertureHebergement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "carrouselHebergement": {
-      "type": "string"
+      "type": "string",
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "descriptionHebergement": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "geoPointHebergement": {
-      "type": "geopoint"
+      "type": "geopoint",
+      "default": "0.1"
     },
     "actifHebergement": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],
