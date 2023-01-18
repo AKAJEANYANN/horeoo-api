@@ -1,4 +1,5 @@
 'use strict';
+const notify = require("../../server/global/notify")
 
 module.exports = function(Provider) {
 
