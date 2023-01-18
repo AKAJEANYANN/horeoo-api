@@ -2,6 +2,7 @@
 
 module.exports = function(Customer) {
 
+    //connexion customer
     Customer.number = function (req ,cb) {
 
         const message = "Votre code de connexion est : " ;
@@ -85,5 +86,42 @@ module.exports = function(Customer) {
         returns : { type: 'object', root: true } 
     });
 
+
+
+
+    //suppression compte customer
+    Customer.delete = function (id, username, email, cb){
+        
+        Customer.findById(id,
+            (err, customer)=>{
+            console.log(customer);
+
+            if(customer){
+                customer.updateAttributes({
+                    username: username + "_dell" + Date(),
+                    email: "dell_" + email
+                },(err, custome)=>{
+                    console.log(custome);
+                    if(err)cb(err, null)
+                    else {
+                        cb(null, "succès");
+                    }
+                })
+            }
+            
+        })
+        
+    };
+
+    Customer.remoteMethod('delete',
+    {
+        accepts:[
+            { arg: 'id', type:'string', required: true},
+            { arg: 'username', type:'string', required: true},
+            { arg: 'email', type:'string', required: true}
+    ],
+        http: { path: '/:id/delete', verb: 'delete'},
+        returns : { type: 'object', root: true } 
+    });
 
 };
