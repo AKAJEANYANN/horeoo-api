@@ -6,7 +6,7 @@ module.exports = function(Provider) {
     //connexion customer
     Provider.number = function (req ,cb) {
 
-        const message = "Votre code de connexion est : " ;
+        const message = "Votre code de connexion est: " ;
 
         var msisdn = req.body.numero;
         var numdemo = "+2250011223344";
