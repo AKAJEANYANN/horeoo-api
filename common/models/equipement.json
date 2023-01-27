@@ -23,7 +23,7 @@
       "type": "boolean",
       "default": true
     },
-    "typeEquipement": {
+    "isEtablissement": {
       "type": "boolean",
       "default": false
     }
