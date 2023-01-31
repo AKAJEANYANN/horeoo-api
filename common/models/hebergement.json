@@ -41,11 +41,11 @@
       "type": "geopoint",
       "default": "0.1"
     },
-    "nomCompletProprioHebergement": {
+    "nomCompletProprio": {
       "type": "geopoint",
       "default": "0.1"
     },
-    "contactProprioHebergement": {
+    "contactProprio": {
       "type": "geopoint",
       "default": "0.1"
     },
