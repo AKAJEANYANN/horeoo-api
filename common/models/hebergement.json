@@ -41,6 +41,14 @@
       "type": "geopoint",
       "default": "0.1"
     },
+    "nomCompletProprioHebergement": {
+      "type": "geopoint",
+      "default": "0.1"
+    },
+    "contactProprioHebergement": {
+      "type": "geopoint",
+      "default": "0.1"
+    },
     "actifHebergement": {
       "type": "boolean",
       "default": false
