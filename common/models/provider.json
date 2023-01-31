@@ -61,7 +61,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "hebergements": {
+      "type": "hasMany",
+      "model": "hebergement",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

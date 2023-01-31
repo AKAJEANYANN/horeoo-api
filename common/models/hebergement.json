@@ -44,10 +44,25 @@
     "actifHebergement": {
       "type": "boolean",
       "default": false
+    },
+    "audioHebergement": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "provider": {
+      "type": "belongsTo",
+      "model": "provider",
+      "foreignKey": ""
+    },
+    "offres": {
+      "type": "hasMany",
+      "model": "offre",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
