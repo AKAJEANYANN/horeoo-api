@@ -75,12 +75,35 @@
     "provider": {
       "type": "belongsTo",
       "model": "provider",
-      "foreignKey": ""
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     },
     "offres": {
       "type": "hasMany",
       "model": "offre",
-      "foreignKey": ""
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "reservations": {
+      "type": "hasMany",
+      "model": "reservation",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "hebergementHasCustomers": {
+      "type": "hasMany",
+      "model": "hebergementHasCustomer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "hebergementHasCustomer"
     }
   },
   "acls": [],

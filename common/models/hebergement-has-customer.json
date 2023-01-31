@@ -1,0 +1,30 @@
+{
+  "name": "hebergementHasCustomer",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "hebergement": {
+      "type": "belongsTo",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "customer": {
+      "type": "belongsTo",
+      "model": "customer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -75,6 +75,15 @@
       "options": {
         "disableInclude": true
       }
+    },
+    "hebergementHasCustomers": {
+      "type": "hasMany",
+      "model": "hebergementHasCustomer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "hebergementHasCustomer"
     }
   },
   "acls": [

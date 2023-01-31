@@ -49,7 +49,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "hebergement": {
+      "type": "belongsTo",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

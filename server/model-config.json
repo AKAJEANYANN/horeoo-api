@@ -60,5 +60,9 @@
   "ACL": {
     "dataSource": "horeooAppDb",
     "public": false
+  },
+  "hebergementHasCustomer": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

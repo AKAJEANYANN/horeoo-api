@@ -64,7 +64,10 @@
     "hebergement": {
       "type": "belongsTo",
       "model": "hebergement",
-      "foreignKey": ""
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
