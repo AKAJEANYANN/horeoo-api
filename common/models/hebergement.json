@@ -104,6 +104,15 @@
         "nestRemoting": true
       },
       "through": "hebergementHasCustomer"
+    },
+    "equipementHasHebergements": {
+      "type": "hasMany",
+      "model": "equipementHasHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "equipementHasHebergement"
     }
   },
   "acls": [],

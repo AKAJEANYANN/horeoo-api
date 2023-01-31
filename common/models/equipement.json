@@ -29,7 +29,17 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "equipementHasHebergements": {
+      "type": "hasMany",
+      "model": "equipementHasHebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "equipementHasHebergement"
+    }
+  },
   "acls": [],
   "methods": {}
 }

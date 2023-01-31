@@ -64,5 +64,9 @@
   "hebergementHasCustomer": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "equipementHasHebergement": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }
