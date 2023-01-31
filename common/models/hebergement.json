@@ -53,6 +53,14 @@
       "type": "boolean",
       "default": false
     },
+    "contactOneHebergement": {
+      "type": "boolean",
+      "default": false
+    },
+    "contactTwoHebergement": {
+      "type": "boolean",
+      "default": false
+    },
     "audioHebergement": {
       "type": "string",
       "default": ""
