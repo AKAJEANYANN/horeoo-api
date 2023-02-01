@@ -11,7 +11,7 @@ module.exports = function(Provider) {
         var msisdn = req.body.numero;
         var numdemo = "+2250011223344";
 
-        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
+        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
        
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){

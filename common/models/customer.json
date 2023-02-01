@@ -32,8 +32,7 @@
       "default": false
     },
     "dateApprouve": {
-      "type": "date",
-      "default": ""
+      "type": "date"
     },
     "cniRecto": {
       "type": "string",
@@ -60,8 +59,7 @@
       "default": false
     },
     "desactifDate": {
-      "type": "date",
-      "default": ""
+      "type": "date"
     },
     "device_fcm_token": {
       "type": "string"
