@@ -73,6 +73,17 @@
   },
   "validations": [],
   "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "appAccessToken",
+      "polymorphic": {
+        "foreignKey": "userId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
+      }
+    },
     "hebergements": {
       "type": "hasMany",
       "model": "hebergement",
