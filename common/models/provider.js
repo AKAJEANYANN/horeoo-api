@@ -9,7 +9,6 @@ module.exports = function(Provider) {
         const message = "Votre code de connexion est: " ;
 
         var msisdn = req.body.numero;
-        
         var numdemo = "+2250011223344";
 
         var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
