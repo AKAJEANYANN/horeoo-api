@@ -39,6 +39,14 @@
       "type": "string",
       "default": ""
     },
+    "dateNaissance": {
+      "type": "string",
+      "default": ""
+    },
+    "emailProvider": {
+      "type": "string",
+      "default": ""
+    },
     "numero": {
       "type": "string",
       "default": ""
