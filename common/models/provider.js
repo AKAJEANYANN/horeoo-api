@@ -81,7 +81,7 @@ module.exports = function(Provider) {
     Provider.remoteMethod('number',
     {
         accepts: [
-            { arg: 'req', type: 'object', 'http': {source: 'req'}},
+         { arg: 'req', type: 'object', 'http': {source: 'req'}},
         ],
         http: { path: '/number', verb: 'post'},
         returns : { type: 'object', root: true } 
