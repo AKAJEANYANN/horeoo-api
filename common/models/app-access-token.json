@@ -3,7 +3,10 @@
   "base": "AccessToken",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "mysql": {
+      "table": "appaccesstoken"
+    }
   },
   "properties": {},
   "validations": [],

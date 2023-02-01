@@ -35,7 +35,10 @@
     },
     "descriptionHebergement": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "geoPointHebergement": {
       "type": "geopoint",
