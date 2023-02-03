@@ -40,6 +40,13 @@
         "dataType": "TEXT"
       }
     },
+    "mesEquipement": {
+      "type": "string",
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
+    },
     "geoPointHebergement": {
       "type": "geopoint",
       "default": "0.1"
