@@ -40,7 +40,7 @@
         "dataType": "TEXT"
       }
     },
-    "mesEquipement": {
+    "mesEquipements": {
       "type": "string",
       "default": "",
       "mysql": {
