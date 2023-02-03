@@ -45,12 +45,12 @@
       "default": "0.1"
     },
     "nomCompletProprio": {
-      "type": "geopoint",
-      "default": "0.1"
+      "type": "string",
+      "default": ""
     },
     "contactProprio": {
-      "type": "geopoint",
-      "default": "0.1"
+      "type": "string",
+      "default": ""
     },
     "actifHebergement": {
       "type": "boolean",
@@ -61,12 +61,12 @@
       "default": true
     },
     "contactOneHebergement": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "contactTwoHebergement": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "audioHebergement": {
       "type": "string",
