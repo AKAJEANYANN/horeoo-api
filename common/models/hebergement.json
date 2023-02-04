@@ -79,10 +79,6 @@
       "type": "string",
       "default": ""
     },
-    "indiqueLocalisation": {
-      "type": "string",
-      "default": ""
-    },
     "lieuHebergement": {
       "type": "string",
       "default": ""
