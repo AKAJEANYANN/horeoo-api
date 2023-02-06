@@ -68,5 +68,9 @@
   "equipementHasHebergement": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "admin": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

@@ -15,6 +15,10 @@
       "type": "string",
       "default": ""
     },
+    "couvertureOffre": {
+      "type": "string",
+      "default": ""
+    },
     "carrouselOffre": {
       "type": "string",
       "default": "",
