@@ -34,6 +34,22 @@
       "type": "string",
       "default": ""
     },
+    "nbChambre": {
+      "type": "string",
+      "default": ""
+    },
+    "nbLit": {
+      "type": "string",
+      "default": ""
+    },
+    "nbDouche": {
+      "type": "string",
+      "default": ""
+    },
+    "nbCuisine": {
+      "type": "string",
+      "default": ""
+    },
     "mesEquipements": {
       "type": "string",
       "default": "",
