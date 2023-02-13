@@ -34,9 +34,12 @@
       "type": "string",
       "default": ""
     },
-    "equipement": {
+    "mesEquipements": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     },
     "actifOffre": {
       "type": "boolean",
