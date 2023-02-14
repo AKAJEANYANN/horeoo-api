@@ -81,7 +81,19 @@
       "type": "string",
       "default": ""
     },
-    "halfeDay": {
+    "halfDay": {
+      "type": "string",
+      "default": ""
+    },
+    "percentTrancheHotel": {
+      "type": "string",
+      "default": ""
+    },
+    "percentTrancheResidence": {
+      "type": "string",
+      "default": ""
+    },
+    "percentDay": {
       "type": "string",
       "default": ""
     }
