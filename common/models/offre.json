@@ -36,23 +36,23 @@
     },
     "nbChambre": {
       "type": "string",
-      "default": ""
+      "default": "1"
     },
     "nbLit": {
       "type": "string",
-      "default": ""
+      "default": "1"
     },
     "nbDouche": {
       "type": "string",
-      "default": ""
+      "default": "1"
     },
     "nbSalon": {
       "type": "string",
-      "default": ""
+      "default": "0"
     },
     "nbCuisine": {
       "type": "string",
-      "default": ""
+      "default": "0"
     },
     "mesEquipements": {
       "type": "string",
