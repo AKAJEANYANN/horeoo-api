@@ -46,6 +46,10 @@
       "type": "string",
       "default": ""
     },
+    "nbSalon": {
+      "type": "string",
+      "default": ""
+    },
     "nbCuisine": {
       "type": "string",
       "default": ""
