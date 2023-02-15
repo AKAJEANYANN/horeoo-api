@@ -96,6 +96,10 @@
     "percentDay": {
       "type": "string",
       "default": ""
+    },
+    "priceByTranche": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
