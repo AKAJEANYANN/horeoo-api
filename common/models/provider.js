@@ -12,7 +12,7 @@ module.exports = function(Provider) {
         var numdemo = "+2250011223344";
         var numexterieur = "+2250123456789";
 
-        var code = (msisdn != null || msisdn != undefined || msisdn != numdemo || msisdn != "+2250709128585" || msisdn != "+2250748443404" || msisdn != numexterieur) ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
+        var code = (msisdn != null || msisdn != undefined || msisdn != numdemo || msisdn != "+2250709128585" && msisdn != numexterieur) ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
        
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
@@ -34,7 +34,7 @@ module.exports = function(Provider) {
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else if(msisdn != "+2250709128585" || msisdn != numdemo || msisdn != "+2250748443404") {
+                        else if(msisdn != "+2250709128585" || msisdn != numdemo || msisdn != numexterieur) {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             
@@ -59,7 +59,7 @@ module.exports = function(Provider) {
                         (err, user) => {
                             if(err) cb(err, null);
 
-                            else if(msisdn != numdemo || msisdn != "+2250748443404" || msisdn != numexterieur) { 
+                            else if(msisdn != numdemo || msisdn != numexterieur || msisdn != "+2250709128585") { 
                                 // TODO : Envoyer SMS
                                 notify.sendSMS(msisdn, message + code);
 
