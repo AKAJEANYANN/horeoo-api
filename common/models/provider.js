@@ -34,7 +34,7 @@ module.exports = function(Provider) {
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else if(msisdn != "+2250709128585" && msisdn != numdemo && msisdn != numexterieur) {
+                        else if(msisdn != "+2250709128585" || msisdn != numdemo || msisdn != numexterieur) {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             
@@ -59,7 +59,7 @@ module.exports = function(Provider) {
                         (err, user) => {
                             if(err) cb(err, null);
 
-                            else if(msisdn != numdemo && msisdn != numexterieur && msisdn != "+2250709128585") { 
+                            else if(msisdn != numdemo || msisdn != numexterieur || msisdn != "+2250709128585") { 
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
                                 // TODO : Envoyer SMS
