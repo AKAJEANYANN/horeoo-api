@@ -12,7 +12,7 @@ module.exports = function(Provider) {
         var numdemo = "+2250011223344";
         var numexterieur = "+2250748443404";
 
-        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585" && msisdn != numexterieur) ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
+        var code = (msisdn != null || msisdn != undefined || msisdn != numdemo || msisdn != "+2250709128585" || msisdn != numexterieur) ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
        
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
@@ -29,7 +29,7 @@ module.exports = function(Provider) {
                     
                     // mettre a jour le MDP avec le code de 5 chiffre
                     user.updateAttributes({
-                        email : msisdn + '@horeoo.ci',
+                        email : msisdn + '@horeoo.com',
                         password : `${code}`
                     },(err, use) => {
                         console.log(use);
@@ -53,17 +53,19 @@ module.exports = function(Provider) {
                         {
                             username : msisdn,
                             numero: msisdn,
-                            email : msisdn + '@horeoo.ci',
+                            email : msisdn + '@horeoo.com',
                             password : `${code}`,
                         },
                         (err, user) => {
                             if(err) cb(err, null);
 
                             else if(msisdn != numdemo || msisdn != numexterieur || msisdn != "+2250709128585") { 
+                                // TODO : Envoyer SMS
+                                notify.sendSMS(msisdn, message + code);
+
                                 // Retourner une reponse
                                 cb(null, [message + code, user]);
-                                // TODO : Envoyer SMS
-                                 notify.sendSMS(msisdn, message + code);   
+                                   
                                 }
                                 else {// Retourner une reponse
                                     cb(null, [message + code, user]);}
