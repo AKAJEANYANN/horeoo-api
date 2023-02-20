@@ -3,16 +3,33 @@ const notify = require("../../server/global/notify")
 
 module.exports = function(Customer) {
 
-    //connexion customer
     Customer.number = function (req ,cb) {
 
-        const message = "Votre code de connexion est: " ;
+        const message = "Votre code de connexion est : " ;
 
         var msisdn = req.body.numero;
         var numdemo = "+2250011223344";
+        var numgeraud = "+2250748443404";
+        var numyatma = "+2250123456789";
+        var numyannick = "+2250709128585";
+        // const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"];
+        // var result = false;
+        // result = verifynum();
+        // var code = Math.floor(Math.random() * 9000) + 1000;
+        var code = (msisdn != numdemo && msisdn != numgeraud && msisdn != numyatma && msisdn != numyannick) ?  Math.floor(Math.random() * 90000) + 10000 : 11111;
+        // var code = result?  Math.floor(Math.random() * 9000) + 1000 : 1111;
 
-        var code = (msisdn != null && msisdn != undefined && msisdn != numdemo && msisdn != "+2250709128585") ?  Math.floor(Math.random() * 9000) + 1000 : 1111;
-       
+        
+        // function verifynum() {
+            
+        //     for (let index = 0; index < arrayNum.length; index++) {
+        //         if(msisdn == array[index]){
+        //             return false
+        //         }
+        //     }
+        //     return true
+        // };
+
 
         if(msisdn != null && msisdn != undefined && msisdn != ""){
 
@@ -28,12 +45,12 @@ module.exports = function(Customer) {
                     
                     // mettre a jour le MDP avec le code de 5 chiffre
                     user.updateAttributes({
-                        email : msisdn + '@horeoo.ci',
+                        email : msisdn + '@horeoo.com',
                         password : `${code}`
                     },(err, use) => {
                         console.log(use);
                         if(err) cb(err, null)
-                        else if(msisdn != "+2250709128585") {
+                        else if(msisdn != numdemo && msisdn != numgeraud && msisdn != numyatma && msisdn != numyannick) {
                             // TODO : Envoyer SMS
                             notify.sendSMS(msisdn, message + code);
                             
@@ -58,11 +75,11 @@ module.exports = function(Customer) {
                         (err, user) => {
                             if(err) cb(err, null);
 
-                            else if(msisdn !=numdemo && msisdn !="+2250709128585") { 
-                                // Retourner une reponse
-                                cb(null, [message + code, user]);
+                            else if(msisdn != numdemo && msisdn != numgeraud && msisdn != numyatma && msisdn != numyannick) { 
                                 // TODO : Envoyer SMS
-                                 notify.sendSMS(msisdn, message + code);   
+                                notify.sendSMS(msisdn, message + code); 
+                                // Retourner une reponse
+                                cb(null, [message + code, user]);  
                                 }
                                 else {// Retourner une reponse
                                     cb(null, [message + code, user]);}
@@ -87,42 +104,5 @@ module.exports = function(Customer) {
         returns : { type: 'object', root: true } 
     });
 
-
-
-
-    //suppression compte customer
-    Customer.delete = function (id, username, email, cb){
-        
-        Customer.findById(id,
-            (err, customer)=>{
-            console.log(customer);
-
-            if(customer){
-                customer.updateAttributes({
-                    username: username + "_dell" + Date(),
-                    email: "dell_" + email
-                },(err, custome)=>{
-                    console.log(custome);
-                    if(err)cb(err, null)
-                    else {
-                        cb(null, "succès");
-                    }
-                })
-            }
-            
-        })
-        
-    };
-
-    Customer.remoteMethod('delete',
-    {
-        accepts:[
-            { arg: 'id', type:'string', required: true},
-            { arg: 'username', type:'string', required: true},
-            { arg: 'email', type:'string', required: true}
-    ],
-        http: { path: '/:id/delete', verb: 'delete'},
-        returns : { type: 'object', root: true } 
-    });
-
 };
+
