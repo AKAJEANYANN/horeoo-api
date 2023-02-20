@@ -9,7 +9,7 @@ module.exports = function(Customer) {
 
         var msisdn = req.body.numero;
         var numdemo = "+2250011223344";
-        var numgeraud = "+2250748443404";
+        var numgeraud = "+2250112345678";
         var numyatma = "+2250123456789";
         var numyannick = "+2250709128585";
         // const arrayNum =["+2250011223344","+2250709128585","+2250748443404","+2250141812443"];
@@ -101,6 +101,43 @@ module.exports = function(Customer) {
             { arg: 'req', type: 'object', 'http': {source: 'req'}},
         ],
         http: { path: '/number', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+    //suppression compte Provider
+    Customer.delete = function (id, username, email, cb){
+        
+        Customer.findById(id,
+            (err, customer)=>{
+            console.log(customer);
+
+            if(customer){
+                customer.updateAttributes({
+                    username: username + "_dell" + Date(),
+                    email: "dell_" + email
+                },(err, customer)=>{
+                    console.log(customer);
+                    if(err)cb(err, null)
+                    else {
+                        cb(null, "succès");
+                    }
+                })
+            }
+            
+        })
+        
+    };
+
+    Customer.remoteMethod('delete',
+    {
+        accepts:[
+            { arg: 'id', type:'string', required: true},
+            { arg: 'username', type:'string', required: true},
+            { arg: 'email', type:'string', required: true}
+    ],
+        http: { path: '/:id/delete', verb: 'delete'},
         returns : { type: 'object', root: true } 
     });
 
