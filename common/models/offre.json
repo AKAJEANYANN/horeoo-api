@@ -104,6 +104,10 @@
     "priceByTranche": {
       "type": "string",
       "default": ""
+    },
+    "priceHalfDay": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
