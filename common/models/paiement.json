@@ -38,6 +38,18 @@
     "description": {
       "type": "string",
       "default": ""
+    },
+    "payment_method": {
+      "type": "string",
+      "default": ""
+    },
+    "operator_id": {
+      "type": "string",
+      "default": ""
+    },
+    "status": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
