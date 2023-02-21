@@ -11,71 +11,27 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "etatPaiement": {
+    "clientId": {
       "type": "string",
       "default": ""
     },
-    "dateCreationPaiement": {
+    "isProvider": {
+      "type": "boolean",
+      "default": true
+    },
+    "transaction_id": {
+      "type": "string",
+      "default": ""
+    },
+    "motif": {
+      "type": "string",
+      "default": ""
+    },
+    "datePaiement": {
       "type": "date",
       "defaultFn": "now"
-    },
-    "phonePrefixPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "phoneNumeroPaiement": {
-      "type": "string",
-      "default": ""
     },
     "montantPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "deviseMontantPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "statusPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "referencePaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "detailPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "dateMotifPaiement": {
-      "type": "date",
-      "defaultFn": "now"
-    },
-    "paiementProviderMethod": {
-      "type": "string",
-      "default": ""
-    },
-    "paiementProviderStatus": {
-      "type": "string",
-      "default": ""
-    },
-    "paiementType": {
-      "type": "string",
-      "default": ""
-    },
-    "transacIdPaiement": {
-      "type": "string",
-      "default": ""
-    },
-    "paiementProvider": {
-      "type": "string",
-      "default": ""
-    },
-    "customerId": {
-      "type": "string",
-      "default": ""
-    },
-    "clientId": {
       "type": "string",
       "default": ""
     }

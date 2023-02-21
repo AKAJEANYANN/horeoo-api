@@ -132,6 +132,7 @@ module.exports = function(Provider) {
         
     };
 
+
     Provider.remoteMethod('delete',
     {
         accepts:[
@@ -140,6 +141,265 @@ module.exports = function(Provider) {
             { arg: 'email', type:'string', required: true}
     ],
         http: { path: '/:id/delete', verb: 'delete'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    // affiche provider en attente d'approbation
+    Provider.afficheDemandeApprouve = function (cb) {
+        
+        Provider.find({
+            where:{
+                approuve: "TRAITEMENT"
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('afficheDemandeApprouve',
+    {
+        http:{ path: '/afficheDemandeApprouve',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+
+    // approbation de provider
+    Provider.approuve = function (id, cb) {
+
+        const messageServeur = Provider.app.models.messageServeur;
+
+        function sendMessageServeur(msg ="Félicitation votre compte fournisseur a été approuvé !" , obj ="Ajout fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                providerId: id,
+              }
+            ,(err, mess)=>{
+    
+            });
+        }
+
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                console.log(provider)
+                
+                provider.updateAttributes({
+                    approuve: "APPROUVE",
+                    dateApprouve: Date.now(),
+                    actif: true,
+                    actifDate: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else{
+                        sendMessageServeur("Félicitation votre compte fournisseur a été approuvé !")
+
+                        cb(null, provider)
+                    }
+                    
+                });
+
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Fournisseur approuvé",
+                    "Votre compte fournisseur à été approuvé",
+                    "PRO"
+                    );
+            })
+    }
+    
+    
+    Provider.remoteMethod('approuve',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/approuve', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    // activer provider
+    Provider.activeProvider = function (id, cb) {
+
+        const messageServeur = Provider.app.models.messageServeur;
+
+        function sendMessageServeur(msg ="Votre compte fournisseur a été activé !" , obj ="Activation fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                providerId: id,
+              }
+            ,(err, mess)=>{
+    
+            });
+        }
+
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                provider.updateAttributes({
+                    actif: true,
+                    actifDate: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else{
+                        sendMessageServeur("Votre compte fournisseur a été activé !")
+
+                        cb(null, provider)
+                    }
+                });
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Fournisseur activé",
+                    "Votre compte fournisseur à été activé",
+                    "PRO"
+                    );
+            })
+    }
+    
+    
+    Provider.remoteMethod('activeProvider',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/activeProvider', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    // desactiver provider
+    Provider.desactiveProvider = function (id, cb) {
+
+        const messageServeur = Provider.app.models.messageServeur;
+
+        function sendMessageServeur(msg ="Votre compte fournisseur a été désactivé pour non respect de nos règlements !" , obj ="Désactivation fournisseur") {
+            messageServeur.create( {
+                message: msg,
+                objetMessage: obj,
+                vueMessage: false,
+                providerId: id,
+              }
+            ,(err, mess)=>{
+    
+            });
+        }
+
+        Provider.findById(
+            id,
+            (err, provider) =>{
+                provider.updateAttributes({
+                    actif: false,
+                    desactifDate: Date.now()
+                },(err, provider) =>{
+                    if(err) cb(err, null)
+                    else{
+                        sendMessageServeur("Votre compte fournisseur à été désactivé pour non respect de nos règlement !")
+
+                        cb(null, provider)
+                    }
+                });
+                notify.sendPushNotification(
+                    provider.device_fcm_token,
+                    "Fournisseur désactivé",
+                    "Votre compte fournisseur à été désactivé pour non respect de nos règlement !",
+                    "PRO"
+                    );
+            })
+    }
+
+
+    
+    Provider.remoteMethod('desactiveProvider',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/desactiveProvider', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    // affichage du provider activer
+    Provider.afficheProviderActif = function (cb) {
+        
+        Provider.find({
+            where:{
+                approuve: "APPROUVE",
+                actif: true
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('afficheProviderActif',
+    {
+        http:{ path: '/afficheProviderActif',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    // affichage du provider desactiver
+    Provider.afficheProviderDesactif = function (cb) {
+        
+        Provider.find({
+            where:{
+                approuve: "APPROUVE",
+                actif: false
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('afficheProviderDesactif',
+    {
+        http:{ path: '/afficheProviderDesactif',verb:'get'},
         returns : { type: 'object', root: true } 
     });
 

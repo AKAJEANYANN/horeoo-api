@@ -72,5 +72,9 @@
   "admin": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "messageServeur": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

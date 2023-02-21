@@ -28,8 +28,7 @@
       "default": ""
     },
     "dateApprouve": {
-      "type": "date",
-      "defaultFn": ""
+      "type": "date"
     },
     "cniRecto": {
       "type": "string",
@@ -63,6 +62,10 @@
       "type": "boolean",
       "default": false
     },
+    "actifDate": {
+      "type": "date",
+      "defaultFn": ""
+    },
     "desactifDate": {
       "type": "date",
       "defaultFn": ""
@@ -87,6 +90,14 @@
     "hebergements": {
       "type": "hasMany",
       "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "messageServeurs": {
+      "type": "hasMany",
+      "model": "messageServeur",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
@@ -119,6 +130,48 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "delete"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "afficheDemandeApprouve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "approuve"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "activeProvider"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "desactiveProvider"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "afficheProviderActif"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "afficheProviderDesactif"
     }
   ],
   "methods": {}
