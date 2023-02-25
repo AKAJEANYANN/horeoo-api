@@ -174,7 +174,14 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property": "actif"
+      "property": "activeheberge"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "desactiveheberge"
     },
     {
       "accessType": "EXECUTE",
@@ -189,6 +196,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "affichedesactif"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "attente"
     }
   ],
   "methods": {}

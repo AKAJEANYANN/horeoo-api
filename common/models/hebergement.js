@@ -53,7 +53,9 @@ module.exports = function(Hebergement) {
     
     
     
-    Hebergement.actif = function (id, cb) {
+    Hebergement.activeheberge = function (id, cb) {
+
+        const Provider = Hebergement.app.models.hebergement;
     
         Hebergement.findById(
             id,
@@ -63,6 +65,23 @@ module.exports = function(Hebergement) {
                         actifHebergement: true,
                         dateActif: Date.now(),
                     },(err, heberge) =>{
+
+                        Provider.find({
+                            where:{
+                                id: hebergement.providerId
+                                }
+                            },(err, prod)=>{
+        
+                            notify.sendPushNotification(
+                                    prod.device_fcm_token,
+                                    "Hébergement activé",
+                                    "Votre hébergement a été activé",
+                                    "PRO"
+                                    );
+        
+                            }
+                        );
+
                         if(err) cb(err, null)
                         else
                         cb(null, heberge)
@@ -72,10 +91,59 @@ module.exports = function(Hebergement) {
     }
     
     
-    Hebergement.remoteMethod('actif',
+    Hebergement.remoteMethod('activeheberge',
     {
         accepts: { arg: 'id', type: 'string' },
-        http: { path: '/:id/actif', verb: 'post'},
+        http: { path: '/:id/activeheberge', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    Hebergement.desactiveheberge = function (id, cb) {
+
+        const Provider = Hebergement.app.models.hebergement;
+    
+        Hebergement.findById(
+            id,
+            (err, hebergement) =>{
+                console.log(hebergement)
+                    hebergement.updateAttributes({
+                        actifHebergement: false,
+                        dateDesactif: Date.now(),
+                    },(err, heberge) =>{
+
+                        Provider.find({
+                            where:{
+                                id: hebergement.providerId
+                                }
+                            },(err, prod)=>{
+        
+                            notify.sendPushNotification(
+                                    prod.device_fcm_token,
+                                    "Hébergement désactivé",
+                                    "Votre hébergement a été désactivé",
+                                    "PRO"
+                                    );
+        
+                            }
+                        );
+
+                        if(err) cb(err, null)
+                        else
+                        cb(null, heberge)
+                    })
+                
+            })
+    }
+    
+    
+    Hebergement.remoteMethod('desactiveheberge',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/desactiveheberge', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
 
@@ -130,6 +198,35 @@ module.exports = function(Hebergement) {
     Hebergement.remoteMethod('affichedesactif',
     {
         http: { path: '/affichedesactif', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    Hebergement.attente = function (cb) {
+
+        Hebergement.find({
+            where:{
+                // couvertureHebergement: {neq:""},
+                // nomProprio: {neq:""},
+                // contactProprio: {neq:""},
+                approuveHebergement: false
+            },
+            include:'provider'
+
+        }, (err, hebergement) =>{
+            console.log(hebergement)
+            if(err) cb(err, null)
+            else
+                cb(null, hebergement)
+        })
+    }
+
+
+    Hebergement.remoteMethod('attente',
+    {
+        http: { path: '/attente', verb: 'get'},
         returns : { type: 'object', root: true } 
     });
 
