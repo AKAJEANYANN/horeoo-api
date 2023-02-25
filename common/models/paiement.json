@@ -50,6 +50,10 @@
     "status": {
       "type": "string",
       "default": ""
+    },
+    "enablePaiment": {
+      "type": "boolean",
+      "default": true
     }
   },
   "validations": [],

@@ -3,33 +3,50 @@
 module.exports = function(Messageserveur) {
 
     // envoie message a un provider avec suppresion du contenu du champ approuve
-    // Messageserveur.postMessage= function (req, cb) {
+    Messageserveur.postMessage= function (req, cb) {
+
+        const Provider = Messageserveur.app.models.provider;
         
-    //     var Objet= req.body.objet;
-    //     var Message= req.body.message;
-    //     var Idpro= req.body.idpro;
+        var objetMessage= req.body.objetMessage;
+        var message= req.body.message;
+        var providerId= req.body.providerId;
         
-    //     Messageserveur.create({
-    //         objetMessage: Objet,
-    //         message: Message,
-    //         providerId: Idpro
+        Messageserveur.create({
+            objetMessage: objetMessage,
+            message: message,
+            providerId: providerId,
+        },(err, message) =>{
+            if(err) cb(err, null);
+            else{
+                Provider.findOne({
+                    where:{
+                        id: message.providerId
+                    }
+                },(err, provider) =>{
+                        provider.updateAttributes({
+                            approuve:""
+                        },(err, pro)=>{
 
-    //     },(err, message) =>{
-    //         if(err) cb(err, null);
-    //         else cb(null, message);
-    //     })
+                        })
+                    }
+                    
+                );
+
+                cb(null, message);
+            }
+        })
         
-    // }
+    }
 
 
 
-    // Provider.remoteMethod('postMessage',
-    // {
-    //     accepts: [
-    //         { arg: 'req', type: 'object', 'http': {source: 'req'}},
-    //     ],
-    //     http: { path: '/postMessage', verb: 'post'},
-    //     returns : { type: 'object', root: true } 
-    // });
+    Messageserveur.remoteMethod('postMessage',
+    {
+        accepts: [
+            { arg: 'req', type: 'object', 'http': {source: 'req'}},
+        ],
+        http: { path: '/postMessage', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
 
 };
