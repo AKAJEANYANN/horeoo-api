@@ -68,20 +68,17 @@
       "default": false
     },
     "dateApprouve": {
-      "type": "date",
-      "default": ""
+      "type": "date"
     },
     "actifHebergement": {
       "type": "boolean",
       "default": false
     },
     "dateActif": {
-      "type": "date",
-      "default": ""
+      "type": "date"
     },
     "dateDesactif": {
-      "type": "date",
-      "default": ""
+      "type": "date"
     },
     "onlineHebergement": {
       "type": "boolean",
