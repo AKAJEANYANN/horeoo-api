@@ -117,6 +117,7 @@ module.exports = function(Provider) {
 
             if(provider){
                 provider.updateAttributes({
+                    approuve: "SUPPRESSION",
                     username: username + "_dell" + Date(),
                     email: "dell_" + email
                 },(err, provider)=>{
@@ -143,6 +144,41 @@ module.exports = function(Provider) {
         http: { path: '/:id/delete', verb: 'delete'},
         returns : { type: 'object', root: true } 
     });
+
+
+
+
+
+     // affiche tous les provider sans suppression de compte
+     Provider.affiche = function (cb) {
+        
+        Provider.find({
+            where:{
+                approuve: {neq:"SUPPRESSION"}
+            },
+            include:[
+                {
+                    relation:'hebergements'
+                }
+            ]
+            
+        }, (err, provider) =>{
+            console.log(provider)
+            if(err) cb(err, null)
+            else
+                cb(null, provider);
+        })
+    }
+
+
+    Provider.remoteMethod('affiche',
+    {
+        http:{ path: '/affiche',verb:'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
 
 
 
