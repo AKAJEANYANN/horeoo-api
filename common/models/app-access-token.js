@@ -8,19 +8,13 @@ module.exports = function(Appaccesstoken) {
         var userId = req.body.userId;
         var token = req.body.token;
         
-        Appaccesstoken.find({
+        Appaccesstoken.delete({
             where:{
-                userId: userId
+                userId: userId,
+                id: {neq:token}
             }
-        },(err, appacces)=>{
-            console.log(appacces);
-            appacces.delete({
-                where:{
-                    id: {neq:token}
-                }
-            },(err, app)=>{
-
-            })
+        },(err, app)=>{
+            console.log(app);
         })
 
         
