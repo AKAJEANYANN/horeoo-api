@@ -72,6 +72,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "postMessage"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "postMessageHeberge"
     }
   ],
   "methods": {}

@@ -46,6 +46,10 @@
       "type": "string",
       "default": ""
     },
+    "emei": {
+      "type": "string",
+      "default": ""
+    },
     "numero": {
       "type": "string",
       "default": ""
