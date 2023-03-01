@@ -47,7 +47,7 @@
   },
   "appAccessToken": {
     "dataSource": "horeooAppDb",
-    "public": false
+    "public": true
   },
   "Role": {
     "dataSource": "horeooAppDb",
