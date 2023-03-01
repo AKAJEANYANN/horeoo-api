@@ -3,19 +3,31 @@
 module.exports = function(Appaccesstoken) {
 
     // suppression d'un token lorsque le user exist
-    Appaccesstoken.deleteOtherToken = function (req) {
+    Appaccesstoken.deleteOtherToken = function (userId, token, cb) {
 
-        var userId = req.body.userId;
-        var token = req.body.token;
-        
-        Appaccesstoken.delete({
+        // var userId = req.body.userId;
+        // var token = req.body.token;
+        // Appaccesstoken.delete({
+        //     userId: userId,
+        //     id: token
+        // },(err, ap)=>{
+        //     cb(null, "ok");
+        // })
+        Appaccesstoken.find({
             where:{
                 userId: userId,
-                id: {neq:token}
             }
         },(err, app)=>{
             console.log(app);
+            app.forEach(element => {
+                if (element["id"]!= token && element["userId"] ==userId) {
+                    element.delete()
+                }
+            });
+            
+            cb(null, "ok");
         })
+        
 
         
     };
@@ -24,9 +36,11 @@ module.exports = function(Appaccesstoken) {
     Appaccesstoken.remoteMethod('deleteOtherToken',
         {
             accepts: [
-                { arg: 'req', type: 'object', 'http': {source: 'req'}},
+                { arg: 'userId', type: 'string' },
+                { arg: 'token', type: 'string' },
+                // { arg: 'req', type: 'object', 'http': {source: 'req'}},
             ],
-            http: { path: '/deleteOtherToken', verb: 'post'},
+            http: { path: '/deleteOtherToken', verb: 'delete'},
             returns : { type: 'object', root: true } 
         });
 
