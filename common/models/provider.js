@@ -108,6 +108,7 @@ module.exports = function(Provider) {
 
 
 
+
     //suppression compte Provider
     Provider.delete = function (id, username, email, cb){
         
