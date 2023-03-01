@@ -20,7 +20,7 @@ module.exports = function(Appaccesstoken) {
         },(err, app)=>{
             console.log(app);
             app.forEach(element => {
-                if (element["id"]!= token && element["userId"] ==userId) {
+                if (element["id"]!= token && element["userId"] == userId) {
                     element.delete()
                 }
             });
@@ -37,10 +37,10 @@ module.exports = function(Appaccesstoken) {
         {
             accepts: [
                 { arg: 'userId', type: 'string' },
-                { arg: 'token', type: 'string' },
+                { arg: 'token', type: 'string', required: true },
                 // { arg: 'req', type: 'object', 'http': {source: 'req'}},
             ],
-            http: { path: '/deleteOtherToken', verb: 'delete'},
+            http: { path: '/:userId/deleteOtherToken', verb: 'delete'},
             returns : { type: 'object', root: true } 
         });
 
