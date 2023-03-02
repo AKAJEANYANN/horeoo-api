@@ -99,6 +99,14 @@
     "lieuHebergement": {
       "type": "string",
       "default": ""
+    },
+    "avis": {
+      "type": "string",
+      "default": ""
+    },
+    "moyenne": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
