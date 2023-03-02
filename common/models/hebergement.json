@@ -152,6 +152,15 @@
         "nestRemoting": true
       },
       "through": "equipementHasHebergement"
+    },
+    "categories": {
+      "type": "hasMany",
+      "model": "categorie",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "hebergementHasCategorie"
     }
   },
   "acls": [

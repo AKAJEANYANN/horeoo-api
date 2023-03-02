@@ -76,5 +76,13 @@
   "messageServeur": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "categorie": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "hebergementHasCategorie": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

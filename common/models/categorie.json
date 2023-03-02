@@ -1,37 +1,35 @@
 {
-  "name": "hebergementHasCustomer",
+  "name": "categorie",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true,
-    "mysql": {
-      "table": "hebergementhascustomer"
-    }
+    "validateUpsert": true
   },
   "properties": {
     "id": {
       "type": "string",
       "id": true,
       "defaultFn": "uuidv4"
+    },
+    "vedette": {
+      "type": "string",
+      "default": ""
+    },
+    "dateExpirationVedette": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
   "relations": {
-    "hebergement": {
-      "type": "belongsTo",
+    "hebergements": {
+      "type": "hasMany",
       "model": "hebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
-      }
-    },
-    "customer": {
-      "type": "belongsTo",
-      "model": "customer",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
+      },
+      "through": "hebergementHasCategorie"
     }
   },
   "acls": [],
