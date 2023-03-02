@@ -14,6 +14,10 @@
     "libelle": {
       "type": "string",
       "default": ""
+    },
+    "actif": {
+      "type": "boolean",
+      "default": true
     }
   },
   "validations": [],
