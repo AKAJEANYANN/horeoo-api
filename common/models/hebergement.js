@@ -270,9 +270,6 @@ module.exports = function(Hebergement) {
                    },
                    limit:1
                 }
-            },
-            {
-               relation: 'mesEquipements' 
             }
         ]
     
