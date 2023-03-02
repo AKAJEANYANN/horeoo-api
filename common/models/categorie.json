@@ -11,11 +11,7 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "vedette": {
-      "type": "string",
-      "default": ""
-    },
-    "dateExpirationVedette": {
+    "libelle": {
       "type": "string",
       "default": ""
     }

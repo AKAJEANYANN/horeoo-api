@@ -13,6 +13,10 @@
       "type": "string",
       "id": true,
       "defaultFn": "uuidv4"
+    },
+    "dateExpiration": {
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
