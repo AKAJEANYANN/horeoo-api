@@ -5,6 +5,9 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {
+    "order": "prixUnitaireOffre ASC"
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -67,7 +70,7 @@
     },
     "supprimeOffre": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "plage1": {
       "type": "string",

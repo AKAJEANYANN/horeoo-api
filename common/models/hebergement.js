@@ -1,4 +1,6 @@
 'use strict';
+const notify = require("../../server/global/notify")
+
 
 module.exports = function(Hebergement) {
 
@@ -228,6 +230,137 @@ module.exports = function(Hebergement) {
     {
         http: { path: '/attente', verb: 'get'},
         returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+    // recherchd d'hébergement
+    Hebergement.recherche = function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
+    
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+          });
+    
+    
+        Hebergement.find({
+            limit: limit,
+            skip: skip,
+            where:{
+                approuveHebergement: true,
+                onlineHebergement: true,
+                typeHebergement: typeHebergement,
+                lieuHebergement: lieuHebergement,
+                geoPointHebergement: {
+                    near: userLocation,
+                    maxDistance: km,
+                    unit: 'kilometers',
+                  },
+            },
+            include:[
+                {
+                relation:'offres',
+                scope:{
+                   where:{
+                    prixUnitaireOffre: {between: [prixMinimOffre,prixMaximOffre]},
+                    actifOffre: true,
+                   },
+                   limit:1
+                }
+            },
+            {
+               relation: 'mesEquipements' 
+            }
+        ]
+    
+        },(err, hebergement) =>{
+            if (err) cb(err, null)
+            else{
+                const hebergements = hebergement.filter(e => e.offres.length > 0);
+                cb(null, hebergements);
+
+             }
+            },
+        )
+    }
+    
+    Hebergement.remoteMethod('recherche', {
+        accepts: [
+                {arg: 'lat', type: 'string'},
+                {arg: 'lng', type: 'string'},
+                {arg: 'limit', type: 'string'},
+                {arg: 'skip', type: 'string'},
+                {arg: 'typeHebergement', type: 'string'},
+                {arg: 'lieuHebergement', type: 'string'},
+                {arg: 'km', type: 'string'},
+                {arg: 'prixMinimOffre', type: 'string'},
+                {arg: 'prixMaximOffre', type: 'string'}
+            ],
+        http:{ path: '/recherche',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+    // recherchd d'hébergement en fonction tu type d'hébergement
+    Hebergement.rechercheParType = function (lat, lng, limit, skip, typeHebergement, km, cb) {
+    
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+          });
+    
+    
+        Hebergement.find({
+            limit: limit,
+            skip: skip,
+            where:{
+                approuveHebergement: true,
+                onlineHebergement: true,
+                typeHebergement: typeHebergement,
+                geoPointHebergement: {
+                    near: userLocation,
+                    maxDistance: km,
+                    unit: 'kilometers',
+                  },
+            },
+            include:{
+                relation:'offres',
+                scope:{
+                   where:{
+                    actifOffre: true,
+                   },
+                   limit:1
+                }
+            }
+    
+        },(err, hebergement) =>{
+            if (err) cb(err, null)
+            else{
+                const hebergements = hebergement.filter(e => e.offres.length > 0);
+                cb(null, hebergements);
+
+             }
+            },
+        )
+    }
+    
+    Hebergement.remoteMethod('rechercheParType', {
+        accepts: [
+                {arg: 'lat', type: 'string'},
+                {arg: 'lng', type: 'string'},
+                {arg: 'limit', type: 'string'},
+                {arg: 'skip', type: 'string'},
+                {arg: 'typeHebergement', type: 'string', required: true},
+                {arg: 'km', type: 'string'}
+            ],
+        http:{ path: '/rechercheParType',verb:'get'},
+        returns: {type: 'object', root: true}
     });
 
 };
