@@ -153,9 +153,9 @@
       },
       "through": "equipementHasHebergement"
     },
-    "categories": {
+    "hebergementHasCategories": {
       "type": "hasMany",
-      "model": "categorie",
+      "model": "hebergementHasCategorie",
       "foreignKey": "",
       "options": {
         "nestRemoting": true

@@ -22,9 +22,9 @@
   },
   "validations": [],
   "relations": {
-    "hebergements": {
+    "hebergementHasCategories": {
       "type": "hasMany",
-      "model": "hebergement",
+      "model": "hebergementHasCategorie",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
