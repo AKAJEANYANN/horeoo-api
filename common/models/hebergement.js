@@ -236,6 +236,10 @@ module.exports = function(Hebergement) {
 
 
 
+
+
+
+
     // recherchd d'hébergement
     Hebergement.recherche = function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
     
@@ -260,7 +264,7 @@ module.exports = function(Hebergement) {
                     unit: 'kilometers',
                   },
             },
-            include:[
+            include:
                 {
                 relation:'offres',
                 scope:{
@@ -271,7 +275,6 @@ module.exports = function(Hebergement) {
                    limit:1
                 }
             }
-        ]
     
         },(err, hebergement) =>{
             if (err) cb(err, null)
