@@ -47,10 +47,10 @@ module.exports = function(Hebergementhascategorie) {
     
     Hebergementhascategorie.remoteMethod('vedette', {
         accepts: [
-                {arg: 'idHebergementhascategorie', type: 'string'},
+                {arg: 'idHebergementhascategorie', type: 'string', required: true},
                 {arg: 'limit', type: 'string'},
                 {arg: 'skip', type: 'string'},
-                {arg: 'typeHebergement', type: 'string'}
+                {arg: 'typeHebergement', type: 'string', required: true}
             ],
         http:{ path: '/vedette',verb:'get'},
         returns: {type: 'object', root: true}
