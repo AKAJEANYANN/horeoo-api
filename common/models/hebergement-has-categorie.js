@@ -3,13 +3,16 @@
 module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
-    Hebergementhascategorie.vedette = function (idHebergementhascategorie, limit, skip, typeHebergement, cb) {
+    Hebergementhascategorie.vedette = function (categorieId, limit, skip, typeHebergement, cb) {
     
     
     
           Hebergementhascategorie.find({
             where:{
-                id: idHebergementhascategorie
+                categorieId: categorieId,
+                // dateExpiration : {
+                //     gt: Date.now()
+                // }
             },
             include:{
                 relation:'hebergement',
@@ -47,13 +50,30 @@ module.exports = function(Hebergementhascategorie) {
     
     Hebergementhascategorie.remoteMethod('vedette', {
         accepts: [
-                {arg: 'idHebergementhascategorie', type: 'string', required: true},
+                {arg: 'categorieId', type: 'string'},
                 {arg: 'limit', type: 'string'},
                 {arg: 'skip', type: 'string'},
                 {arg: 'typeHebergement', type: 'string', required: true}
             ],
-        http:{ path: '/vedette',verb:'get'},
+        http:{ path: '/:categorieId/vedette',verb:'get'},
         returns: {type: 'object', root: true}
     });
+
+
+
+
+
+
+
+    // Hebergementhascategorie.remoteMethod('ajoutVedette', {
+    //     accepts: [
+    //             {arg: 'idHebergementhascategorie', type: 'string', required: true},
+    //             {arg: 'limit', type: 'string'},
+    //             {arg: 'skip', type: 'string'},
+    //             {arg: 'typeHebergement', type: 'string', required: true}
+    //         ],
+    //     http:{ path: '/ajoutVedette',verb:'get'},
+    //     returns: {type: 'object', root: true}
+    // });
 
 };
