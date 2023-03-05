@@ -63,17 +63,41 @@ module.exports = function(Hebergementhascategorie) {
 
 
 
+    // ajout hebergement en vedette
+    Hebergementhascategorie.ajoutVedette=function (req, cb) {
 
+        var hebergementId = req.body.hebergementId;
 
-    // Hebergementhascategorie.remoteMethod('ajoutVedette', {
-    //     accepts: [
-    //             {arg: 'idHebergementhascategorie', type: 'string', required: true},
-    //             {arg: 'limit', type: 'string'},
-    //             {arg: 'skip', type: 'string'},
-    //             {arg: 'typeHebergement', type: 'string', required: true}
-    //         ],
-    //     http:{ path: '/ajoutVedette',verb:'get'},
-    //     returns: {type: 'object', root: true}
-    // });
+        Hebergementhascategorie.find({
+            where:{
+                hebergementId: hebergementId
+            }
+            },(err, hebergevedette)=>{
+                console.log(hebergevedette);
+
+                if(hebergevedette.hebergementId != hebergementId){
+                    Hebergementhascategorie.create({
+                        // dateExpiration: "",
+                        categorieId: "86bca5e9-1261-4f20-82a9-0f3afb00f454",
+                        hebergementId: hebergementId
+                    },(err, vedette)=>{
+                        console.log(vedette);
+
+                        if(err)cb(err, null)
+                        else
+                            cb(null, vedette);
+                    })
+                }
+                else if(hebergevedette.hebergementId == hebergementId)
+                    cb(null, "hebergement deja en vedette");
+            })
+        
+    }
+
+    Hebergementhascategorie.remoteMethod('ajoutVedette', {
+        accepts:{ arg: 'req', type: 'object', 'http': {source: 'req'}},
+        http:{ path: '/ajoutVedette',verb:'post'},
+        returns: {type: 'object', root: true}
+    });
 
 };

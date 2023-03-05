@@ -28,8 +28,8 @@
       "default": ""
     },
     "approuve": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "dateApprouve": {
       "type": "date",
