@@ -3,7 +3,7 @@
 module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
-    Hebergementhascategorie.recherhce = function (categorieId, limit, skip, typeHebergement, cb) {
+    Hebergementhascategorie.cateByHeber = function (categorieId, limit, skip, typeHebergement, cb) {
     
     
     
@@ -49,14 +49,14 @@ module.exports = function(Hebergementhascategorie) {
         )
     }
     
-    Hebergementhascategorie.remoteMethod('recherhce', {
+    Hebergementhascategorie.remoteMethod('cateByHeber', {
         accepts: [
                 {arg: 'categorieId', type: 'string'},
                 {arg: 'limit', type: 'string'},
                 {arg: 'skip', type: 'string'},
                 {arg: 'typeHebergement', type: 'string'}
             ],
-        http:{ path: '/recherhce',verb:'get'},
+        http:{ path: '/cateByHeber',verb:'get'},
         returns: {type: 'object', root: true}
     });
 
