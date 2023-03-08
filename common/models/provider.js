@@ -135,8 +135,9 @@ module.exports = function(Provider) {
             if(provider){
                 provider.updateAttributes({
                     approuve: "SUPPRESSION",
-                    username: username + "_dell" + Date(),
+                    username: "dell_" + username + Date(),
                     email: "dell_" + email + Date(),
+                    emailProvider: "dell_" + provider.emailProvider + Date(),
                 },(err, provider)=>{
                     console.log(provider);
                     if(err)cb(err, null)
