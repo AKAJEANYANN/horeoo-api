@@ -38,11 +38,12 @@ module.exports = function(Hebergementhascategorie) {
                     }
                 }
     
-            },(err, hebergement) =>{
+            },(err, heber) =>{
             if (err) cb(err, null)
             else{
-                // const hebergements = hebergement.filter(e => e.hebergement.offres.length > 0);
-                cb(null, hebergement);
+                // const hebergements = heber.filter(e => e.hebergement.offres.length > 0)
+                
+                cb(null, heber);
 
              }
             },

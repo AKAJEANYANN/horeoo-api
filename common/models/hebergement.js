@@ -282,38 +282,39 @@ module.exports = function(Hebergement) {
             if (err) cb(err, null)
             else{
                 const hebergements = hebergement.filter(e => e.offres.length > 0);
+                // console.log(hebergements);
+                cb(null, hebergements);
 
-                var mesEquipements = [];
+                // var mesEquipements = [];
                 
-                var mesEquipes = hebergements.map(e => e.mesEquipements);
-                console.log(mesEquipes);
+                // var mesEquipes = hebergements.map(e => e.mesEquipements);
+                // console.log(mesEquipes);
                 
-                var element;
+                // var element;
                 
-                for (let index = 0; index < mesEquipes.length; index++) {
-                     element = mesEquipes[index].split(",");
+                // for (let index = 0; index < mesEquipes.length; index++) {
+                //      element = mesEquipes[index].split(",");
                     
-                    }
-                    console.log(element);
+                //     }
+                //     console.log(element);
 
-                    for (let index = 0; index < element.length; index++) {
+                    // for (let index = 0; index < element.length; index++) {
                         
-                        Equipement.findById(element[index],
-                                (err, equipes)=>{
-                                    mesEquipements.push(equipes);
-                                console.log(mesEquipements);
+                    //     Equipement.findById(element[index],
+                    //             (err, equipes)=>{
+                    //                 mesEquipements.push(equipes);
+                    //             console.log(mesEquipements);
     
-                                const result = {
-                                    'hebergements' : hebergements,
-                                    'mes_equipementsIds' : mesEquipements
-                                  }
+                    //             const result = {
+                    //                 'hebergements' : hebergements,
+                    //                 'mes_equipementsIds' : mesEquipements
+                    //               }
                 
-                                  cb(null, result);
-                                  cb(null, mesEquipements);
-                           }
-                        );
+                    //               cb(null, result);
+                    //        }
+                    //     );
                         
-                    }
+                    // }
                     
                     // }
                     
