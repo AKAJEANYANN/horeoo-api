@@ -82,19 +82,17 @@ module.exports = function(Customer) {
                                 cb(null, [message + code, user]);  
                                 }
                                 else {// Retourner une reponse
-                                    cb(null, [message + code, user]);};
+                                    cb(null, [message + code, user]);
+                                };
 
-
-                                    notify.sendPushNotification(
-                                        user.device_fcm_token,
-                                        "Compte crée",
-                                        "Votre compte a été crée avec succès",
-                                        "CUS"
-                                        );
-                                               
-                        }
-
-                    ) 
+                                notify.sendPushNotification(
+                                    user.device_fcm_token,
+                                    "Compte crée",
+                                    "Votre compte a été crée avec succès",
+                                    "CUS"
+                                    );
+                                            
+                        });
                 }
             })
         }
