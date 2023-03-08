@@ -21,6 +21,10 @@
     "actif": {
       "type": "boolean",
       "default": true
+    },
+    "ordre": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],
