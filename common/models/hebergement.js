@@ -281,9 +281,9 @@ module.exports = function(Hebergement) {
         },(err, hebergement) =>{
             if (err) cb(err, null)
             else{
-                // const hebergements = hebergement.filter(e => e.offres.length > 0);
+                const hebergements = hebergement.filter(e => e.offres.length > 0);
                 // console.log(hebergements);
-                cb(null, hebergement);
+                cb(null, hebergements);
 
                 // var mesEquipements = [];
                 
