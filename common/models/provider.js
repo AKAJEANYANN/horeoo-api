@@ -239,8 +239,6 @@ module.exports = function(Provider) {
 
 
 
-
-
     // affiche provider en attente d'approbation
     Provider.afficheDemandeApprouve = function (cb) {
         
@@ -307,16 +305,16 @@ module.exports = function(Provider) {
                         sendMessageServeur("Félicitation votre compte fournisseur a été approuvé !")
 
                         cb(null, provider)
-                    }
+                    };
                     
+                    notify.sendPushNotification(
+                        provider.device_fcm_token,
+                        "Fournisseur approuvé",
+                        "Votre compte fournisseur à été approuvé",
+                        "PRO"
+                        );
                 });
 
-                notify.sendPushNotification(
-                    provider.device_fcm_token,
-                    "Fournisseur approuvé",
-                    "Votre compte fournisseur à été approuvé",
-                    "PRO"
-                    );
             })
     }
     
@@ -361,14 +359,14 @@ module.exports = function(Provider) {
                         sendMessageServeur("Votre compte fournisseur a été activé !")
 
                         cb(null, provider)
-                    }
+                    };
+                    notify.sendPushNotification(
+                        provider.device_fcm_token,
+                        "Fournisseur activé",
+                        "Votre compte fournisseur à été activé",
+                        "PRO"
+                        );
                 });
-                notify.sendPushNotification(
-                    provider.device_fcm_token,
-                    "Fournisseur activé",
-                    "Votre compte fournisseur à été activé",
-                    "PRO"
-                    );
             })
     }
     
