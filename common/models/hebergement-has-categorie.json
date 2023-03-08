@@ -57,6 +57,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "vedette"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "cateByHeber"
     }
   ],
   "methods": {}
