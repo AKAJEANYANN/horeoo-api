@@ -8,41 +8,38 @@ module.exports = function(Hebergementhascategorie) {
 
         Hebergementhascategorie.find({
             where:{
-                categorieId: categorieId
+                categorieId: categorieId,
+                limit: limit,
+                skip: skip,
             },
             include:{
                 relation:'hebergement',
                 scope:{
-                    limit: limit,
-                    skip: skip,
                     where:{
                         approuveHebergement: true,
                         onlineHebergement: true,
                         typeHebergement: typeHebergement
                         },
-                        include:
-                            {
-                            relation:'offres',
-                            scope:{
-                            where:{
-                                actifOffre: true,
-                            },
-                            limit:1
-                            }
+
+                    include:
+                        {
+                        relation:'offres',
+                        scope:{
+                        where:{
+                            actifOffre: true,
+                        },
+                        limit:1
                         }
+                    }
                     }
                 }
                 },(err, heber)=>{
+                    // console.log(heber);
                     if(err) cb(err, null)
-                    else
-                        {
-                            var typeheber = heber.map(e => e.typeHebergement)
-                            if(typeheber =="Hotel"){
-                                cb(null, heber);
-                            }
-                            cb(null, heber);
-                            // const hebergements = hebergement.filter(e => e.offres.length > 0);
-                        }
+                    else{
+                        
+                        cb(null, heber);
+                    }
         }  )
     }
     
