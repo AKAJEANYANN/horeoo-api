@@ -304,15 +304,15 @@ module.exports = function(Provider) {
                     else{
                         sendMessageServeur("Félicitation votre compte fournisseur a été approuvé !")
 
+                        notify.sendPushNotification(
+                            provider.device_fcm_token,
+                            "Fournisseur approuvé",
+                            "Votre compte fournisseur à été approuvé",
+                            "PRO"
+                            );
                         cb(null, provider)
                     };
                     
-                    notify.sendPushNotification(
-                        provider.device_fcm_token,
-                        "Fournisseur approuvé",
-                        "Votre compte fournisseur à été approuvé",
-                        "PRO"
-                        );
                 });
 
             })
@@ -364,7 +364,7 @@ module.exports = function(Provider) {
                             "Votre compte fournisseur à été activé",
                             "PRO"
                             );
-                            
+
                         cb(null, provider)
                     };
                 });
