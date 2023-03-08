@@ -243,6 +243,8 @@ module.exports = function(Hebergement) {
     // recherchd d'hébergement
     Hebergement.recherche = function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
     
+        const Equipement = Hebergement.app.models.equipement;
+
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
             lat: lat,
@@ -280,7 +282,41 @@ module.exports = function(Hebergement) {
             if (err) cb(err, null)
             else{
                 const hebergements = hebergement.filter(e => e.offres.length > 0);
-                cb(null, hebergements);
+
+                var mesEquipements = [];
+                
+                var mesEquipes = hebergements.map(e => e.mesEquipements);
+                console.log(mesEquipes);
+                
+                var element;
+                
+                for (let index = 0; index < mesEquipes.length; index++) {
+                     element = mesEquipes[index].split(",");
+                    
+                    }
+                    console.log(element);
+
+                    for (let index = 0; index < element.length; index++) {
+                        
+                        Equipement.findById(element[index],
+                                (err, equipes)=>{
+                                    mesEquipements.push(equipes);
+                                console.log(mesEquipements);
+    
+                                const result = {
+                                    'hebergements' : hebergements,
+                                    'mes_equipementsIds' : mesEquipements
+                                  }
+                
+                                  cb(null, result);
+                                  cb(null, mesEquipements);
+                           }
+                        );
+                        
+                    }
+                    
+                    // }
+                    
 
              }
             },
@@ -300,6 +336,31 @@ module.exports = function(Hebergement) {
                 {arg: 'prixMaximOffre', type: 'string'}
             ],
         http:{ path: '/recherche',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+
+    Hebergement.re = function (cb) {
+    
+        Hebergement.find({
+            fields :['mesEquipements']
+        },(err, hebergement) =>{
+            if (err) cb(err, null)
+            else{
+                const hebergement=hebergement.
+                cb(null, hebergement);
+
+             }
+            },
+        )
+    }
+    
+    Hebergement.remoteMethod('re', {
+
+        http:{ path: '/re',verb:'get'},
         returns: {type: 'object', root: true}
     });
 

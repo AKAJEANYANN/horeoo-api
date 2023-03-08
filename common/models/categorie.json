@@ -13,7 +13,10 @@
     },
     "libelle": {
       "type": "string",
-      "default": ""
+      "default": "",
+      "index": {
+        "unique": true
+      }
     },
     "actif": {
       "type": "boolean",

@@ -64,33 +64,35 @@ module.exports = function(Hebergementhascategorie) {
 
 
     // ajout hebergement en vedette
-    Hebergementhascategorie.ajoutVedette=function (req, cb) {
+    Hebergementhascategorie.ajoutVedette = function (req, cb) {
 
         var hebergementId = req.body.hebergementId;
 
-        Hebergementhascategorie.find({
-            where:{
-                hebergementId: hebergementId
-            }
-            },(err, hebergevedette)=>{
-                console.log(hebergevedette);
 
-                if(hebergevedette.hebergementId != hebergementId){
-                    Hebergementhascategorie.create({
-                        // dateExpiration: "",
-                        categorieId: "86bca5e9-1261-4f20-82a9-0f3afb00f454",
-                        hebergementId: hebergementId
-                    },(err, vedette)=>{
-                        console.log(vedette);
-
-                        if(err)cb(err, null)
-                        else
-                            cb(null, vedette);
-                    })
+            Hebergementhascategorie.find({
+                where:{
+                    hebergementId: hebergementId
                 }
-                else if(hebergevedette.hebergementId == hebergementId)
-                    cb(null, "hebergement deja en vedette");
-            })
+                },(err, hebergevedette)=>{
+                    console.log(hebergevedette);
+    
+    
+                    if(hebergevedette.length == 0){
+                        Hebergementhascategorie.create({
+                            // dateExpiration: "",
+                            categorieId: "86bca5e9-1261-4f20-82a9-0f3afb00f454",
+                            hebergementId: hebergementId
+                        },(err, vedette)=>{
+                            console.log(vedette);
+    
+                            if(err)cb(err, null)
+                            else
+                                cb(null, vedette);
+                        })
+                    }
+                    else
+                        cb(null, "Hébergement déjà en vedette");
+                })
         
     }
 
