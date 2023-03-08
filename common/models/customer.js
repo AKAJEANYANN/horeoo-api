@@ -62,7 +62,7 @@ module.exports = function(Customer) {
                     
                             
                             notify.sendPushNotification(
-                                user.device_fcm_token,
+                                use.device_fcm_token,
                                 "Compte connecté",
                                 "Vous êtes connecté",
                                 "CUS"
