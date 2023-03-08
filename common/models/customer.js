@@ -58,8 +58,16 @@ module.exports = function(Customer) {
                             cb(null, [message + code, use]);
                         }
                         else {// Retourner une reponse
-                            cb(null, [message + code, use]);}
-                    })            
+                            cb(null, [message + code, use]);};
+                    
+                            
+                            notify.sendPushNotification(
+                                user.device_fcm_token,
+                                "Compte connecté",
+                                "Vous êtes connecté",
+                                "CUS"
+                                );
+                        })            
                 }
                 // cas 2 l'utilsiateur n'existe pas
                 else {
