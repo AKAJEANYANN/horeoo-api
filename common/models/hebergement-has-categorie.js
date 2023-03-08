@@ -40,7 +40,7 @@ module.exports = function(Hebergementhascategorie) {
             },(err, heber) =>{
             if (err) cb(err, null)
             else{
-                // const hebergements = heber.filter(e => e.hebergement.offres.length > 0)
+                // const hebergements = heber.filter(e => e.offres.length > 0)
                 
                 cb(null, heber);
 
