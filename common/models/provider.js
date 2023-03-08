@@ -125,7 +125,7 @@ module.exports = function(Provider) {
 
 
 
-    //suppression compte Provider
+    //suppression compte Provider obselete
     Provider.delete = function (id, username, email, cb){
         
         Provider.findById(id,
@@ -160,6 +160,47 @@ module.exports = function(Provider) {
             { arg: 'email', type:'string', required: true}
     ],
         http: { path: '/:id/delete', verb: 'delete'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    //suppression compte Provider
+    Provider.dell = function (id, cb){
+        
+        Provider.findById(id,
+            (err, provider)=>{
+            console.log(provider);
+
+            if(provider){
+                provider.updateAttributes({
+                    approuve: "SUPPRESSION",
+                    username: "dell_" + provider.username + Date(),
+                    email: "dell_" + provider.email + Date(),
+                    emailProvider: "dell_" + provider.emailProvider + Date(),
+                },(err, provider)=>{
+                    console.log(provider);
+                    if(err)cb(err, null)
+                    else {
+                        cb(null, "succès");
+                    }
+                })
+            }
+            
+        })
+        
+    };
+
+
+    Provider.remoteMethod('dell',
+    {
+        accepts:[
+            { arg: 'id', type:'string', required: true},
+            { arg: 'username', type:'string', required: true},
+            { arg: 'email', type:'string', required: true}
+    ],
+        http: { path: '/:id/dell', verb: 'delete'},
         returns : { type: 'object', root: true } 
     });
 
