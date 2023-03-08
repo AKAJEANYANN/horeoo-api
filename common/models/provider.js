@@ -195,11 +195,7 @@ module.exports = function(Provider) {
 
     Provider.remoteMethod('dell',
     {
-        accepts:[
-            { arg: 'id', type:'string', required: true},
-            { arg: 'username', type:'string', required: true},
-            { arg: 'email', type:'string', required: true}
-    ],
+        accepts:{ arg: 'id', type:'string', required: true},
         http: { path: '/:id/dell', verb: 'delete'},
         returns : { type: 'object', root: true } 
     });
