@@ -30,8 +30,8 @@ module.exports = function(Messageserveur) {
 
                             notify.sendPushNotification(
                                 pro.device_fcm_token,
-                                "Hébergement non approuvé",
-                                "Votre hébergement n'a pas été approuvé",
+                                "Provider non approuvé",
+                                "Votre compte provider n'a pas été approuvé",
                                 "PRO"
                                 );
                             
