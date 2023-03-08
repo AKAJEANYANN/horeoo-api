@@ -277,7 +277,7 @@ module.exports = function(Provider) {
 
         const messageServeur = Provider.app.models.messageServeur;
 
-        function sendMessageServeur(msg ="Félicitation votre compte fournisseur a été approuvé !" , obj ="Ajout fournisseur") {
+        function sendMessageServeur(msg ="Félicitation votre compte provider a été approuvé !" , obj ="Ajout fournisseur") {
             messageServeur.create( {
                 message: msg,
                 objetMessage: obj,
@@ -302,7 +302,7 @@ module.exports = function(Provider) {
                 },(err, provider) =>{
                     if(err) cb(err, null)
                     else{
-                        sendMessageServeur("Félicitation votre compte fournisseur a été approuvé !")
+                        sendMessageServeur("Félicitation votre compte provider a été approuvé !")
 
                         notify.sendPushNotification(
                             provider.device_fcm_token,

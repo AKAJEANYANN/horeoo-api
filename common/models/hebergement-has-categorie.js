@@ -4,15 +4,11 @@ module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
     Hebergementhascategorie.cateByHeber = function (categorieId, limit, skip, typeHebergement, cb) {
-    
-    
-    
-          Hebergementhascategorie.find({
+
+
+        Hebergementhascategorie.find({
             where:{
-                categorieId: categorieId,
-                // dateExpiration : {
-                //     gt: Date.now()
-                // }
+                categorieId: categorieId
             },
             include:{
                 relation:'hebergement',
@@ -36,17 +32,11 @@ module.exports = function(Hebergementhascategorie) {
                         }
                     }
                 }
-    
-            },(err, heber) =>{
-            if (err) cb(err, null)
-            else{
-                // const hebergements = heber.filter(e => e.offres.length > 0)
-                
-                cb(null, heber);
-
-             }
-            },
-        )
+                },(err, heber)=>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, heber);
+        }  )
     }
     
     Hebergementhascategorie.remoteMethod('cateByHeber', {
