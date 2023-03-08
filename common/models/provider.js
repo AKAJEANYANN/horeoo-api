@@ -358,14 +358,15 @@ module.exports = function(Provider) {
                     else{
                         sendMessageServeur("Votre compte fournisseur a été activé !")
 
+                        notify.sendPushNotification(
+                            provider.device_fcm_token,
+                            "Fournisseur activé",
+                            "Votre compte fournisseur à été activé",
+                            "PRO"
+                            );
+                            
                         cb(null, provider)
                     };
-                    notify.sendPushNotification(
-                        provider.device_fcm_token,
-                        "Fournisseur activé",
-                        "Votre compte fournisseur à été activé",
-                        "PRO"
-                        );
                 });
             })
     }
