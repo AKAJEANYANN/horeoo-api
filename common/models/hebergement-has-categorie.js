@@ -3,13 +3,14 @@
 module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
-    Hebergementhascategorie.vedette = function (categorieId, limit, skip, typeHebergement, cb) {
+    Hebergementhascategorie.recherhce = function (categorieId, hebergementId, limit, skip, typeHebergement, cb) {
     
     
     
           Hebergementhascategorie.find({
             where:{
                 categorieId: categorieId,
+                hebergementId: hebergementId,
                 // dateExpiration : {
                 //     gt: Date.now()
                 // }
@@ -48,14 +49,15 @@ module.exports = function(Hebergementhascategorie) {
         )
     }
     
-    Hebergementhascategorie.remoteMethod('vedette', {
+    Hebergementhascategorie.remoteMethod('recherhce', {
         accepts: [
                 {arg: 'categorieId', type: 'string'},
+                {arg: 'hebergementId', type: 'string'},
                 {arg: 'limit', type: 'string'},
                 {arg: 'skip', type: 'string'},
-                {arg: 'typeHebergement', type: 'string', required: true}
+                {arg: 'typeHebergement', type: 'string'}
             ],
-        http:{ path: '/:categorieId/vedette',verb:'get'},
+        http:{ path: '/recherhce',verb:'get'},
         returns: {type: 'object', root: true}
     });
 

@@ -342,86 +342,109 @@ module.exports = function(Hebergement) {
 
 
 
-
-    Hebergement.re = function (cb) {
+    // recherchd d'hébergement par categorie et type d'hebergement
+    // Hebergement.recherche = function (lat, lng, limit, skip, typeHebergement, cb) {
     
-        Hebergement.find({
-            fields :['mesEquipements']
-        },(err, hebergement) =>{
-            if (err) cb(err, null)
-            else{
-                const hebergement=hebergement.
-                cb(null, hebergement);
+    //     const Equipement = Hebergement.app.models.equipement;
 
-             }
-            },
-        )
-    }
-    
-    Hebergement.remoteMethod('re', {
-
-        http:{ path: '/re',verb:'get'},
-        returns: {type: 'object', root: true}
-    });
-
-
-
-
-    // recherchd d'hébergement en fonction tu type d'hébergement
-    Hebergement.rechercheParType = function (lat, lng, limit, skip, typeHebergement, km, cb) {
-    
-        var loopback = require('loopback');
-        var userLocation = new loopback.GeoPoint({
-            lat: lat,
-            lng: lng
-          });
+    //     var loopback = require('loopback');
+    //     var userLocation = new loopback.GeoPoint({
+    //         lat: lat,
+    //         lng: lng
+    //       });
     
     
-        Hebergement.find({
-            limit: limit,
-            skip: skip,
-            where:{
-                approuveHebergement: true,
-                onlineHebergement: true,
-                typeHebergement: typeHebergement,
-                geoPointHebergement: {
-                    near: userLocation,
-                    maxDistance: km,
-                    unit: 'kilometers',
-                  },
-            },
-            include:{
-                relation:'offres',
-                scope:{
-                   where:{
-                    actifOffre: true,
-                   },
-                   limit:1
-                }
-            }
+    //     Hebergement.find({
+    //         limit: limit,
+    //         skip: skip,
+    //         where:{
+    //             approuveHebergement: true,
+    //             onlineHebergement: true,
+    //             typeHebergement: typeHebergement,
+    //             lieuHebergement: lieuHebergement,
+    //             geoPointHebergement: {
+    //                 near: userLocation,
+    //                 maxDistance: km,
+    //                 unit: 'kilometers',
+    //               },
+    //         },
+    //         include:
+    //             {
+    //             relation:'offres',
+    //             scope:{
+    //                where:{
+    //                 prixUnitaireOffre: {between: [prixMinimOffre,prixMaximOffre]},
+    //                 actifOffre: true,
+    //                },
+    //                limit:1
+    //             }
+    //         }
     
-        },(err, hebergement) =>{
-            if (err) cb(err, null)
-            else{
-                const hebergements = hebergement.filter(e => e.offres.length > 0);
-                cb(null, hebergements);
+    //     },(err, hebergement) =>{
+    //         if (err) cb(err, null)
+    //         else{
+    //             const hebergements = hebergement.filter(e => e.offres.length > 0);
 
-             }
-            },
-        )
-    }
+    //             var mesEquipements = [];
+                
+    //             var mesEquipes = hebergements.map(e => e.mesEquipements);
+    //             console.log(mesEquipes);
+                
+    //             var element;
+                
+    //             for (let index = 0; index < mesEquipes.length; index++) {
+    //                  element = mesEquipes[index].split(",");
+                    
+    //                 }
+    //                 console.log(element);
+
+    //                 for (let index = 0; index < element.length; index++) {
+                        
+    //                     Equipement.findById(element[index],
+    //                             (err, equipes)=>{
+    //                                 mesEquipements.push(equipes);
+    //                             console.log(mesEquipements);
     
-    Hebergement.remoteMethod('rechercheParType', {
-        accepts: [
-                {arg: 'lat', type: 'string'},
-                {arg: 'lng', type: 'string'},
-                {arg: 'limit', type: 'string'},
-                {arg: 'skip', type: 'string'},
-                {arg: 'typeHebergement', type: 'string', required: true},
-                {arg: 'km', type: 'string'}
-            ],
-        http:{ path: '/rechercheParType',verb:'get'},
-        returns: {type: 'object', root: true}
-    });
+    //                             const result = {
+    //                                 'hebergements' : hebergements,
+    //                                 'mes_equipementsIds' : mesEquipements
+    //                               }
+                
+    //                               cb(null, result);
+    //                               cb(null, mesEquipements);
+    //                        }
+    //                     );
+                        
+    //                 }
+                    
+    //                 // }
+                    
+
+    //          }
+    //         },
+    //     )
+    // }
+    
+    // Hebergement.remoteMethod('recherche', {
+    //     accepts: [
+    //             {arg: 'lat', type: 'string'},
+    //             {arg: 'lng', type: 'string'},
+    //             {arg: 'limit', type: 'string'},
+    //             {arg: 'skip', type: 'string'},
+    //             {arg: 'typeHebergement', type: 'string'},
+    //             {arg: 'lieuHebergement', type: 'string'},
+    //             {arg: 'km', type: 'string'},
+    //             {arg: 'prixMinimOffre', type: 'string'},
+    //             {arg: 'prixMaximOffre', type: 'string'}
+    //         ],
+    //     http:{ path: '/recherche',verb:'get'},
+    //     returns: {type: 'object', root: true}
+    // });
+
+
+
+
+
+
 
 };
