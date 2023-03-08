@@ -35,7 +35,14 @@ module.exports = function(Hebergementhascategorie) {
                 },(err, heber)=>{
                     if(err) cb(err, null)
                     else
-                        cb(null, heber);
+                        {
+                            var typeheber = heber.map(e => e.typeHebergement)
+                            if(typeheber =="Hotel"){
+                                cb(null, heber);
+                            }
+                            cb(null, heber);
+                            // const hebergements = hebergement.filter(e => e.offres.length > 0);
+                        }
         }  )
     }
     
