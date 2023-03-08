@@ -183,6 +183,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "afficheProviderDesactif"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "dell"
     }
   ],
   "methods": {}

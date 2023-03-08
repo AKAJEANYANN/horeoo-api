@@ -157,5 +157,43 @@ module.exports = function(Customer) {
         returns : { type: 'object', root: true } 
     });
 
+
+    //suppression compte Provider
+    Customer.dell = function (id, cb){
+        
+        const time =   Math.floor(Date.now() / 1000) ;
+
+
+        Customer.findById(id,
+            (err, customer)=>{
+            console.log(customer);
+
+            if(customer){
+                customer.updateAttributes({
+                    approuve: "SUPPRESSION",
+                    username: "dell_"+ time + customer.username,
+                    email: "dell_"+ time + customer.email,
+                    emailCustomer: "dell_"+ time + customer.emailProvider ,
+                },(err, customer)=>{
+                    console.log(customer);
+                    if(err)cb(err, null)
+                    else {
+                        cb(null, "succès");
+                    }
+                })
+            }
+            
+        })
+        
+    };
+
+
+    Customer.remoteMethod('dell',
+    {
+        accepts:{ arg: 'id', type:'string', required: true},
+        http: { path: '/:id/dell', verb: 'delete'},
+        returns : { type: 'object', root: true } 
+    });
+
 };
 

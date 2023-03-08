@@ -59,6 +59,10 @@
       "type": "boolean",
       "default": false
     },
+    "emailCustomer": {
+      "type": "string",
+      "default": ""
+    },
     "desactifDate": {
       "type": "date",
       "defaultFn": ""
@@ -124,6 +128,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "delete"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "dell"
     }
   ],
   "methods": {}

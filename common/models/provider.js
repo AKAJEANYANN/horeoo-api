@@ -169,6 +169,9 @@ module.exports = function(Provider) {
     //suppression compte Provider
     Provider.dell = function (id, cb){
         
+        const time =   Math.floor(Date.now() / 1000) ;
+
+
         Provider.findById(id,
             (err, provider)=>{
             console.log(provider);
@@ -176,9 +179,9 @@ module.exports = function(Provider) {
             if(provider){
                 provider.updateAttributes({
                     approuve: "SUPPRESSION",
-                    username: "dell_" + provider.username + Date(),
-                    email: "dell_" + provider.email + Date(),
-                    emailProvider: "dell_" + provider.emailProvider + Date(),
+                    username: "dell_"+ time + provider.username,
+                    email: "dell_"+ time + provider.email,
+                    emailProvider: "dell_"+ time + provider.emailProvider ,
                 },(err, provider)=>{
                     console.log(provider);
                     if(err)cb(err, null)
