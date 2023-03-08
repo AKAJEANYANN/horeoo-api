@@ -56,17 +56,17 @@ module.exports = function(Customer) {
                             
                             // Retourner une reponse
                             cb(null, [message + code, use]);
-                        }
-                        else {// Retourner une reponse
-                            cb(null, [message + code, use]);};
-                    
-                            
+
+                            // notification au provider
                             notify.sendPushNotification(
                                 use.device_fcm_token,
                                 "Compte connecté",
                                 "Vous êtes connecté",
                                 "CUS"
                                 );
+                        }
+                        else {// Retourner une reponse
+                            cb(null, [message + code, use]);};
                         })            
                 }
                 // cas 2 l'utilsiateur n'existe pas
@@ -87,19 +87,20 @@ module.exports = function(Customer) {
                                 // TODO : Envoyer SMS
                                 notify.sendSMS(msisdn, message + code); 
                                 // Retourner une reponse
-                                cb(null, [message + code, user]);  
-                                }
-                                else {// Retourner une reponse
-                                    cb(null, [message + code, user]);
-                                };
-
+                                cb(null, [message + code, user]); 
+                                
+                                // notification au provider
                                 notify.sendPushNotification(
                                     user.device_fcm_token,
                                     "Compte crée",
                                     "Votre compte a été crée avec succès",
                                     "CUS"
                                     );
-                                            
+
+                                }
+                                else {// Retourner une reponse
+                                    cb(null, [message + code, user]);
+                                };              
                         });
                 }
             })
