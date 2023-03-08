@@ -3,14 +3,13 @@
 module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
-    Hebergementhascategorie.recherhce = function (categorieId, hebergementId, limit, skip, typeHebergement, cb) {
+    Hebergementhascategorie.recherhce = function (categorieId, limit, skip, typeHebergement, cb) {
     
     
     
           Hebergementhascategorie.find({
             where:{
                 categorieId: categorieId,
-                hebergementId: hebergementId,
                 // dateExpiration : {
                 //     gt: Date.now()
                 // }
@@ -53,7 +52,6 @@ module.exports = function(Hebergementhascategorie) {
     Hebergementhascategorie.remoteMethod('recherhce', {
         accepts: [
                 {arg: 'categorieId', type: 'string'},
-                {arg: 'hebergementId', type: 'string'},
                 {arg: 'limit', type: 'string'},
                 {arg: 'skip', type: 'string'},
                 {arg: 'typeHebergement', type: 'string'}
