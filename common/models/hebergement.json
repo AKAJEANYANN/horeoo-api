@@ -84,6 +84,14 @@
       "type": "boolean",
       "default": true
     },
+    "delete": {
+      "type": "boolean",
+      "default": false
+    },
+    "dateDelete": {
+      "type": "date",
+      "defaultFn": "now"
+    },
     "contactOneHebergement": {
       "type": "string",
       "default": ""

@@ -173,7 +173,7 @@ module.exports = function(Customer) {
                     approuve: "SUPPRESSION",
                     username: "dell_"+ time + customer.username,
                     email: "dell_"+ time + customer.email,
-                    emailCustomer: "dell_"+ time + customer.emailProvider ,
+                    emailCustomer: "dell_"+ time + customer.emailCustomer ,
                 },(err, customer)=>{
                     console.log(customer);
                     if(err)cb(err, null)

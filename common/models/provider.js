@@ -169,38 +169,55 @@ module.exports = function(Provider) {
     //suppression compte Provider
     Provider.dell = function (id, cb){
         
+        const Hebergement = Provider.app.models.hebergement;
+
         const time = Math.floor(Date.now() / 1000) ;
 
 
-        Provider.findById(id,{
-            include:{
-                relation:'hebergements'
-            }
-        },
+        Provider.findById(id,
             (err, provider)=>{
-                console.log(provider);
-                if(err)cb(err, null)
-                else {
-                    var rowHeber = [];
-                    provider.forEach(e => {
-                        rowHeber.push(e.hebergements)
+
+                Hebergement.find({
+                    where:{
+                        providerId: provider.id
+                    }
+                },(err, hebergements)=>{
+                    console.log(hebergements);
+
+                    hebergements.forEach(element => {
+                        
+                        element.updateAttributes({
+
+                            approuveHebergement: false,
+                            actifHebergement: false,
+                            dateDesactif: Date.now(),
+                            onlineHebergement: false,
+                            delete: true,
+                            dateDelete: Date.now()
+
+                        })
+                    },(err, heberge)=>{
+
                     });
-                    console.log(rowHeber);
-                    // cb(null, "succès");
+                })
+
+                if(err)cb(err, null)
+                else{
+
+                    provider.updateAttributes({
+                        approuve: "SUPPRESSION",
+                        username: "dell_"+ time + provider.username,
+                        email: "dell_"+ time + provider.email,
+                        emailProvider: "dell_"+ time + provider.emailProvider ,
+                    },(err, provider)=>{
+                        console.log(provider);
+                        
+                        cb(err, provider);
+                    })
+
                 }
 
-            // if(provider){
-            //     provider.updateAttributes({
-            //         approuve: "SUPPRESSION",
-            //         username: "dell_"+ time + provider.username,
-            //         email: "dell_"+ time + provider.email,
-            //         emailProvider: "dell_"+ time + provider.emailProvider ,
-            //     },(err, provider)=>{
-            //         console.log(provider);
-                    
-                    
-            //     })
-            // }
+            
             
         })
         
