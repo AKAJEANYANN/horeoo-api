@@ -243,7 +243,6 @@ module.exports = function(Hebergement) {
     // recherchd d'hébergement
     Hebergement.recherche = function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
     
-        const Equipement = Hebergement.app.models.equipement;
 
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
@@ -279,47 +278,17 @@ module.exports = function(Hebergement) {
             }
     
         },(err, hebergement) =>{
+            console.log(hebergement);
             if (err) cb(err, null)
-            else{
-                const hebergements = hebergement.filter(e => e.offres.length > 0);
-                // console.log(hebergements);
-                cb(null, hebergements);
+            cb(null, hebergement);
 
-                // var mesEquipements = [];
-                
-                // var mesEquipes = hebergements.map(e => e.mesEquipements);
-                // console.log(mesEquipes);
-                
-                // var element;
-                
-                // for (let index = 0; index < mesEquipes.length; index++) {
-                //      element = mesEquipes[index].split(",");
-                    
-                //     }
-                //     console.log(element);
+            // else{
+            //     const hebergements = hebergement.filter(e => e.offres.length > 0);
+            //     // console.log(hebergements);
 
-                    // for (let index = 0; index < element.length; index++) {
-                        
-                    //     Equipement.findById(element[index],
-                    //             (err, equipes)=>{
-                    //                 mesEquipements.push(equipes);
-                    //             console.log(mesEquipements);
-    
-                    //             const result = {
-                    //                 'hebergements' : hebergements,
-                    //                 'mes_equipementsIds' : mesEquipements
-                    //               }
-                
-                    //               cb(null, result);
-                    //        }
-                    //     );
-                        
-                    // }
-                    
-                    // }
                     
 
-             }
+            //  }
             },
         )
     }
@@ -342,6 +311,71 @@ module.exports = function(Hebergement) {
 
 
 
+    Hebergement.rech=function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
+
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+          });
+
+        Hebergement.find({
+
+            limit: limit,
+            skip: skip,
+
+            where:{
+                // approuveHebergement: true,
+                // onlineHebergement: true,
+                typeHebergement: typeHebergement,
+                lieuHebergement: lieuHebergement,
+                geoPointHebergement: {
+                    near: userLocation,
+                    maxDistance: km,
+                    unit: 'kilometers',
+                  },
+            },
+            include:[
+                {
+                    relation:'offres',
+                    scope:{
+                        where:{
+                            actifOffre: true,
+                            prixUnitaireOffre: {between: [prixMinimOffre,prixMaximOffre]},
+                        },
+                        limit:1
+                    }
+                }
+                ],
+        },
+            (err, hebergement)=>{
+                console.log(hebergement);
+                if(err)cb(err, null)
+                else{
+
+                    var hebergements = hebergement.filter(e => e.offres.length > 0);
+                    cb(null, hebergements);
+                }
+            }
+        )
+    }
+
+
+    Hebergement.remoteMethod('rech', {
+        accepts: [
+            {arg: 'lat', type: 'string'},
+            {arg: 'lng', type: 'string'},
+            {arg: 'limit', type: 'string'},
+            {arg: 'skip', type: 'string'},
+            {arg: 'typeHebergement', type: 'string'},
+            {arg: 'lieuHebergement', type: 'string'},
+            {arg: 'km', type: 'string'},
+            {arg: 'prixMinimOffre', type: 'string'},
+            {arg: 'prixMaximOffre', type: 'string'}
+        ],
+        http:{ path: '/rech',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
 
 
 
