@@ -235,7 +235,7 @@ module.exports = function(Hebergement) {
 
 
 
-
+    // recherche d'hebergement avec les parametres
     Hebergement.rechercher=function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
 
         var loopback = require('loopback');
@@ -305,7 +305,7 @@ module.exports = function(Hebergement) {
 
 
 
-
+    // recherche d'hebergement proche
     Hebergement.proche=function (lat, lng, limit, skip, typeHebergement, cb) {
 
         var loopback = require('loopback');
@@ -361,6 +361,59 @@ module.exports = function(Hebergement) {
             {arg: 'typeHebergement', type: 'string'}
         ],
         http:{ path: '/proche',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+
+    // recherche tous les hebergements
+    Hebergement.tousHeber=function (limit, skip, typeHebergement, cb) {
+
+
+        Hebergement.find({
+
+            limit: limit,
+            skip: skip,
+
+            where:{
+                // approuveHebergement: true,
+                // onlineHebergement: true
+                typeHebergement: typeHebergement
+            },
+            include:[
+                {
+                    relation:'offres',
+                    scope:{
+                        where:{
+                            actifOffre: true,
+                        },
+                        limit:1
+                    }
+                }
+                ],
+        },
+            (err, hebergement)=>{
+                console.log(hebergement);
+                if(err)cb(err, null)
+                else{
+
+                    var hebergements = hebergement.filter(e => e.offres.length > 0);
+                    cb(null, hebergements);
+                }
+            }
+        )
+    }
+
+
+    Hebergement.remoteMethod('tousHeber', {
+        accepts: [
+            {arg: 'limit', type: 'string'},
+            {arg: 'skip', type: 'string'},
+            {arg: 'typeHebergement', type: 'string'}
+        ],
+        http:{ path: '/tousHeber',verb:'get'},
         returns: {type: 'object', root: true}
     });
 

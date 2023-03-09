@@ -231,6 +231,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "proche"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "tousHeber"
     }
   ],
   "methods": {}
