@@ -234,7 +234,7 @@ module.exports = function(Hebergement) {
 
 
 
-    
+
 
     Hebergement.rechercher=function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
 
@@ -299,6 +299,66 @@ module.exports = function(Hebergement) {
             {arg: 'prixMaximOffre', type: 'string'}
         ],
         http:{ path: '/rechercher',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
+
+
+    Hebergement.proche=function (lat, lng, limit, skip, cb) {
+
+        var loopback = require('loopback');
+        var userLocation = new loopback.GeoPoint({
+            lat: lat,
+            lng: lng
+          });
+
+        Hebergement.find({
+
+            limit: limit,
+            skip: skip,
+
+            where:{
+                // approuveHebergement: true,
+                // onlineHebergement: true
+                geoPointHebergement: {
+                    near: userLocation
+                  }
+            },
+            include:[
+                {
+                    relation:'offres',
+                    scope:{
+                        where:{
+                            actifOffre: true,
+                        },
+                        limit:1
+                    }
+                }
+                ],
+        },
+            (err, hebergement)=>{
+                console.log(hebergement);
+                if(err)cb(err, null)
+                else{
+
+                    var hebergements = hebergement.filter(e => e.offres.length > 0);
+                    cb(null, hebergements);
+                }
+            }
+        )
+    }
+
+
+    Hebergement.remoteMethod('proche', {
+        accepts: [
+            {arg: 'lat', type: 'string'},
+            {arg: 'lng', type: 'string'},
+            {arg: 'limit', type: 'string'},
+            {arg: 'skip', type: 'string'}
+        ],
+        http:{ path: '/proche',verb:'get'},
         returns: {type: 'object', root: true}
     });
 

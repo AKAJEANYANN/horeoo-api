@@ -224,6 +224,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "rechercher"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "proche"
     }
   ],
   "methods": {}
