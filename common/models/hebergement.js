@@ -371,10 +371,10 @@ module.exports = function(Hebergement) {
 
 
         Hebergement.find(hebergementId,{
-            where:{
-                // approuveHebergement: true,
-                // onlineHebergement: true
-            },
+            // where:{
+            //     // approuveHebergement: true,
+            //     // onlineHebergement: true
+            // },
             include:[
                 {
                     relation:'offres',
