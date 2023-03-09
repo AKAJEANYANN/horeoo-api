@@ -4,7 +4,7 @@ module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
 
-    Hebergementhascategorie.heberCate = function (limit, skip, categorieId, typeHebergement, cb) {
+    Hebergementhascategorie.cateByHeber = function (limit, skip, categorieId, typeHebergement, cb) {
 
         Hebergementhascategorie.find({
             limit: limit,
@@ -39,9 +39,18 @@ module.exports = function(Hebergementhascategorie) {
         },
             (err, hebergeCate)=>{
                 console.log(hebergeCate);
+
                 if(err)cb(err, null)
-                else
+                else{
                     cb(null, hebergeCate);
+                    // var info = [];
+
+                    // hebergeCate.forEach(e => {
+                    //   info.push(JSON(e.hebergement))
+                    // });
+                    console.log(info);
+                    //cb(null, hebergements);
+                }
             }
         )
         
@@ -49,14 +58,14 @@ module.exports = function(Hebergementhascategorie) {
 
 
 
-    Hebergementhascategorie.remoteMethod('heberCate', {
+    Hebergementhascategorie.remoteMethod('cateByHeber', {
         accepts: [
                  {arg: 'limit', type: 'string'},
                  {arg: 'skip', type: 'string'},
                  {arg: 'categorieId', type: 'string'},
                  {arg: 'typeHebergement', type: 'string'}
              ],
-        http:{ path: '/heberCate',verb:'get'},
+        http:{ path: '/cateByHeber',verb:'get'},
         returns: {type: 'object', root: true}
     });
 
