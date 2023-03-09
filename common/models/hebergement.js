@@ -306,7 +306,7 @@ module.exports = function(Hebergement) {
 
 
 
-    Hebergement.proche=function (lat, lng, limit, skip, cb) {
+    Hebergement.proche=function (lat, lng, limit, skip, typeHebergement, cb) {
 
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
@@ -322,6 +322,7 @@ module.exports = function(Hebergement) {
             where:{
                 // approuveHebergement: true,
                 // onlineHebergement: true
+                typeHebergement: typeHebergement,
                 geoPointHebergement: {
                     near: userLocation
                   }
@@ -356,7 +357,8 @@ module.exports = function(Hebergement) {
             {arg: 'lat', type: 'string'},
             {arg: 'lng', type: 'string'},
             {arg: 'limit', type: 'string'},
-            {arg: 'skip', type: 'string'}
+            {arg: 'skip', type: 'string'},
+            {arg: 'typeHebergement', type: 'string'}
         ],
         http:{ path: '/proche',verb:'get'},
         returns: {type: 'object', root: true}
