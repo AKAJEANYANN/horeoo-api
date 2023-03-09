@@ -3,56 +3,63 @@
 module.exports = function(Hebergementhascategorie) {
 
     // recherchd d'hébergement
-    Hebergementhascategorie.cateByHeber = function (categorieId, limit, skip, typeHebergement, cb) {
 
+    Hebergementhascategorie.heberCate = function (limit, skip, categorieId, typeHebergement, cb) {
 
         Hebergementhascategorie.find({
+            limit: limit,
+            skip: skip,
             where:{
                 categorieId: categorieId,
-                limit: limit,
-                skip: skip,
             },
-            include:{
-                relation:'hebergement',
-                scope:{
-                    where:{
-                        approuveHebergement: true,
-                        onlineHebergement: true,
-                        typeHebergement: typeHebergement
-                        },
-
-                    include:
-                        {
-                        relation:'offres',
-                        scope:{
+            include:[
+                {
+                    relation:'hebergement',
+                    scope:{
                         where:{
-                            actifOffre: true,
+                            // approuveHebergement: true,
+                            // onlineHebergement: true,
+                            typeHebergement: typeHebergement
                         },
-                        limit:1
-                        }
-                    }
-                    }
+                        include:[
+                            {
+                                relation:'offres',
+                                scope:{
+                                    where:{
+                                        actifOffre: true,
+                                    },
+                                    limit:1
+                                }
+                            }
+                            ],
+                    },
+
                 }
-                },(err, heber)=>{
-                    // console.log(heber);
-                    if(err) cb(err, null)
-                    else{
-                        
-                        cb(null, heber);
-                    }
-        }  )
+                ],
+        },
+            (err, hebergeCate)=>{
+                console.log(hebergeCate);
+                if(err)cb(err, null)
+                else
+                    cb(null, hebergeCate);
+            }
+        )
+        
     }
-    
-    Hebergementhascategorie.remoteMethod('cateByHeber', {
+
+
+
+    Hebergementhascategorie.remoteMethod('heberCate', {
         accepts: [
-                {arg: 'categorieId', type: 'string'},
-                {arg: 'limit', type: 'string'},
-                {arg: 'skip', type: 'string'},
-                {arg: 'typeHebergement', type: 'string'}
-            ],
-        http:{ path: '/cateByHeber',verb:'get'},
+                 {arg: 'limit', type: 'string'},
+                 {arg: 'skip', type: 'string'},
+                 {arg: 'categorieId', type: 'string'},
+                 {arg: 'typeHebergement', type: 'string'}
+             ],
+        http:{ path: '/heberCate',verb:'get'},
         returns: {type: 'object', root: true}
     });
+
 
 
 

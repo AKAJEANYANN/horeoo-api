@@ -63,7 +63,7 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property": "cateByHeber"
+      "property": "heberCate"
     }
   ],
   "methods": {}
