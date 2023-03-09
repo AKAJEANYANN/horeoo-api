@@ -66,6 +66,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "delete"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "recherche"
     }
   ],
   "methods": {}

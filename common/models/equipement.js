@@ -52,4 +52,34 @@ module.exports = function(Equipement) {
         returns : { type: 'object', root: true } 
     });
 
+
+
+    Equipement.recherche = function (listEquipement, cb) {
+
+        
+        var list = listEquipement.split(',');
+
+        Equipement.find({
+            where:{
+                id: {
+                    inq: list
+                }
+            }
+        },(err, equipement)=>{
+            console.log(equipement);
+            if(err) cb(err, null)
+            else
+                cb(null, equipement);
+        })
+    }
+
+
+
+    Equipement.remoteMethod('recherche',
+    {
+        accepts:{ arg: 'listEquipement', type: 'string'},
+        http: { path: '/recherche', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
 };
