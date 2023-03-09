@@ -370,7 +370,7 @@ module.exports = function(Hebergement) {
     Hebergement.heberById=function (hebergementId, cb) {
 
 
-        Hebergement.find(hebergementId,{
+        Hebergement.findById(hebergementId,{
             // where:{
             //     // approuveHebergement: true,
             //     // onlineHebergement: true
