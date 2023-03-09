@@ -48,7 +48,7 @@ module.exports = function(Hebergementhascategorie) {
                     // hebergeCate.forEach(e => {
                     //   info.push(JSON(e.hebergement))
                     // });
-                    console.log(info);
+                    // console.log(info);
                     //cb(null, hebergements);
                 }
             }
