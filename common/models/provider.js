@@ -169,27 +169,38 @@ module.exports = function(Provider) {
     //suppression compte Provider
     Provider.dell = function (id, cb){
         
-        const time =   Math.floor(Date.now() / 1000) ;
+        const time = Math.floor(Date.now() / 1000) ;
 
 
-        Provider.findById(id,
-            (err, provider)=>{
-            console.log(provider);
-
-            if(provider){
-                provider.updateAttributes({
-                    approuve: "SUPPRESSION",
-                    username: "dell_"+ time + provider.username,
-                    email: "dell_"+ time + provider.email,
-                    emailProvider: "dell_"+ time + provider.emailProvider ,
-                },(err, provider)=>{
-                    console.log(provider);
-                    if(err)cb(err, null)
-                    else {
-                        cb(null, "succès");
-                    }
-                })
+        Provider.findById(id,{
+            include:{
+                relation:'hebergements'
             }
+        },
+            (err, provider)=>{
+                console.log(provider);
+                if(err)cb(err, null)
+                else {
+                    var rowHeber = [];
+                    provider.forEach(e => {
+                        rowHeber.push(e.hebergements)
+                    });
+                    console.log(rowHeber);
+                    // cb(null, "succès");
+                }
+
+            // if(provider){
+            //     provider.updateAttributes({
+            //         approuve: "SUPPRESSION",
+            //         username: "dell_"+ time + provider.username,
+            //         email: "dell_"+ time + provider.email,
+            //         emailProvider: "dell_"+ time + provider.emailProvider ,
+            //     },(err, provider)=>{
+            //         console.log(provider);
+                    
+                    
+            //     })
+            // }
             
         })
         

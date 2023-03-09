@@ -366,5 +366,44 @@ module.exports = function(Hebergement) {
 
 
 
+    // recherche d'hebergement par id
+    Hebergement.heberById=function (hebergementId, cb) {
+
+
+        Hebergement.find(hebergementId,{
+            where:{
+                // approuveHebergement: true,
+                // onlineHebergement: true
+            },
+            include:[
+                {
+                    relation:'offres',
+                    scope:{
+                        where:{
+                            actifOffre: true,
+                        },
+                    }
+                }
+                ],
+        },
+            (err, hebergement)=>{
+                console.log(hebergement);
+                if(err)cb(err, null)
+                else
+                    cb(null, hebergement);
+            }
+        )
+    }
+
+
+    Hebergement.remoteMethod('heberById', {
+        accepts:{arg: 'hebergementId', type: 'string'}
+        ,
+        http:{ path: '/:hebergementId/heberById',verb:'get'},
+        returns: {type: 'object', root: true}
+    });
+
+
+
 
 };
