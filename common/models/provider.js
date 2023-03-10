@@ -59,12 +59,12 @@ module.exports = function(Provider) {
                             cb(null, [message + code, use]);
 
                             // notification au provider
-                            notify.sendPushNotification(
-                                use.device_fcm_token,
-                                "Compte connecté",
-                                "Vous êtes connecté",
-                                "CUS"
-                                );
+                            // notify.sendPushNotification(
+                            //     use.device_fcm_token,
+                            //     "Compte connecté",
+                            //     "Vous êtes connecté",
+                            //     "CUS"
+                            //     );
                         }
                         else {// Retourner une reponse
                             cb(null, [message + code, use]);}
