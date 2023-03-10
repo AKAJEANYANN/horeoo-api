@@ -462,7 +462,6 @@ module.exports = function(Provider) {
 
 
 
-
     // affichage du provider activer
     Provider.afficheProviderActif = function (cb) {
         
