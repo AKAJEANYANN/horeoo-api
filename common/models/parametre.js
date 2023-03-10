@@ -246,25 +246,53 @@ module.exports = function(Parametre) {
 
 
     
-    //affichage des montant
-    Parametre.factur = function (cb) {
-        
-        Parametre.find({
+    // api de facturation pour chaque client envoyé
+    Parametre.pourcenTranchResi = function (poucentage, cb) {
+
+        // var poucentage = req.body.poucentageTranch;
+
+        Parametre.findOne({
             where:{
-                code: "facturationHebergement"
+                code: "percentTrancheResidence"
             }
-        }, (err, facturation) =>{
-            console.log(facturation)
-            if(err) cb(err, null)
-            else
-                cb(null, facturation);
+        },(err, poucent)=>{
+
+            if(poucent){
+
+                poucent.updateAttributes({
+                    valeur: poucentage,
+                    dateModifParam: Date.now()
+                },(err, poucent)=>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, poucent);
+    
+                })
+            }
+            else {
+                Parametre.create({
+                    valeur: poucentage,
+                    code: "percentTrancheResidence",
+                    designation: "Pourcentage tranche résidence",
+                    dateModifParam: Date.now()
+                },(err, pourcent)=>{
+                    console.log(pourcent);
+                    if(err) cb(err, null)
+                    else
+                        cb(null, pourcent);
+                })
+            }
+            
+
         })
+
     }
-
-
-    Parametre.remoteMethod('factur',
+    
+    
+    Parametre.remoteMethod('pourcenTranchResi',
     {
-        http:{ path: '/factur',verb:'get'},
+        accepts: { arg: 'poucentage', type: 'string' },
+        http: { path: '/:poucentage/pourcenTranchResi', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
 
