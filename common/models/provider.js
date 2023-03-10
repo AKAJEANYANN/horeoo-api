@@ -185,7 +185,7 @@ module.exports = function(Provider) {
                     console.log(hebergements);
 
                     hebergements.forEach(element => {
-                        
+
                         element.updateAttributes({
 
                             approuveHebergement: false,
@@ -491,8 +491,6 @@ module.exports = function(Provider) {
         http:{ path: '/afficheProviderActif',verb:'get'},
         returns : { type: 'object', root: true } 
     });
-
-
 
 
     // affichage du provider desactiver
