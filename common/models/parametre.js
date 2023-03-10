@@ -246,6 +246,8 @@ module.exports = function(Parametre) {
 
 
     
+
+    
     // api de facturation pour chaque client envoyé
     // Parametre.pourcenTranchResi = function (poucentage, cb) {
 
