@@ -247,53 +247,53 @@ module.exports = function(Parametre) {
 
     
     // api de facturation pour chaque client envoyé
-    Parametre.pourcenTranchResi = function (poucentage, cb) {
+    // Parametre.pourcenTranchResi = function (poucentage, cb) {
 
-        // var poucentage = req.body.poucentageTranch;
+    //     // var poucentage = req.body.poucentageTranch;
 
-        Parametre.findOne({
-            where:{
-                code: "percentTrancheResidence"
-            }
-        },(err, poucent)=>{
+    //     Parametre.findOne({
+    //         where:{
+    //             code: "percentTrancheResidence"
+    //         }
+    //     },(err, poucent)=>{
 
-            if(poucent){
+    //         if(poucent){
 
-                poucent.updateAttributes({
-                    valeur: poucentage,
-                    dateModifParam: Date.now()
-                },(err, poucent)=>{
-                    if(err) cb(err, null)
-                    else
-                        cb(null, poucent);
+    //             poucent.updateAttributes({
+    //                 valeur: poucentage,
+    //                 dateModifParam: Date.now()
+    //             },(err, poucent)=>{
+    //                 if(err) cb(err, null)
+    //                 else
+    //                     cb(null, poucent);
     
-                })
-            }
-            else {
-                Parametre.create({
-                    valeur: poucentage,
-                    code: "percentTrancheResidence",
-                    designation: "Pourcentage tranche résidence",
-                    dateModifParam: Date.now()
-                },(err, pourcent)=>{
-                    console.log(pourcent);
-                    if(err) cb(err, null)
-                    else
-                        cb(null, pourcent);
-                })
-            }
+    //             })
+    //         }
+    //         else {
+    //             Parametre.create({
+    //                 valeur: poucentage,
+    //                 code: "percentTrancheResidence",
+    //                 designation: "Pourcentage tranche résidence",
+    //                 dateModifParam: Date.now()
+    //             },(err, pourcent)=>{
+    //                 console.log(pourcent);
+    //                 if(err) cb(err, null)
+    //                 else
+    //                     cb(null, pourcent);
+    //             })
+    //         }
             
 
-        })
+    //     })
 
-    }
+    // }
     
     
-    Parametre.remoteMethod('pourcenTranchResi',
-    {
-        accepts: { arg: 'poucentage', type: 'string' },
-        http: { path: '/:poucentage/pourcenTranchResi', verb: 'post'},
-        returns : { type: 'object', root: true } 
-    });
+    // Parametre.remoteMethod('pourcenTranchResi',
+    // {
+    //     accepts: { arg: 'poucentage', type: 'string' },
+    //     http: { path: '/:poucentage/pourcenTranchResi', verb: 'post'},
+    //     returns : { type: 'object', root: true } 
+    // });
 
 };
