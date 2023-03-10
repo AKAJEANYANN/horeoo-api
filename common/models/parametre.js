@@ -245,7 +245,6 @@ module.exports = function(Parametre) {
 
 
 
-    
 
     
     // api de facturation pour chaque client envoyé
