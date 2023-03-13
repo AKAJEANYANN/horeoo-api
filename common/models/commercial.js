@@ -14,6 +14,7 @@ module.exports = function(Commercial) {
         const message = "Votre code commercial est : " ;
 
 
+        
         if(infoData != null && infoData != undefined && infoData != ""){
 
             Commercial.create(infoData, (err, commercial) => {

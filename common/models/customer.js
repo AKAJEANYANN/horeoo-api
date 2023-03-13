@@ -68,7 +68,7 @@ module.exports = function(Customer) {
                         //     "Vous êtes connecté",
                         //     "CUS"
                         //     );
-                        
+
                         })            
                 }
                 // cas 2 l'utilsiateur n'existe pas
@@ -97,13 +97,13 @@ module.exports = function(Customer) {
                                 cb(null, [message + code, user]);
                             }; 
 
-                        // notification au provider
-                        notify.sendPushNotification(
-                            user.device_fcm_token,
-                            "Compte crée",
-                            "Votre compte a été crée avec succès",
-                            "CUS"
-                            );
+                        // // notification au provider
+                        // notify.sendPushNotification(
+                        //     user.device_fcm_token,
+                        //     "Compte crée",
+                        //     "Votre compte a été crée avec succès",
+                        //     "CUS"
+                        //     );
                         });
                 }
             })
