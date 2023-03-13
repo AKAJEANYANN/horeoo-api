@@ -58,16 +58,16 @@ module.exports = function(Provider) {
                             // Retourner une reponse
                             cb(null, [message + code, use]);
 
-                            // notification au provider
-                            // notify.sendPushNotification(
-                            //     use.device_fcm_token,
-                            //     "Compte connecté",
-                            //     "Vous êtes connecté",
-                            //     "CUS"
-                            //     );
                         }
                         else {// Retourner une reponse
-                            cb(null, [message + code, use]);}
+                            cb(null, [message + code, use])};
+                    // notification au provider
+                    // notify.sendPushNotification(
+                    //     use.device_fcm_token,
+                    //     "Compte connecté",
+                    //     "Vous êtes connecté",
+                    //     "CUS"
+                    //     );
                     })            
                 }
                 // cas 2 l'utilsiateur n'existe pas
@@ -90,17 +90,17 @@ module.exports = function(Provider) {
                                 // Retourner une reponse
                                 cb(null, [message + code, user]); 
                                 
-                                // notification au provider
-                                notify.sendPushNotification(
-                                    user.device_fcm_token,
-                                    "Compte crée",
-                                    "Votre compte a été crée avec succès",
-                                    "CUS"
-                                    );
-                                }
-                                else {// Retourner une reponse
-                                    cb(null, [message + code, user]);}
-                                               
+                            }
+                            else {// Retourner une reponse
+                                cb(null, [message + code, user])};
+                                
+                        // notification au provider
+                        notify.sendPushNotification(
+                            user.device_fcm_token,
+                            "Compte crée",
+                            "Votre compte a été crée avec succès",
+                            "CUS"
+                            );
                         }
                     ) 
                 }

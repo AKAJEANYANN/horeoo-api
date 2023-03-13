@@ -84,5 +84,9 @@
   "hebergementHasCategorie": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "commercial": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

@@ -4,7 +4,7 @@ var path = require('path');
 
 
 // Sending SMS function
-const sendSMS = (msisdn, message) => {
+const sendSMS = (message,msisdn) => {
 
     const options = {
         method: 'POST',

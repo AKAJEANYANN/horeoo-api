@@ -1,6 +1,6 @@
 {
-  "name": "categorie",
-  "base": "PersistedModel",
+  "name": "commercial",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -11,32 +11,54 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "libelle": {
+    "nom": {
       "type": "string",
-      "index": {
-        "unique": true
-      },
       "default": ""
     },
-    "actif": {
-      "type": "boolean",
-      "default": true
+    "prenom": {
+      "type": "string",
+      "default": ""
     },
-    "ordre": {
-      "type": "number",
-      "default": 0
+    "code": {
+      "type": "string",
+      "default": ""
+    },
+    "approuve": {
+      "type": "boolean",
+      "default": false
+    },
+    "approval_datetime": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "numero": {
+      "type": "string",
+      "default": ""
+    },
+    "device_fcm_token": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "hebergementHasCategories": {
+    "accessTokens": {
       "type": "hasMany",
-      "model": "hebergementHasCategorie",
+      "model": "appAccessToken",
+      "polymorphic": {
+        "foreignKey": "userId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
+      }
+    },
+    "hebergements": {
+      "type": "hasMany",
+      "model": "hebergement",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
-      },
-      "through": "hebergementHasCategorie"
+      }
     }
   },
   "acls": [
@@ -57,7 +79,7 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property": "creation"
+      "property": "create"
     }
   ],
   "methods": {}
