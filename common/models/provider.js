@@ -95,12 +95,12 @@ module.exports = function(Provider) {
                                 cb(null, [message + code, user])};
                                 
                         // notification au provider
-                        notify.sendPushNotification(
-                            user.device_fcm_token,
-                            "Compte crée",
-                            "Votre compte a été crée avec succès",
-                            "CUS"
-                            );
+                        // notify.sendPushNotification(
+                        //     user.device_fcm_token,
+                        //     "Compte crée",
+                        //     "Votre compte a été crée avec succès",
+                        //     "CUS"
+                        //     );
                         }
                     ) 
                 }
