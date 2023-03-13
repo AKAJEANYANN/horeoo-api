@@ -35,12 +35,12 @@ module.exports = function(Commercial) {
 
 
                         // notification au commercial
-                        notify.sendPushNotification(
-                            com.device_fcm_token,
-                            "Compte créé",
-                            "Votre compte est créé",
-                            "COM"
-                            );
+                        // notify.sendPushNotification(
+                        //     com.device_fcm_token,
+                        //     "Compte créé",
+                        //     "Votre compte est créé",
+                        //     "COM"
+                        //     );
                         
                         })            
                 
