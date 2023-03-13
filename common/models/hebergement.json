@@ -169,14 +169,6 @@
         "nestRemoting": true
       },
       "through": "hebergementHasCategorie"
-    },
-    "commercial": {
-      "type": "belongsTo",
-      "model": "commercial",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
     }
   },
   "acls": [

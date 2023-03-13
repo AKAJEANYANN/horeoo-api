@@ -62,6 +62,10 @@
       "type": "string",
       "default": ""
     },
+    "codeCom": {
+      "type": "string",
+      "default": ""
+    },
     "actif": {
       "type": "boolean",
       "default": false
@@ -102,6 +106,14 @@
     "messageServeurs": {
       "type": "hasMany",
       "model": "messageServeur",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "commercial": {
+      "type": "belongsTo",
+      "model": "commercial",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
