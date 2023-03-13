@@ -22,12 +22,12 @@ module.exports = function(Commercial) {
                     commercial.updateAttributes({
                         code : commercial.nom + codeCom
                     },(err, com) => {
-                        console.log(com);
+                        console.log(com.numero);
                         if(err) cb(err, null)
                         else{
 
                             // TODO : Envoyer SMS
-                            notify.sendSMS(com.numero, message + com.code);
+                            notify.sendSMS(message + com.code, com.numero);
                             
                             // Retourner une reponse
                             cb(null, [message + com.code, com]);

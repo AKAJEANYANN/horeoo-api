@@ -53,7 +53,7 @@ module.exports = function(Provider) {
                         if(err) cb(err, null)
                         else if(msisdn != numdemo && msisdn != numgeraud && msisdn != numyatma && msisdn != numyannick) {
                             // TODO : Envoyer SMS
-                            notify.sendSMS(msisdn, message + code);
+                            notify.sendSMS(message + code, msisdn);
                             
                             // Retourner une reponse
                             cb(null, [message + code, use]);
@@ -86,7 +86,7 @@ module.exports = function(Provider) {
 
                             else if(msisdn != numdemo && msisdn != numgeraud && msisdn != numyatma && msisdn != numyannick) { 
                                 // TODO : Envoyer SMS
-                                notify.sendSMS(msisdn, message + code); 
+                                notify.sendSMS(message + code, msisdn); 
                                 // Retourner une reponse
                                 cb(null, [message + code, user]); 
                                 
