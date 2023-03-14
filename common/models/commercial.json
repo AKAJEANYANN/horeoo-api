@@ -31,6 +31,22 @@
       "type": "date",
       "defaultFn": "now"
     },
+    "date_creation": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "actf": {
+      "type": "boolean",
+      "default": true
+    },
+    "cniRecto": {
+      "type": "string",
+      "default": ""
+    },
+    "cniVerso": {
+      "type": "string",
+      "default": ""
+    },
     "numero": {
       "type": "string",
       "default": ""
