@@ -27,11 +27,11 @@ module.exports = function(Hebergement) {
                         },(err, prod)=>{
     
                         notify.sendPushNotification(
-                                prod.device_fcm_token,
-                                "Hébergement approuvé",
-                                "Votre hébergement a été approuvé",
-                                "PRO"
-                                );
+                            prod.device_fcm_token,
+                            "Hébergement approuvé",
+                            "Votre hébergement a été approuvé",
+                            "PRO"
+                            );
     
                         }
                     );
