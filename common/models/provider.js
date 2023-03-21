@@ -386,6 +386,8 @@ module.exports = function(Provider) {
                 },(err, provider) =>{
                     if(err) cb(err, null)
                     else{
+                        cb(null, provider)
+                        
                         sendMessageServeur("Votre compte fournisseur a été activé !")
 
                         notify.sendPushNotification(
@@ -395,7 +397,6 @@ module.exports = function(Provider) {
                             "PRO"
                             );
 
-                        cb(null, provider)
                     };
                 });
             })

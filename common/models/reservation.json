@@ -11,7 +11,7 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "dateArrivee": {
+    "dateDebut": {
       "type": "date",
       "default": ""
     },
@@ -19,7 +19,7 @@
       "type": "date",
       "defaultFn": "now"
     },
-    "dateDepart": {
+    "dateFin": {
       "type": "date",
       "default": ""
     },
