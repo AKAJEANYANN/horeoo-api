@@ -12,7 +12,7 @@
       "defaultFn": "uuidv4"
     },
     "dateDebut": {
-      "type": "date",
+      "type": "string",
       "default": ""
     },
     "dateReservation": {
@@ -20,7 +20,7 @@
       "defaultFn": "now"
     },
     "dateFin": {
-      "type": "date"
+      "type": "string"
     },
     "nombreAdulte": {
       "type": "string",
