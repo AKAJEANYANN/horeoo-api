@@ -34,13 +34,6 @@ module.exports = function(Commercial) {
                         }
 
 
-                        // notification au commercial
-                        // notify.sendPushNotification(
-                        //     com.device_fcm_token,
-                        //     "Compte créé",
-                        //     "Votre compte est créé",
-                        //     "COM"
-                        //     );
                         
                         })            
                 
@@ -60,5 +53,132 @@ module.exports = function(Commercial) {
         http: { path: '/creation', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
+
+    // affiche commercial actif
+    Commercial.afficheComActif = function (cb) {
+        
+        Commercial.find({
+            where:{
+                actif: true
+            },
+            include:{
+                relation:'providers',
+                scope:{
+                    include:{
+                        relation:'hebergements'
+                    }
+                }
+            }
+        },
+            (err, commercial) =>{
+                if(err) cb(err, null)
+                else
+                    cb(null, commercial)
+
+            })
+    }
+    
+    
+    Commercial.remoteMethod('afficheComActif',
+    {
+        http: { path: '/afficheComActif', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    // affiche commercial desactif
+    Commercial.afficheComDesactif = function (cb) {
+        
+        Commercial.find({
+            where:{
+                actif: false
+            }
+        },
+            (err, commercial) =>{
+                if(err) cb(err, null)
+                else
+                    cb(null, commercial)
+
+            })
+    }
+    
+    
+    Commercial.remoteMethod('afficheComDesactif',
+    {
+        http: { path: '/afficheComDesactif', verb: 'get'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
+
+    // activer un commercial
+    Commercial.activer = function (req, cb) {
+        
+        var idCom = req.body.id;
+
+        Commercial.findById(idCom,
+            (err, commercial) =>{
+
+                commercial.updateAttributes({
+                    actif: true
+                },(err, com)=>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, com)
+                })
+
+            })
+    }
+    
+    
+    Commercial.remoteMethod('activer',
+    {
+        accepts:{ arg: 'req', type: 'object', 'http': {source: 'req'}},
+        http: { path: '/activer', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    
+    // desactiver un commercial
+    Commercial.desactiver = function (id, cb) {
+        
+
+        Commercial.findById(id,
+            (err, commercial) =>{
+                console.log(commercial);
+                commercial.updateAttributes({
+                    actif: false
+                },(err, com)=>{
+                    if(err) cb(err, null)
+                    else
+                        cb(null, com)
+                })
+
+            })
+    }
+    
+    
+    Commercial.remoteMethod('desactiver',
+    {
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/desactiver', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+    
 
 };

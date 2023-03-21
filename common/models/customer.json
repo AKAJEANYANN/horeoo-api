@@ -100,6 +100,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "reservations": {
+      "type": "hasMany",
+      "model": "reservation",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
