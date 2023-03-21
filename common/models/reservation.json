@@ -20,8 +20,7 @@
       "defaultFn": "now"
     },
     "dateFin": {
-      "type": "date",
-      "default": ""
+      "type": "date"
     },
     "nombreAdulte": {
       "type": "string",

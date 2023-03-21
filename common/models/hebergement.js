@@ -6,7 +6,7 @@ module.exports = function(Hebergement) {
 
     Hebergement.approuve = function (id, cb) {
 
-        const Provider = Hebergement.app.models.hebergement;
+        const Provider = Hebergement.app.models.provider;
     
         Hebergement.findById(
             id,
