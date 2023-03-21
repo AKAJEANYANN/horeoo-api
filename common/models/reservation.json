@@ -65,6 +65,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "offre": {
+      "type": "belongsTo",
+      "model": "offre",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
