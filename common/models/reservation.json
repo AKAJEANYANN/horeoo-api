@@ -46,6 +46,13 @@
     "etatReservation": {
       "type": "string",
       "default": ""
+    },
+    "mesEquipements": {
+      "type": "string",
+      "default": "",
+      "mysql": {
+        "dataType": "TEXT"
+      }
     }
   },
   "validations": [],

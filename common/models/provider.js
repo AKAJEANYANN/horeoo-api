@@ -330,15 +330,17 @@ module.exports = function(Provider) {
                 },(err, provider) =>{
                     if(err) cb(err, null)
                     else{
-                        sendMessageServeur("Félicitation votre compte provider a été approuvé !")
-
+                        cb(null, provider);
+                        
+                        sendMessageServeur("Félicitation votre compte provider a été approuvé !");
+                        
                         notify.sendPushNotification(
                             provider.device_fcm_token,
                             "Fournisseur approuvé",
                             "Votre compte fournisseur à été approuvé",
                             "PRO"
                             );
-                        cb(null, provider)
+                            
                     };
                     
                 });
