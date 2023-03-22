@@ -22,7 +22,8 @@
       }
     },
     "dateMessage": {
-      "type": "date"
+      "type": "date",
+      "defaultFn": "now"
     },
     "objetMessage": {
       "type": "string",

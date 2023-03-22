@@ -89,8 +89,7 @@
       "default": false
     },
     "dateDelete": {
-      "type": "date",
-      "defaultFn": "now"
+      "type": "date"
     },
     "contactOneHebergement": {
       "type": "string",

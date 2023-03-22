@@ -4,6 +4,7 @@ const notify = require("../../server/global/notify")
 
 module.exports = function(Hebergement) {
 
+    // approuver un hebergement
     Hebergement.approuve = function (id, cb) {
 
         const Provider = Hebergement.app.models.provider;
@@ -55,9 +56,13 @@ module.exports = function(Hebergement) {
     
     
     
+    // activer un hebergement
     Hebergement.activeheberge = function (id, cb) {
 
-        const Provider = Hebergement.app.models.hebergement;
+        const Provider = Hebergement.app.models.provider;
+
+        const messageServeur = Provider.app.models.messageServeur;
+
     
         Hebergement.findById(
             id,
@@ -73,13 +78,21 @@ module.exports = function(Hebergement) {
                                 id: hebergement.providerId
                                 }
                             },(err, prod)=>{
+
+                                messageServeur.create({
+                                    objetMessage: "Activation",
+                                    message: "Votre hébergement a été activé !" ,
+                                    providerId: prod.id
+                                },(err, messag)=>{
+
+                                });
         
                             notify.sendPushNotification(
-                                    prod.device_fcm_token,
-                                    "Hébergement activé",
-                                    "Votre hébergement a été activé",
-                                    "PRO"
-                                    );
+                                prod.device_fcm_token,
+                                "Hébergement activé",
+                                "Votre hébergement a été activé",
+                                "PRO"
+                                );
         
                             }
                         );
@@ -104,9 +117,12 @@ module.exports = function(Hebergement) {
 
 
 
+    // desactiver un hebergement
     Hebergement.desactiveheberge = function (id, cb) {
 
-        const Provider = Hebergement.app.models.hebergement;
+        const Provider = Hebergement.app.models.provider;
+
+        const messageServeur = Provider.app.models.messageServeur;
     
         Hebergement.findById(
             id,
@@ -122,8 +138,16 @@ module.exports = function(Hebergement) {
                                 id: hebergement.providerId
                                 }
                             },(err, prod)=>{
+
+                                messageServeur.create({
+                                    objetMessage: "Désactivation",
+                                    message: "Votre hébergement a été désactivé !" ,
+                                    providerId: prod.id
+                                },(err, messag)=>{
+
+                                });
         
-                            notify.sendPushNotification(
+                                notify.sendPushNotification(
                                     prod.device_fcm_token,
                                     "Hébergement désactivé",
                                     "Votre hébergement a été désactivé",
