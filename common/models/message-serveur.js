@@ -4,7 +4,7 @@ const notify = require("../../server/global/notify")
 module.exports = function(Messageserveur) {
 
     // envoie message a un provider avec suppresion du contenu du champ approuve
-    Messageserveur.postMessage= function (req, cb) {
+    Messageserveur.postMessage = function (req, cb) {
 
         const Provider = Messageserveur.app.models.provider;
         
@@ -24,6 +24,7 @@ module.exports = function(Messageserveur) {
                         id: message.providerId
                     }
                 },(err, provider) =>{
+                    
                         provider.updateAttributes({
                             approuve:""
                         },(err, pro)=>{
@@ -117,7 +118,7 @@ module.exports = function(Messageserveur) {
 
 
 
-    
+
     Messageserveur.notifpaiement= function (req, cb) {
         
         var isProvider = req.body.isProvider;

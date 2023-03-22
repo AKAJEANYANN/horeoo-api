@@ -305,7 +305,7 @@ module.exports = function(Provider) {
 
         const messageServeur = Provider.app.models.messageServeur;
 
-        function sendMessageServeur(msg ="Félicitation votre compte provider a été approuvé !" , obj ="Ajout fournisseur") {
+        function sendMessageServeur(msg ="Félicitation votre compte provider a été approuvé !" , obj ="Ajout provider") {
             messageServeur.create( {
                 message: msg,
                 objetMessage: obj,
@@ -336,8 +336,8 @@ module.exports = function(Provider) {
                         
                         notify.sendPushNotification(
                             provider.device_fcm_token,
-                            "Fournisseur approuvé",
-                            "Votre compte fournisseur à été approuvé",
+                            "Provider approuvé",
+                            "Votre compte provider à été approuvé",
                             "PRO"
                             );
                             
@@ -365,7 +365,7 @@ module.exports = function(Provider) {
 
         const messageServeur = Provider.app.models.messageServeur;
 
-        function sendMessageServeur(msg ="Votre compte fournisseur a été activé !" , obj ="Activation fournisseur") {
+        function sendMessageServeur(msg ="Votre compte provider a été activé !" , obj ="Activation du provider") {
             messageServeur.create( {
                 message: msg,
                 objetMessage: obj,
@@ -388,12 +388,12 @@ module.exports = function(Provider) {
                     else{
                         cb(null, provider)
                         
-                        sendMessageServeur("Votre compte fournisseur a été activé !")
+                        sendMessageServeur("Votre compte provider a été activé !")
 
                         notify.sendPushNotification(
                             provider.device_fcm_token,
-                            "Fournisseur activé",
-                            "Votre compte fournisseur à été activé",
+                            "Provider activé",
+                            "Votre compte provider à été activé",
                             "PRO"
                             );
 
@@ -418,7 +418,7 @@ module.exports = function(Provider) {
 
         const messageServeur = Provider.app.models.messageServeur;
 
-        function sendMessageServeur(msg ="Votre compte fournisseur a été désactivé pour non respect de nos règlements !" , obj ="Désactivation fournisseur") {
+        function sendMessageServeur(msg ="Votre compte provider a été désactivé pour non respect de nos règlements !" , obj ="Désactivation du provider") {
             messageServeur.create( {
                 message: msg,
                 objetMessage: obj,
@@ -439,15 +439,15 @@ module.exports = function(Provider) {
                 },(err, provider) =>{
                     if(err) cb(err, null)
                     else{
-                        sendMessageServeur("Votre compte fournisseur à été désactivé pour non respect de nos règlement !")
+                        sendMessageServeur("Votre compte provider à été désactivé pour non respect de nos règlement !")
 
                         cb(null, provider)
                     }
                 });
                 notify.sendPushNotification(
                     provider.device_fcm_token,
-                    "Fournisseur désactivé",
-                    "Votre compte fournisseur à été désactivé pour non respect de nos règlement !",
+                    "Provider désactivé",
+                    "Votre compte provider à été désactivé pour non respect de nos règlement !",
                     "PRO"
                     );
             })
