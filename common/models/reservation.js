@@ -148,7 +148,7 @@ module.exports = function(Reservation) {
 
                             const msisdn = reservations["customer"]["numero"];
 
-                            const message = "La réservation faite sur "+ "'" + reservations["hebergement"]["typeHebergement"] +"'"+ " " + reservations["hebergement"]["nomHebergement"] +" a été validée";
+                            const message = 'La réservation faite sur ' + reservations['hebergement']['typeHebergement'] + " " + '"' + reservations["hebergement"]["nomHebergement"] + '"' +' a été validée';
                             
                             notify.sendSMS(message, msisdn);
 
