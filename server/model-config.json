@@ -88,5 +88,9 @@
   "commercial": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "bot": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

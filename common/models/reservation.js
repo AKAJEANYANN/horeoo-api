@@ -4,8 +4,6 @@ const notify = require("../../server/global/notify")
 module.exports = function(Reservation) {
     
     Reservation.creation = function (req, cb){
-
-        // const messageServeur = Provider.app.models.messageServeur;
         
         const Provider = Reservation.app.models.provider;
         const Hebergement = Reservation.app.models.hebergement;
@@ -23,7 +21,7 @@ module.exports = function(Reservation) {
                 codeReservation: codeReservation
             }, (err, reservation) =>{
                 console.log(reservation);
-                
+
 
                 Hebergement.findOne({
                     where:{
@@ -111,24 +109,9 @@ module.exports = function(Reservation) {
 
 
 
-    Reservation.modifReser = function (req, idreservation, cb) {
-        
-        const Hebergement = Reservation.app.models.hebergement;
-        const Provider = Reservation.app.models.provider;
-        const messageServeur = Reservation.app.models.messageServeur;
+    Reservation.modifReser = function (req, cb) {
 
-        // function sendMessageServeur(msg ="Félicitation nouveau fournisseur ajouté !" , obj ="Ajout fournisseur") {
-        //     messageServeur.create( {
-        //         message: msg,
-        //         objetMessage: obj,
-        //         vueMessage: false,
-        //         commercialId: commercialId,
-        //       }
-        //     ,(err, mess)=>{
-    
-        //     });
-        // }
-
+        var idreservation = req.body.idreservation;
         var reservationEtat = req.body.reservationEtat;
         var idbot = req.body.idbot;
 
@@ -154,7 +137,7 @@ module.exports = function(Reservation) {
                     botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
-                    
+
                     var reservations = reservation.toJSON();
                     console.log(reservations["customer"]["device_fcm_token"]);
                  
@@ -163,6 +146,8 @@ module.exports = function(Reservation) {
                     else
                             
                         if(reservation.reservationEtat === "2"){
+
+                            // const message = "Votre réservation N° " + reservation.codeReservation +"pour la ";
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
@@ -208,9 +193,7 @@ module.exports = function(Reservation) {
 
     Reservation.remoteMethod('modifReser',
         {
-            accepts: 
-                [{ arg: 'req', type: 'object', 'http': {source: 'req'}},
-                { arg: 'idreservation', type: 'string' }],
+            accepts:{ arg: 'req', type: 'object', 'http': {source: 'req'}},
            
             http: { path: '/:idreservation/modifReser', verb: 'post'},
             returns : { type: 'object', root: true } 
