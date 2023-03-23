@@ -209,70 +209,74 @@ module.exports = function(Reservation) {
 
 
 
-    Reservation.affichage = function (customerId, cb) {
+
+
+
         
-        Reservation.find({
-            where:{
-                customerId: customerId
-            },
-            include:[
-                {
-                    relation:'customer'
-                },
-                {
-                    relation:'offre',
-                    scope:{
-                        include:'hebergement'
-                    }
-                }
-            ]
-        }, (err, reservation) =>{
-            console.log(reservation)
-            if(err) cb(err, null)
-            else
-                cb(null, reservation);
-        })
-    }
+    // Reservation.affichage = function (customerId, cb) {
+        
+    //     Reservation.find({
+    //         where:{
+    //             customerId: customerId
+    //         },
+    //         include:[
+    //             {
+    //                 relation:'customer'
+    //             },
+    //             {
+    //                 relation:'offre',
+    //                 scope:{
+    //                     include:'hebergement'
+    //                 }
+    //             }
+    //         ]
+    //     }, (err, reservation) =>{
+    //         console.log(reservation)
+    //         if(err) cb(err, null)
+    //         else
+    //             cb(null, reservation);
+    //     })
+    // }
 
 
-    Reservation.remoteMethod('affichage',
-    {
-        accepts: {arg: 'customerId', type: 'string'},
-        http: { path: '/:customerId/affichage', verb: 'post'},
-        returns : { type: 'object', root: true } 
-    });
+    // Reservation.remoteMethod('affichage',
+    // {
+    //     accepts: {arg: 'customerId', type: 'string'},
+    //     http: { path: '/:customerId/affichage', verb: 'post'},
+    //     returns : { type: 'object', root: true } 
+    // });
 
 
 
 
-    Reservation.countReservation = function (providerId, etat, cb) {
+    // Reservation.countReservation = function (providerId, etat, cb) {
 
-            var sql;
-            const Hebergement = Reservation.app.models.hebergement;
-            var ds = Hebergement.dataSource;
-            if (providerId != "" && etat != "") {
-                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND hebergement.activeHebergement = '1' AND reservation.reservationEtat = '${etat}' `;
-            }
-            else{
-                sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND hebergement.activeHebergement = '1' `;
-            }
+    //         var sql;
+    //         const Hebergement = Reservation.app.models.hebergement;
+    //         var ds = Hebergement.dataSource;
+    //         if (providerId != "" && etat != "") {
+    //             sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND hebergement.activeHebergement = '1' AND reservation.reservationEtat = '${etat}' `;
+    //         }
+    //         else{
+    //             sql = `SELECT COUNT(reservation.hebergementId) as count FROM hebergement,reservation WHERE hebergement.id = reservation.hebergementId AND hebergement.providerId = '${providerId}' AND hebergement.activeHebergement = '1' `;
+    //         }
             
-            ds.connector.query(sql, function (err, data){
-                if(err) throw err
-                console.log(data);
-                cb(null, data);
-            });
-    }
+    //         ds.connector.query(sql, function (err, data){
+    //             if(err) throw err
+    //             console.log(data);
+    //             cb(null, data);
+    //         });
+    // }
 
 
-    Reservation.remoteMethod('countReservation',
-        {
-            accepts:[ { arg: 'providerId', type: 'string', required: true },
-                { arg: 'etat', type: 'string' }
-         ],
-            http: { path: '/countReservation', verb: 'get'},
-            returns : { type: 'object', root: true } 
-        });
+    // Reservation.remoteMethod('countReservation',
+    //     {
+    //         accepts:[ { arg: 'providerId', type: 'string', required: true },
+    //             { arg: 'etat', type: 'string' }
+    //      ],
+    //         http: { path: '/countReservation', verb: 'get'},
+    //         returns : { type: 'object', root: true } 
+    //     });
 
 
       
