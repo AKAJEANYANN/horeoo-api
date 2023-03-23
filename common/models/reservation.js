@@ -109,11 +109,8 @@ module.exports = function(Reservation) {
 
 
 
-    Reservation.modifReser = function (req, cb) {
+    Reservation.modifReser = function (idreservation, reservationEtat, idbot, cb) {
 
-        var idreservation = req.body.idreservation;
-        var reservationEtat = req.body.reservationEtat;
-        var idbot = req.body.idbot;
 
         Reservation.findById(
             idreservation,
@@ -147,7 +144,7 @@ module.exports = function(Reservation) {
                             
                         if(reservation.reservationEtat === "2"){
 
-                            // const message = "Votre réservation N° " + reservation.codeReservation +"pour la ";
+                            // const message = "la réservation de "+ reservation.hebergment.Votre réservation N° " + reservation.codeReservation +;
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
@@ -193,7 +190,11 @@ module.exports = function(Reservation) {
 
     Reservation.remoteMethod('modifReser',
         {
-            accepts:{ arg: 'req', type: 'object', 'http': {source: 'req'}},
+            accepts: [
+                {arg: 'idreservation', type: 'string'},
+                {arg: 'reservationEtat', type: 'string'},
+                {arg: 'idbot', type: 'string'}
+        ],
            
             http: { path: '/:idreservation/modifReser', verb: 'post'},
             returns : { type: 'object', root: true } 
