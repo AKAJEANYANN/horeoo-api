@@ -129,8 +129,10 @@ module.exports = function(Reservation) {
             },
             (err, reservation) =>{ 
 
+                console.log(reservation);
+
                 reservation.updateAttributes({
-                    reservationEtat: reservationEtat,
+                    etatReservation: reservationEtat,
                     botId: idbot,
                     reservationDernierModif: Date.now()
                 }, (err, reservation) =>{
@@ -142,7 +144,7 @@ module.exports = function(Reservation) {
                     if(err) cb(err, null)
                     else
                             
-                        if(reservation.reservationEtat === "2"){
+                        if(reservation.etatReservation === "2"){
 
                             // const message = "la réservation de "+ reservation.hebergment.Votre réservation N° " + reservation.codeReservation +;
 
@@ -153,7 +155,7 @@ module.exports = function(Reservation) {
                                 "CUS"
                                 );
                         }
-                        else if(reservation.reservationEtat === "5" && reservations["customer"]["device_fcm_token"] != ""){
+                        else if(reservation.etatReservation === "5" && reservations["customer"]["device_fcm_token"] != ""){
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
@@ -162,7 +164,7 @@ module.exports = function(Reservation) {
                                 "CUS"
                                 );
                         }
-                        else if(reservation.reservationEtat === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] && reservations["customer"]["device_fcm_token"] != ""){
+                        else if(reservation.etatReservation === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] && reservations["customer"]["device_fcm_token"] != ""){
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
