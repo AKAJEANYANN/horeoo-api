@@ -4,6 +4,8 @@ const notify = require("../../server/global/notify")
 module.exports = function(Reservation) {
     
     Reservation.creation = function (req, cb){
+
+        // const messageServeur = Provider.app.models.messageServeur;
         
         const Provider = Reservation.app.models.provider;
         const Hebergement = Reservation.app.models.hebergement;
@@ -12,13 +14,13 @@ module.exports = function(Reservation) {
          var codeReservation =  Math.floor(Math.random() * 900000) + 100000;
 
         //  creation de reservation
-        Reservation.create(infoReservation, (err, reservation) =>{
-            console.log(reservation);
+        Reservation.create(infoReservation, (err, reserve) =>{
+            console.log(reserve);
             if(err) cb(err, null)
 
             // modification du champ reservation number
-            reservation.updateAttributes({
-                reservationNumber: codeReservation
+            reserve.updateAttributes({
+                codeReservation: codeReservation
             }, (err, reservation) =>{
                 console.log(reservation);
                 
@@ -36,6 +38,7 @@ module.exports = function(Reservation) {
                             id: heberge.providerId
                         }
                     },(err, prod)=>{
+
                         console.log(prod.device_fcm_token);
 
                         notify.sendPushNotification(
