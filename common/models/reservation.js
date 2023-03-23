@@ -146,7 +146,11 @@ module.exports = function(Reservation) {
                             
                         if(reservation.etatReservation === "2"){
 
-                            // const message = "la réservation de "+ reservation.hebergment.Votre réservation N° " + reservation.codeReservation +;
+                            const msisdn = reservations["customer"]["numero"];
+
+                            const message = "La réservation faite sur "+ reservations["hebergement"]["typeHebergement"]+ " " + reservations["hebergement"]["nomHebergement"] +" a été validée";
+                            
+                            notify.sendSMS(message, msisdn);
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
