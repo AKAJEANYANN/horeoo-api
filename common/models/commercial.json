@@ -28,8 +28,7 @@
       "default": false
     },
     "approval_datetime": {
-      "type": "date",
-      "defaultFn": "now"
+      "type": "date"
     },
     "date_creation": {
       "type": "date",

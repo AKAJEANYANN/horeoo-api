@@ -5,42 +5,75 @@ module.exports = function(Commercial) {
 
 
     // creation d'un commercial avec generation de code commercial
+    
+    
     Commercial.creation = function (req ,cb) {
-
-        var infoData = req.body.data;
-
+    
         var codeCom = Math.floor(Math.random() * 90000) + 10000;
 
-        const message = "Votre code commercial est : " ;
+        const message = "Votre code de connexion est : " ;
+
+        var msisdn = req.body.numero;        
 
 
-        
-        if(infoData != null && infoData != undefined && infoData != ""){
+        if(msisdn != null && msisdn != undefined && msisdn != ""){
 
-            Commercial.create(infoData, (err, commercial) => {
+            Commercial.findOne({
+                where: {
+                    numero: msisdn,
+                }
+            }, (err, commercial) => {
 
+                // cas 1 l'utilisateur existe: 
+                if(commercial){
+                    
+                    // mettre a jour le MDP avec le code de 5 chiffre
                     commercial.updateAttributes({
-                        code : commercial.nom + codeCom
-                    },(err, com) => {
-                        console.log(com.numero);
+                        email : msisdn + '@horeoo.com',
+                        password : `${code}`
+                    },(err, comme) => {
+                        console.log(comme);
                         if(err) cb(err, null)
-                        else{
+                        else {
 
                             // TODO : Envoyer SMS
-                            notify.sendSMS(message + com.code, com.numero);
+                            notify.sendSMS(message + code, msisdn);
                             
                             // Retourner une reponse
-                            cb(null, [message + com.code, com]);
+                            cb(null, [message + code, comme]);
                         }
 
 
-                        
                         })            
-                
+                }
+                // cas 2 l'utilsiateur n'existe pas
+                else {
+
+                    // creer l'utilisateur avec son numero de tel 
+                    Commercial.create(
+                        {
+                            numero: msisdn,
+                            email : msisdn + '@horeoo.ci',
+                            password : `${code}`,
+                        },
+                        (err, commerc) => {
+                            if(err) cb(err, null);
+
+                            else { 
+                                // TODO : Envoyer SMS
+                                notify.sendSMS(message + code, msisdn); 
+                                // Retourner une reponse
+                                cb(null, [message + code, commerc]); 
+                                
+                                
+                            }
+
+                        });
+                }
             })
         }
         else{
-            cb({status: 401, message: "Veuillez entrer les informations du commercial"}, null)
+            cb({status: 401, message: "Veuillez entrer le numéro de téléphone"}, null)
         } 
         
     };
@@ -97,6 +130,14 @@ module.exports = function(Commercial) {
         Commercial.find({
             where:{
                 actif: false
+            },
+            include:{
+                relation:'providers',
+                scope:{
+                    include:{
+                        relation:'hebergements'
+                    }
+                }
             }
         },
             (err, commercial) =>{
@@ -120,11 +161,10 @@ module.exports = function(Commercial) {
 
 
     // activer un commercial
-    Commercial.activer = function (req, cb) {
+    Commercial.activer = function (id, cb) {
         
-        var idCom = req.body.id;
 
-        Commercial.findById(idCom,
+        Commercial.findById(id,
             (err, commercial) =>{
 
                 commercial.updateAttributes({
@@ -141,8 +181,8 @@ module.exports = function(Commercial) {
     
     Commercial.remoteMethod('activer',
     {
-        accepts:{ arg: 'req', type: 'object', 'http': {source: 'req'}},
-        http: { path: '/activer', verb: 'post'},
+        accepts: { arg: 'id', type: 'string' },
+        http: { path: '/:id/activer', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
 

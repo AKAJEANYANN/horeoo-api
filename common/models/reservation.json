@@ -20,7 +20,8 @@
       "defaultFn": "now"
     },
     "dateFin": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "nombreAdulte": {
       "type": "string",
@@ -43,6 +44,10 @@
       "default": ""
     },
     "etatReservation": {
+      "type": "string",
+      "default": ""
+    },
+    "codeReservation": {
       "type": "string",
       "default": ""
     },
