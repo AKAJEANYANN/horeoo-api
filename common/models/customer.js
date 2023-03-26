@@ -71,7 +71,7 @@ module.exports = function(Customer) {
                         {
                             username : msisdn,
                             numero: msisdn,
-                            email : msisdn + '@horeoo.ci',
+                            email : msisdn + '@horeoo.com',
                             password : `${code}`,
                         },
                         (err, user) => {
