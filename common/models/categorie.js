@@ -1,16 +1,14 @@
 'use strict';
 
 module.exports = function(Categorie) {
-    Categorie.creation = function (req ,cb) {
-
-        var nomCategorie = req.body.nomCategorie;
+    Categorie.creation = function (nomLibelle ,cb) {
 
 
-        if(nomCategorie != null && nomCategorie != undefined && nomCategorie != ""){
+        if(nomLibelle != null && nomLibelle != undefined && nomLibelle != ""){
 
             Categorie.findOne({
                 where: {
-                    libelle : nomCategorie
+                    libelle : nomLibelle
                 }
             }, (err, categorie) => {
 
@@ -18,9 +16,9 @@ module.exports = function(Categorie) {
                 else
 
                 // cas 1 la categorie existe: 
-                if(categorie.libelle == nomCategorie){
+                if(categorie.libelle == nomLibelle){
                     
-                    cb(null, nomCategorie + "existe")
+                    cb(null, nomLibelle + "existe")
                 }
                 // cas 2 l'utilsiateur n'existe pas
                 else {
@@ -28,7 +26,7 @@ module.exports = function(Categorie) {
                     // creer l'utilisateur avec son numero de tel 
                     Categorie.create(
                         {
-                            libelle : nomCategorie 
+                            libelle : nomLibelle 
                         },
                         (err, categorie) => {
                             if(err) cb(err, null);
@@ -47,7 +45,7 @@ module.exports = function(Categorie) {
     Categorie.remoteMethod('creation',
     {
         accepts: [
-            { arg: 'req', type: 'object', 'http': {source: 'req'}},
+            { arg: 'nomLibelle', type: 'string',},
         ],
         http: { path: '/creation', verb: 'post'},
         returns : { type: 'object', root: true } 
