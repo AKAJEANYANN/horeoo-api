@@ -45,7 +45,6 @@ module.exports = function(Customer) {
                     
                     // mettre a jour le MDP avec le code de 5 chiffre
                     user.updateAttributes({
-                        email : msisdn + '@horeoo.com',
                         password : `${code}`
                     },(err, use) => {
                         console.log(use);
