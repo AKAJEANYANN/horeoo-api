@@ -114,6 +114,10 @@
     "moyenne": {
       "type": "string",
       "default": ""
+    },
+    "codeHebergement": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
