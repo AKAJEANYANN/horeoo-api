@@ -5,8 +5,7 @@ module.exports = function(Commercial) {
 
 
     // creation d'un commercial avec generation de code commercial
-    
-    
+     
     // Commercial.creation = function (req ,cb) {
     
     //     var codeCom = Math.floor(Math.random() * 90000) + 10000;
@@ -91,6 +90,8 @@ module.exports = function(Commercial) {
 
 
     // creation d'un commercial avec generation de code commercial
+    
+    
     Commercial.creation = function (req ,cb) {
 
         const message = "Votre code de connexion est : " ;
