@@ -4,6 +4,54 @@ const notify = require("../../server/global/notify")
 
 module.exports = function(Hebergement) {
 
+
+    Hebergement.creation = function (req, cb) {
+
+        var hebergementBody = req.body.info; 
+        var code = Math.floor(Date.now() / 1000);
+
+        // 1. Create post
+        Hebergement.create(hebergementBody, (err, hebergement) => {
+              
+            if(hebergement.typeHebergement == "HOTEL"){
+                hebergement.updateAttributes({
+                    codeHebergement: "H_" + code
+                },(err, heber) =>{
+                    console.log(heber)
+                    if (err) cb(err, null)
+                    else
+                        cb(null, heber)
+                })
+            }
+            else{
+
+                hebergement.updateAttributes({
+                    codeHebergement: "R_" + code
+                },(err, heberge) =>{
+                    console.log(heberge)
+                    if (err) cb(err, null)
+                    else
+                        cb(null, heberge)
+                })
+            }
+                        
+                 
+        });
+
+    };
+
+    Hebergement.remoteMethod('creation',
+    {
+        accepts:
+            { arg: 'req', type: 'object', 'http': {source: 'req'}},
+        http: { path: '/creation', verb: 'post'},
+        returns : { type: 'object', root: true } 
+    });
+
+
+
+
+
     // approuver un hebergement
     Hebergement.approuve = function (id, cb) {
 
