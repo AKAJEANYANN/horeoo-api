@@ -305,7 +305,7 @@ module.exports = function(Provider) {
 
         const messageServeur = Provider.app.models.messageServeur;
 
-        function sendMessageServeur(msg ="Félicitation votre compte provider a été approuvé !" , obj ="Ajout provider") {
+        function sendMessageServeur(msg ="Félicitation votre compte provider a été approuvé !" , obj ="Provider approuvé") {
             messageServeur.create( {
                 message: msg,
                 objetMessage: obj,
