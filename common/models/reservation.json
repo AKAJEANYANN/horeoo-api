@@ -61,10 +61,6 @@
         "dataType": "TEXT"
       }
     },
-    "periode": {
-      "type": "string",
-      "default": ""
-    },
     "tarifUnitaire": {
       "type": "string",
       "default": ""
