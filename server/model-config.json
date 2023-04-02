@@ -92,5 +92,9 @@
   "bot": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "like": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }

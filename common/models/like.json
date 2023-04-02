@@ -1,0 +1,36 @@
+{
+  "name": "like",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "customer": {
+      "type": "belongsTo",
+      "model": "customer",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "hebergement": {
+      "type": "belongsTo",
+      "model": "hebergement",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

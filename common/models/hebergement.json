@@ -172,6 +172,15 @@
         "nestRemoting": true
       },
       "through": "hebergementHasCategorie"
+    },
+    "likes": {
+      "type": "hasMany",
+      "model": "like",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "like"
     }
   },
   "acls": [
