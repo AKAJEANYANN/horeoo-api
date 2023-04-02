@@ -60,6 +60,14 @@
       "mysql": {
         "dataType": "TEXT"
       }
+    },
+    "période": {
+      "type": "string",
+      "default": ""
+    },
+    "tarifUnitaire": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],

@@ -69,7 +69,7 @@ module.exports = function(Hebergement) {
                     dateActif: Date.now()
                 },(err, hebergement) =>{
     
-                    Provider.find({
+                    Provider.findOne({
                         where:{
                             id: hebergement.providerId
                             }
