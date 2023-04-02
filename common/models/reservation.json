@@ -64,6 +64,10 @@
     "tarifUnitaire": {
       "type": "string",
       "default": ""
+    },
+    "periode": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
