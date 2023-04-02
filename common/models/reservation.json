@@ -11,6 +11,10 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
+    "nomOffreActuel": {
+      "type": "string",
+      "default": ""
+    },
     "dateDebut": {
       "type": "string",
       "default": ""
