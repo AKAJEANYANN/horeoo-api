@@ -61,7 +61,7 @@
         "dataType": "TEXT"
       }
     },
-    "période": {
+    "periode": {
       "type": "string",
       "default": ""
     },
