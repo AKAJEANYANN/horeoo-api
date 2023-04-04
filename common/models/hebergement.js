@@ -322,8 +322,8 @@ module.exports = function(Hebergement) {
             skip: skip,
 
             where:{
-                // approuveHebergement: true,
-                // onlineHebergement: true,
+                approuveHebergement: true,
+                onlineHebergement: true,
                 typeHebergement: typeHebergement,
                 lieuHebergement: lieuHebergement,
                 geoPointHebergement: {
@@ -392,8 +392,8 @@ module.exports = function(Hebergement) {
             skip: skip,
 
             where:{
-                // approuveHebergement: true,
-                // onlineHebergement: true
+                approuveHebergement: true,
+                onlineHebergement: true,
                 typeHebergement: typeHebergement,
                 geoPointHebergement: {
                     near: userLocation
@@ -443,10 +443,10 @@ module.exports = function(Hebergement) {
 
 
         Hebergement.findById(hebergementId,{
-            // where:{
-            //     // approuveHebergement: true,
-            //     // onlineHebergement: true
-            // },
+            where:{
+                approuveHebergement: true,
+                onlineHebergement: true
+            },
             include:[
                 {
                     relation:'offres',
