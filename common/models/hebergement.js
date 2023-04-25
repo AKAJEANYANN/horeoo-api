@@ -100,6 +100,9 @@ module.exports = function(Hebergement) {
         http: { path: '/:id/approuve', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
+
+
+
     
     
     
@@ -278,6 +281,7 @@ module.exports = function(Hebergement) {
 
 
 
+    // affiche un hebergement en attente si le provider est approuvé
     Hebergement.attente = function (cb) {
 
         Hebergement.find({
@@ -290,6 +294,8 @@ module.exports = function(Hebergement) {
             include:'provider'
 
         }, (err, hebergement) =>{
+
+            
             console.log(hebergement)
             if(err) cb(err, null)
             else
