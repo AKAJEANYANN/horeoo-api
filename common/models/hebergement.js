@@ -329,6 +329,7 @@ module.exports = function(Hebergement) {
 
             where:{
                 approuveHebergement: true,
+                actifHebergement: true,
                 onlineHebergement: true,
                 typeHebergement: typeHebergement,
                 lieuHebergement: lieuHebergement,
@@ -399,6 +400,7 @@ module.exports = function(Hebergement) {
 
             where:{
                 approuveHebergement: true,
+                actifHebergement: true,
                 onlineHebergement: true,
                 typeHebergement: typeHebergement,
                 geoPointHebergement: {
@@ -451,6 +453,7 @@ module.exports = function(Hebergement) {
         Hebergement.findById(hebergementId,{
             where:{
                 approuveHebergement: true,
+                actifHebergement: true,
                 onlineHebergement: true
             },
             include:[
