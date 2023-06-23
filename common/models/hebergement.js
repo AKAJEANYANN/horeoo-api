@@ -445,6 +445,7 @@ module.exports = function(Hebergement) {
     });
 
 
+    
 
     // recherche d'hebergement par id
     Hebergement.heberById=function (hebergementId, cb) {
