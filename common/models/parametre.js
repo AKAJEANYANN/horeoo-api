@@ -54,6 +54,7 @@ module.exports = function(Parametre) {
     });
 
 
+    
 
 
     //api de recharge minimum 

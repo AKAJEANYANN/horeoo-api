@@ -298,8 +298,6 @@ module.exports = function(Provider) {
 
 
 
-
-
     // approbation de provider
     Provider.approuve = function (id, cb) {
 
