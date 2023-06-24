@@ -2,6 +2,7 @@
 
 module.exports = function(Equipement) {
 
+    // equipement delete 
     Equipement.delete = function (id, cb) {
         Equipement.findById(
             id,
@@ -25,6 +26,7 @@ module.exports = function(Equipement) {
 
 
 
+    // equipement actif
     Equipement.actif = function (id, cb) {
 
         Equipement.findById(
@@ -54,6 +56,7 @@ module.exports = function(Equipement) {
 
 
 
+    // equipement recherche
     Equipement.recherche = function (listEquipement, cb) {
 
         
