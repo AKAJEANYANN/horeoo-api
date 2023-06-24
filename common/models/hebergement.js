@@ -226,7 +226,7 @@ module.exports = function(Hebergement) {
 
 
 
-
+    // afficher les hebergements actif
     Hebergement.afficheactif = function (cb) {
 
         Hebergement.find({
@@ -445,7 +445,7 @@ module.exports = function(Hebergement) {
     });
 
 
-    
+
 
     // recherche d'hebergement par id
     Hebergement.heberById=function (hebergementId, cb) {
