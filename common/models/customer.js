@@ -109,7 +109,7 @@ module.exports = function(Customer) {
 
 
 
-    //suppression compte Provider
+    //suppression definitif compte Provider
     Customer.delete = function (id, username, email, cb){
         
         Customer.findById(id,
