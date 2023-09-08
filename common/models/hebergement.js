@@ -290,7 +290,8 @@ module.exports = function(Hebergement) {
                 couvertureHebergement: {neq:""},
                 // nomProprio: {neq:""},
                 // contactProprio: {neq:""},
-                approuveHebergement: false
+                approuveHebergement: false,
+                delete: false
             },
             include:'provider'
 
