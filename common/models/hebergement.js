@@ -288,8 +288,8 @@ module.exports = function(Hebergement) {
         Hebergement.find({
             where:{
                 couvertureHebergement: {neq:""},
-                nomProprio: {neq:""},
-                contactProprio: {neq:""},
+                // nomProprio: {neq:""},
+                // contactProprio: {neq:""},
                 approuveHebergement: false
             },
             include:'provider'
