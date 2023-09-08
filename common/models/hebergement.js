@@ -1,4 +1,5 @@
 'use strict';
+var loopback = require('loopback');
 const notify = require("../../server/global/notify")
 
 
@@ -286,9 +287,9 @@ module.exports = function(Hebergement) {
 
         Hebergement.find({
             where:{
-                // couvertureHebergement: {neq:""},
-                // nomProprio: {neq:""},
-                // contactProprio: {neq:""},
+                couvertureHebergement: {neq:""},
+                nomProprio: {neq:""},
+                contactProprio: {neq:""},
                 approuveHebergement: false
             },
             include:'provider'
@@ -387,7 +388,7 @@ module.exports = function(Hebergement) {
     // recherche d'hebergement proche
     Hebergement.proche=function (lat, lng, limit, skip, typeHebergement, cb) {
 
-        var loopback = require('loopback');
+        
         var userLocation = new loopback.GeoPoint({
             lat: lat,
             lng: lng
