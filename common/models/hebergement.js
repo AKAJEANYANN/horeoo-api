@@ -51,8 +51,6 @@ module.exports = function(Hebergement) {
 
 
 
-
-
     // approuver un hebergement
     Hebergement.approuve = function (id, cb) {
 
@@ -104,9 +102,6 @@ module.exports = function(Hebergement) {
 
 
 
-    
-    
-    
     
     // activer un hebergement
     Hebergement.activeheberge = function (id, cb) {
@@ -164,8 +159,6 @@ module.exports = function(Hebergement) {
         http: { path: '/:id/activeheberge', verb: 'post'},
         returns : { type: 'object', root: true } 
     });
-
-
 
 
 
@@ -230,18 +223,34 @@ module.exports = function(Hebergement) {
     // afficher les hebergements actif
     Hebergement.afficheactif = function (cb) {
 
-        Hebergement.find({
-            where:{
-                approuveHebergement: true,
-                actifHebergement: true,
-            },
-            include:'provider'
+        const Provider = Hebergement.app.models.provider;
 
-        }, (err, hebergement) =>{
-            console.log(hebergement)
-            if(err) cb(err, null)
-            else
-                cb(null, hebergement)
+        Provider.find({
+            where:{
+                approuve: 'APPROUVE',
+                actif: true
+            }
+        },(err, pro)=>{
+            const idPro = pro.map(e=>e.id);
+            console.log(idPro);
+            
+            Hebergement.find({
+                where:{
+                    providerId:{
+                        inq:idPro
+                    },
+                    approuveHebergement: true,
+                    actifHebergement: true,
+                    delete: false
+                },
+                include:{
+                    relation:'provider'
+                }
+            },(err, provid)=>{
+                console.log(provid);
+                cb(err, provid);
+            })
+            
         })
     }
 
@@ -259,6 +268,7 @@ module.exports = function(Hebergement) {
 
         Hebergement.find({
             where:{
+                delete: false,
                 approuveHebergement: true,
                 actifHebergement: false
             },
@@ -284,24 +294,36 @@ module.exports = function(Hebergement) {
 
     // affiche un hebergement en attente si le provider est approuvé
     Hebergement.attente = function (cb) {
+        const Provider = Hebergement.app.models.provider;
 
-        Hebergement.find({
+        Provider.find({
             where:{
-                couvertureHebergement: {neq:""},
-                // nomProprio: {neq:""},
-                // contactProprio: {neq:""},
-                approuveHebergement: false,
-                delete: false
-            },
-            include:'provider'
-
-        }, (err, hebergement) =>{
-
+                approuve: 'APPROUVE',
+                actif: true
+            }
+        },(err, pro)=>{
+            const idPro = pro.map(e=>e.id);
+            console.log(idPro);
             
-            console.log(hebergement)
-            if(err) cb(err, null)
-            else
-                cb(null, hebergement)
+            Hebergement.find({
+                where:{
+                    providerId:{
+                        inq:idPro
+                    },
+                    couvertureHebergement: {neq:""},
+                    // nomProprio: {neq:""},
+                    // contactProprio: {neq:""},
+                    approuveHebergement: false,
+                    delete: false
+                },
+                include:{
+                    relation:'provider'
+                }
+            },(err, provid)=>{
+                console.log(provid);
+                cb(err, provid);
+            })
+            
         })
     }
 
@@ -330,6 +352,7 @@ module.exports = function(Hebergement) {
             skip: skip,
 
             where:{
+                delete: false,
                 approuveHebergement: true,
                 actifHebergement: true,
                 onlineHebergement: true,
@@ -401,6 +424,7 @@ module.exports = function(Hebergement) {
             skip: skip,
 
             where:{
+                delete: false,
                 approuveHebergement: true,
                 actifHebergement: true,
                 onlineHebergement: true,
@@ -455,6 +479,7 @@ module.exports = function(Hebergement) {
 
         Hebergement.findById(hebergementId,{
             where:{
+                delete: false,
                 approuveHebergement: true,
                 actifHebergement: true,
                 onlineHebergement: true
