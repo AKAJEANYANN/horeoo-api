@@ -38,7 +38,8 @@ module.exports = function(Paiement) {
         .then((response) => {
             console.log(response);
 
-            // const payment_reference = response.data.transaction.cpm_designation;
+            const payment_reference = response.data.transaction.cpm_designation;
+            console.log(payment_reference);
             // const payment_type = payment_reference.split('.')[0];
             // const transactionId = response.data.transaction.cpm_trans_id;
             // const subscriptionId = transactionId.split('.')[1];
