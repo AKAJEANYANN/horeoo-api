@@ -11,53 +11,55 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "clientId": {
-      "type": "string",
-      "default": ""
-    },
-    "isProvider": {
-      "type": "boolean",
-      "default": true
-    },
-    "transaction_id": {
-      "type": "string",
-      "default": ""
-    },
-    "motif": {
-      "type": "string",
-      "default": ""
-    },
-    "datePaiement": {
+    "created_date": {
       "type": "date",
       "defaultFn": "now"
     },
-    "montantPaiement": {
-      "type": "string",
-      "default": ""
+    "payment_phone_number": {
+      "type": "string"
     },
-    "description": {
-      "type": "string",
-      "default": ""
+    "payment_phone_preffix": {
+      "type": "string"
     },
-    "payment_method": {
-      "type": "string",
-      "default": ""
+    "payment_amount": {
+      "type": "string"
     },
-    "operator_id": {
-      "type": "string",
-      "default": ""
+    "payment_amount_currency": {
+      "type": "string"
     },
-    "status": {
-      "type": "string",
-      "default": ""
+    "payment_status": {
+      "type": "string"
     },
-    "enablePaiment": {
-      "type": "boolean",
-      "default": true
+    "payment_provider": {
+      "type": "string"
+    },
+    "payment_provider_method": {
+      "type": "string"
+    },
+    "payment_provider_status": {
+      "type": "string"
+    },
+    "payment_trans_id": {
+      "type": "string"
+    },
+    "payment_trans_designation": {
+      "type": "string"
+    },
+    "payment_date_time": {
+      "type": "date"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "provider": {
+      "type": "belongsTo",
+      "model": "provider",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }
