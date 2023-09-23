@@ -9,14 +9,6 @@ const notify = require('../../server/global/notify');
 module.exports = function(Paiement) {
 
     Paiement.cinetpayNotifyPayment = function (cpm_trans_id, cb) {
-        // var $secretKey= "349869360634d2c76110653.28929780";
-        // var 
-        // var $data = $cel_phone_num . $cpm_phone_prefixe . $cpm_trans_status . $cpm_trans_id . $cpm_designation . 
-        // $created_at . $cpm_amount . $cpm_currency . $cpm_trans_status .$payment_method;
-        // $token = hash_hmac(‘SHA256’, $cel_phone_num . $cpm_phone_prefixe . $cpm_trans_status . $cpm_trans_id . $cpm_designation . 
-        //     $created_at . $cpm_amount . $cpm_currency . $cpm_trans_status .$payment_method, "349869360634d2c76110653.28929780");
-        //const Subscription = Payment.app.models.subscription;
-        //const Offer = Payment.app.models.offer;
         
         // var result = {
         //     success : false
@@ -38,8 +30,8 @@ module.exports = function(Paiement) {
         .then((response) => {
             console.log(response);
 
-            const payment_reference = response.data.transaction.cpm_designation;
-            console.log(payment_reference);
+            // const payment_reference = response.data.transaction.cpm_designation;
+            // console.log(payment_reference);
             // const payment_type = payment_reference.split('.')[0];
             // const transactionId = response.data.transaction.cpm_trans_id;
             // const subscriptionId = transactionId.split('.')[1];
