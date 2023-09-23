@@ -45,8 +45,8 @@
     "detailPayment": {
       "type": "string"
     },
-    "payment_date_time": {
-      "type": "date"
+    "dateMotifPayment": {
+      "type": "string"
     }
   },
   "validations": [],
