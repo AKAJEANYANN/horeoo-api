@@ -45,7 +45,7 @@
     "detailPayment": {
       "type": "string"
     },
-    "dateMotifPayment": {
+    "payment_date_time": {
       "type": "date"
     }
   },
