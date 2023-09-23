@@ -28,7 +28,6 @@ module.exports = function(Paiement) {
         params.append('cpm_site_id', CINETPAY_HOREOO_SITEID)
         params.append('method', 'checkPayStatus')
         params.append('cpm_trans_id', cpm_trans_id)
-        params.append('awesome', true)
 
         axios.post(CINETPAY_API, params, config)
         .then((response) => {
@@ -39,7 +38,7 @@ module.exports = function(Paiement) {
             // const transactionId = response.data.transaction.cpm_trans_id;
             // const subscriptionId = transactionId.split('.')[1];
 
-            Paiement.findOrCreate(
+            Paiement.create(
                 {
                     phoneNumeroPayment : response.data.transaction.cel_phone_num,
                     phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
@@ -56,8 +55,8 @@ module.exports = function(Paiement) {
                 },
                 (err, payment) => { 
                     console.log(payment);
-                    if(err) throw err;
-
+                    if(err) cb(err, null)
+                    else
                     // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
                     //     if(payment_type == "SUBSCRIBE") {
                     //         activateSubscription(subscriptionId, response.data.transaction);
