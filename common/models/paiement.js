@@ -45,7 +45,7 @@ module.exports = function(Paiement) {
                     statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
                     referencePayment : response.data.transaction.cpm_trans_id,
                     detailPayment : response.data.transaction.cpm_designation,
-                    dateMotifPayment : response.data.transaction.created_at,
+                    datePaiement : response.data.transaction.created_at,
                     // subscriptionId : payment_type == "SUBSCRIBE" ? subscriptionId : null,
                     montantPayment : response.data.transaction.cpm_amount,
                     deviseMontantPayment : response.data.transaction.cpm_currency,
