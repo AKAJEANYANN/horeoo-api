@@ -15,37 +15,37 @@
       "type": "date",
       "defaultFn": "now"
     },
-    "payment_phone_number": {
+    "phoneNumeroPayment": {
       "type": "string"
     },
-    "payment_phone_preffix": {
+    "phonePrefixPayment": {
       "type": "string"
     },
-    "payment_amount": {
+    "montantPayment": {
       "type": "string"
     },
-    "payment_amount_currency": {
+    "deviseMontantPayment": {
       "type": "string"
     },
-    "payment_status": {
+    "statusPayment": {
       "type": "string"
     },
-    "payment_provider": {
+    "paymentType": {
       "type": "string"
     },
-    "payment_provider_method": {
+    "paymentProviderMethod": {
       "type": "string"
     },
-    "payment_provider_status": {
+    "paymentProviderStatus": {
       "type": "string"
     },
-    "payment_trans_id": {
+    "referencePayment": {
       "type": "string"
     },
-    "payment_trans_designation": {
+    "detailPayment": {
       "type": "string"
     },
-    "payment_date_time": {
+    "dateMotifPayment": {
       "type": "date"
     }
   },

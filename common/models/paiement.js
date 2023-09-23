@@ -41,18 +41,18 @@ module.exports = function(Paiement) {
 
             Paiement.findOrCreate(
                 {
-                    payment_phone_number : response.data.transaction.cel_phone_num,
-                    payment_phone_preffix : response.data.transaction.cpm_phone_prefixe,
-                    payment_status : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
-                    payment_trans_id : response.data.transaction.cpm_trans_id,
-                    payment_trans_designation : response.data.transaction.cpm_designation,
-                    payment_date_time : response.data.transaction.created_at,
+                    phoneNumeroPayment : response.data.transaction.cel_phone_num,
+                    phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
+                    statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
+                    referencePayment : response.data.transaction.cpm_trans_id,
+                    detailPayment : response.data.transaction.cpm_designation,
+                    dateMotifPayment : response.data.transaction.created_at,
                     // subscriptionId : payment_type == "SUBSCRIBE" ? subscriptionId : null,
-                    payment_amount : response.data.transaction.cpm_amount,
-                    payment_amount_currency : response.data.transaction.cpm_currency,
-                    payment_provider_status : response.data.transaction.cpm_trans_status,
-                    payment_provider: 'CINETPAY',
-                    payment_provider_method : response.data.transaction.payment_method
+                    montantPayment : response.data.transaction.cpm_amount,
+                    deviseMontantPayment : response.data.transaction.cpm_currency,
+                    paymentProviderStatus : response.data.transaction.cpm_trans_status,
+                    paymentType: 'CINETPAY',
+                    paymentProviderMethod : response.data.transaction.payment_method
                 },
                 (err, payment) => { 
                     console.log(payment);
