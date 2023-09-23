@@ -55,6 +55,7 @@ module.exports = function(Paiement) {
                     payment_provider_method : response.data.transaction.payment_method
                 },
                 (err, payment) => { 
+                    console.log(payment);
                     if(err) throw err;
 
                     // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
@@ -64,6 +65,7 @@ module.exports = function(Paiement) {
                     //     }
                     //     result.success = true;
                     // }
+
                     cb(null, payment);
 
                 }
