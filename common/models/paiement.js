@@ -9,7 +9,12 @@ const notify = require('../../server/global/notify');
 module.exports = function(Paiement) {
 
     Paiement.cinetpayNotifyPayment = function (cpm_trans_id, cb) {
-
+        // var $secretKey= "349869360634d2c76110653.28929780";
+        // var 
+        // var $data = $cel_phone_num . $cpm_phone_prefixe . $cpm_trans_status . $cpm_trans_id . $cpm_designation . 
+        // $created_at . $cpm_amount . $cpm_currency . $cpm_trans_status .$payment_method;
+        // $token = hash_hmac(‘SHA256’, $cel_phone_num . $cpm_phone_prefixe . $cpm_trans_status . $cpm_trans_id . $cpm_designation . 
+        //     $created_at . $cpm_amount . $cpm_currency . $cpm_trans_status .$payment_method, "349869360634d2c76110653.28929780");
         //const Subscription = Payment.app.models.subscription;
         //const Offer = Payment.app.models.offer;
         
@@ -38,7 +43,7 @@ module.exports = function(Paiement) {
             // const transactionId = response.data.transaction.cpm_trans_id;
             // const subscriptionId = transactionId.split('.')[1];
 
-            Paiement.create(
+            Paiement.findOrCreate(
                 {
                     phoneNumeroPayment : response.data.transaction.cel_phone_num,
                     phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
@@ -46,7 +51,6 @@ module.exports = function(Paiement) {
                     referencePayment : response.data.transaction.cpm_trans_id,
                     detailPayment : response.data.transaction.cpm_designation,
                     dateMotifPayment : response.data.transaction.created_at,
-                    // subscriptionId : payment_type == "SUBSCRIBE" ? subscriptionId : null,
                     montantPayment : response.data.transaction.cpm_amount,
                     deviseMontantPayment : response.data.transaction.cpm_currency,
                     paymentProviderStatus : response.data.transaction.cpm_trans_status,
@@ -54,7 +58,7 @@ module.exports = function(Paiement) {
                     paymentProviderMethod : response.data.transaction.payment_method
                 },
                 (err, payment) => { 
-                    console.log(payment);
+                    // console.log(payment);
                     if(err) cb(err, null)
                     else
                     // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
