@@ -61,13 +61,6 @@
     }
   },
   "acls": [
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "cinetpayNotifyPayment"
-    }
   ],
   "methods": {}
 }
