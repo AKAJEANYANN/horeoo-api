@@ -36,7 +36,7 @@ module.exports = function(Paiement) {
             // const transactionId = response.data.transaction.cpm_trans_id;
             // const subscriptionId = transactionId.split('.')[1];
 
-            Paiement.findOrCreate(
+            Paiement.create(
                 {
                     phoneNumeroPayment : response.data.transaction.cel_phone_num,
                     phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
