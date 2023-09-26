@@ -60,48 +60,6 @@ module.exports = function(Paiement) {
                         // console.log(payment);
                         if(err) cb(err, null)
                         else
-                        // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
-                        //     if(payment_type == "SUBSCRIBE") {
-                        //         activateSubscription(subscriptionId, response.data.transaction);
-    
-                        //     }
-                        //     result.success = true;
-                        // }
-    
-                        cb(null, payment);
-    
-                    }
-                )
-            }
-            else{
-                Paiement.create(
-                    {
-                        transacIdPayment: transactionId,
-                        phoneNumeroPayment : response.data.transaction.cel_phone_num,
-                        phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
-                        statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
-                        referencePayment : response.data.transaction.cpm_trans_id,
-                        detailPayment : response.data.transaction.cpm_designation,
-                        datePaiement : response.data.transaction.created_at,
-                        montantPayment : response.data.transaction.cpm_amount,
-                        deviseMontantPayment : response.data.transaction.cpm_currency,
-                        paymentProviderStatus : response.data.transaction.cpm_trans_status,
-                        paymentType: 'CINETPAY',
-                        paymentProviderMethod : response.data.transaction.payment_method,
-                        clientId: client_id,
-                        isProvider: is_provider
-                    },
-                    (err, payment) => { 
-                        // console.log(payment);
-                        if(err) cb(err, null)
-                        else
-                        // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
-                        //     if(payment_type == "SUBSCRIBE") {
-                        //         activateSubscription(subscriptionId, response.data.transaction);
-    
-                        //     }
-                        //     result.success = true;
-                        // }
     
                         cb(null, payment);
     
