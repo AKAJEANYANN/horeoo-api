@@ -67,6 +67,9 @@
       "default": ""
     },
     "isProvider": {
+      "type": "boolean"
+    },
+    "clientId": {
       "type": "string",
       "default": ""
     }

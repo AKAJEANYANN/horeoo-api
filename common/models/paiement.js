@@ -34,7 +34,7 @@ module.exports = function(Paiement) {
             // console.log(payment_reference);
             // const payment_type = payment_reference.split('.')[0];
             const transactionId = response.data.transaction.cpm_trans_id;
-            const provider_id = transactionId.split('.')[0];
+            const client_id = transactionId.split('.')[0];
             const is_provider= transactionId.split('.')[1];
 
             if(is_provider == 1){
@@ -53,7 +53,7 @@ module.exports = function(Paiement) {
                         paymentProviderStatus : response.data.transaction.cpm_trans_status,
                         paymentType: 'CINETPAY',
                         paymentProviderMethod : response.data.transaction.payment_method,
-                        providerId: provider_id,
+                        clientId: client_id,
                         isProvider: is_provider
                     },
                     (err, payment) => { 
@@ -88,7 +88,7 @@ module.exports = function(Paiement) {
                         paymentProviderStatus : response.data.transaction.cpm_trans_status,
                         paymentType: 'CINETPAY',
                         paymentProviderMethod : response.data.transaction.payment_method,
-                        providerId: provider_id,
+                        clientId: client_id,
                         isProvider: is_provider
                     },
                     (err, payment) => { 
