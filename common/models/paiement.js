@@ -37,8 +37,6 @@ module.exports = function(Paiement) {
             const client_id = transactionId.split('.')[0];
             const is_provider= transactionId.split('.')[1];
 
-            if(is_provider == 1){
-
                 Paiement.create(
                     {
                         transacIdPayment: transactionId,
@@ -65,8 +63,6 @@ module.exports = function(Paiement) {
     
                     }
                 )
-            }
-
 
         })
         .catch((e) =>{
