@@ -33,8 +33,8 @@ module.exports = function(Paiement) {
             // const payment_reference = response.data.transaction.cpm_designation;
             // console.log(payment_reference);
             // const payment_type = payment_reference.split('.')[0];
-            // const transactionId = response.data.transaction.cpm_trans_id;
-            // const subscriptionId = transactionId.split('.')[1];
+            const transactionId = response.data.transaction.cpm_trans_id;
+            const provider_id = transactionId.split('.')[0];
 
             Paiement.create(
                 {
@@ -48,7 +48,8 @@ module.exports = function(Paiement) {
                     deviseMontantPayment : response.data.transaction.cpm_currency,
                     paymentProviderStatus : response.data.transaction.cpm_trans_status,
                     paymentType: 'CINETPAY',
-                    paymentProviderMethod : response.data.transaction.payment_method
+                    paymentProviderMethod : response.data.transaction.payment_method,
+                    providerId: provider_id
                 },
                 (err, payment) => { 
                     // console.log(payment);
