@@ -35,38 +35,80 @@ module.exports = function(Paiement) {
             // const payment_type = payment_reference.split('.')[0];
             const transactionId = response.data.transaction.cpm_trans_id;
             const provider_id = transactionId.split('.')[0];
+            const is_provider= transactionId.split('.')[1];
 
-            Paiement.create(
-                {
-                    phoneNumeroPayment : response.data.transaction.cel_phone_num,
-                    phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
-                    statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
-                    referencePayment : response.data.transaction.cpm_trans_id,
-                    detailPayment : response.data.transaction.cpm_designation,
-                    dateMotifPayment : response.data.transaction.created_at,
-                    montantPayment : response.data.transaction.cpm_amount,
-                    deviseMontantPayment : response.data.transaction.cpm_currency,
-                    paymentProviderStatus : response.data.transaction.cpm_trans_status,
-                    paymentType: 'CINETPAY',
-                    paymentProviderMethod : response.data.transaction.payment_method,
-                    providerId: provider_id
-                },
-                (err, payment) => { 
-                    // console.log(payment);
-                    if(err) cb(err, null)
-                    else
-                    // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
-                    //     if(payment_type == "SUBSCRIBE") {
-                    //         activateSubscription(subscriptionId, response.data.transaction);
+            if(is_provider = 1){
 
-                    //     }
-                    //     result.success = true;
-                    // }
+                Paiement.create(
+                    {
+                        transacIdPayment: transactionId,
+                        phoneNumeroPayment : response.data.transaction.cel_phone_num,
+                        phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
+                        statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
+                        referencePayment : response.data.transaction.cpm_trans_id,
+                        detailPayment : response.data.transaction.cpm_designation,
+                        datePaiement : response.data.transaction.created_at,
+                        montantPayment : response.data.transaction.cpm_amount,
+                        deviseMontantPayment : response.data.transaction.cpm_currency,
+                        paymentProviderStatus : response.data.transaction.cpm_trans_status,
+                        paymentType: 'CINETPAY',
+                        paymentProviderMethod : response.data.transaction.payment_method,
+                        providerId: provider_id,
+                        isProvider: is_provider
+                    },
+                    (err, payment) => { 
+                        // console.log(payment);
+                        if(err) cb(err, null)
+                        else
+                        // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
+                        //     if(payment_type == "SUBSCRIBE") {
+                        //         activateSubscription(subscriptionId, response.data.transaction);
+    
+                        //     }
+                        //     result.success = true;
+                        // }
+    
+                        cb(null, payment);
+    
+                    }
+                )
+            }
+            else{
+                Paiement.create(
+                    {
+                        transacIdPayment: transactionId,
+                        phoneNumeroPayment : response.data.transaction.cel_phone_num,
+                        phonePrefixPayment : response.data.transaction.cpm_phone_prefixe,
+                        statusPayment : response.data.transaction.cpm_trans_status == "ACCEPTED" ? "SUCCESS" : "FAILURE",
+                        referencePayment : response.data.transaction.cpm_trans_id,
+                        detailPayment : response.data.transaction.cpm_designation,
+                        datePaiement : response.data.transaction.created_at,
+                        montantPayment : response.data.transaction.cpm_amount,
+                        deviseMontantPayment : response.data.transaction.cpm_currency,
+                        paymentProviderStatus : response.data.transaction.cpm_trans_status,
+                        paymentType: 'CINETPAY',
+                        paymentProviderMethod : response.data.transaction.payment_method,
+                        providerId: provider_id,
+                        isProvider: is_provider
+                    },
+                    (err, payment) => { 
+                        // console.log(payment);
+                        if(err) cb(err, null)
+                        else
+                        // if(response.data.transaction.cpm_trans_status == "ACCEPTED") {
+                        //     if(payment_type == "SUBSCRIBE") {
+                        //         activateSubscription(subscriptionId, response.data.transaction);
+    
+                        //     }
+                        //     result.success = true;
+                        // }
+    
+                        cb(null, payment);
+    
+                    }
+                )
+            }
 
-                    cb(null, payment);
-
-                }
-            )
 
         })
         .catch((e) =>{

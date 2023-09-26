@@ -11,42 +11,64 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
-    "created_date": {
+    "dateCreationPayment": {
       "type": "date",
       "defaultFn": "now"
     },
-    "phoneNumeroPayment": {
-      "type": "string"
-    },
     "phonePrefixPayment": {
-      "type": "string"
+      "type": "string",
+      "default": ""
+    },
+    "phoneNumeroPayment": {
+      "type": "string",
+      "default": ""
     },
     "montantPayment": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "deviseMontantPayment": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "statusPayment": {
-      "type": "string"
-    },
-    "paymentType": {
-      "type": "string"
-    },
-    "paymentProviderMethod": {
-      "type": "string"
-    },
-    "paymentProviderStatus": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "referencePayment": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "detailPayment": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
-    "dateMotifPayment": {
-      "type": "string"
+    "datePaiement": {
+      "type": "date"
+    },
+    "paymentProviderMethod": {
+      "type": "string",
+      "default": ""
+    },
+    "paymentProviderStatus": {
+      "type": "string",
+      "default": ""
+    },
+    "paymentType": {
+      "type": "string",
+      "default": ""
+    },
+    "transacIdPayment": {
+      "type": "string",
+      "default": ""
+    },
+    "paymentProvider": {
+      "type": "string",
+      "default": ""
+    },
+    "isProvider": {
+      "type": "string",
+      "default": ""
     }
   },
   "validations": [],
