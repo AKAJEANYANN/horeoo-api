@@ -51,8 +51,8 @@ module.exports = function(Paiement) {
                         paymentProviderStatus : response.data.transaction.cpm_trans_status,
                         paymentType: 'CINETPAY',
                         paymentProviderMethod : response.data.transaction.payment_method,
-                        clientId: client_id == 1 ? true: false,
-                        isProvider: is_provider
+                        clientId: client_id ,
+                        isProvider: is_provider == 1 ? true: false
                     },
                     (err, payment) => { 
                         // console.log(payment);
