@@ -48,8 +48,7 @@ module.exports = function(Paiement) {
                         datePaiement : response.data.transaction.created_at,
                         montantPayment : response.data.transaction.cpm_amount,
                         deviseMontantPayment : response.data.transaction.cpm_currency,
-                        paymentProviderStatus : response.data.transaction.cpm_trans_status,
-                        paymentType: 'CINETPAY',
+                        paymentProvider: 'CINETPAY',
                         paymentProviderMethod : response.data.transaction.payment_method,
                         clientId: client_id ,
                         isProvider: is_provider == 1 ? true: false

@@ -50,14 +50,6 @@
       "type": "string",
       "default": ""
     },
-    "paymentProviderStatus": {
-      "type": "string",
-      "default": ""
-    },
-    "paymentType": {
-      "type": "string",
-      "default": ""
-    },
     "transacIdPayment": {
       "type": "string",
       "default": ""
