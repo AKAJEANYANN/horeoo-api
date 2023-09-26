@@ -37,7 +37,7 @@ module.exports = function(Paiement) {
             const client_id = transactionId.split('.')[0];
             const is_provider= transactionId.split('.')[1];
 
-                Paiement.create(
+                Paiement.findOrCreate(
                     {
                         transacIdPayment: transactionId,
                         phoneNumeroPayment : response.data.transaction.cel_phone_num,
