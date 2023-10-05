@@ -453,6 +453,7 @@ module.exports = function(Hebergement) {
                     scope:{
                         where:{
                             actifOffre: true,
+                            prixUnitaireOffre: {neq: ""}
                         },
                         limit:1
                     }
