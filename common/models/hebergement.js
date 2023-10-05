@@ -246,9 +246,9 @@ module.exports = function(Hebergement) {
                 include:{
                     relation:'provider'
                 }
-            },(err, provid)=>{
-                console.log(provid);
-                cb(err, provid);
+            },(err, heberpro)=>{
+                console.log(heberpro);
+                cb(err, heberpro);
             })
             
         })
