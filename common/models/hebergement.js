@@ -412,7 +412,7 @@ module.exports = function(Hebergement) {
     // recherche d'hebergement proche
     Hebergement.proche=function (lat, lng, limit, skip, typeHebergement, cb) {
 
-        const Provider = Hebergement.app.models.provider;
+        // const Provider = Hebergement.app.models.provider;
         
         var userLocation = new loopback.GeoPoint({
             lat: lat,
@@ -420,14 +420,14 @@ module.exports = function(Hebergement) {
           });
 
 
-        Provider.find({
-            where:{
-                approuve: 'APPROUVE',
-                actif: true
-            }
-        },(err, pro)=>{
-            const idPro = pro.map(e=>e.id);
-            console.log(idPro);
+        // Provider.find({
+        //     where:{
+        //         approuve: 'APPROUVE',
+        //         actif: true
+        //     }
+        // },(err, pro)=>{
+        //     const idPro = pro.map(e=>e.id);
+        //     console.log(idPro);
 
         Hebergement.find({
 
@@ -435,9 +435,9 @@ module.exports = function(Hebergement) {
             skip: skip,
 
             where:{
-                providerId:{
-                    inq:idPro
-                },
+                // providerId:{
+                //     inq:idPro
+                // },
                 delete: false,
                 approuveHebergement: true,
                 actifHebergement: true,
@@ -470,8 +470,8 @@ module.exports = function(Hebergement) {
                 }
             }
         )
-    })
-    }
+    // })
+}
 
 
     Hebergement.remoteMethod('proche', {
