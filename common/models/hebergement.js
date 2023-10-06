@@ -340,11 +340,23 @@ module.exports = function(Hebergement) {
     // recherche d'hebergement avec les parametres
     Hebergement.rechercher=function (lat, lng, limit, skip, typeHebergement, lieuHebergement, km, prixMinimOffre, prixMaximOffre, cb) {
 
+        const Provider = Hebergement.app.models.provider;
+
         var loopback = require('loopback');
         var userLocation = new loopback.GeoPoint({
             lat: lat,
             lng: lng
           });
+
+
+        Provider.find({
+            where:{
+                approuve: 'APPROUVE',
+                actif: true
+            }
+        },(err, pro)=>{
+            const idPro = pro.map(e=>e.id);
+            console.log(idPro);
 
         Hebergement.find({
 
@@ -352,6 +364,9 @@ module.exports = function(Hebergement) {
             skip: skip,
 
             where:{
+                providerId:{
+                    inq:idPro
+                },
                 delete: false,
                 approuveHebergement: true,
                 actifHebergement: true,
@@ -371,6 +386,7 @@ module.exports = function(Hebergement) {
                         where:{
                             actifOffre: true,
                             prixUnitaireOffre: {between: [prixMinimOffre,prixMaximOffre]},
+                            prixUnitaireOffre: {neq: ""}
                         },
                         limit:1
                     }
@@ -387,6 +403,7 @@ module.exports = function(Hebergement) {
                 }
             }
         )
+    })
     }
 
 
