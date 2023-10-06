@@ -64,7 +64,12 @@
     "clientId": {
       "type": "string",
       "default": ""
+    },
+    "enablePaiement": {
+      "type": "boolean",
+      "default": false
     }
+    
   },
   "validations": [],
   "relations": {
