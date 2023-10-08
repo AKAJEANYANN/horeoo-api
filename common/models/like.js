@@ -1,7 +1,5 @@
 'use strict';
 
-const hebergement = require("./hebergement");
-
 module.exports = function(Like) {
 
     Like.affiche =function (customerId, cb) {
