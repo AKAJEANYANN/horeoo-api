@@ -199,7 +199,7 @@ module.exports = function(Reservation) {
                                 comm.updateAttributes({
                                     enable: false
                                 },(err, commentaire)=>{
-                                    
+                                    console.log(commentaire);
                                 })
                             })
 
