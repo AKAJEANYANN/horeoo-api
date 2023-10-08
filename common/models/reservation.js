@@ -196,12 +196,12 @@ module.exports = function(Reservation) {
                                 }
                             },(err, comm)=>{
                                 console.log(comm);
-                                
-                                comm.updateAttributes({
-                                    enable: false
-                                },(err, commentaire)=>{
-                                    console.log(commentaire);
-                                })
+
+                                // comm.updateAttributes({
+                                //     enable: false
+                                // },(err, commentaire)=>{
+                                //     console.log(commentaire);
+                                // })
                             })
 
                             notify.sendPushNotification(
