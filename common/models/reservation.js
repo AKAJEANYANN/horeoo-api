@@ -130,7 +130,7 @@ module.exports = function(Reservation) {
             },
             (err, reservation) =>{ 
 
-                console.log(reservation);
+                // console.log(reservation);
 
                 reservation.updateAttributes({
                     etatReservation: reservationEtat,
@@ -139,7 +139,7 @@ module.exports = function(Reservation) {
                 }, (err, reservation) =>{
 
                     var reservations = reservation.toJSON();
-                    console.log(reservations["customer"]["device_fcm_token"]);
+                    // console.log(reservations["customer"]["device_fcm_token"]);
                  
 
                     if(err) cb(err, null)
@@ -187,22 +187,36 @@ module.exports = function(Reservation) {
                         }
                         else if(reservation.etatReservation === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] != "" && reservations["customer"]["device_fcm_token"] != ""){
 
-
                             //mettre enable a false
+
                             Commentaire.findOne({
                                 where:{
                                     customerId: reservation.customerId,
-                                    hebergementId: reservation.hebergementId,
+                                    hebergementId: reservation.hebergementId
                                 }
-                            },(err, comm)=>{
-                                console.log(comm);
+                            },(err, comment)=>{
+                                console.log(comment);
 
-                                // comm.updateAttributes({
-                                //     enable: false
-                                // },(err, commentaire)=>{
-                                //     console.log(commentaire);
-                                // })
-                            })
+                                if(comment){
+
+                                    comment.updateAttributes({
+                                        enable: false
+                                    },(err, commentaire)=>{
+                                        console.log(commentaire);
+                                    })
+                                }else{
+                                    Commentaire.create({
+                                        commentaire: "",
+                                        note: "",
+                                        enable: false,
+                                        customerId: reservation.customerId,
+                                        hebergementId: reservation.hebergementId
+                                    },(err, com)=>{
+                                        console.log(com);
+                                    })
+                                }
+
+                            });
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
