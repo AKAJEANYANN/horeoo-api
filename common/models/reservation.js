@@ -216,7 +216,7 @@ module.exports = function(Reservation) {
                                     })
                                 }
 
-                            });
+                            })
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
