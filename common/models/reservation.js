@@ -195,7 +195,8 @@ module.exports = function(Reservation) {
                                     hebergementId: reservation.hebergementId,
                                 }
                             },(err, comm)=>{
-
+                                console.log(comm);
+                                
                                 comm.updateAttributes({
                                     enable: false
                                 },(err, commentaire)=>{
