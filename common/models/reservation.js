@@ -186,6 +186,9 @@ module.exports = function(Reservation) {
                         }
                         else if(reservation.etatReservation === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] && reservations["customer"]["device_fcm_token"] != ""){
 
+
+                            //mettre enable a false
+
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],
                                 "Réservation terminée",
