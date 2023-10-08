@@ -23,6 +23,17 @@
     "enable": {
       "type": "boolean",
       "default": false
+    },
+    "delate": {
+      "type": "boolean",
+      "default": false
+    },
+    "date_creation": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "dateModification": {
+      "type": "date"
     }
   },
   "validations": [],
