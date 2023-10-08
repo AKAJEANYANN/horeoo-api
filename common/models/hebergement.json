@@ -181,6 +181,14 @@
         "nestRemoting": true
       },
       "through": "like"
+    },
+    "commentaires": {
+      "type": "hasMany",
+      "model": "commentaire",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [

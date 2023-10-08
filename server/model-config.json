@@ -96,5 +96,13 @@
   "like": {
     "dataSource": "horeooAppDb",
     "public": true
+  },
+  "pub": {
+    "dataSource": "horeooAppDb",
+    "public": true
+  },
+  "commentaire": {
+    "dataSource": "horeooAppDb",
+    "public": true
   }
 }
