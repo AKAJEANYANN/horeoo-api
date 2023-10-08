@@ -148,16 +148,32 @@ module.exports = function(Reservation) {
 
                             const msisdn = reservations["customer"]["numero"];
 
-                            const message = 'La réservation faite sur ' + reservations['hebergement']['typeHebergement'] + ' ' + '"' + reservations['hebergement']['nomHebergement'] + '"' +' a été validée !';
-                            
-                            notify.sendSMS(message, msisdn);
+                            if (reservations['hebergement']['nomHebergement'] != "") {
+                                
+                                const message = 'La réservation faite sur ' + reservations['hebergement']['typeHebergement'] + ' ' + reservations['hebergement']['nomHebergement'] +' a été validée !';
+                                
+                                notify.sendSMS(message, msisdn);
+    
+                                notify.sendPushNotification(
+                                    reservations["customer"]["device_fcm_token"],
+                                    "Réservation validée",
+                                    "Votre réservation a été validée !",
+                                    "CUS"
+                                    );
+                            }else{
+                                const message = 'La réservation faite sur ' + reservations['hebergement']['typeHebergement'] + ' ' + reservations['hebergement']['codeHebergement'] +' a été validée !';
+                                
+                                notify.sendSMS(message, msisdn);
+    
+                                notify.sendPushNotification(
+                                    reservations["customer"]["device_fcm_token"],
+                                    "Réservation validée",
+                                    "Votre réservation a été validée !",
+                                    "CUS"
+                                    );
 
-                            notify.sendPushNotification(
-                                reservations["customer"]["device_fcm_token"],
-                                "Réservation validée",
-                                "Votre réservation a été validée !",
-                                "CUS"
-                                );
+                            }
+
                         }
                         else if(reservation.etatReservation === "5" && reservations["customer"]["device_fcm_token"] != ""){
 
