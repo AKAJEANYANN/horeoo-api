@@ -111,6 +111,7 @@ module.exports = function(Reservation) {
 
     Reservation.modifReser = function (idreservation, reservationEtat, idbot, cb) {
 
+        const Commentaire = Reservation.app.models.commentaire;
 
         Reservation.findById(
             idreservation,
@@ -184,10 +185,23 @@ module.exports = function(Reservation) {
                                 "CUS"
                                 );
                         }
-                        else if(reservation.etatReservation === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] && reservations["customer"]["device_fcm_token"] != ""){
+                        else if(reservation.etatReservation === "6" && reservations["hebergement"]["provider"]["device_fcm_token"] != "" && reservations["customer"]["device_fcm_token"] != ""){
 
 
                             //mettre enable a false
+                            Commentaire.findOne({
+                                where:{
+                                    customerId: reservation.customerId,
+                                    hebergementId: reservation.hebergementId,
+                                }
+                            },(err, comm)=>{
+
+                                comm.updateAttributes({
+                                    enable: false
+                                },(err, commentaire)=>{
+                                    
+                                })
+                            })
 
                             notify.sendPushNotification(
                                 reservations["customer"]["device_fcm_token"],

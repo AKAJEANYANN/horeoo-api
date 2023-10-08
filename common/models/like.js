@@ -12,8 +12,20 @@ module.exports = function(Like) {
             },
             include:[
                 {
-                    relation:'customer',
                     relation:'hebergement',
+                    scope:{
+                        include:[
+                            {
+                                relation:'offres',
+                                scope:{
+                                    where:{
+                                        actifOffre: true,
+                                    },
+                                    limit:1
+                                }
+                            }
+                        ],
+                    },
                     
                 }
                 ]
