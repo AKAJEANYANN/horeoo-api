@@ -11,6 +11,7 @@ module.exports = function(Commentaire) {
                 where: {
                     customerId : infoData.customerId,
                     hebergementId: infoData.hebergementId,
+                    delate: false
                 }
             }, (err, commentaire) => {
 

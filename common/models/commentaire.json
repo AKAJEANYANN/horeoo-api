@@ -28,7 +28,7 @@
       "type": "boolean",
       "default": false
     },
-    "date_creation": {
+    "dateCreation": {
       "type": "date",
       "defaultFn": "now"
     },
