@@ -1,12 +1,13 @@
 {
   "horeooAppDb": {
-    "host": "mysql-117789-0.cloudclusters.net",
-    "port": 11929,
+    "host": "dpg-cosclo21hbls73fiafqg-a.oregon-postgres.render.com",
+    "port": 5432,
     "url": "",
-    "database": "horeoo_app_db",
-    "password": "rbTT3tPH",
+    "database": "horeooapp",
+    "password": "K0RTqafs73FK93SvwA85xk7cSH8xVl9l",
     "name": "horeooAppDb",
-    "user": "admin",
-    "connector": "mysql"
+    "user": "horeooapp_user",
+    "connector": "postgresql",
+    "ssl":true
   }
 }

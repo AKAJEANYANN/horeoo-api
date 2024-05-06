@@ -52,8 +52,7 @@
       }
     },
     "geoPointHebergement": {
-      "type": "geopoint",
-      "default": "0.1"
+      "type": "geopoint"
     },
     "nomCompletProprio": {
       "type": "string",

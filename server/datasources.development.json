@@ -1,12 +1,13 @@
 {
   "horeooAppDb": {
-    "host": "eu-cdbr-west-03.cleardb.net",
-    "port": 3306,
+    "host": "dpg-cosclo21hbls73fiafqg-a.oregon-postgres.render.com",
+    "port": 5432,
     "url": "",
-    "database": "heroku_e2121e45b20d36f",
-    "password": "e149cafb",
+    "database": "horeooapp",
+    "password": "K0RTqafs73FK93SvwA85xk7cSH8xVl9l",
     "name": "horeooAppDb",
-    "user": "b323053fc673c4",
-    "connector": "mysql"
+    "user": "horeooapp_user",
+    "connector": "postgresql",
+    "ssl":true
   }
 }

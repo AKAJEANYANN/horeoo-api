@@ -7,14 +7,14 @@
 const notify = require('../global/notify'); 
 
 module.exports = function(server) {
-  var ds = server.dataSources.horeooAppDb;
-  if(ds.connected) {
-    ds.autoupdate();
-  } else {
-    ds.once('connected', function() {
-      ds.autoupdate();
-    });
-  }
+  // var ds = server.dataSources.horeooAppDb;
+  // if(ds.connected) {
+  //   ds.autoupdate();
+  // } else {
+  //   ds.once('connected', function() {
+  //     ds.autoupdate();
+  //   });
+  // }
 
   // Install a `/` route that returns server status
   const router = server.loopback.Router();
