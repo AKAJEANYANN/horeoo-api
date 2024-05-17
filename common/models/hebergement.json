@@ -5,9 +5,7 @@
   "options": {
     "validateUpsert": true
   },
-  "scope": {
-    "order": "geoPointHebergement ASC"
-  },
+  
   "properties": {
     "id": {
       "type": "string",
@@ -33,26 +31,29 @@
     "carrouselHebergement": {
       "type": "string",
       "default": "",
-      "mysql": {
+      "postgresql": {
         "dataType": "TEXT"
       }
     },
     "descriptionHebergement": {
       "type": "string",
       "default": "",
-      "mysql": {
+      "postgresql": {
         "dataType": "TEXT"
       }
     },
     "mesEquipements": {
       "type": "string",
       "default": "",
-      "mysql": {
+      "postgresql": {
         "dataType": "TEXT"
       }
     },
     "geoPointHebergement": {
-      "type": "geopoint"
+      "type": "GeoPoint",
+      "postgresql": {
+        "dataType": "POINT"
+      }
     },
     "nomCompletProprio": {
       "type": "string",
