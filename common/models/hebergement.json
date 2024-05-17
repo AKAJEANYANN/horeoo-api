@@ -51,6 +51,7 @@
     },
     "geoPointHebergement": {
       "type": "GeoPoint",
+      "default":"0.1",
       "postgresql": {
         "dataType": "POINT"
       }
